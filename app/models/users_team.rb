@@ -1,0 +1,2 @@
+class UsersTeam < ApplicationRecord
+end
