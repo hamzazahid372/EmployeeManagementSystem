@@ -1,0 +1,2 @@
+class CompanySetting < ApplicationRecord
+end
