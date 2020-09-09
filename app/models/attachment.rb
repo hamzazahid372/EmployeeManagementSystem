@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Attachment model
+# Attachment Model
 class Attachment < ApplicationRecord
-  belongs_to :comapny
+  belongs_to :company
   belongs_to :attachable, polymorphic: true
 end
