@@ -9,7 +9,7 @@ class CreateTasks < ActiveRecord::Migration[6.0]
       t.text :description
       t.integer :assignable_id
       t.string :assignable_type
-      t.integer :created_by_id, null: false, index: true
+      t.integer :created_by_id, index: true
       t.string :status, null: false
       t.datetime :due_date
       t.integer :project_id, null: false, index: true

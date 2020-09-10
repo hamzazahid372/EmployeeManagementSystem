@@ -8,7 +8,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.datetime :event_date, null: false
       t.string :title, null: false
       t.text :description
-      t.integer :created_by_id, null: false, index: true
+      t.integer :created_by_id, index: true
       t.timestamps
     end
   end

@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_125734) do
     t.datetime "event_date", null: false
     t.string "title", null: false
     t.text "description"
-    t.integer "created_by_id", null: false
+    t.integer "created_by_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_events_on_company_id"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_125734) do
     t.datetime "end_date"
     t.datetime "expected_start_date"
     t.datetime "expected_end_date"
-    t.datetime "created_by_id", null: false
+    t.datetime "created_by_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_projects_on_company_id"
@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_125734) do
     t.text "description"
     t.integer "assignable_id"
     t.string "assignable_type"
-    t.integer "created_by_id", null: false
+    t.integer "created_by_id"
     t.string "status", null: false
     t.datetime "due_date"
     t.integer "project_id", null: false
@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_125734) do
     t.integer "company_id", null: false
     t.integer "lead_id", null: false
     t.integer "sequence_num", null: false
-    t.integer "created_by_id", null: false
+    t.integer "created_by_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_teams_on_company_id"
