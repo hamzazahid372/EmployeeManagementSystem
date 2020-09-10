@@ -2,7 +2,6 @@
 
 # Users model
 class User < ApplicationRecord
-  has_one :owned_company, class_name: 'Company'
   belongs_to :company
   belongs_to :department
   belongs_to :team
