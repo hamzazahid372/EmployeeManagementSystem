@@ -8,7 +8,6 @@ class User < ApplicationRecord
   belongs_to :team
   has_many :users_team, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :tasks, dependent: :destroy
   has_many :created_projects, class_name: 'Project', dependent: :destroy, foreign_key: 'created_by_id'
   has_many :attendances, dependent: :destroy
   has_many :time_logs, dependent: :destroy

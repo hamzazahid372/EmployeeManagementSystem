@@ -14,4 +14,5 @@ class Task < ApplicationRecord
   has_many :watcher_users, through: :tasks_watchers, source: :watcher, source_type: 'User'
   has_many :watcher_teams, through: :tasks_watchers, source: :watcher, source_type: 'Team'
   has_many :childs, foreign_key: 'parent_id', class_name: 'Task'
+  belongs_to :parent, class_name: 'Task'
 end
