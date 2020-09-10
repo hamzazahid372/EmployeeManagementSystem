@@ -23,5 +23,6 @@ class CreateTasks < ActiveRecord::Migration[6.0]
       t.references :parent
       t.timestamps
     end
+    add_index(:tasks, %i[assignable_id assignable_type])
   end
 end

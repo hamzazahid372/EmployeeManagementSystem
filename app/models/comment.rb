@@ -5,5 +5,5 @@ class Comment < ApplicationRecord
   belongs_to :company
   belongs_to :user
   belongs_to :commentable, polymorphic: true
-  has_many :attachments, as: :attachable
+  has_many :attachments, as: :attachable, dependent: :destroy
 end

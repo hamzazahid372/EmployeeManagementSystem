@@ -8,8 +8,8 @@ class CreateTasksWatchers < ActiveRecord::Migration[6.0]
       t.integer :task_id, null: false, index: true
       t.integer :watcher_id, null: false
       t.string :watcher_type, null: false
-      add_index(:tasks_watchers, %i[watcher_id watcher_type])
       t.timestamps
     end
+    add_index(:tasks_watchers, %i[watcher_id watcher_type])
   end
 end

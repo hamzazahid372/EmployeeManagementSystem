@@ -12,7 +12,7 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.datetime :end_date
       t.datetime :expected_start_date
       t.datetime :expected_end_date
-      t.datetime :created_by_id, null: false
+      t.datetime :created_by_id, null: false, index: true
       t.timestamps
     end
   end
