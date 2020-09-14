@@ -4,6 +4,30 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true %>
+  </div>
+
+  <%=f.fields_for :company do |ff| %>
+
+    <div class="field">
+      <%= ff.label :company_name %><br />
+      <%= ff.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= ff.label :company_domain %><br />
+      <%= ff.text_field :subdomain, autofocus: true %>
+    </div>
+
+  <% end %>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>

@@ -6,10 +6,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  belongs_to :company
-  belongs_to :department
-  belongs_to :team
-  has_many :users_team, dependent: :destroy
+  belongs_to :company, optional: true
+  accepts_nested_attributes_for :company
+  belongs_to :department, optional: true
+  has_many :teams, through: :users_teams
+  has_many :users_teams, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :created_projects, class_name: 'Project', dependent: :destroy, foreign_key: 'created_by_id'
   has_many :attendances, dependent: :destroy
@@ -25,4 +26,20 @@ class User < ApplicationRecord
   has_many :watching_tasks, through: :tasks_watchers, source: :task
   has_many :projects_users, dependent: :destroy
   has_many :projects, through: :projects_users
+
+
+  def self.create_user_and_company(sign_up_params)
+    user = User.new(sign_up_params)
+    begin
+      transaction do
+        user.save!
+        company = user.company
+        company.owner_id = user.id
+        company.save!
+      end
+    rescue Exception
+      return false
+    end
+    true
+  end
 end
