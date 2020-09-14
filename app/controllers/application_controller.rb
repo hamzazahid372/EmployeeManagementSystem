@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   def current_company
     Company.find_by_subdomain! request.subdomain
   end
+
   helper_method :current_company
 
   def scope_current_company

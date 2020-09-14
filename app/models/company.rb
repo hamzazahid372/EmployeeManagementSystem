@@ -9,6 +9,7 @@ class Company < ApplicationRecord
   def self.current_id
     Thread.current[:company_id]
   end
+
   has_many :users, dependent: :destroy
   has_many :teams, dependent: :destroy
   has_many :users_teams, dependent: :destroy
