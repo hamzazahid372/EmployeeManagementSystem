@@ -5,7 +5,19 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    if User.create_user_and_company(sign_up_params)
+    success = true
+    user = User.new(sign_up_params)
+    begin
+      User.transaction do
+        user.save!
+        company = user.company
+        company.owner_id = user.id
+        company.save!
+      end
+    rescue Exception
+      success = false
+    end
+    if success
       flash[:notice] = 'Account created succesfully!'
       redirect_to new_user_session_path
     else

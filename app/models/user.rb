@@ -26,19 +26,4 @@ class User < ApplicationRecord
   has_many :watching_tasks, through: :tasks_watchers, source: :task
   has_many :projects_users, dependent: :destroy
   has_many :projects, through: :projects_users
-
-  def self.create_user_and_company(sign_up_params)
-    user = User.new(sign_up_params)
-    begin
-      transaction do
-        user.save!
-        company = user.company
-        company.owner_id = user.id
-        company.save!
-      end
-    rescue Exception
-      return false
-    end
-    true
-  end
 end
