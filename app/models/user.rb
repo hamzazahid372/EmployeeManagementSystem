@@ -27,7 +27,6 @@ class User < ApplicationRecord
   has_many :projects_users, dependent: :destroy
   has_many :projects, through: :projects_users
 
-
   def self.create_user_and_company(sign_up_params)
     user = User.new(sign_up_params)
     begin
