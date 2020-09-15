@@ -3,17 +3,13 @@
 # Current attributes
 class Current < ActiveSupport::CurrentAttributes
   attribute :company, :company_id
-  resets { company = nil, company_id = nil }
 
-  def company=(compny)
+  def company_id=(company_id)
     super
-    company = compny
-    company_id = company.id
+    self.company = Company.find_by(id: company_id)
   end
 
-  def company_id=(compny_id)
-    super
-    company_id = compny_id
-    company = Company.find_by(id: compny_id)
+  def company_id
+    super || company&.id
   end
 end

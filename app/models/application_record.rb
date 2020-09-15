@@ -3,7 +3,6 @@
 # Application Record Model
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
-  @is_multitenant = true
 
   def self.not_multitenant
     @is_multitenant = false
@@ -15,10 +14,16 @@ class ApplicationRecord < ActiveRecord::Base
 
   def self.inherited(subclass)
     super
+    subclass.instance_eval { @is_multitenant = true }
+
     trace = TracePoint.new(:end) do |tp|
       if tp.self == subclass
         trace.disable
-        default_scope { where(company_id: Company.current_id) } if subclass.multitenant?
+        subclass.instance_eval do
+          if subclass.multitenant?
+            default_scope { where(company_id: Current.company_id) }
+          end
+        end
       end
     end
     trace.enable

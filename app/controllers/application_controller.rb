@@ -7,15 +7,15 @@ class ApplicationController < ActionController::Base
   private
 
   def current_company
-    Company.find_by(subdomain: request.subdomain) if request.subdomain.present?
+    Company.find_by!(subdomain: request.subdomain) if request.subdomain.present?
   end
 
   helper_method :current_company
 
   def scope_current_company
-    Current.company = current_company unless current_company.nil?
+    Current.company = current_company
     yield
   ensure
-    Current.resets
+    Current.reset
   end
 end
