@@ -7,6 +7,7 @@ class Company < ApplicationRecord
   end
 
   def self.current_id
+    Thread.current[:company_id] = Current.company.company_id
     Thread.current[:company_id]
   end
 

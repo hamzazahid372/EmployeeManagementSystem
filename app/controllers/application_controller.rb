@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
-# Application Model
+# Application Controller
 class ApplicationController < ActionController::Base
   around_action :scope_current_company
 
   private
 
   def current_company
-    Company.find_by_subdomain! request.subdomain
+    Company.find_by_subdomain!(request.subdomain) if request.subdomain.present?
   end
 
   helper_method :current_company
 
   def scope_current_company
-    Company.current_id = current_company.id
+    Current.company = current_company
     yield
   ensure
-    Company.current_id = nil
+    resets { Current.company = Company.all.first }
   end
 end
