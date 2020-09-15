@@ -1,24 +1,30 @@
 class RegistrationsController < Devise::RegistrationsController
   def new
+    respond_to do |format|
+      format.html
+    end
     @user = User.new
     @user.build_company
   end
 
   def create
+    respond_to do |format|
+      format.html
+    end
     success = true
-    user = User.new(sign_up_params)
+    @user = User.new(sign_up_params)
     begin
       User.transaction do
-        user.save!
-        company = user.company
-        company.owner_id = user.id
+        @user.save!
+        company = @user.company
+        company.owner_id = @user.id
         company.save!
       end
-    rescue Exception
+    rescue Exception => e
       success = false
     end
     if success
-      flash[:notice] = 'Account created succesfully!'
+      flash[:notice] = I18n.t 'devise.registraions.sign_up'
       redirect_to new_user_session_path
     else
       render action: 'new'
@@ -29,9 +35,5 @@ class RegistrationsController < Devise::RegistrationsController
 
   def sign_up_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, company_attributes: [:name, :subdomain])
-  end
-
-  def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
   end
 end
