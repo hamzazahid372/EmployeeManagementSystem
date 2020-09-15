@@ -19,6 +19,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use devise for authentication
 gem 'devise', '~> 4.7', '>= 4.7.2'
+# Use cancancan for authorization
+gem 'cancancan', '~> 1.15'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
