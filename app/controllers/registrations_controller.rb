@@ -1,16 +1,13 @@
 class RegistrationsController < Devise::RegistrationsController
   def new
+    @user = User.new
+    @user.build_company
     respond_to do |format|
       format.html
     end
-    @user = User.new
-    @user.build_company
   end
 
   def create
-    respond_to do |format|
-      format.html
-    end
     success = true
     @user = User.new(sign_up_params)
     begin
@@ -28,6 +25,9 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to new_user_session_path
     else
       render action: 'new'
+    end
+    respond_to do |format|
+      format.html
     end
   end
 
