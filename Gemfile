@@ -17,6 +17,8 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+# Use devise for authentication
+gem 'devise', '~> 4.7', '>= 4.7.2'
 # Use cancancan for authorization
 gem 'cancancan', '~> 1.15'
 
@@ -25,7 +27,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
+  
+  gem 'pry-rails'
 end
 
 group :development do
