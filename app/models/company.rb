@@ -2,6 +2,8 @@
 
 # Company model
 class Company < ApplicationRecord
+  not_multitenant
+
   has_many :users, dependent: :destroy
   has_many :teams, dependent: :destroy
   has_many :users_teams, dependent: :destroy
