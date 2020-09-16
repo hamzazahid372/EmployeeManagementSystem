@@ -20,5 +20,5 @@ class Company < ApplicationRecord
   has_many :company_settings, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :tasks_watchers, dependent: :destroy
-  belongs_to :owner, class_name: 'User'
+  belongs_to :owner, class_name: 'User', optional: true
 end

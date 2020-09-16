@@ -2,10 +2,15 @@
 
 # Users model
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :validatable
   belongs_to :company, optional: true
+  accepts_nested_attributes_for :company
   belongs_to :department, optional: true
-  has_many :users_teams, dependent: :destroy
   has_many :teams, through: :users_teams
+  has_many :users_teams, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :created_projects, class_name: 'Project', dependent: :destroy, foreign_key: 'created_by_id'
   has_many :attendances, dependent: :destroy
