@@ -30,6 +30,6 @@ class User < ApplicationRecord
   protected
 
   def confirmation_required?
-    false
+    created_at < 7.days.ago
   end
 end
