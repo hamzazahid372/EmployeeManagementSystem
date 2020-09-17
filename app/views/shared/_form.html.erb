@@ -1,58 +1,63 @@
 <br><br>
-<%= form_for @project do |form| %>
+
+<%= form_for @user do |form| %>
 <div class="container-fluid">
-<div class="d-flex col-lg-12">
-<h1 class="theme-color font-weight-bold">New project</h1>
+  <div class="d-flex col-lg-12">
+  <h1 class="theme-color font-weight-bold">New User</h1>
 </div>
 
 <div class="form-group">
-<div class="col-lg-12">
-<%= form.label :name, class: 'h4 font-weight-bold text-primary' %>
-<%= form.text_field :name, class: 'form-control border-info w-75', required: true %>
+  <div class="col-lg-12">
+    <%= form.label :first_name, class: 'h4 font-weight-bold text-primary' %>
+    <%= form.text_field :first_name, class: 'form-control border-info w-75', required: true %>
+  </div>
 </div>
+
+<div class="form-group">
+  <div class="col-lg-12">
+  <%= form.label :last_name, class: 'h4 font-weight-bold text-primary' %>
+  <%= form.text_field :last_name, class: 'form-control border-info w-75', required: true %>
+  </div>
 </div>
 
 <div class="form-group">
-<div class="col-lg-12">
-<%= form.label :description, class: 'h4 font-weight-bold text-primary' %>
-<%= form.text_area :description, class: 'form-control border-info w-75', rows: 5, required: true %>
-</div>
-</div>
-<div class="form-group">
-<div class="col-lg-12">
-<%= form.label :status, class: 'h5 font-weight-bold text-primary' %>
-<%= form.select :status, Project::STATUS, {}, {class: "form-control border-info text-danger w-75"} %>
-</div>
-</div>
-<div class="row">
-<div class="col-lg-6">
-<div class="form-group">
-<%= form.label :start_date, class: 'h5 font-weight-bold text-primary ml-3' %>
-<%= form.date_field :start_date, class: 'form-control border-info w-50 ml-3', required: true %>
-</div>
+  <div class="col-lg-12">
+  <%= form.label :department_id, class: 'h4 font-weight-bold text-primary' %>
+  <%= form.text_field :department_id, class: 'form-control border-info w-75', required: true %>
+  </div>
 </div>
 
-<div class="col-lg-6">
 <div class="form-group">
-<%= form.label :end_date, class: 'h5 font-weight-bold text-primary' %>
-<%= form.date_field :end_date, class: 'form-control border-info w-50', required: true %>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-lg-6">
-<div class="form-group">
-<%= form.label :expected_start_date, class: 'h5 font-weight-bold text-primary ml-3' %>
-<%= form.date_field :expected_start_date, class: 'form-control border-info w-50 ml-3', required: true %>
-</div>
+  <div class="col-lg-12">
+    <%= form.label :role_id, class: 'h5 font-weight-bold text-primary' %>
+    <%= form.select :role_id, User::ROLES, {}, {class: "form-control border-info text-danger w-75"} %>
+  </div>
 </div>
 
-<div class="col-lg-6">
 <div class="form-group">
-<%= form.label :expected_end_date, class: 'h5 font-weight-bold text-primary' %>
-<%= form.date_field :expected_end_date, class: 'form-control border-info w-50', required: true %>
-</div>
-</div>
+
+  <div class="col-lg-12">
+    <%= form.label :email, class: 'h5 font-weight-bold text-primary'  %><br />
+    <%= form.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control border-info w-75', required: true  %>
+  </div>
+  </div>
+  <div class="form-group">
+
+    <div class="col-lg-12">
+    <%= form.label :password, class: 'h5 font-weight-bold text-primary'  %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= form.password_field :password, autocomplete: "new-password", class: 'form-control border-info w-75', required: true  %>
+  </div>
+  </div>
+
+  <div class="form-group">
+
+    <div class="col-lg-12">
+    <%= form.label :password_confirmation, class: 'h5 font-weight-bold text-primary'  %><br />
+    <%= form.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control border-info w-75', required: true  %>
+  </div>
 </div>
 <%= form.submit class: 'btn btn-dark' %>
 <%= form.submit 'Back', class: 'btn btn-dark' %>
