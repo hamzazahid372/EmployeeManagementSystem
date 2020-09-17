@@ -27,10 +27,6 @@ class User < ApplicationRecord
   has_many :projects_users, dependent: :destroy
   has_many :projects, through: :projects_users
 
-  def self.find_for_authentication(warden_conditions)
-    where(:email => warden_conditions[:email]).first
-  end
-
   protected
 
   def confirmation_required?

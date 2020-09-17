@@ -20,9 +20,9 @@ class UserCompaniesController < ApplicationController
       redirect_to new_user_session_url(subdomain: company.subdomain) and return
     else
       if params[:email].length.zero?
-        flash.now[:error] = 'Email cannot be empty!'
+        flash.now[:error] = t 'failure.email_empty'
       else
-        flash.now[:error] = 'Invalid email entered!'
+        flash.now[:error] = t 'failure.email_not_recognized'
       end
       render action: 'find'
     end
