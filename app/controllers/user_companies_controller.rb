@@ -13,13 +13,13 @@ class UserCompaniesController < ApplicationController
     begin
       user = User.unscope(where: :company_id).find_by! email: params[:email]
       company = Company.find_by! id: user.company_id
-    rescue Exception
+    rescue ActiveRecord::RecordNotFound
       success = false
     end
     if success
       redirect_to new_user_session_url(subdomain: company.subdomain) and return
     else
-      if params[:email].length.zero?
+      if params[:email].blank?
         flash.now[:error] = t 'failure.email_empty'
       else
         flash.now[:error] = t 'failure.email_not_recognized'
