@@ -1,5 +1,13 @@
 <h2>Enter Email</h2>
 
+<% if flash.first.present? %>
+  <h1>FLASH</h1>
+<%end %>
+<% flash.each do |key, value| %>
+  <p> <%= value %></p>
+<% end %>
+<% flash.clear %>
+
 <%= form_with url: user_companies_search_by_email_path  do |f| %>
   <div class="field">
     <%= f.label :email %><br />

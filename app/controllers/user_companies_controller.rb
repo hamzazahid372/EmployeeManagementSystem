@@ -16,7 +16,8 @@ class UserCompaniesController < ApplicationController
     if success
       redirect_to new_user_session_url(subdomain: company.subdomain)
     else
-      render action: 'new'
+      flash.now[:alert] = "ff!"
+      render template: 'user_companies/find'
     end
   end
 end
