@@ -22,12 +22,9 @@ class RegistrationsController < Devise::RegistrationsController
     end
     if success
       flash[:notice] = I18n.t 'devise.registraions.sign_up'
-      redirect_to new_user_session_path
+      redirect_to new_user_session_url(subdomain: @user.company.subdomain)
     else
       render action: 'new'
-    end
-    respond_to do |format|
-      format.html
     end
   end
 

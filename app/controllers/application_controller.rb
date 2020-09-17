@@ -3,7 +3,7 @@
 # Application Controller
 class ApplicationController < ActionController::Base
   around_action :scope_current_company
-
+  
   private
 
   def current_company
