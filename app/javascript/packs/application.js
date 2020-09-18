@@ -10,7 +10,6 @@ require("channels")
 
 require("bootstrap")
 require("datatables.net-bs4");
-
 global.$ = jQuery;
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -19,3 +18,7 @@ global.$ = jQuery;
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+$(document).ready( function () {
+  $('#tasks-table').DataTable();
+} );

@@ -1,0 +1,68 @@
+<% require 'date' %>
+
+<div class="container-fluid">
+  <h1>Tasks</h1>
+  <%= form_for @tasks.to_ary, url: tasks_path do |form| %>
+    <div class="row">      
+      <div class="col-lg-3">
+        <div class="form-group">
+          <%= form.label :priority %>
+          <%= form.select :priority, options_for_select(Task::PRIORITY), {}, class: "form-control"  %>
+        </div>
+      </div>
+  
+      <div class="col-lg-3">
+        <div class="form-group">
+          <%= form.label :status %>
+          <%= form.select :status, Task::STATUS, {}, {class: "form-control"} %>
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="form-group">
+          <%= form.label :assignable_id %>
+          <%= form.select :assignable_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }), {}, {class: "form-control"} %>
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="form-group">
+          <%= form.label :assignable_type %>
+          <%= form.select :assignable_type, options_for_select( ['User','Team']), {}, {class: "form-control"} %>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+  
+  <div class="table-responsive">
+      <table id="tasks-table" class="table table-hover">
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Project Tiltle</th>
+          <th>Assignee</th>
+          <th>Status</th>
+          <th>Priority</th>
+          <th>Created</th>
+          <th>Due Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        
+        <%@tasks.collect do |task| %>
+          <tr>
+            <td><%= link_to task.title, task_path(task) %> </td>
+            <td> <%= task.description %> </td>
+            <td> <%= task.assignable_id %> </td>
+            <td> <%= task.status %> </td>
+            <td> <%= task.priority %> </td>
+            <td> <%= Date.parse((task.start_date).to_s) unless task.start_date.nil? %> </td>
+            <td> <%= Date.parse((task.due_date).to_s) unless task.due_date.nil? %> </td>
+          </tr>        
+        <% end %>
+         
+        </tbody>
+      </table>
+  </div>
+</div>
