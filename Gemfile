@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.7', '>= 4.7.2'
 # Use cancancan for authorization
 gem 'cancancan', '~> 1.15'
+# For maintaining sequence
+gem 'sequenceid', '0.0.6'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
