@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def after_sign_out_path_for(resource)
+    new_user_session_url
+  end
+
   def current_company
     Company.find_by!(subdomain: request.subdomain) if request.subdomain.present?
   end

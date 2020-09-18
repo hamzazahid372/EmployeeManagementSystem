@@ -26,4 +26,10 @@ class User < ApplicationRecord
   has_many :watching_tasks, through: :tasks_watchers, source: :task
   has_many :projects_users, dependent: :destroy
   has_many :projects, through: :projects_users
+
+  protected
+
+  def confirmation_required?
+    created_at < 7.days.ago
+  end
 end
