@@ -27,9 +27,13 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-3 float-right">
-      <input class="form-control mr-sm-2 float-right" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0 float-right" type="submit">Search</button>
-    </form>
+    
+    <% if current_user.blank? %>
+      <%= button_to "Log In", user_companies_find_path, method: 'get', class: 'btn btn-outline-success my-2 my-sm-0 float-right'%>
+      <%= button_to "Sign Up", new_user_registration_path, method: 'get', class: 'btn btn-outline-success my-2 my-sm-0 float-right'%>
+    <% else %>
+      <p class="navbar-brand">Hi, <%=current_user.first_name%>!</p>
+      <%= button_to "Log Out", destroy_user_session_path, method: 'delete', class: 'btn btn-outline-success my-2 my-sm-0 float-right'%>
+    <% end %>
   </div>
 </nav>
