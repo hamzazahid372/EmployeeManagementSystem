@@ -1,2 +1,40 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<br><br>
+
+<%= form_for @user do |form| %>
+<div class="container-fluid">
+<%= form.label (@user.first_name + ' ' + @user.last_name), class: 'h1 font-weight-bold text-dark' %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>First Name</th>
+        <td><%= @user.first_name %></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><%= @user.last_name%></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= @user.email%></td>
+      </tr>
+      <tr>
+        <th>Department Id</th>
+        <td><%= @user.department_id%></td>
+      </tr>
+      <tr>
+        <th>Role</th>
+        <td><%= @user.role_id %></td>
+      </tr>
+      <tr>
+
+        <td><%= button_to 'Delete', users_path(@user), method: :delete,
+        data: { confirm: 'Are you sure you want to delete?' } %>
+        </td>
+
+        <td><%= button_to 'Update', edit_user_path(@user), method: 'get' %></td>
+        <td></td>
+
+      </tr>
+    </tbody>
+  </table>
+<% end %>

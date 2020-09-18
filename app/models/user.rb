@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :time_logs, dependent: :destroy
   has_many :created_events, class_name: 'Event', dependent: :destroy, foreign_key: 'created_by_id'
   has_many :attachments, as: :attachable, dependent: :destroy
-  has_many :assigned_tasks, as: :assignable, dependent: :nullify
+  has_many :assigned_tasks, class_name: 'Task', as: :assignable, dependent: :nullify
   has_many :created_tasks, class_name: 'Task', dependent: :nullify, foreign_key: 'created_by_id'
   has_many :created_teams, class_name: 'Team', dependent: :nullify, foreign_key: 'created_by_id'
   has_many :leading_teams, class_name: 'Team', dependent: :nullify, foreign_key: 'lead_id'

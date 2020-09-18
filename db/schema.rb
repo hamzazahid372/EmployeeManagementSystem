@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_132642) do
     t.integer "company_id", null: false
     t.integer "commentable_id", null: false
     t.string "commentable_type", null: false
+    t.integer "user_id"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
