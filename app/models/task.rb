@@ -4,6 +4,7 @@
 class Task < ApplicationRecord
   STATUS = %w[Started Pending Completed].freeze
   PRIORITY = { low: 1, medium: 2, high: 3 }.freeze
+  sequenceid :company, :tasks
   belongs_to :company, optional: true
   belongs_to :project, optional: true
   belongs_to :reviewer, class_name: 'User', optional: true

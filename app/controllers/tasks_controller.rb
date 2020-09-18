@@ -8,8 +8,8 @@ class TasksController < ApplicationController
   end
 
   def show
-    if Task.find_by id: params[:id]
-      @task = Task.find(params[:id])
+    if Task.find_by sequence_num: params[:sequence_num]
+      @task = Task.find(params[:sequence_num])
     else
       @users = User.all
       @task = Current.company.tasks.build
@@ -23,8 +23,8 @@ class TasksController < ApplicationController
   end
 
   def edit
-    if Task.find_by id: params[:id]
-      @task = Task.find(params[:id])
+    if Task.find_by sequence_num: params[:sequence_num]
+      @task = Task.find(params[:sequence_num])
       @users = User.all
     else
       @users = User.all
@@ -45,7 +45,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find(params[:id])
+    @task = Task.find(params[:sequence_num])
     if @task.update(task_params)
       redirect_to @task
     else
@@ -54,7 +54,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:id])
+    @task = Task.find(params[:sequence_num])
     @task.destroy
   end
 
@@ -64,6 +64,6 @@ class TasksController < ApplicationController
     params.require(:task).permit(:title, :description, :start_date, :due_date,
                                  :expected_start_date, :expected_end_date,
                                  :priority, :status, :assignable_id,
-                                 :assignable_type, :progress)
+                                 :assignable_type, :progress, :sequence_num)
   end
 end
