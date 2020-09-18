@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+    @users = User.unscope(where: :company_id).all
   end
 
   def show

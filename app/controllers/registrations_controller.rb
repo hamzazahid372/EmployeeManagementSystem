@@ -20,8 +20,9 @@ class RegistrationsController < Devise::RegistrationsController
     rescue Exception => e
       success = false
     end
+    binding.pry
     if success
-      flash[:notice] = I18n.t 'devise.registraions.sign_up'
+      flash[:notice] = t 'devise.registraions.sign_up'
       redirect_to new_user_session_url(subdomain: @user.company.subdomain) and return
     else
       render action: 'new'

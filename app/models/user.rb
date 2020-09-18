@@ -2,6 +2,7 @@
 
 # Users model
 class User < ApplicationRecord
+  sequenceid :company, :users
   ROLES = {
     'Administrator' => 1,
     'Employee' => 2
