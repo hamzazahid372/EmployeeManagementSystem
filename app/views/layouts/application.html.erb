@@ -11,6 +11,9 @@
 
   <body>
     <%= render :partial => "home/header" %>
+    <div id="flash_messages">
+      <%= render :partial => "shared/flash" %>
+    </div>
     <%= yield %>
   </body>
 </html>
