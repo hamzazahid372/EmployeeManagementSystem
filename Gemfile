@@ -22,7 +22,7 @@ gem 'devise', '~> 4.7', '>= 4.7.2'
 # Use cancancan for authorization
 gem 'cancancan', '~> 1.15'
 # For maintaining sequence
-gem 'sequenceid', '0.0.6'
+gem 'sequenceid', '=0.0.7', git: "https://github.com/alisyed/sequenceid.git", branch: 'feature/change_activerecord_base_to_applicationrecord_in_sti_parent_class_method'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
