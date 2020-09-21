@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
+  
+  load_and_authorize_resource find_by: :sequence_num
+
   def index
-    @users = User.unscope(where: :company_id).all
+    redirect_to new_user_session_path and return if Current.company_id.nil?
+
+    @users = User.all
   end
 
   def show
-    @user = User.unscope(where: :company_id).find params[:id]
+    @user = User.find_by(sequence_num: params[:id])
   end
 
   def new
@@ -12,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.unscope(where: :company_id).find_by id: params[:id]
+    @user = User.find_by(sequence_num: params[:id])
   end
 
   def create
@@ -29,7 +34,7 @@ class UsersController < ApplicationController
       end
       if success
         flash[:success] = t 'users.created_successfully'
-        redirect_to @user
+        redirect_to user_path(@user.id)
       end
     else
       flash[:error] = t 'users.email_in_use'
@@ -38,14 +43,23 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.unscope(where: :company_id).find params[:id]
-    @user.update sign_up_params
-    flash[:notice] = t 'users.account_updated'
+    success = true
+    begin
+      User.transaction do
+        @user.update! sign_up_params
+      end
+    rescue Exception
+      success = false
+    end
+    if success
+      flash[:notice] = t 'users.account_updated'
+    else
+      flash[:notice] = t 'users.account_not_updated'
+    end
     redirect_to edit_user_path(@user)
   end
 
   def destroy
-    @user = User.unscope(where: :company_id).find params[:id]
     success = true
     begin
       User.transaction do

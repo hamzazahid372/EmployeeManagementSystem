@@ -30,5 +30,6 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+    can :manage, User, company_id: user.company_id
   end
 end
