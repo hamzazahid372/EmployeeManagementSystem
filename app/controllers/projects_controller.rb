@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:sequence_num])
   end
 
   def new
@@ -22,13 +22,11 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Current.company.projects.build(project_params)
-    @project.id = 1
-    @project.sequence_num = 1
-    binding.pry
     success = true
     begin
         Project.transaction do
           @project.save!
+          binding.pry
         end
       rescue ActiveRecord::RecordInvalid
         e.backtrace
