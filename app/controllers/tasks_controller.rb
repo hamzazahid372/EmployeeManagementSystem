@@ -2,10 +2,22 @@
 
 # Task Controller
 class TasksController < ApplicationController
+  load_and_authorize_resource find_by: :sequence_num
+
   def index
     @tasks = Task.all
     @users = User.all
   end
+
+  def show
+  end
+
+  def new
+  end
+
+  def edit
+  end
+
 
   def show
     if Task.find_by sequence_num: params[:id]
@@ -23,8 +35,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    returntype=load_and_authorize_resource find_by: :sequence_num
-    binding.pry
     if Task.find_by sequence_num: params[:id]
       @task = Task.find_by sequence_num: params[:id]
       @users = User.all
@@ -36,10 +46,17 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Current.company.tasks.build(task_params)
-    @task.project_id = 2
-    @users = User.all
-    if @task.save
+    success = true
+    begin
+        Task.transaction do
+          @task.project_id = 2
+          @task.save!
+        end
+      rescue ActiveRecord::RecordInvalid
+        success = false
+      end
+    if success
+
       redirect_to @task
     else
       render 'new'
@@ -47,17 +64,33 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find_by sequence_num: params[:id]
-    if @task.update(task_params)
+    success = true
+    begin
+      Task.transaction do
+          @task.update(task_params)
+        end
+      rescue Exception => e
+        success = false
+    end
+    if success
       redirect_to @task
     else
-      render 'edit'
+      render 'new'
     end
   end
 
   def destroy
-    @task = Task.find_by sequence_num: params[:id]
-    @task.destroy
+    success = true
+    begin
+        Task.transaction do
+          @task.destroy
+        end
+      rescue ActiveRecord::RecordInvalid
+        success = false
+      end
+      if success
+        redirect_to @task
+      end
   end
 
   private
