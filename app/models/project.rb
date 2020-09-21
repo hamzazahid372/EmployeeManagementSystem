@@ -2,6 +2,7 @@
 
 # Project model
 class Project < ApplicationRecord
+	sequenceid :company , :projects
   STATUS = %w[Started Pending Completed].freeze
   belongs_to :company, optional: true
   belongs_to :created_by, class_name: 'User', optional: true
@@ -17,12 +18,12 @@ class Project < ApplicationRecord
   validate :expected_date_validate
   validates :name, length: { minimum: 3 }
   def date_validate
-    if :end_date.present? && :start_date.present? && :end_date < :start_date
+    if :end_date.nil? && :start_date.nil? && :end_date < :start_date
       errors.add(:end_date, 'cannot be less than start date')
     end
   end
   def expected_date_validate
-    if :expected_end_date.present? && :expected_start_date.present? && :expected_end_date < :expected_start_date
+    if :expected_end_date.nil? && :expected_start_date.nil? && :expected_end_date < :expected_start_date
       errors.add(:expected_end_date, 'cannot be less than start date')
     end
   end

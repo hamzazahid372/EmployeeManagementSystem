@@ -22,7 +22,19 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Current.company.projects.build(project_params)
-    if @project.save
+    @project.id = 1
+    @project.sequence_num = 1
+    binding.pry
+    success = true
+    begin
+        Project.transaction do
+          @project.save!
+        end
+      rescue ActiveRecord::RecordInvalid
+        e.backtrace
+      end
+    if success
+
       redirect_to @project
     else
       render 'new'
