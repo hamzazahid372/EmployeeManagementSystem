@@ -52,7 +52,7 @@
         
         <%@tasks.collect do |task| %>
           <tr>
-            <td><%= link_to task.title, task_path(task) %> </td>
+            <td><%= link_to task.title, task_path(task), sequence_num: task.sequence_num %> </td>
             <td> <%= task.description %> </td>
             <td> <%= task.assignable_id %> </td>
             <td> <%= task.status %> </td>

@@ -8,8 +8,8 @@ class TasksController < ApplicationController
   end
 
   def show
-    if Task.find_by sequence_num: params[:sequence_num]
-      @task = Task.find(params[:sequence_num])
+    if Task.find_by sequence_num: params[:id]
+      @task = Task.find_by sequence_num: params[:id]
     else
       @users = User.all
       @task = Current.company.tasks.build
@@ -23,8 +23,10 @@ class TasksController < ApplicationController
   end
 
   def edit
-    if Task.find_by sequence_num: params[:sequence_num]
-      @task = Task.find(params[:sequence_num])
+    returntype=load_and_authorize_resource find_by: :sequence_num
+    binding.pry
+    if Task.find_by sequence_num: params[:id]
+      @task = Task.find_by sequence_num: params[:id]
       @users = User.all
     else
       @users = User.all
@@ -45,7 +47,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find(params[:sequence_num])
+    @task = Task.find_by sequence_num: params[:id]
     if @task.update(task_params)
       redirect_to @task
     else
@@ -54,15 +56,15 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:sequence_num])
+    @task = Task.find_by sequence_num: params[:id]
     @task.destroy
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :start_date, :due_date,
-                                 :expected_start_date, :expected_end_date,
+    params.require(:task).permit(:title, :description, :start_date, :end_date,
+                                 :due_date, :expected_start_date, :expected_end_date,
                                  :priority, :status, :assignable_id,
                                  :assignable_type, :progress, :sequence_num)
   end

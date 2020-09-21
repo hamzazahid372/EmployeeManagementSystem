@@ -15,10 +15,10 @@
         <div class="btn-group float-right" >
           <%= button_to 'Delete', task_path(@task), class: 'btn btn-dark',
               method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
-          <%= button_to 'Update', task_path(@task), class: 'btn btn-dark', method: :edit %>
+          <%= link_to 'Update', edit_task_path(@task.sequence_num), class: 'btn btn-dark' %>
           <%= button_to 'Watch', task_path(@task), class: 'btn btn-dark' %>
           <%= button_to 'Add Watcher', task_path(@task), class: 'btn btn-dark' %>
-          <%= button_to 'Rh4ove Watcher', task_path(@task), class: 'btn btn-dark',
+          <%= button_to 'Remove Watcher', task_path(@task), class: 'btn btn-dark',
               method: :delete, data: { confirm: 'Are you sure you want to delete watcher?' } %>
         </div>
       </div>
