@@ -37,10 +37,10 @@
   </table>
       <div class="btn-group" role="group" aria-label="Basic example">
 
-        <%= button_to 'Delete', project_path(@project),
-              method: :delete, class: ' ml-3',
-              data: { confirm: 'Are you sure you want to delete?' } %>
-            <%= button_to 'Update', project_path(@project),
+        <%= link_to 'Update', edit_project_path(@project.sequence_num),
+               method: :get,class: ' ml-3 btn btn-dark',
+              data: { confirm: 'Are you sure you want to Update?' } %>
+            <%= button_to 'Delete', project_path(@project),
               method: :delete,class: 'ml-3',
               data: { confirm: 'Are you sure you want to delete?' } %>
       </div>

@@ -4,7 +4,7 @@
 class Project < ApplicationRecord
 	sequenceid :company , :projects
   STATUS = %w[Started Pending Completed].freeze
-  belongs_to :company, optional: true
+  belongs_to :company
   belongs_to :created_by, class_name: 'User', optional: true
   has_many :projects_departments, dependent: :destroy
   has_many :departments, through: :projects_departments
