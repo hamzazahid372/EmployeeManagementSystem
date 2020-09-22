@@ -26,19 +26,20 @@ class Task < ApplicationRecord
   validate :validate_due_date
 
   def validate_end_date
-    if :end_date.nil? && :start_date.nil? && :end_date < :start_date
+    binding.pry
+    if end_date.present? && start_date.present? && end_date < start_date
       errors.add(:end_date, 'cannot be less than start date')
     end
   end
 
   def validate_expected_end_date
-    if :expected_end_date.nil? && :expected_start_date.nil? && :expected_end_date < :expected_start_date
+    if expected_end_date.present? && expected_start_date.present? && expected_end_date < expected_start_date
       errors.add(:expected_end_date, 'cannot be less than expected start date')
     end
   end
 
   def validate_due_date
-    if :due_date.nil? && :start_date.nil? && :due_date < :start_date
+    if due_date.present? && start_date.present? && due_date < start_date
       errors.add(:due_date, 'cannot be less than start date')
     end
   end

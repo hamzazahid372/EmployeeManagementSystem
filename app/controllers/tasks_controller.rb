@@ -31,6 +31,7 @@ class TasksController < ApplicationController
       flash[:notice] = 'Task created successfully'
       render :show
     else
+      @users = User.all
       render :new
     end
   end
