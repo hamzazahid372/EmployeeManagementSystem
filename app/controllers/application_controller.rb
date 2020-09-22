@@ -2,16 +2,16 @@
 
 # Application Controller
 class ApplicationController < ActionController::Base
+  around_action :scope_current_company
+
+  private
+
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
       format.json { head :forbidden }
       format.html { redirect_to projects_path, alert: exception.message }
     end
   end
-  around_action :scope_current_company
-
-  private
-
   def after_sign_out_path_for(resource)
     new_user_session_url
   end

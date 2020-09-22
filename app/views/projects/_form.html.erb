@@ -1,66 +1,61 @@
 <%= form_for @project  do |form| %>
   <div class="container-fluid">
-    <div class='row'>
-    <div class="d-flex col-lg-12">
-      <h1 class="theme-color font-weight-bold">New project</h1>
-    </div>
-  </div>
     <% if @project.errors.any? %>
       <% @project.errors.full_messages.each do |msg| %>
         <span class="text-danger"> <%= msg %> </span>
       <% end %>
     <% end %>
     <div class='row'>
-      <div class="col-lg-9">
-        <div class="form-group">
-        <%= form.label :name , class: 'h4 font-weight-bold text-primary'%>
-        <%= form.text_field :name, class: 'form-control', required: true, minlength: 3 %>
+      <div class='col-lg-9'>
+        <div class='form-group'>
+        <%= form.label :name , class: 'h4 font-weight-bold text-dark'%>
+        <%= form.text_field :name, class: 'form-control border-dark  w-100', required: true, minlength: 3 %>
       </div>
     </div>
   </div>
     <div class='row'>
-      <div class="col-lg-12">
-        <div class="form-group">
-        <%= form.label :description, class: 'h4 font-weight-bold text-primary' %>
-        <%= form.text_area :description, class: 'form-control border-info w-75', rows: 5, minlength: 3 %>
+      <div class='col-lg-12'>
+        <div class='form-group'>
+        <%= form.label :description, class: 'h4 font-weight-bold text-dark' %>
+        <%= form.text_area :description, class: 'form-control border-dark w-75', rows: 5 %>
       </div>
     </div>
   </div>
     <div class='row'>
-      <div class="col-lg-6">
-        <div class="form-group">
-        <%= form.label :status, class: 'h5 font-weight-bold text-primary' %>
-        <%= form.select :status, Project::STATUS, {}, {class: "form-control border-info text-danger w-50"} %>
+      <div class='col-lg-6'>
+        <div class='form-group'>
+        <%= form.label :status, class: 'h5 font-weight-bold text-dark' %>
+        <%= form.select :status, Project::STATUS, {}, {class: 'form-control border-dark text-dark w-50'} %>
       </div>
     </div>
   </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label :start_date, class: 'h5 font-weight-bold text-primary' %>
-          <%= form.date_field :start_date, class: 'form-control border-info w-50' %>
+    <div class='row'>
+      <div class='col-lg-6'>
+        <div class='form-group'>
+          <%= form.label :start_date, class: 'h5 font-weight-bold text-dark' %>
+          <%= form.date_field :start_date, class: 'form-control border-dark w-50' %>
         </div>
       </div>
 
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label :end_date, class: 'h5 font-weight-bold text-primary' %>
-          <%= form.date_field :end_date, class: 'form-control border-info w-50' %>
+      <div class='col-lg-6'>
+        <div class='form-group'>
+          <%= form.label :end_date, class: 'h5 font-weight-bold text-dark' %>
+          <%= form.date_field :end_date, class: 'form-control border-dark w-50' %>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label :expected_start_date, class: 'h5 font-weight-bold text-primary' %>
-          <%= form.date_field :expected_start_date, class: 'form-control border-info w-50' %>
+    <div class='row'>
+      <div class='col-lg-6'>
+        <div class='form-group'>
+          <%= form.label :expected_start_date, class: 'h5 font-weight-bold text-dark' %>
+          <%= form.date_field :expected_start_date, class: 'form-control border-dark w-50' %>
         </div>
       </div>
 
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label :expected_end_date, class: 'h5 font-weight-bold text-primary' %>
-          <%= form.date_field :expected_end_date, class: 'form-control border-info w-50' %>
+      <div class='col-lg-6'>
+        <div class='form-group'>
+          <%= form.label :expected_end_date, class: 'h5 font-weight-bold text-dark' %>
+          <%= form.date_field :expected_end_date, class: 'form-control border-dark w-50' %>
         </div>
       </div>
     </div>
