@@ -7,13 +7,14 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
     @users = User.all
-    unless @tasks.nil?
+    if @tasks.nil?
       flash[:notice] = 'No Task exist yet'
       redirect_to new_task_path
     end
   end
 
   def show
+    @users = User.all
   end
 
   def new
@@ -21,7 +22,11 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @users = User.all
+    if @task
+      @users = User.all
+    else
+      render :new
+    end
   end
 
   def create

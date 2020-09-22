@@ -42,5 +42,4 @@ class Task < ApplicationRecord
       errors.add(:due_date, 'cannot be less than start date')
     end
   end
-
 end
