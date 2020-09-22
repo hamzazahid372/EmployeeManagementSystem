@@ -7,90 +7,46 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
     @users = User.all
-  end
-
-  def show
-  end
-
-  def new
-  end
-
-  def edit
-  end
-
-
-  def show
-    if Task.find_by sequence_num: params[:id]
-      @task = Task.find_by sequence_num: params[:id]
-    else
-      @users = User.all
-      @task = Current.company.tasks.build
-      render 'new'
+    unless @tasks.nil?
+      flash[:notice] = 'No Task exist yet'
+      redirect_to new_task_path
     end
+  end
+
+  def show
   end
 
   def new
     @users = User.all
-    @task = Current.company.tasks.build
   end
 
   def edit
-    if Task.find_by sequence_num: params[:id]
-      @task = Task.find_by sequence_num: params[:id]
-      @users = User.all
-    else
-      @users = User.all
-      @task = Current.company.tasks.build
-      render 'new'
-    end
+    @users = User.all
   end
 
   def create
-    success = true
-    begin
-        Task.transaction do
-          @task.project_id = 2
-          @task.save!
-        end
-      rescue ActiveRecord::RecordInvalid
-        success = false
-      end
-    if success
-
-      redirect_to @task
+    @task.project_id = 2
+    if @task.save
+      flash[:notice] = 'Task created successfully'
+      render :show
     else
-      render 'new'
+      render :new
     end
   end
 
   def update
-    success = true
-    begin
-      Task.transaction do
-          @task.update(task_params)
-        end
-      rescue Exception => e
-        success = false
-    end
-    if success
-      redirect_to @task
+    if @task.update(task_params)
+      flash[:notice] = 'Task updated successfully'
+      render :show
     else
-      render 'new'
+      render :edit
     end
   end
 
   def destroy
-    success = true
-    begin
-        Task.transaction do
-          @task.destroy
-        end
-      rescue ActiveRecord::RecordInvalid
-        success = false
-      end
-      if success
-        redirect_to @task
-      end
+    @task.destroy
+    flash[:notice] = 'Task removed successfully'
+    redirect_to tasks_url
   end
 
   private

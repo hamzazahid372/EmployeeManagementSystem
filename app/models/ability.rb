@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# define abilities
 class Ability
   include CanCan::Ability
   include Abilities::TaskAbility

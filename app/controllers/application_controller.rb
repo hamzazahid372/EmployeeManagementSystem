@@ -2,6 +2,12 @@
 
 # Application Controller
 class ApplicationController < ActionController::Base
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.json { head :forbidden }
+      format.html { redirect_to tasks_path, alert: exception.message }
+    end
+  end
   around_action :scope_current_company
 
   private
