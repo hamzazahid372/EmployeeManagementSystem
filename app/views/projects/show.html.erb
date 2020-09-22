@@ -36,12 +36,15 @@
     </tbody>
   </table>
       <div class="btn-group" role="group" aria-label="Basic example">
-
+        <% if can? :update, @project %>
         <%= link_to 'Update', edit_project_path(@project.sequence_num),
                method: :get,class: ' ml-3 btn btn-dark',
               data: { confirm: 'Are you sure you want to Update?' } %>
+        <%end%>
+        <% if can? :delete, @project %>
             <%= button_to 'Delete', project_path(@project),
               method: :delete,class: 'ml-3',
               data: { confirm: 'Are you sure you want to delete?' } %>
+        <%end%>
       </div>
 <% end %>
