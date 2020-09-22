@@ -22,11 +22,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    if @task
-      @users = User.all
-    else
-      render :new
-    end
+    @users = User.all
   end
 
   def create
