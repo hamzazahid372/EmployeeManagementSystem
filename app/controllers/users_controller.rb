@@ -20,31 +20,39 @@ class UsersController < ApplicationController
 
   def create
     success = true
-    @user = User.unscope(where: :company_id).find_by email: sign_up_params[:email]
-    if @user.nil?
-      @user = User.new(sign_up_params)
-      begin
-        User.transaction do
-          @user.save!
-        end
-      rescue ActiveRecord::RecordInvalid
-        success = false
+    @user = User.new(user_params)
+    flash[:error] = @user.errors.full_messages.join('<br/>').html_safe if !@user.valid?
+
+    render new_user_path and return unless @user.valid?
+
+    begin
+      User.transaction do
+        @user.save!
       end
-      if success
-        flash[:success] = t 'users.created_successfully'
-        redirect_to user_path(@user.id)
-      end
-    else
-      flash[:error] = t 'users.email_in_use'
-      redirect_to new_user_path
+    rescue ActiveRecord::RecordInvalid
+      success = false
     end
+    if success
+      flash[:success] = t 'users.created_successfully'
+      redirect_to user_path(@user) and return
+    end
+    render new_user_path
   end
 
   def update
     success = true
+    @user.first_name = user_params[:first_name]
+    @user.last_name = user_params[:last_name]
+    @user.department_id = user_params[:department_id]
+    @user.role_id = user_params[:role_id]
+
+    flash[:error] = @user.errors.full_messages.join('<br/>').html_safe unless @user.valid?
+  
+    redirect_to edit_user_path(@user) and return unless @user.valid?
+
     begin
       User.transaction do
-        @user.update! sign_up_params
+        @user.update! user_params
       end
     rescue Exception
       success = false
@@ -76,7 +84,7 @@ class UsersController < ApplicationController
 
   private
 
-  def sign_up_params
+  def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role_id, :department_id)
   end
 end

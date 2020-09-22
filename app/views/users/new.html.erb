@@ -1,11 +1,5 @@
 <br><br>
 
-<% if @user.errors.any? %>
-  <% @user.errors.full_messages.each do |msg| %>
-    <span class="text-danger"> <%= msg %> </span>
-  <% end %>
-<% end %>
-
 <%= form_for @user do |form| %>
 <div class="container-fluid">
   <div class="d-flex col-lg-12">
@@ -66,6 +60,6 @@
   </div>
 </div>
 <%= form.submit class: 'btn btn-dark', text: 'Create User' %>
-<%= form.submit 'Back', class: 'btn btn-dark' %>
+<%= button_to 'Back', users_path(@user), method: :get, class: 'btn btn-dark' %>
 </div>
 <% end %>

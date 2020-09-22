@@ -32,6 +32,12 @@ class User < ApplicationRecord
   has_many :projects_users, dependent: :destroy
   has_many :projects, through: :projects_users
 
+  validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/ }
+  validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/ }
+  validates :department_id, presence: true, format: { with: /\A\d+\z/ }
+  validates :role_id, presence: true, format: { with: /\A\d+\z/ }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+
   def admin?
     return true if role_id == 1
   end

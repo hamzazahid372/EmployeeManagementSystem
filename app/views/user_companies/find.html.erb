@@ -1,13 +1,20 @@
-<h2>Enter Email</h2>
+<div class="mt-10">
+  <div class="container border rounded-lg w-50 shadow p-4 mb-4 bg-white mt-4">
+    <h2 class="text-center mb-5">Employee Management System</h2>
+    <h2 class="text-center mb-5">Enter Email</h2>
 
-<%= form_with url: user_companies_find_path, local: true  do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= form_with url: user_companies_find_path, local: true  do |f| %>
+      <div class="field text-center mb-4 row-cols-1 pr-5 m-4">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control float-right w-50' %>
+      </div>
+      
+      <div class="actions text-center m-2">
+        <%= f.submit "Next", class: 'btn btn-dark' %>
+      </div>
+
+    <% end %>
+
   </div>
-  
-  <div class="actions">
-    <%= f.submit "Next" %>
-  </div>
-<% end %>
+</div>
 
