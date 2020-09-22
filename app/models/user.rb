@@ -32,6 +32,10 @@ class User < ApplicationRecord
   has_many :projects_users, dependent: :destroy
   has_many :projects, through: :projects_users
 
+  def admin?
+    return true if role_id == 1
+  end
+
   protected
 
   def confirmation_required?

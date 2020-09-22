@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(sequence_num: params[:id])
   end
 
   def new
@@ -17,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(sequence_num: params[:id])
   end
 
   def create

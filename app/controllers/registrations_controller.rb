@@ -10,6 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     success = true
     @user = User.new(sign_up_params)
+    @user.role_id = 1
     begin
       User.transaction do
         @user.save!

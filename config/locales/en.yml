@@ -43,3 +43,5 @@ en:
     account_not_updated: 'Account updation failed'
     account_deleted: 'Account deleted successfully'
     account_not_deleted: 'Account deletion failed'
+  cancan:
+    access_denied: 'Access denied'

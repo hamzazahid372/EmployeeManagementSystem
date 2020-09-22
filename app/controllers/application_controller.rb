@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
 
   private
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = t 'cancan.access_denied'
+    redirect_to root_url
+  end
+
   def after_sign_out_path_for(resource)
     new_user_session_url
   end
