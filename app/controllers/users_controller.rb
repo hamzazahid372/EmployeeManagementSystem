@@ -1,20 +1,31 @@
 class UsersController < ApplicationController
-  
   load_and_authorize_resource find_by: :sequence_num
 
   def index
     redirect_to new_user_session_path and return if Current.company_id.nil?
 
     @users = User.all
+    respond_to do |format|
+      format.html
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html
+    end
   end
 
   def new
+    respond_to do |format|
+      format.html
+    end
   end
 
   def edit
+    respond_to do |format|
+      format.html
+    end
   end
 
   def create
@@ -46,7 +57,7 @@ class UsersController < ApplicationController
     @user.role_id = user_params[:role_id]
 
     flash[:error] = @user.errors.full_messages.join('<br/>').html_safe unless @user.valid?
-  
+ 
     redirect_to edit_user_path(@user) and return unless @user.valid?
 
     begin
