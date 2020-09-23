@@ -106,8 +106,10 @@ ActiveRecord::Schema.define(version: 2020_09_18_125201) do
     t.datetime "created_by_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sequence_num", null: false
     t.index ["company_id"], name: "index_projects_on_company_id"
     t.index ["created_by_id"], name: "index_projects_on_created_by_id"
+    t.index ["sequence_num", "company_id"], name: "index_projects_on_sequence_num_and_company_id", unique: true
   end
 
   create_table "projects_departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
