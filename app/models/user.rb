@@ -46,4 +46,10 @@ class User < ApplicationRecord
   def confirmation_required?
     created_at < 7.days.ago
   end
+
+  public
+
+  def admin?
+    true
+  end
 end
