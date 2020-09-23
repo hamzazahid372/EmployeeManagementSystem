@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = Current.company.users.build
   end
 
   def edit
