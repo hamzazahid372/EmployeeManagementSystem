@@ -19,8 +19,7 @@ class Task < ApplicationRecord
   has_many :childs, foreign_key: 'parent_id', class_name: 'Task'
   belongs_to :parent, class_name: 'Task', optional: true
 
-  validates :title, presence: true
-  validates :title, length: { minimum: 3 }
+  validates :title, presence: true, length: { minimum: 3 }
   validate :validate_end_date
   validate :validate_expected_end_date
   validate :validate_due_date

@@ -34,7 +34,6 @@ class TasksController < ApplicationController
       errors = ''
       @task.errors.full_messages.each do |msg|
         errors = errors + msg + ', '
-
       end
       flash[:error] = errors
       @users = User.all
