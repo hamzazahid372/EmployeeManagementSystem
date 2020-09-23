@@ -3,7 +3,7 @@
 <div class="container-fluid">
 
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <div class="form-group">
         <h1> <%= @task.title %> </h1>
       </div>
@@ -33,13 +33,13 @@
   </div>  
 
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <div class="form-group">
         <h4>Title</h4>
       </div>
     </div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-9">
       <div class="form-group">
         <%= @task.title %>
       </div>
@@ -47,13 +47,13 @@
   </div>  
 
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <div class="form-group">
         <h4>Description</h4>
       </div>
     </div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-9">
       <div class="form-group">
         <%= @task.description %>
       </div>
@@ -61,13 +61,13 @@
   </div>  
 
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <div class="form-group">
         <h4>Status</h4>
       </div>
     </div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-9">
       <div class="form-group">
         <%= @task.status %>
       </div>
@@ -75,41 +75,41 @@
   </div>  
 
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <div class="form-group">
         <h4>Priority</h4>
       </div>
     </div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-9">
       <div class="form-group">
-        <%= @task.priority %>
+        <%= Task::PRIORITY.key @task.priority if @task.priority.present? %>
       </div>
     </div>
   </div>  
 
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <div class="form-group">
         <h4>Progress</h4>
       </div>
     </div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-9">
       <div class="form-group">
-        <%= @task.progress unless @task.progress.nil? %>
+        <%= @task.progress if @task.progress.present? %>
       </div>
     </div>
   </div>  
 
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <div class="form-group">
         <h4>Due Date</h4>
       </div>
     </div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-9">
       <div class="form-group">
         <%= Date.parse((@task.due_date).to_s) unless @task.due_date.nil? %>
       </div>
@@ -117,13 +117,13 @@
   </div>  
   
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <div class="form-group">
         <h4>Start Date</h4>
       </div>
     </div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-9">
       <div class="form-group">
         <%= Date.parse((@task.start_date).to_s) unless @task.start_date.nil? %>
       </div>
@@ -131,13 +131,13 @@
   </div>
   
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <div class="form-group">
         <h4>End Date</h4>
       </div>
     </div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-9">
       <div class="form-group">
         <%= Date.parse((@task.end_date).to_s) unless @task.end_date.nil? %>
       </div>
@@ -145,13 +145,13 @@
   </div>
   
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <div class="form-group">
         <h4>Expected Start Date</h4>
       </div>
     </div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-9">
       <div class="form-group">
         <%= Date.parse((@task.expected_start_date).to_s) unless @task.expected_start_date.nil? %>
       </div>
@@ -159,13 +159,13 @@
   </div>
   
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <div class="form-group">
         <h4>Expected End Date</h4>
       </div>
     </div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-9">
       <div class="form-group">
         <%= Date.parse((@task.expected_end_date).to_s) unless @task.expected_end_date.nil? %>
       </div>

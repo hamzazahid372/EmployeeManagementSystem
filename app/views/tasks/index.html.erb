@@ -40,13 +40,13 @@
       <table id="tasks-table" class="table table-hover">
         <thead>
         <tr>
-          <th>Title</th>
-          <th>Project Tiltle</th>
-          <th>Assignee</th>
-          <th>Status</th>
-          <th>Priority</th>
-          <th>Created</th>
-          <th>Due Date</th>
+          <th><%= t(:task_title) %></th>
+          <th><%= t(:task_project_title) %></th>
+          <th><%= t(:task_assignee) %></th>
+          <th><%= t(:task_status) %></th>
+          <th><%= t(:task_priority) %></th>
+          <th><%= t(:task_created) %></th>
+          <th><%= t(:task_due_date) %></th>
         </tr>
         </thead>
         <tbody>
@@ -57,7 +57,7 @@
             <td> <%= task.description %> </td>
             <td> <%= task.assignable_id %> </td>
             <td> <%= task.status %> </td>
-            <td> <%= task.priority %> </td>
+            <td> <%= Task::PRIORITY.key task.priority if task.priority.present? %> </td>
             <td> <%= Date.parse((task.start_date).to_s) unless task.start_date.nil? %> </td>
             <td> <%= Date.parse((task.due_date).to_s) unless task.due_date.nil? %> </td>
           </tr>        

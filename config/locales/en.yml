@@ -30,6 +30,14 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  task_title: Title
+  task_project_title: Project Title
+  task_assignee: Assignee
+  task_status: Status
+  task_priority: Priority
+  task_created: Created
+  task_due_date: Due Date
+
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:

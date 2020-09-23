@@ -3,6 +3,7 @@
 # Task Controller
 class TasksController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
+  respond_to :html
 
   def index
     @tasks = Task.all
@@ -46,6 +47,12 @@ class TasksController < ApplicationController
       flash[:notice] = 'Task updated successfully'
       render :show
     else
+      errors = ''
+      @task.errors.full_messages.each do |msg|
+        errors = errors + msg + ', '
+      end
+      flash[:error] = errors
+      @users = User.all
       render :edit
     end
   end
