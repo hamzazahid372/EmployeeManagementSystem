@@ -39,6 +39,26 @@ en:
   project_end_date: 'End Date'
   project_expected_start_date: 'Expected Start Date'
   project_expected_end_date: 'Expected End Date'
+
+  task_create: 'Create Task'
+  task_update: 'Update Task'
+  task_title: 'Title'
+  task_description: 'Description'
+  task_status: 'Status'
+  task_start_date: 'Start Date'
+  task_end_date: 'End Date'
+  task_expected_start_date: 'Expected Start Date'
+  task_expected_end_date: 'Expected End Date'
+  task_due_date: 'Due Date'
+  task_progress: 'Progress'
+  task_priority: 'Priority'
+  task_assignable_id: 'Assignable ID'
+  task_heading: 'Tasks'
+  task_assignable_type: 'Assignable Type'
+  task_project_title: 'Project Title'
+  task_assignee: 'Assignee'
+  task_created: 'Created By'
+
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:
@@ -48,3 +68,13 @@ en:
      created: 'Project created successfully'
      updated: "Project updated successfully"
      destroyed: "Project deleted successfully"
+  task:
+     created: 'Task created successfully'
+     updated: 'Task updated successfully'
+     destroyed: 'Task removed successfully'
+     not_exist: 'No Task exist yet'
+     invalid_end_date: 'cannot be less than start date'
+     invalid_expected_end_date: 'cannot be less than expected start date'
+     invalid_due_date: 'cannot be less than start date'
+  cancan:
+    access_denied: 'You are not authorized to access this page'

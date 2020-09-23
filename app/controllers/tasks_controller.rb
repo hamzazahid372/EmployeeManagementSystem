@@ -6,16 +6,14 @@ class TasksController < ApplicationController
   respond_to :html
 
   def index
-    @tasks = Task.all
     @users = User.all
-    if @tasks.nil?
-      flash[:notice] = 'No Task exist yet'
+    if @tasks.blank?
+      flash[:notice] = t 'task.not_exist'
       redirect_to new_task_path
     end
   end
 
   def show
-    @users = User.all
   end
 
   def new
@@ -28,14 +26,12 @@ class TasksController < ApplicationController
 
   def create
     @task.project_id = 2
+    @task.created_by_id = current_user.id
     if @task.save
-      flash[:notice] = 'Task created successfully'
-      render :show
+      flash[:notice] = t 'task.created'
+      redirect_to @task
     else
-      errors = ''
-      @task.errors.full_messages.each do |msg|
-        errors = errors + msg + ', '
-      end
+      errors = @task.errors.full_messages.join(', ')
       flash[:error] = errors
       @users = User.all
       render :new
@@ -44,13 +40,10 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      flash[:notice] = 'Task updated successfully'
-      render :show
+      flash[:notice] = t 'task.updated'
+      redirect_to @task
     else
-      errors = ''
-      @task.errors.full_messages.each do |msg|
-        errors = errors + msg + ', '
-      end
+      errors = @task.errors.full_messages.join(', ')
       flash[:error] = errors
       @users = User.all
       render :edit
@@ -59,7 +52,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    flash[:notice] = 'Task removed successfully'
+    flash[:notice] = t 'task.destroyed'
     redirect_to tasks_url
   end
 

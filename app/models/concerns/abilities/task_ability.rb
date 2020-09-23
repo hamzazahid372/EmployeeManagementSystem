@@ -9,13 +9,8 @@ module Abilities
     end
 
     def define_task_abilities_for_employee(user)
-      can %i[read create], Task
-      can :update, Task do |task|
-        task.try(:user) == user
-      end
-      can :destroy, Task do |task|
-        task.try(:user) == user
-      end
+      can %i[read create], Task, company_id: user.company_id
+      can :update, Task, created_by_id: user.id, company_id: user.company_id
     end
   end
 end

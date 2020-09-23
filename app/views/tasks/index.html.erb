@@ -1,34 +1,33 @@
 <%= javascript_pack_tag 'task', 'data-turbolinks-track': 'reload' %>
-<% require 'date' %>
 
 <div class="container-fluid">
-  <h1>Tasks</h1>
+  <h1><%= t(:task_heading) %></h1>
   <%= form_for @tasks.to_ary, url: tasks_path do |form| %>
     <div class="row">      
       <div class="col-lg-3">
         <div class="form-group">
-          <%= form.label :priority %>
+          <%= form.label t(:task_priority) %>
           <%= form.select :priority, options_for_select(Task::PRIORITY), {}, class: "form-control"  %>
         </div>
       </div>
   
       <div class="col-lg-3">
         <div class="form-group">
-          <%= form.label :status %>
+          <%= form.label t(:task_status) %>
           <%= form.select :status, Task::STATUS, {}, {class: "form-control"} %>
         </div>
       </div>
 
       <div class="col-lg-3">
         <div class="form-group">
-          <%= form.label :assignable_id %>
+          <%= form.label t(:task_assignable_id) %>
           <%= form.select :assignable_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }), {}, {class: "form-control"} %>
         </div>
       </div>
 
       <div class="col-lg-3">
         <div class="form-group">
-          <%= form.label :assignable_type %>
+          <%= form.label t(:task_assignable_type) %>
           <%= form.select :assignable_type, options_for_select( ['User','Team']), {}, {class: "form-control"} %>
         </div>
       </div>
@@ -51,7 +50,7 @@
         </thead>
         <tbody>
         
-        <%@tasks.collect do |task| %>
+        <% @tasks.collect do |task| %>
           <tr>
             <td><%= link_to task.title, task_path(task), sequence_num: task.sequence_num %> </td>
             <td> <%= task.description %> </td>
