@@ -30,9 +30,23 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  project_new: 'New Project'
+  project_update: 'Update Project'
+  project_title: 'Title'
+  project_description: 'Description'
+  project_status: 'Status'
+  project_start_date: 'Start Date'
+  project_end_date: 'End Date'
+  project_expected_start_date: 'Expected Start Date'
+  project_expected_end_date: 'Expected End Date'
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:
     email_not_recognized: 'We could not recognize this email address'
     email_empty: 'Email cannot be empty'
+  project:
+     created: 'Project created successfully'
+     updated: "Project updated successfully"
+     destroyed: "Project deleted successfully"
+
+
