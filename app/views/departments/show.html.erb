@@ -14,5 +14,15 @@
         </tr>
       </tbody>
     </table>
+    <div class="btn-group" role="group">
+      <% if can? :update, @department %>
+        <%= link_to 'Update', edit_department_path(@department),class: ' ml-3 btn btn-dark' %>
+      <% end %>
+      <% if can? :delete, @department %>
+        <%= link_to 'Delete', department_path(@department.sequence_num),
+          method: :delete,class: 'ml-3 btn btn-dark',
+          data: { confirm: 'Are you sure you want to delete?' } %>
+      <% end %>
+    </div>
   </div>
 <% end %>
