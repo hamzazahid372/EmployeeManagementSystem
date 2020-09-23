@@ -1,0 +1,22 @@
+<%= javascript_pack_tag 'department', 'data-turbolinks-track': 'reload' %>
+<div class="container-fluid">
+  <h1>Projects</h1>
+  <div class="table-responsive">
+      <table id="departments-datatable" class="table table-hover">
+        <thead>
+        <tr>
+          <th><%= t(:department_title) %></th>
+          <th><%= t(:department_description) %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @departments.each do |department| %>
+          <tr>
+            <td><%= link_to department.name, department_path(department) %> </td>
+            <td> <%= department.description %> </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>
