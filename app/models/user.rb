@@ -26,6 +26,9 @@ class User < ApplicationRecord
   has_many :watching_tasks, through: :tasks_watchers, source: :task
   has_many :projects_users, dependent: :destroy
   has_many :projects, through: :projects_users
+  def admin?
+    true
+  end
 
   protected
 

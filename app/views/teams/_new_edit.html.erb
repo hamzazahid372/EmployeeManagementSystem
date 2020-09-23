@@ -1,0 +1,36 @@
+<%= form_for @team do |form| %>
+  
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: 'form-control', required: true, minlength: 3 %>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="form-group">
+          <%= form.label :lead_id %>
+          <%= form.select :lead_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }), {}, {class: "form-control"} %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">  
+        <div class="form-group">
+          <%= form.label :description %>
+          <%= form.text_area :description, class: 'form-control', rows: 5 %>
+        </div>
+      </div>
+    </div>
+
+    
+    <%= link_to 'Back', teams_path, class: 'btn btn-dark' %>
+    <%= form.submit class: 'btn btn-dark' %>
+
+  </div>
+
+<% end %>

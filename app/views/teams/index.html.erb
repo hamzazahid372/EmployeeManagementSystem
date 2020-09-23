@@ -1,0 +1,31 @@
+<%= javascript_pack_tag 'team', 'data-turbolinks-track': 'reload' %>
+<% require 'date' %>
+
+<div class="container-fluid">
+  <h1>Teams</h1>
+  
+  <div class="table-responsive">
+      <table id="teams-table" class="table table-hover">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Created By</th>
+          <th>Lead</th>
+        </tr>
+        </thead>
+        <tbody>
+        
+        <%@teams.collect do |team| %>
+          <tr>
+            <td><%= link_to team.name, team_path(team), sequence_num: team.sequence_num %> </td>
+            <td> <%= team.description %> </td>
+            <td> <%= team.created_by_id %> </td>
+            <td> <%= team.lead_id %> </td>
+          </tr>        
+        <% end %>
+         
+        </tbody>
+      </table>
+  </div>
+</div>
