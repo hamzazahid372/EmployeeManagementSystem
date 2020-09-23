@@ -34,12 +34,6 @@
           <%= form.label :end_date %>
           <%= form.date_field :end_date, class: 'form-control' %>
         </div>
-
-        <% if @task.errors.any? %>
-          <% @task.errors.full_messages.each do |msg| %>
-            <span class="text-danger"> <%= msg %> </span>
-          <% end %>
-        <% end %>
       
       </div>
     </div>
@@ -58,12 +52,6 @@
           <%= form.date_field :expected_end_date, class: 'form-control' %>
         </div>
 
-        <% if @task.errors.any? %>
-          <% @task.errors.full_messages.each do |msg| %>
-            <span class="text-danger"> <%= msg %> </span>
-          <% end %>
-        <% end %>
-
       </div>
     </div>
 
@@ -74,11 +62,6 @@
           <%= form.date_field :due_date, class: 'form-control' %>
         </div>
       </div>
-      <% if @task.errors.any? %>
-        <% @task.errors.full_messages.each do |msg| %>
-          <span class="text-danger"> <%= msg %> </span>
-        <% end %>
-      <% end %>
 
       <div class="col-lg-6">
         <div class="form-group">

@@ -31,6 +31,12 @@ class TasksController < ApplicationController
       flash[:notice] = 'Task created successfully'
       render :show
     else
+      errors = ''
+      @task.errors.full_messages.each do |msg|
+        errors = errors + msg + ', '
+
+      end
+      flash[:error] = errors
       @users = User.all
       render :new
     end

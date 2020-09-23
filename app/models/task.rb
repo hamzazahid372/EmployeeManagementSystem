@@ -26,7 +26,6 @@ class Task < ApplicationRecord
   validate :validate_due_date
 
   def validate_end_date
-    binding.pry
     if end_date.present? && start_date.present? && end_date < start_date
       errors.add(:end_date, 'cannot be less than start date')
     end
