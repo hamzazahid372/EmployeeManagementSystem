@@ -1,14 +1,9 @@
-<%= form_for @project  do |form| %>
+<%= form_for object do |form| %>
   <div class="container-fluid">
-    <% if @project.errors.any? %>
-      <% @project.errors.full_messages.each do |msg| %>
-        <span class="text-danger"> <%= msg %> </span>
-      <% end %>
-    <% end %>
     <div class='row'>
       <div class='col-lg-9'>
         <div class='form-group'>
-        <%= form.label :name , class: 'h4 font-weight-bold text-dark'%>
+        <%= form.label :name , class: 'h4 font-weight-bold text-dark' %>
         <%= form.text_field :name, class: 'form-control border-dark  w-100', required: true, minlength: 3 %>
       </div>
     </div>
@@ -25,7 +20,7 @@
       <div class='col-lg-6'>
         <div class='form-group'>
         <%= form.label :status, class: 'h5 font-weight-bold text-dark' %>
-        <%= form.select :status, Project::STATUS, {}, {class: 'form-control border-dark text-dark w-50'} %>
+        <%= form.select :status, Project::STATUS, {}, { class: 'form-control border-dark text-dark w-50' } %>
       </div>
     </div>
   </div>
@@ -60,6 +55,6 @@
       </div>
     </div>
       <%= form.submit class: 'btn btn-dark' %>
-      <%= form.submit 'Back', class: 'btn btn-dark' %>
+      <%= link_to 'Back', projects_path, class: 'btn btn-dark' %>
   </div>
 <% end %>

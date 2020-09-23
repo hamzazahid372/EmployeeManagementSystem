@@ -2,29 +2,52 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
   def index
     @projects = Project.all
+    respond_to do |format|
+      format.html
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html
+    end
   end
 
   def new
+    respond_to do |format|
+      format.html
+    end
   end
 
   def edit
+    respond_to do |format|
+      format.html
+    end
   end
 
   def create
+    respond_to do |format|
+      format.html
+    end
     if @project.save
-      flash[:notice] = 'Task created successfully'
+      flash[:notice] = t 'project.created'
       redirect_to @project
     else
+      errors = ''
+      @project.errors.full_messages.each do |msg|
+        errors = errors + msg + ', '
+      end
+      flash[:error] = errors
       render 'new'
     end
   end
 
   def update
+    respond_to do |format|
+      format.html
+    end
     if @project.update(project_params)
-      flash[:notice] = 'Task updated successfully'
+      flash[:notice] = t 'project.updated'
       redirect_to @project
     else
       render 'new'
@@ -32,8 +55,11 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    respond_to do |format|
+      format.html
+    end
     if @project.destroy
-      flash[:notice] = 'Task destroyed successfully'
+      flash[:notice] = t 'project.destroyed'
       redirect_to @project
     end
   end

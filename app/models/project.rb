@@ -13,10 +13,9 @@ class Project < ApplicationRecord
   has_many :users, through: :projects_users
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 3 }
   validate :date_validate
   validate :expected_date_validate
-  validates :name, length: { minimum: 3 }
   def date_validate
     if end_date.present? && start_date.present? && end_date < start_date
       errors.add(:end_date, 'cannot be less than start date')
@@ -25,7 +24,7 @@ class Project < ApplicationRecord
 
   def expected_date_validate
     if expected_end_date.present? && expected_start_date.present? && expected_end_date < expected_start_date
-      errors.add(:expected_end_date, 'cannot be less than start date')
+      errors.add(:expected_end_date, 'cannot be less than  expected start date')
     end
   end
 end

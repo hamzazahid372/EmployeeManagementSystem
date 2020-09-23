@@ -1,4 +1,4 @@
 <div class='container-fluid'>
-  <h1 class="theme-color font-weight-bold">New project</h1>
+<h2><%= t(:title_heading1) %></h2>
 </div>
-<%= render partial: "form" %>
+<%= render partial: "form", locals: {object: @project}  %>

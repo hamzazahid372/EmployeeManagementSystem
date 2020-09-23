@@ -14,13 +14,13 @@
         </thead>
         <tbody>
 
-        <%@projects.each do |project| %>
+        <% @projects.each do |project| %>
           <tr>
             <td><%= link_to project.name, project_path(project) %> </td>
             <td> <%= project.description %> </td>
             <td> <%= project.status %> </td>
-            <td><%= Date.parse((project.start_date).to_s)unless project.start_date.nil? %></td>
-            <td><%= Date.parse((project.end_date).to_s)unless project.end_date.nil? %></td>
+            <td><%= Date.parse((project.start_date).to_s) unless project.start_date.nil? %></td>
+            <td><%= Date.parse((project.end_date).to_s) unless project.end_date.nil? %></td>
           </tr>
         <% end %>
 
