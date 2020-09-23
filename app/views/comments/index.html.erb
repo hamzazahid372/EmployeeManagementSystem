@@ -1,0 +1,25 @@
+<%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
+<div class="container-fluid">
+  <h1>Comments by <%= @user.first_name + ' ' + @user.last_name %> </h1>
+  <div class="table-responsive">
+      <table id="comments-datatable" class="table table-hover">
+        <thead>
+        <tr>
+          <th>Content</th>
+          <th>On</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <td> <%= comment.content %> </td>
+            <td> <%= comment.commentable_id %> </td>
+            <td> <%= comment.created_at %> </td>
+          </tr>
+        <% end %>
+
+        </tbody>
+      </table>
+  </div>
+</div>
