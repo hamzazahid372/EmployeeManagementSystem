@@ -10,7 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     success = true
     @user = User.new(sign_up_params)
-    @user.role_id = 1
+    @user.role_id = User::ROLES['Administrator']
     begin
       User.transaction do
         @user.save!
@@ -18,7 +18,7 @@ class RegistrationsController < Devise::RegistrationsController
         company.owner_id = @user.id
         company.save!
       end
-    rescue Exception => e
+    rescue ActiveRecord::RecordNotSaved
       success = false
     end
     if success

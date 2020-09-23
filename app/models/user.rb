@@ -34,12 +34,11 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/ }
   validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/ }
-  validates :department_id, presence: true, format: { with: /\A\d+\z/ }
   validates :role_id, presence: true, format: { with: /\A\d+\z/ }
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { scope: :company_id }
 
   def admin?
-    return true if role_id == 1
+    role_id == User::ROLES['Administrator']
   end
 
   protected

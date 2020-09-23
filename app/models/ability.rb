@@ -4,6 +4,7 @@ class Ability
 
   def initialize(user)
     return unless user.present?
+
     if user.admin?
       define_user_abilities_for_admin(user)
     else

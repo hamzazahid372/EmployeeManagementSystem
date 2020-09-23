@@ -3,12 +3,14 @@
 # Application Controller
 class ApplicationController < ActionController::Base
   around_action :scope_current_company
-  
+
   private
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = t 'cancan.access_denied'
-    redirect_to root_url
+    respond_to do |format|
+      format.html { redirect_to root_url }
+    end
   end
 
   def after_sign_out_path_for(resource)
