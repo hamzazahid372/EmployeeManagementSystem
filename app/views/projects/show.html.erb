@@ -6,31 +6,31 @@
   <table class="table">
     <tbody>
       <tr>
-        <th>Title:</th>
+        <th><%= t(:project_title) %></th>
         <td><%= @project.name %></td>
       </tr>
       <tr>
-        <th>Description</th>
+        <th><%= t(:project_description) %></th>
         <td><%= @project.description %></td>
       </tr>
        <tr>
         <tr>
-        <th>Status</th>
+        <th><%= t(:project_status) %></th>
         <td><%= form.label @project.status %></td>
       </tr>
-        <th>Start Date:</th>
+        <th><%= t(:project_start_date) %></th>
         <td><%= Date.parse((@project.start_date).to_s)unless @project.start_date.nil? %></td>
       </tr>
        <tr>
-        <th>End Date</th>
+        <th><%= t(:project_end_date) %></th>
         <td><%= Date.parse((@project.end_date).to_s)unless @project.end_date.nil? %></td>
       </tr>
       <tr>
-        <th>Expected Start Date</th>
+        <th><%= t(:project_expected_start_date) %></th>
         <td><%= Date.parse((@project.expected_start_date).to_s)unless @project.expected_start_date.nil? %></td>
       </tr>
       <tr>
-        <th>Expected End Date</th>
+        <th><%= t(:project_expected_end_date) %></th>
         <td><%= Date.parse((@project.expected_end_date).to_s)unless @project.expected_end_date.nil? %></td>
       </tr>
     </tbody>
