@@ -2,7 +2,7 @@
 
 # Task model
 class Task < ApplicationRecord
-  STATUS = %w[Started Pending Completed].freeze
+  STATUS = { 'Started' => 'started', 'Pending' => 'pending', 'Completed' => 'completed' }.freeze
   PRIORITY = { low: 1, medium: 2, high: 3 }.freeze
   sequenceid :company, :tasks
   belongs_to :company
@@ -26,19 +26,19 @@ class Task < ApplicationRecord
 
   def validate_end_date
     if end_date.present? && start_date.present? && end_date < start_date
-      errors.add(:end_date, t(:task.invalid_end_date) )
+      errors.add(:end_date, I18n.t('task.invalid_end_date'))
     end
   end
 
   def validate_expected_end_date
     if expected_end_date.present? && expected_start_date.present? && expected_end_date < expected_start_date
-      errors.add(:expected_end_date, t(:task.invalid_expected_end_date))
+      errors.add(:expected_end_date, I18n.t('task.invalid_expected_end_date'))
     end
   end
 
   def validate_due_date
     if due_date.present? && start_date.present? && due_date < start_date
-      errors.add(:due_date, t(:task.invalid_due_date))
+      errors.add(:due_date, I18n.t('task.invalid_due_date'))
     end
   end
 end

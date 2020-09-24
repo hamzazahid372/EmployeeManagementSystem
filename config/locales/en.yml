@@ -57,8 +57,8 @@ en:
   task_assignable_type: 'Assignable Type'
   task_project_title: 'Project Title'
   task_assignee: 'Assignee'
-  task_created: 'Created By'
-
+  task_created: 'Created'
+  task_project_id: 'Project'
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:
@@ -72,6 +72,7 @@ en:
      created: 'Task created successfully'
      updated: 'Task updated successfully'
      destroyed: 'Task removed successfully'
+     not_destroyed: 'Task not removed'
      not_exist: 'No Task exist yet'
      invalid_end_date: 'cannot be less than start date'
      invalid_expected_end_date: 'cannot be less than expected start date'

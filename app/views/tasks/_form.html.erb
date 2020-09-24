@@ -71,28 +71,37 @@
 
     <div class="row">
       
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <div class="form-group">
           <%= form.label t(:task_priority) %>
           <%= form.select :priority, options_for_select(Task::PRIORITY), {}, class: 'form-control' %>
         </div>
       </div>
   
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <div class="form-group">
           <%= form.label t(:task_status) %>
           <%= form.select :status, options_for_select(Task::STATUS), {}, class: 'form-control' %>
         </div>
       </div>
-
-      <div class="col-lg-4">
+    </div>
+    
+    <div class="row">
+      
+      <div class="col-lg-6">
         <div class="form-group">
           <%= form.label t(:task_assignable_id) %>
           <%= form.select :assignable_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }), {}, {class: "form-control"} %>
         </div>
       </div>
+
+      <div class="col-lg-6">
+        <div class="form-group">
+          <%= form.label t(:task_project_id) %>
+          <%= form.select :project_id, options_for_select( @projects.collect{ |p| [p.name,p.id] }), {}, {class: "form-control"} %>
+        </div>
+      </div>
     </div>
-    
     <%= link_to 'Back', tasks_path, class: 'btn btn-dark' %>
     <%= form.submit class: 'btn btn-dark' %>
 
