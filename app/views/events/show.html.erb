@@ -1,0 +1,32 @@
+ <br><br>
+<% require 'date' %>
+<%= form_for @event  do |form| %>
+  <div class="container-fluid">
+    <%= form.label @event.title, class: 'h1 font-weight-bold text-dark' %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th><%= t(:event_title) %></th>
+          <td><%= @event.title %></td>
+        </tr>
+        <tr>
+          <th><%= t(:event_description) %></th>
+          <td><%= @event.description %></td>
+        </tr>
+          <th><%= t(:event_date) %></th>
+          <td><%= Date.parse((@event.event_date).to_s)unless @event.event_date.nil? %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="btn-group" role="group">
+      <% if can? :update, @event %>
+        <%= link_to 'Update', edit_event_path(@event.sequence_num),class: ' ml-3 btn btn-dark' %>
+      <% end %>
+      <% if can? :delete, @event %>
+        <%= link_to 'Delete', event_path(@event),
+          method: :delete,class: 'ml-3 btn btn-dark',
+          data: { confirm: 'Are you sure you want to delete?' } %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

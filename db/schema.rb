@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_125201) do
+ActiveRecord::Schema.define(version: 2020_09_24_112449) do
+
   create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "company_id", null: false
     t.integer "attachable_id", null: false
@@ -79,8 +80,10 @@ ActiveRecord::Schema.define(version: 2020_09_18_125201) do
     t.integer "created_by_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sequence_num", null: false
     t.index ["company_id"], name: "index_events_on_company_id"
     t.index ["created_by_id"], name: "index_events_on_created_by_id"
+    t.index ["sequence_num", "company_id"], name: "index_events_on_sequence_num_and_company_id", unique: true
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
