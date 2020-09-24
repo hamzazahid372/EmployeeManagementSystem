@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_123931) do
-
+ActiveRecord::Schema.define(version: 2020_09_18_125201) do
   create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "company_id", null: false
     t.integer "attachable_id", null: false
@@ -38,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_09_18_123931) do
     t.integer "company_id", null: false
     t.integer "commentable_id", null: false
     t.string "commentable_type", null: false
+    t.integer "user_id"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -205,7 +205,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_123931) do
     t.string "last_name", null: false
     t.integer "role_id"
     t.integer "company_id", null: false
-    t.integer "sequence_num"
     t.integer "department_id"
     t.boolean "active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -219,13 +218,14 @@ ActiveRecord::Schema.define(version: 2020_09_18_123931) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.integer "sequence_num", null: false
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
-    t.index ["sequence_num"], name: "index_users_on_sequence_num"
+    t.index ["sequence_num", "company_id"], name: "index_users_on_sequence_num_and_company_id", unique: true
   end
 
   create_table "users_teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
