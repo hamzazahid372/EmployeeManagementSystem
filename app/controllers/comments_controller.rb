@@ -8,12 +8,14 @@ class CommentsController < ApplicationController
   end
 
   def new
+    binding.pry
   end
 
   def edit
   end
 
   def create
+    binding.pry
   end
 
   def update

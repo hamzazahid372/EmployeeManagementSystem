@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @user = current_user
     respond_to do |format|
       format.html
     end
