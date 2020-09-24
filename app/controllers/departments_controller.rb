@@ -46,7 +46,9 @@ def create
   end
 
   def index
-    @departments = Department.all
+    respond_to do |format|
+      format.html
+    end
   end
 
   def show
