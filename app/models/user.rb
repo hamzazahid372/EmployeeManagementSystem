@@ -32,8 +32,8 @@ class User < ApplicationRecord
   has_many :projects_users, dependent: :destroy
   has_many :projects, through: :projects_users
 
-  validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/ }
-  validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/ }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :role_id, presence: true, format: { with: /\A\d+\z/ }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { scope: :company_id }
 
@@ -41,15 +41,13 @@ class User < ApplicationRecord
     role_id == User::ROLES['Administrator']
   end
 
+  def account_owner?
+    company.owner_id == id
+  end
+
   protected
 
   def confirmation_required?
     created_at < 7.days.ago
-  end
-
-  public
-
-  def admin?
-    true
   end
 end
