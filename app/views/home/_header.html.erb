@@ -31,6 +31,9 @@
       <%= button_to "Log In", user_companies_find_path, method: 'get', class: 'btn btn-outline-success my-2 my-sm-0 float-right mr-3'%>
       <%= button_to "Sign Up", new_user_registration_path, method: 'get', class: 'btn btn-outline-success my-2 my-sm-0 float-right'%>
     <% else %>
+      <div class="form-group">
+        <i class="fa fa-check-square fa-lg mr-3" aria-hidden="true" style='color:green'></i>
+      </div>
       <p class="navbar-brand">Hi, <%=current_user.first_name%>!</p>
       <%= button_to "Log Out", destroy_user_session_path, method: 'delete', class: 'btn btn-outline-success my-2 my-sm-0 float-right'%>
     <% end %>
