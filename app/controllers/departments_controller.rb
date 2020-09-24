@@ -68,6 +68,7 @@ def create
         format.html { redirect_to @department }
       else
         format.html {redirect_to 'index'}
+      end
     end
   end
 
