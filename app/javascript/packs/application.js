@@ -30,12 +30,21 @@ document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
   var calendar = new Calendar(calendarEl, {
-    plugins: [ dayGridPlugin, interactionPlugin ]
+    plugins: [ dayGridPlugin, interactionPlugin ],
+    events: [
+    {
+      id: 'event1',
+      title: 'Title',
+      start: '2020-09-25'
+    }
+    ]
   });
 
   calendar.render();
-
   calendar.on('dateClick', function(info) {
     alert('clicked on ' + info.dateStr);
   });
 });
+
+
+
