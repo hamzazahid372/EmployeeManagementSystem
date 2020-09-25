@@ -29,5 +29,4 @@ class ApplicationController < ActionController::Base
   ensure
     Current.reset
   end
-
 end

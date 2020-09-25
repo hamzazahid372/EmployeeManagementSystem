@@ -5,13 +5,12 @@ class TasksController < ApplicationController
   include TaskFilters
 
   load_and_authorize_resource find_by: :sequence_num
-  # respond_to :html, :js
 
   def index
     @tasks = apply_filters(@tasks, params)
+    @tasks = @tasks.page(params[:page]).per_page(5)
     @users = User.all
     @projects = Project.all
-    binding.pry
     respond_to do |format|
       format.html
       format.js
@@ -19,16 +18,25 @@ class TasksController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+    end
   end
 
   def new
     @users = User.all
     @projects = Project.all
+    respond_to do |format|
+      format.html
+    end
   end
 
   def edit
     @users = User.all
     @projects = Project.all
+    respond_to do |format|
+      format.html
+    end
   end
 
   def create
@@ -43,6 +51,9 @@ class TasksController < ApplicationController
       @projects = Project.all
       render :new
     end
+    respond_to do |format|
+      format.html
+    end
   end
 
   def update
@@ -56,6 +67,9 @@ class TasksController < ApplicationController
       @projects = Project.all
       render :edit
     end
+    respond_to do |format|
+      format.html
+    end
   end
 
   def destroy
@@ -65,6 +79,9 @@ class TasksController < ApplicationController
     else
       flash[:notice] = t 'task.not_destroyed'
     end
+    respond_to do |format|
+      format.html
+    end
   end
 
   private
@@ -73,6 +90,6 @@ class TasksController < ApplicationController
     params.require(:task).permit(:title, :description, :start_date, :end_date,
                                  :due_date, :expected_start_date, :expected_end_date,
                                  :priority, :status, :assignable_id,
-                                 :assignable_type, :progress, :sequence_num, :project_id)
+                                 :assignable_type, :progress, :sequence_num, :project_id, :page)
   end
 end
