@@ -57,3 +57,10 @@ en:
      created: 'Project created successfully'
      updated: "Project updated successfully"
      destroyed: "Project deleted successfully"
+  comments:
+    created: 'Comment created successfully'
+    not_created: 'Comment creation failed'
+    destroyed: 'Comment deleted successfully'
+    not_destroyed: 'Comment deletion failed'
+    updated: 'Comment updated successfully'
+    not_updated: 'Comment updation failed'

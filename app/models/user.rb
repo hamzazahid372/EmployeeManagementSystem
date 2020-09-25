@@ -16,7 +16,8 @@ class User < ApplicationRecord
   belongs_to :department, optional: true
   has_many :teams, through: :users_teams
   has_many :users_teams, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :created_comments, class_name: 'Comment', dependent: :destroy
   has_many :created_projects, class_name: 'Project', dependent: :destroy, foreign_key: 'created_by_id'
   has_many :attendances, dependent: :destroy
   has_many :time_logs, dependent: :destroy
@@ -42,15 +43,13 @@ class User < ApplicationRecord
     return true if role_id == 1
   end
 
+  def full_name
+    first_name + last_name
+  end
+
   protected
 
   def confirmation_required?
     created_at < 7.days.ago
-  end
-
-  public
-
-  def admin?
-    true
   end
 end

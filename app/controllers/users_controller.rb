@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     @user.role_id = user_params[:role_id]
 
     flash[:error] = @user.errors.full_messages.join('<br/>').html_safe unless @user.valid?
- 
+
     redirect_to edit_user_path(@user) and return unless @user.valid?
 
     begin
