@@ -32,6 +32,8 @@
 en:
   project_new: 'New Project'
   project_update: 'Update Project'
+  event_new: 'New Event'
+  event_update: 'Update Event'
   project_title: 'Title'
   project_description: 'Description'
   project_status: 'Status'
@@ -39,6 +41,9 @@ en:
   project_end_date: 'End Date'
   project_expected_start_date: 'Expected Start Date'
   project_expected_end_date: 'Expected End Date'
+  event_title: 'Title'
+  event_description: 'Description'
+  event_date: 'Date'
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:
@@ -57,3 +62,12 @@ en:
      created: 'Project created successfully'
      updated: "Project updated successfully"
      destroyed: "Project deleted successfully"
+  event:
+    success:
+     created: 'Project created successfully'
+     updated: "Project updated successfully"
+     destroyed: "Project deleted successfully"
+    failure:
+      name_short: 'Name too short'
+      date_presence: 'Date cannot be empty'
+
