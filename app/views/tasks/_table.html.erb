@@ -4,6 +4,7 @@
     <th><%= t(:task_title) %></th>
     <th><%= t(:task_project_title) %></th>
     <th><%= t(:task_assignee) %></th>
+    <th><%= t(:task_created_by) %></th>
     <th><%= t(:task_status) %></th>
     <th><%= t(:task_priority) %></th>
     <th><%= t(:task_created) %></th>
@@ -17,9 +18,10 @@
       <td><%= link_to task.title, task_path(task) %> </td>
       <td> <%= link_to Project.find(task.project_id).name, project_path(Project.find task.project_id) %> </td>
       <td> <%= link_to User.find(task.assignable_id).first_name + " " + User.find(task.assignable_id).last_name, user_path(User.find task.assignable_id) %> </td>
+      <td> <%= link_to User.find(task.created_by_id).first_name + " " + User.find(task.created_by_id).last_name, user_path(User.find task.created_by_id) %> </td>
       <td> <%= task.status %> </td>
       <td> <%= Task::PRIORITY.key task.priority %> </td>
-      <td> <%= task.start_date&.to_s(:long) %> </td>
+      <td> <%= task.created_at&.to_s(:long) %> </td>
       <td> <%= task.due_date&.to_s(:long) %> </td>
     </tr>        
   <% end %>

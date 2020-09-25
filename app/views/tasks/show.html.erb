@@ -25,6 +25,18 @@
           <td><%= @task&.progress %></td>
         </tr>
         <tr>
+          <th><%= t(:task_created_by) %></th>
+          <td><%= User.find(@task&.created_by_id).first_name + " " + User.find(@task&.created_by_id).last_name %></td>
+        </tr>
+        <tr>
+          <th><%= t(:task_assignee) %></th>
+          <td><%= User.find(@task&.assignable_id).first_name + " " + User.find(@task&.assignable_id).last_name %></td>
+        </tr>
+        <tr>
+          <th><%= t(:task_project_id) %></th>
+          <td><%= Project.find(@task&.project_id).name %></td>
+        </tr>
+        <tr>
           <th><%= t(:task_due_date) %></th>
           <td><%= @task.due_date&.to_s(:long) %></td>
         </tr>
