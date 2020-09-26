@@ -6,28 +6,28 @@
     <div class="col-lg-3">
       <div class="form-group">
         <%= label_tag t(:task_project_id) %>
-        <%= select_tag t(:task_project_id), options_for_select( @projects.collect{ |p| [p.name,p.id] }.unshift(['All',''])), { class: "form-control" }  %>
+        <%= select_tag t(:task_project_filter), options_for_select( @projects.collect{ |p| [p.name,p.id] }.unshift(['All',''])), { class: "form-control data-filter" }  %>
       </div>
     </div>
 
     <div class="col-lg-3">
       <div class="form-group">
         <%= label_tag t(:task_priority) %>
-        <%= select_tag :priority, options_for_select(Task::PRIORITY.merge('All'=>'').reverse_each()), class: "form-control"  %>
+        <%= select_tag :priority, options_for_select(Task::PRIORITY.merge('All'=>'').reverse_each()), class: "form-control data-filter"  %>
       </div>
     </div>
 
     <div class="col-lg-3">
       <div class="form-group">
         <%= label_tag t(:task_status) %>
-        <%= select_tag :status, options_for_select(Task::STATUS.merge('All'=>'').reverse_each()), {class: "form-control"} %>
+        <%= select_tag :status, options_for_select(Task::STATUS.merge('All'=>'').reverse_each()), {class: "form-control data-filter"} %>
       </div>
     </div>
 
     <div class="col-lg-3">
       <div class="form-group">
         <%= label_tag t(:task_assignable_id) %>
-        <%= select_tag :assignable_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }.unshift(['All',''])), {class: "form-control"} %>
+        <%= select_tag :assignable_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }.unshift(['All',''])), {class: "form-control data-filter"} %>
       </div>
     </div>
   </div>

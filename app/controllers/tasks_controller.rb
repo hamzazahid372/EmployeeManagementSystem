@@ -8,7 +8,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = apply_filters(@tasks, params)
-    @tasks = @tasks.page(params[:page]).per_page(5)
+    @tasks = @tasks.page(params[:page]).per_page(PER_PAGE)
     @users = User.all
     @projects = Project.all
     respond_to do |format|
