@@ -35,7 +35,6 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/ }
   validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/ }
-  validates :department_id, presence: true, format: { with: /\A\d+\z/ }
   validates :role_id, presence: true, format: { with: /\A\d+\z/ }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
 
