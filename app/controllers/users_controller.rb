@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def index
     redirect_to new_user_session_path and return if Current.company_id.nil?
 
-    @users = User.all
+    @users = Current.company.users
     respond_to do |format|
       format.html
     end
@@ -30,8 +30,8 @@ class UsersController < ApplicationController
 
   def create
     success = true
-    @user = User.new(user_params)
-    flash[:error] = @user.errors.full_messages.join('<br/>').html_safe if !@user.valid?
+    @user = Current.company.users.new(user_params)
+    flash[:error] = @user.errors.full_messages.join('<br/>').html_safe unless @user.valid?
 
     render new_user_path and return unless @user.valid?
 
@@ -51,10 +51,7 @@ class UsersController < ApplicationController
 
   def update
     success = true
-    @user.first_name = user_params[:first_name]
-    @user.last_name = user_params[:last_name]
-    @user.department_id = user_params[:department_id]
-    @user.role_id = user_params[:role_id]
+    @user.assign_attributes(user_params)
 
     flash[:error] = @user.errors.full_messages.join('<br/>').html_safe unless @user.valid?
 
@@ -64,7 +61,7 @@ class UsersController < ApplicationController
       User.transaction do
         @user.update! user_params
       end
-    rescue Exception
+    rescue ActiveRecord::RecordNotSaved
       success = false
     end
     if success
