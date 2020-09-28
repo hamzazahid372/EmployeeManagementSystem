@@ -1,0 +1,3 @@
+$("#comment_content").val(" ")
+$("#new_comment").after("<%= j render @comment %>")
+$("#comment-<%= @comment.id %>").hide().fadeIn()
