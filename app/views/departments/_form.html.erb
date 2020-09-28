@@ -3,21 +3,21 @@
     <div class='row'>
       <div class='col-lg-12'>
         <div class='form-group'>
-        <%= form.label :name , class: 'h4 font-weight-bold text-dark' %>
-        <%= form.text_field :name, class: 'form-control border-dark  w-75', required: true, minlength: 3 %>
+          <%= form.label :name , class: 'h4 font-weight-bold text-dark' %>
+          <%= form.text_field :name, class: 'form-control border-dark  w-75', required: true, minlength: 3 %>
+        </div>
       </div>
     </div>
-  </div>
     <div class='row'>
       <div class='col-lg-12'>
         <div class='form-group'>
-        <%= form.label :description, class: 'h4 font-weight-bold text-dark' %>
-        <%= form.text_area :description, class: 'form-control border-dark w-75', rows: 5 %>
+          <%= form.label :description, class: 'h4 font-weight-bold text-dark' %>
+          <%= form.text_area :description, class: 'form-control border-dark w-75', rows: 5 %>
+        </div>
       </div>
     </div>
-  </div>
-      <%= form.submit class: 'btn btn-dark' %>
-      <%= link_to 'Back', departments_new_path, class: 'btn btn-dark' %>
+    <%= form.submit class: 'btn btn-dark' %>
+    <%= link_to 'Back', new_department_path, class: 'btn btn-dark' %>
   </div>
 <% end %>
 

@@ -1,6 +1,6 @@
 <%= javascript_pack_tag 'department', 'data-turbolinks-track': 'reload' %>
 <div class="container-fluid">
-  <h1>Projects</h1>
+  <h1>Departments</h1>
   <div class="table-responsive">
       <table id="departments-datatable" class="table table-hover">
         <thead>
@@ -12,7 +12,7 @@
         <tbody>
         <% @departments.each do |department| %>
           <tr>
-            <td><%= link_to department.name, department_path(department) %> </td>
+            <td><%= link_to department.name, department_path(department.sequence_num) %> </td>
             <td> <%= department.description %> </td>
           </tr>
         <% end %>

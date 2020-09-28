@@ -6,21 +6,21 @@ class DepartmentsController < ApplicationController
     end
   end
 
-def create
-  success = true
-  if @department.save
-    flash[:notice] = t 'department.created'
-  else
-    flash[:error] = t 'department.failure.name_short'
-    success = false
-  end
-  respond_to do |format|
-    if success
-      format.html { redirect_to @department }
+  def create
+    success = true
+    if @department.save
+      flash[:notice] = t 'department.created'
     else
-      format.html { render 'new' }
+      flash[:error] = errors.full_messages
+      success = false
     end
-  end
+    respond_to do |format|
+      if success
+        format.html { redirect_to @department }
+      else
+        format.html { render 'new' }
+      end
+    end
   end
 
   def edit
@@ -69,7 +69,7 @@ def create
       if success
         format.html { redirect_to @department }
       else
-        format.html {redirect_to 'index'}
+        format.html {redirect_to 'show'}
       end
     end
   end
