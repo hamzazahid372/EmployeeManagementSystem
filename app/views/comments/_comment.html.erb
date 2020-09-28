@@ -3,8 +3,10 @@
     </br>
     <div class="card">
       <div class="card-header">
-        <div class="w-25 float-left"><%= comment.user.full_name %></div>
-        <div class="text-center w-50 float-left"><%=comment.created_at %></div>
+        <div class="w-75 float-left">
+          <div class="float-left font-weight-bold pr-3"><%= comment.user.full_name %></div>
+          <div class="text-left font-weight-normal"><%= time_ago_in_words(comment.created_at) %></div>
+        </div>
         <div class="float-right  w-25 float-left">
             <%= link_to "Delete", comment_path(comment), method: 'delete', class: 'my-2 my-sm-0 float-right mr-3', data: { confirm: 'Are you sure you want to delete?' }, remote: true%>
             <%= link_to "Edit", edit_comment_path(comment), class: 'my-2 my-sm-0 float-right mr-3', remote: true %>
