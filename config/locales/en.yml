@@ -93,6 +93,13 @@ en:
       cannot_destroyed: 'This project cannot be destroyed'
   cancan:
     access_denied: 'You are not authorized to access this page'
+  comments:
+    created: 'Comment created successfully'
+    not_created: 'Comment creation failed'
+    destroyed: 'Comment deleted successfully'
+    not_destroyed: 'Comment deletion failed'
+    updated: 'Comment updated successfully'
+    not_updated: 'Comment updation failed'
   task:
      created: 'Task created successfully'
      updated: 'Task updated successfully'
