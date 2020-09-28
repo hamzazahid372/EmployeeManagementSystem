@@ -8,7 +8,6 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :last_name, null: false
       t.integer :role_id, index: true
       t.integer :company_id, null: false, index: true
-      t.integer :sequence_num, index: true
       t.integer :department_id, index: true
       t.boolean :active, null: false, default: true
       t.timestamps

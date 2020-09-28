@@ -1,0 +1,27 @@
+<table id="teams_table" data-turbolinks="false" class="table table-hover">
+  <thead>
+  <tr>
+    <th><%= t(:team_name) %></th>
+    <th><%= t(:team_description) %></th>
+    <th><%= t(:team_created_by) %></th>
+    <th><%= t(:team_lead_by) %></th>
+    <th><%= t(:team_created_at) %></th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <% @teams.collect do |task| %>
+    <tr>
+      <td><%= link_to team.name, team_path(team) %> </td>
+      <td> <%= team.status %> </td>
+      <td> <%= team.created_by %> </td>
+      
+      <td> <%= link_to User.find(team.created_by_id).first_name + " " + User.find(team.created_by_id).last_name, user_path(User.find team.created_by_id) %> </td>
+      <td> <%= link_to User.find(team.lead_id).first_name + " " + User.find(team.lead_id).last_name, user_path(User.find team.lead_id) %> </td>
+      <td> <%= team.created_at&.to_s(:long) %> </td>
+      
+    </tr>        
+  <% end %>
+   
+  </tbody>
+</table>

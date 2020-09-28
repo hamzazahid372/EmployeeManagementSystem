@@ -30,9 +30,40 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  project_new: 'New Project'
+  project_update: 'Update Project'
+  project_title: 'Title'
+  project_description: 'Description'
+  project_status: 'Status'
+  project_start_date: 'Start Date'
+  project_end_date: 'End Date'
+  project_expected_start_date: 'Expected Start Date'
+  project_expected_end_date: 'Expected End Date'
+
+  team_heading: 'Team'
+  team_name: 'Name'
+  team_description: 'Description'
+  team_lead_id: 'Lead'
+  team_created_id: 'Created By'
+  team_create: 'Create'
+  team_update: 'Update'
+  team_created_at: 'Date of Creation'
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:
     email_not_recognized: 'We could not recognize this email address'
     email_empty: 'Email cannot be empty'
+  users:
+    created_successfully: 'User created successfully'
+    email_in_use: 'Email already in use'
+    account_updated: 'Account updated successfully'
+    account_not_updated: 'Account updation failed'
+    account_deleted: 'Account deleted successfully'
+    account_not_deleted: 'Account deletion failed'
+  cancan:
+    access_denied: 'Access denied'
+  project:
+     created: 'Project created successfully'
+     updated: "Project updated successfully"
+     destroyed: "Project deleted successfully"
+  team

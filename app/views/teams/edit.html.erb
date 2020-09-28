@@ -1,4 +1,4 @@
 <div class="container-fluid">
-  <h1>Update Team</h1>
+  <h1> <%= t(:team_update) %> </h1>
 </div>
-<%= render :partial => "new_edit" %>
+<%= render partial: "form",locals: {team: @team} %>
