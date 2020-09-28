@@ -1,5 +1,4 @@
  <br><br>
-<% require 'date' %>
 <%= form_for @event  do |form| %>
   <div class="container-fluid">
     <%= form.label @event.title, class: 'h1 font-weight-bold text-dark' %>
@@ -13,8 +12,13 @@
           <th><%= t(:event_description) %></th>
           <td><%= @event.description %></td>
         </tr>
-          <th><%= t(:event_date) %></th>
-          <td><%= Date.parse((@event.event_date).to_s)unless @event.event_date.nil? %></td>
+        <tr>
+          <th><%= t(:start) %></th>
+          <td><%= Date.parse((@event.start).to_s)unless @event.start.nil? %></td>
+        </tr>
+        <tr>
+          <th><%= t(:end) %></th>
+          <td><%= Date.parse((@event.end).to_s)unless @event.end.nil? %></td>
         </tr>
       </tbody>
     </table>

@@ -74,6 +74,7 @@ class UsersController < ApplicationController
 
   def destroy
     success = true
+    binding.pry
     begin
       User.transaction do
         @user.destroy!

@@ -11,13 +11,6 @@ require("jquery")
 require("bootstrap")
 require("datatables.net-bs4");
 require("bootstrap-datepicker");
-import { Calendar } from '@fullcalendar/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction';
-// require("fullcalendar");
-require("moment");
-import "@fortawesome/fontawesome-free/js/all";
-
 global.$ = jQuery;
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -26,25 +19,5 @@ global.$ = jQuery;
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
-
-  var calendar = new Calendar(calendarEl, {
-    plugins: [ dayGridPlugin, interactionPlugin ],
-    events: [
-    {
-      id: 'event1',
-      title: 'Title',
-      start: '2020-09-25'
-    }
-    ]
-  });
-
-  calendar.render();
-  calendar.on('dateClick', function(info) {
-    alert('clicked on ' + info.dateStr);
-  });
-});
-
 
 

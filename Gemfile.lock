@@ -242,7 +242,6 @@ DEPENDENCIES
   devise (~> 4.7, >= 4.7.2)
   fullcalendar-rails
   jbuilder (~> 2.7)
-  listen (~> 3.2)
   momentjs-rails
   mysql2 (>= 0.4.4)
   pry

@@ -3,25 +3,22 @@ class EventsController < ApplicationController
   def index
     respond_to do |format|
       format.html
+      format.json do
+        render json: @events.to_json(:only => [:id, :title, :start, :end])
+      end
     end
   end
 
   def create
-    success = true
     @event.created_by_id = current_user.id
     if @event.save
-      flash[:notice] = t 'event.success.created'
+      flash.now[:notice] = t 'event.success.created'
     else
       errors = @event.errors.full_messages.join(', ')
-      flash[:error] = errors
-      success = false
+      flash.now[:error] = errors
     end
     respond_to do |format|
-      if success
-        format.html { redirect_to @event }
-      else
-        format.html { render 'new' }
-      end
+      format.js
     end
   end
 
@@ -50,6 +47,7 @@ class EventsController < ApplicationController
   def new
     respond_to do |format|
       format.html
+      format.js
     end
   end
 
@@ -71,6 +69,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:event_date, :title, :description, :sequence_num, :created_by_id)
+    params.require(:event).permit(:start, :title, :description, :sequence_num, :created_by_id, :end)
   end
 end

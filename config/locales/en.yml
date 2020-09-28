@@ -64,9 +64,9 @@ en:
      destroyed: "Project deleted successfully"
   event:
     success:
-     created: 'Project created successfully'
-     updated: "Project updated successfully"
-     destroyed: "Project deleted successfully"
+     created: 'Event created successfully'
+     updated: "Event updated successfully"
+     destroyed: "Event deleted successfully"
     failure:
       name_short: 'Name too short'
       date_presence: 'Date cannot be empty'
