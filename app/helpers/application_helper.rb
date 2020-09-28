@@ -7,4 +7,13 @@ module ApplicationHelper
     when :alert then 'alert alert-warning'
     end
   end
+
+  def get_resource_tabs(resource)
+    resource_tabs = {
+      user: %w[comments],
+      project: %w[comments],
+      task: %w[comments]
+    }
+    resource_tabs[resource] || []
+  end
 end

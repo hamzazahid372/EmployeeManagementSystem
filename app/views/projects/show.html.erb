@@ -1,4 +1,6 @@
- <br><br>
+ <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
+
+<br><br>
 <% require 'date' %>
 <%= form_for @project  do |form| %>
   <div class="container-fluid">
@@ -47,3 +49,5 @@
     </div>
   </div>
 <% end %>
+
+<%= render partial: 'shared/tabs', locals: {resource: :project} %>

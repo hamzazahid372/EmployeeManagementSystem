@@ -1,0 +1,17 @@
+<%= form_for([commentable, comment], remote: true) do |form| %>
+  <div class='container-fluid w-75 mb-5'>
+    <div class='form-group'>
+      <%= form.label :message, class: 'h4 text-dark' %>
+      <%= form.text_area :content, class: 'form-control border-dark w-100', rows: 5, required: true %>
+    </div>
+    <div class="actions float-right">
+      <% if comment.new_record? %>
+        <% submit_label = 'Add comment' %>
+      <% else %>
+        <% submit_label = 'Update comment' %>
+        <%= link_to "Cancel", comment_path(comment), method: 'get', class: 'btn btn-dark my-2 my-sm-0 float-right ml-3', remote: true %>
+      <% end %>
+      <%= form.submit submit_label, class: 'btn btn-dark' %>
+    </div>
+  </div>
+<% end %>
