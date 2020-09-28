@@ -11,4 +11,10 @@ class TimeLog < ApplicationRecord
     'Development' => 2,
     'Testing' => 3
   }.freeze
+
+  ROLES_REVERSE = {
+    1 => 'Design',
+    2 => 'Development',
+    3 => 'Testing'
+  }.freeze
 end

@@ -19,22 +19,14 @@ class TimeLogsController < ApplicationController
   def create
     @time_log.user_id = current_user.id
     @time_log.assign_attributes(time_log_params)
-    @time_log.save!
+    if @time_log.save
+      flash.now[:notice] = t 'time_log.created'
+    else
+      flash.now[:error] = t 'time_log.not_created'
+    end
     respond_to do |format|
       format.js # create.js.erb
     end
-  end
-
-  def destroy
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def show
   end
 
   def time_log_params

@@ -95,3 +95,6 @@ en:
      invalid_end_date: 'cannot be less than start date'
      invalid_expected_end_date: 'cannot be less than expected start date'
      invalid_due_date: 'cannot be less than start date'
+  time_log:
+    created: 'Time log created successfully'
+    not_created: 'Time log creation failed'

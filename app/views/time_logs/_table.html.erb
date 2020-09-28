@@ -7,6 +7,7 @@
         <tr>
           <th>User</th>
           <th>Hours</th>
+          <th>Activity</th>
           <th>Comment</th>
         </tr>
         </thead>
@@ -15,6 +16,7 @@
           <tr>
             <td> <%= log.user.full_name %> </td>
             <td> <%= log.hours %> </td>
+            <td> <%= TimeLog::ROLES_REVERSE[log.activity_id] %> </td>
             <td> <%= log.comment %> </td>
           </tr>
         <% end %>
