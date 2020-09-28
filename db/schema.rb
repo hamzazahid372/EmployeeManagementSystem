@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_125201) do
+ActiveRecord::Schema.define(version: 2020_09_18_135217) do
+
   create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "company_id", null: false
     t.integer "attachable_id", null: false
@@ -153,11 +154,13 @@ ActiveRecord::Schema.define(version: 2020_09_18_125201) do
     t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sequence_num", null: false
     t.index ["assignable_id", "assignable_type"], name: "index_tasks_on_assignable_id_and_assignable_type"
     t.index ["created_by_id"], name: "index_tasks_on_created_by_id"
     t.index ["parent_id"], name: "index_tasks_on_parent_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
     t.index ["reviewer_id"], name: "index_tasks_on_reviewer_id"
+    t.index ["sequence_num", "company_id"], name: "index_tasks_on_sequence_num_and_company_id", unique: true
   end
 
   create_table "tasks_watchers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
