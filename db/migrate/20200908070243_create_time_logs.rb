@@ -8,6 +8,8 @@ class CreateTimeLogs < ActiveRecord::Migration[6.0]
       t.integer :company_id, null: false, index: true
       t.integer :user_id, null: false, index: true
       t.decimal :hours, precision: 5, scale: 2
+      t.integer :activity_id
+      t.string :comment
       t.timestamps
     end
   end

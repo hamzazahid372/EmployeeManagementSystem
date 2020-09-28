@@ -1,0 +1,29 @@
+
+<div class="container-fluid">
+  <h1>Time Logs</h1>
+  <div class="table-responsive">
+      <table id="time_log-datatable" class="table table-hover">
+        <thead>
+        <tr>
+          <th>User</th>
+          <th>Hours</th>
+          <th>Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @time_logs.each do |log| %>
+          <tr>
+            <td> <%= log.user.full_name %> </td>
+            <td> <%= log.hours %> </td>
+            <td> <%= log.comment %> </td>
+          </tr>
+        <% end %>
+
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<div class="digg_pagination" style="margin-left: 40%;">
+  <%= js_will_paginate @time_logs %>
+</div>

@@ -18,6 +18,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    @time_log = TimeLog.new
     respond_to do |format|
       format.html
     end

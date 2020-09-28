@@ -1,0 +1,2 @@
+$("#time-log-modal").fadeIn().modal("show")
+$("#time-log-modal-body").html("<%= j render(partial: 'time_logs/form', locals: { task: @task, time_log: @time_log }) %>")
