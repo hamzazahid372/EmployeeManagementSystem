@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
       format.html { redirect_to root_url }
     end
   end
+
   def after_sign_out_path_for(resource)
     new_user_session_url
   end
