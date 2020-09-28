@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   devise_for :user, controllers: { registrations: 'registrations', sessions: 'sessions' }
   root to: 'home#index'
   resources :tasks
+  resources :teams
 end
