@@ -4,7 +4,7 @@ class TimeLogsController < ApplicationController
 
   def index
     @time_logs = @time_logs.includes(:user)
-    @time_logs = @time_logs.page(params[:page]).per_page(5)
+    @time_logs = @time_logs.page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
       format.js # index.js.erb
     end
@@ -18,7 +18,6 @@ class TimeLogsController < ApplicationController
 
   def create
     @time_log.user_id = current_user.id
-    @time_log.assign_attributes(time_log_params)
     if @time_log.save
       flash.now[:notice] = t 'time_log.created'
     else

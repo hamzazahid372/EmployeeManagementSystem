@@ -16,7 +16,7 @@
           <tr>
             <td> <%= log.user.full_name %> </td>
             <td> <%= log.hours %> </td>
-            <td> <%= TimeLog::ROLES_REVERSE[log.activity_id] %> </td>
+            <td> <%= TimeLog::ACTIVITIES_REVERSE[log.activity_id] %> </td>
             <td> <%= log.comment %> </td>
           </tr>
         <% end %>

@@ -6,13 +6,13 @@ class TimeLog < ApplicationRecord
   belongs_to :company
   belongs_to :user
 
-  ROLES = {
+  ACTIVITIES = {
     'Design' => 1,
     'Development' => 2,
     'Testing' => 3
   }.freeze
 
-  ROLES_REVERSE = {
+  ACTIVITIES_REVERSE = {
     1 => 'Design',
     2 => 'Development',
     3 => 'Testing'
