@@ -17,7 +17,8 @@
     <% end %>
 
     <%= button_to 'Watch', task_path(@task), class: 'ml-3 btn btn-dark' %>
-    <%= button_to 'Add Watcher', task_path(@task), class: 'ml-3 btn btn-dark' %>
+    <%= link_to 'Add Watcher', task_path(@task), class: 'ml-3 btn btn-dark', remote: true %>
+
     <%= button_to 'Remove Watcher', task_path(@task), class: 'ml-3 btn btn-dark',
     method: :delete, data: { confirm: 'Are you sure you want to delete watcher?' } %>
     <%= button_to 'Log Time', new_task_time_log_path(@task), method: 'get', action: 'new', class: 'ml-3 btn btn-dark', remote: true %>
