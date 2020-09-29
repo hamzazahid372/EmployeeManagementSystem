@@ -1,0 +1,6 @@
+$("#time_logs-tab-content").addClass('m-4').html("<%= j render partial: 'time_logs/table' %>")
+$('#time_log-datatable').DataTable({
+    info: false,
+    paging: false,
+    searching: false
+});

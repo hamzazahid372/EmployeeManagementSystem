@@ -5,4 +5,16 @@ class TimeLog < ApplicationRecord
   belongs_to :task
   belongs_to :company
   belongs_to :user
+
+  ACTIVITIES = {
+    'Design' => 1,
+    'Development' => 2,
+    'Testing' => 3
+  }.freeze
+
+  ACTIVITIES_REVERSE = {
+    1 => 'Design',
+    2 => 'Development',
+    3 => 'Testing'
+  }.freeze
 end
