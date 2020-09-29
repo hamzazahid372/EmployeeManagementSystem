@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     flash[:error] = t 'cancan.access_denied'
     respond_to do |format|
       format.html { redirect_to root_url }
+      format.js { render js: "alert('Access Denied');" }
     end
   end
 

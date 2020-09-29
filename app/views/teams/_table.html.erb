@@ -4,18 +4,16 @@
     <th><%= t(:team_name) %></th>
     <th><%= t(:team_description) %></th>
     <th><%= t(:team_created_by) %></th>
-    <th><%= t(:team_lead_by) %></th>
+    <th><%= t(:team_lead_name) %></th>
     <th><%= t(:team_created_at) %></th>
   </tr>
   </thead>
   <tbody>
   
-  <% @teams.collect do |task| %>
+  <% @teams.collect do |team| %>
     <tr>
       <td><%= link_to team.name, team_path(team) %> </td>
-      <td> <%= team.status %> </td>
-      <td> <%= team.created_by %> </td>
-      
+      <td> <%= team.description %> </td>
       <td> <%= link_to User.find(team.created_by_id).first_name + " " + User.find(team.created_by_id).last_name, user_path(User.find team.created_by_id) %> </td>
       <td> <%= link_to User.find(team.lead_id).first_name + " " + User.find(team.lead_id).last_name, user_path(User.find team.lead_id) %> </td>
       <td> <%= team.created_at&.to_s(:long) %> </td>

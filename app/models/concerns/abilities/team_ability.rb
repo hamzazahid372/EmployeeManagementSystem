@@ -9,13 +9,8 @@ module Abilities
     end
 
     def define_team_abilities_for_employee(user)
-      can %i[read create], Team
-      can :update, Team do |team|
-        team.try(:user) == user
-      end
-      can :destroy, Team do |team|
-        team.try(:user) == user
-      end
+      can %i[read create], Team, company_id: user.company_id
+      can :update, Team, created_by_id: user.id, company_id: user.company_id
     end
   end
 end

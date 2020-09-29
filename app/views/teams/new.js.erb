@@ -1,0 +1,40 @@
+<div class="modal" id="users-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add Users</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%= form_for team do |form| %>
+          
+          <div class="container-fluid">
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <%= form.label t(:user_name) %>
+                  <%= form.text_field t(:user_name), class: 'form-control', required: true, minlength: 3 %>
+                </div>
+              </div>
+            </div>
+
+            <%= form.submit class: 'btn btn-dark' %>
+
+          </div>
+
+        <% end %>
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
