@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :teams do
     resources :users_teams, shallow: true
+    resources :comments, shallow: true
   end
   resources :tasks do
     resources :time_logs

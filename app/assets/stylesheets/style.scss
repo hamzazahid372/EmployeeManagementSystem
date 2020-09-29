@@ -18,6 +18,8 @@
 }
 
 .digg_pagination {
+  display: flex !important;
+  justify-content: center !important;
   background: white;
   cursor: default;
   /* self-clearing method: */ }

@@ -32,9 +32,6 @@ class User < ApplicationRecord
   has_many :watching_tasks, through: :tasks_watchers, source: :task
   has_many :projects_users, dependent: :destroy
   has_many :projects, through: :projects_users
-  def admin?
-    true
-  end
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -42,7 +39,7 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { scope: :company_id }
 
   def admin?
-    role_id == User::ROLES['Administrator']
+    role_id == User::ROLES.fetch('Administrator')
   end
 
   def account_owner?

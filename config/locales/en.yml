@@ -112,3 +112,11 @@ en:
     not_created: 'Time log creation failed'
   users_team:
     created: 'User added in team successfully'
+    destroyed: 'User removed from this team successfully'
+    not_destroyed: 'User not removed from this team'
+  team:
+    created: 'Team created successfully'
+    destroyed: 'Team removed successfully'
+    updated: 'Team updated successfully'
+    not_destroyed: 'Team not removed'
+     

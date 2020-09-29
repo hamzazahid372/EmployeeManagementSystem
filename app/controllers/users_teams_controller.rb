@@ -2,13 +2,16 @@
 
 # Task Controller
 class UsersTeamsController < ApplicationController
-  load_and_authorize_resource :team
-  load_and_authorize_resource through: :team
+  load_and_authorize_resource :team, find_by: :sequence_num, only: %i[index create new]
+  load_and_authorize_resource through: :team, only: %i[index create new]
+  load_and_authorize_resource only: %i[destroy]
 
   def index
-  end
-
-  def show
+    @users_teams = @users_teams.includes(:user)
+    @users_teams = @users_teams.page(params[:page]).per_page(PER_PAGE)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new
@@ -17,27 +20,29 @@ class UsersTeamsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def create
     if @users_team.save
       flash[:notice] = t 'users_team.created'
-      redirect_to @team
     else
       errors = @users_team.errors.full_messages.join(', ')
       flash[:error] = errors
-      redirect_to @team
     end
+    redirect_to @team
     respond_to do |format|
       format.html
     end
   end
 
-  def update
-  end
-
   def destroy
+    if @users_team.destroy
+      flash[:notice] = t 'users_team.destroyed'
+    else
+      flash[:notice] = t 'users_team.not_destroyed'
+    end
+    redirect_to Team.find @users_team.team_id
+    respond_to do |format|
+      format.html
+    end
   end
 
   def users_team_params
