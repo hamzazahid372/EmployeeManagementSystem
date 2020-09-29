@@ -27,11 +27,16 @@ gem 'sequenceid', '=0.0.7', git: "https://github.com/alisyed/sequenceid.git", br
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# To generate fake data
+gem 'faker', '~> 1.6', '>= 1.6.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
   gem 'pry-rails'
+  # Rspec for test cases
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
 end
 
 group :development do
