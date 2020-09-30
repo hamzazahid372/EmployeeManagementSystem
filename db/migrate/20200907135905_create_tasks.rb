@@ -7,8 +7,7 @@ class CreateTasks < ActiveRecord::Migration[6.0]
       t.integer :company_id, null: false
       t.string :title, null: false
       t.text :description
-      t.integer :assignable_id
-      t.string :assignable_type
+      t.integer :assignee_id, index: true
       t.integer :created_by_id, index: true
       t.string :status, null: false
       t.datetime :due_date
@@ -23,6 +22,5 @@ class CreateTasks < ActiveRecord::Migration[6.0]
       t.references :parent
       t.timestamps
     end
-    add_index(:tasks, %i[assignable_id assignable_type])
   end
 end

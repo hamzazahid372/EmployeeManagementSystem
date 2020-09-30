@@ -1,0 +1,19 @@
+<%= javascript_pack_tag 'team' %>
+<div class="container-fluid">
+  <h1><%= t(:team_heading) %></h1>
+
+  <div class="btn-group" role="group" style="float: right;">
+    <% if can? :create, Team %>
+      <%= link_to 'Create Team', new_team_path, class: 'ml-3 btn btn-dark' %>
+    <% end %>
+  </div>
+  
+  <div class="table-responsive" id="table-parent-div">
+      <%= render partial: "table" %>
+  </div>  
+
+  <div class="digg_pagination">
+    <%= will_paginate @teams %>
+  </div>
+
+</div>
