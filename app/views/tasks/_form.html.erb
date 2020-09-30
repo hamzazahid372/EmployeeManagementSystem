@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'task' %>
 <%= form_for task do |form| %>
   
   <div class="container-fluid">
@@ -91,7 +92,7 @@
       <div class="col-lg-6">
         <div class="form-group">
           <%= form.label t(:task_assignee_id) %>
-          <%= form.select :assignee_id, options_for_select( @users.collect{ |u| [u.full_name,u.id] }), {}, {class: "form-control"} %>
+          <%= form.text_field :assignee_id, 'data-pre' => { id: task.assignee_id, name: task.assignee&.full_name }.to_json, class: 'form-control' %>
         </div>
       </div>
 

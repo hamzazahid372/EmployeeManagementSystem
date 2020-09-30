@@ -90,6 +90,6 @@ class TasksController < ApplicationController
     params.require(:task).permit(:title, :description, :start_date, :end_date,
                                  :due_date, :expected_start_date, :expected_end_date,
                                  :priority, :status, :assignee_id,
-                                 :progress, :sequence_num, :project_id, :page)
+                                 :progress, :project_id)
   end
 end

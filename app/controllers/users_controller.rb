@@ -93,7 +93,6 @@ class UsersController < ApplicationController
     @users = User.where('first_name like :q or last_name like :q', q: "%#{params[:q]}%")
     @users = @users.map { |u| { id: u.id, name: u.full_name } }
     respond_to do |format|
-      format.html
       format.json { render json: @users.to_json }
     end
   end

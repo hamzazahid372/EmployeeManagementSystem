@@ -26,8 +26,8 @@
 
     <div class="col-lg-3">
       <div class="form-group">
-        <%= label_tag t(:task_assignable_id) %>
-        <%= select_tag :assignable_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }.unshift(['All',''])), {class: "form-control data-filter"} %>
+        <%= label_tag t(:task_assignee) %>
+        <%= select_tag :assignee, options_for_select( @users.collect{ |u| [u.first_name,u.id] }.unshift(['All',''])), {class: "form-control data-filter"} %>
       </div>
     </div>
   </div>
