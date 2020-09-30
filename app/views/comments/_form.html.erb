@@ -6,7 +6,7 @@
     </div>
     <div class="actions float-right">
       <% if comment.new_record? %>
-        <% submit_label = 'Add comment' %>
+      <% submit_tag "Save edits" %>
       <% else %>
         <% submit_label = 'Update comment' %>
         <%= link_to "Cancel", comment_path(comment), method: 'get', class: 'btn btn-dark my-2 my-sm-0 float-right ml-3', remote: true %>

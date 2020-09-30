@@ -1,7 +1,6 @@
  <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
-
+ <%= javascript_pack_tag 'attachment', 'data-turbolinks-track': 'reload' %>
 <br><br>
-<% require 'date' %>
 <%= form_for @project  do |form| %>
   <div class="container-fluid">
     <%= form.label @project.name, class: 'h1 font-weight-bold text-dark' %>

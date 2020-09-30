@@ -39,6 +39,9 @@ en:
   project_end_date: 'End Date'
   project_expected_start_date: 'Expected Start Date'
   project_expected_end_date: 'Expected End Date'
+  file_name: 'File Name'
+  file_size: 'File Size'
+  file_uploaded_on: 'File uploaded on'
 
   task_create: 'Create Task'
   task_update: 'Update Task'

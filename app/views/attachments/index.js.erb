@@ -1,0 +1,6 @@
+$("#documents-tab-content").html("<%= j render(partial: 'shared/attachments') %>");
+$('#file-form').html("<%= j render( partial: 'attachment' ) %>");
+
+$(document).ready( function () {
+  $('#attachments-datatable').DataTable();
+} );

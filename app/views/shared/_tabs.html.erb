@@ -1,12 +1,13 @@
 <% tabs = get_resource_tabs(resource) %>
-<% tabs.each do |tab| %>
-  <ul class="nav nav-tabs" id="<%=tab%>" role="tablist">
+<ul class="nav nav-tabs" id="tabs" role="tablist">
+  <% tabs.each_with_index do |tab, i| %>
     <li class="nav-item" role="presentation">
-      <a class="nav-link active" id="<%=tab%>-tab" data-toggle="tab" href="#<%=tab%>-tab-content" role="tab" aria-controls="<%=tab%>-tab-content" aria-selected="true">Comments</a>
+      <a class="nav-link <%= 'active' if i.zero? %>" id="<%=tab%>-tab" data-toggle="tab" href="#<%=tab%>-tab-content" role="tab" aria-controls="<%=tab%>-tab-content" aria-selected="true"><%= tab.humanize %></a>
     </li>
-  </ul>
-  <div class="tab-content" id="<%=tab%>-tab-content-div">
-    <div class="tab-pane fade show active" id="<%=tab%>-tab-content" role="tabpanel" aria-labelledby="<%=tab%>-tab"></div>
-  </div>
-<% end %>
-
+  <% end %>
+</ul>
+<div class="tab-content" id="tabs-content">
+  <% tabs.each_with_index do |tab, i| %>
+    <div class="tab-pane fade show  <%= 'active' if i.zero? %>" id="<%=tab%>-tab-content" role="tabpanel" aria-labelledby="<%=tab%>-tab"><%= tab.humanize %></div>
+  <% end %>
+</div>

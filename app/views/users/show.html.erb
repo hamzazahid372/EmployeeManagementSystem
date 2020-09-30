@@ -1,4 +1,5 @@
 <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'attachment', 'data-turbolinks-track': 'reload' %>
 <br><br>
 
 
@@ -28,7 +29,7 @@
     </tr>
     <tr>
       <% if can? :manage, @user %>
-        <td><%= button_to 'Delete', users_path(@user), method: :delete, class: 'btn btn-dark ml-3', 
+        <td><%= button_to 'Delete', users_path(@user), method: :delete, class: 'btn btn-dark ml-3',
         data: { confirm: 'Are you sure you want to delete?' } %>
         </td>
         <td><%= button_to 'Update', edit_user_path(@user), method: 'get', class: 'btn btn-dark ml-3' %></td>

@@ -10,9 +10,9 @@ module ApplicationHelper
 
   def get_resource_tabs(resource)
     resource_tabs = {
-      user: %w[comments],
-      project: %w[comments],
-      task: %w[comments]
+      user: %w[comments documents],
+      project: %w[comments documents],
+      task: %w[comments documents]
     }
     resource_tabs[resource] || []
   end

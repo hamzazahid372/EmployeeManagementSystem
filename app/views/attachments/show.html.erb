@@ -1,0 +1,14 @@
+<% binding.pry %>
+<br /><br />
+<%= form_for @attachment  do |form| %>
+  <% if @attachment.attachment.url.include?'.png' || @attachment.attachment.url.include?'.jpg' || @attachment.attachment.url.include?'.peg' %>
+    <div class='container text-center'>
+      <%= image_tag @attachment.attachment.url, class: 'w-75' %>
+    </div>
+  <% end %>
+  <% if @attachment.attachment.url.include?'.pdf' %>
+    <div class='container text-center'>
+     <p><a href=@attachment.attachment.url></a>.</p>
+    </div>
+  <% end %>
+<% end %>
