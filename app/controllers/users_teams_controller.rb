@@ -27,9 +27,8 @@ class UsersTeamsController < ApplicationController
       errors = @users_team.errors.full_messages.join(', ')
       flash[:error] = errors
     end
-    redirect_to @team
     respond_to do |format|
-      format.html
+      format.js
     end
   end
 

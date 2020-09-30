@@ -13,7 +13,6 @@ $(document).ready( function () {
     if($("#team_lead_id").data("pre").id){
       pre[0] = $("#team_lead_id").data("pre");
     }
-    debugger
     $("#team_lead_id").tokenInput('/users/search.json', {
       theme: "facebook",
       tokenLimit: 1,

@@ -20,7 +20,6 @@ class TimeLogsController < ApplicationController
     @time_log.user_id = current_user.id
     if @time_log.save
       flash.now[:notice] = t 'time_log.created'
-      redirect_to @task
     else
       flash.now[:error] = t 'time_log.not_created'
     end
