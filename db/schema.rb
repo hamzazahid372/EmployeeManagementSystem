@@ -201,6 +201,8 @@ ActiveRecord::Schema.define(version: 2020_09_29_130639) do
     t.integer "company_id", null: false
     t.integer "user_id", null: false
     t.decimal "hours", precision: 5, scale: 2
+    t.integer "activity_id"
+    t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_time_logs_on_company_id"
