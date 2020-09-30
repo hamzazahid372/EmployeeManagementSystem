@@ -8,8 +8,8 @@
     </div>
     
       <% if current_user.nil? %>
-        <%= button_to "Sign Up", new_user_registration_path, method: 'get', class: 'btn btn-outline-success my-2 my-sm-0 float-right'%>
-        <%= button_to "Log In", user_companies_find_path, method: 'get', class: 'btn btn-outline-success my-2 my-sm-0 float-right mr-3'%>
+        <%= button_to "Sign Up", new_user_registration_path, method: 'get', class: 'btn btn-outline-light my-2 my-sm-0 float-right'%>
+        <%= button_to "Log In", user_companies_find_path, method: 'get', class: 'btn btn-outline-light my-2 my-sm-0 float-right mr-3'%>
       <% else %>
       <div class="float-right">
         <div class="nav-item dropdown">
