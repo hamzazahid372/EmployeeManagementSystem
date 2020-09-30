@@ -1,110 +1,110 @@
-<%= form_for task do |form| %>
-  
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="form-group">
-          <%= form.label t(:task_title) %>
-          <%= form.text_field :title, class: 'form-control', required: true, minlength: 3 %>
+<div class="container-fluid w-75 mt-5 pl-4 pr-4 pb-4">
+  <div class="card">
+    <% if task.new_record? %>
+      <h2 class="card-header font-weight-bold"><%= t(:task_create) %></h2>
+    <% else %>
+      <h2 class="card-header font-weight-bold"><%= t(:task_update) %></h2>
+    <% end %>
+    <div class="card-body container-fluid p-5">
+      <%= form_for task do |form| %>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <%= form.label t(:task_title) %>
+            <%= form.text_field :title, class: 'form-control border-info', required: true, minlength: 3 %>
+          </div>
         </div>
-      </div>
+
+        <div class="col-lg-12">  
+          <div class="form-group">
+            <%= form.label t(:task_description) %>
+            <%= form.text_area :description, class: 'form-control border-info', rows: 5 %>
+          </div>
+        </div>
+
+        <div class="row pl-3 pr-3">  
+          <div class="col-lg-6">
+            <div class="form-group">
+              <%= form.label t(:task_start_date) %>
+              <%= form.date_field :start_date, class: 'form-control border-info' %>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="form-group">
+              <%= form.label t(:task_end_date) %>
+              <%= form.date_field :end_date, class: 'form-control border-info' %>
+            </div>
+          
+          </div>
+        </div>
+
+        <div class="row pl-3 pr-3">  
+          <div class="col-lg-6">
+            <div class="form-group">
+              <%= form.label t(:task_expected_start_date) %>
+              <%= form.date_field :expected_start_date, class: 'form-control border-info' %>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="form-group">
+              <%= form.label t(:task_expected_end_date) %>
+              <%= form.date_field :expected_end_date, class: 'form-control border-info' %>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row pl-3 pr-3">  
+          <div class="col-lg-6">
+            <div class="form-group">
+              <%= form.label t(:task_due_date) %>
+              <%= form.date_field :due_date, class: 'form-control border-info' %>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="form-group">
+              <%= form.label t(:task_progress) %>
+              <%= form.number_field :progress, in: 0..100, :step => '1', class: 'form-control border-info'%>
+            </div>
+          </div>
+        </div>
+
+        <div class="row pl-3 pr-3">      
+          <div class="col-lg-6">
+            <div class="form-group">
+              <%= form.label t(:task_priority) %>
+              <%= form.select :priority, options_for_select(Task::PRIORITY), {}, class: 'form-control border-info' %>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="form-group">
+              <%= form.label t(:task_status) %>
+              <%= form.select :status, options_for_select(Task::STATUS), {}, class: 'form-control border-info' %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row pl-3 pr-3">          
+          <div class="col-lg-6">
+            <div class="form-group">
+              <%= form.label t(:task_assignable_id) %>
+              <%= form.select :assignable_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }), {}, {class: "form-control border-info"} %>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <%= form.label t(:task_project_id) %>
+              <%= form.select :project_id, options_for_select( @projects.collect{ |p| [p.name,p.id] }), {}, {class: "form-control border-info"} %>
+            </div>
+          </div>
+        </div>
+        <%= link_to 'Back', tasks_path, class: 'btn btn-dark float-right mr-3 mt-3' %>
+        <%= form.submit class: 'btn btn-dark float-right mr-3 mt-3' %>
+      <% end %>
     </div>
-
-    <div class="row">
-      <div class="col-lg-6">  
-        <div class="form-group">
-          <%= form.label t(:task_description) %>
-          <%= form.text_area :description, class: 'form-control', rows: 5 %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">  
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:task_start_date) %>
-          <%= form.date_field :start_date, class: 'form-control' %>
-        </div>
-      </div>
-
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:task_end_date) %>
-          <%= form.date_field :end_date, class: 'form-control' %>
-        </div>
-      
-      </div>
-    </div>
-
-    <div class="row">  
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:task_expected_start_date) %>
-          <%= form.date_field :expected_start_date, class: 'form-control' %>
-        </div>
-      </div>
-
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:task_expected_end_date) %>
-          <%= form.date_field :expected_end_date, class: 'form-control' %>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="row">  
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:task_due_date) %>
-          <%= form.date_field :due_date, class: 'form-control' %>
-        </div>
-      </div>
-
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:task_progress) %>
-          <%= form.number_field :progress, in: 0..100, :step => '1', class: 'form-control'%>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:task_priority) %>
-          <%= form.select :priority, options_for_select(Task::PRIORITY), {}, class: 'form-control' %>
-        </div>
-      </div>
-  
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:task_status) %>
-          <%= form.select :status, options_for_select(Task::STATUS), {}, class: 'form-control' %>
-        </div>
-      </div>
-    </div>
-    
-    <div class="row">
-      
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:task_assignable_id) %>
-          <%= form.select :assignable_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }), {}, {class: "form-control"} %>
-        </div>
-      </div>
-
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:task_project_id) %>
-          <%= form.select :project_id, options_for_select( @projects.collect{ |p| [p.name,p.id] }), {}, {class: "form-control"} %>
-        </div>
-      </div>
-    </div>
-    <%= link_to 'Back', tasks_path, class: 'btn btn-dark' %>
-    <%= form.submit class: 'btn btn-dark' %>
-
   </div>
+</div>
 
-<% end %>

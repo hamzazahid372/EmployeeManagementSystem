@@ -1,43 +1,51 @@
 <%= javascript_pack_tag 'task' %>
-<div class="container-fluid">
-  <h1><%= t(:task_heading) %></h1>
-  
-  <div class="row">      
-    <div class="col-lg-3">
-      <div class="form-group">
-        <%= label_tag t(:task_project_id) %>
-        <%= select_tag t(:task_project_filter), options_for_select( @projects.collect{ |p| [p.name,p.id] }.unshift(['All',''])), { class: "form-control data-filter" }  %>
-      </div>
-    </div>
 
-    <div class="col-lg-3">
-      <div class="form-group">
-        <%= label_tag t(:task_priority) %>
-        <%= select_tag :priority, options_for_select(Task::PRIORITY.merge('All'=>'').reverse_each()), class: "form-control data-filter"  %>
-      </div>
+<div class="container-fluid w-100 mt-4 pl-4 pr-4 pb-4">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="font-weight-bold float-left">
+      <%= t(:task_heading) %>        
+      </h2>
+      <%= button_to 'Create Task', new_task_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
     </div>
+    <div class="card-body container-fluid p-5">
+      <div class="row">      
+        <div class="col-lg-3">
+          <div class="form-group">
+            <%= label_tag t(:task_project_id) %>
+            <%= select_tag t(:task_project_filter), options_for_select( @projects.collect{ |p| [p.name,p.id] }.unshift(['All',''])), { class: "form-control data-filter" }  %>
+          </div>
+        </div>
 
-    <div class="col-lg-3">
-      <div class="form-group">
-        <%= label_tag t(:task_status) %>
-        <%= select_tag :status, options_for_select(Task::STATUS.merge('All'=>'').reverse_each()), {class: "form-control data-filter"} %>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <%= label_tag t(:task_priority) %>
+            <%= select_tag :priority, options_for_select(Task::PRIORITY.merge('All'=>'').reverse_each()), class: "form-control data-filter"  %>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="form-group">
+            <%= label_tag t(:task_status) %>
+            <%= select_tag :status, options_for_select(Task::STATUS.merge('All'=>'').reverse_each()), {class: "form-control data-filter"} %>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="form-group">
+            <%= label_tag t(:task_assignable_id) %>
+            <%= select_tag :assignable_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }.unshift(['All',''])), {class: "form-control data-filter"} %>
+          </div>
+        </div>
       </div>
-    </div>
+      
+      <div class="table-responsive" id="table-parent-div">
+          <%= render partial: "table" %>
+      </div>  
 
-    <div class="col-lg-3">
-      <div class="form-group">
-        <%= label_tag t(:task_assignable_id) %>
-        <%= select_tag :assignable_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }.unshift(['All',''])), {class: "form-control data-filter"} %>
+      <div class="digg_pagination" style="margin-left: 40%;">
+        <%= will_paginate @tasks, :container => false %>
       </div>
     </div>
   </div>
-  
-  <div class="table-responsive" id="table-parent-div">
-      <%= render partial: "table" %>
-  </div>  
-
-  <div class="digg_pagination" style="margin-left: 40%;">
-    <%= will_paginate @tasks, :container => false %>
-  </div>
-
 </div>

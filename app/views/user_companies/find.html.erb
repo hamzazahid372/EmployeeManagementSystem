@@ -1,20 +1,17 @@
-<div class="mt-10">
-  <div class="container border rounded-lg w-50 shadow p-4 mb-4 bg-white mt-4">
-    <h2 class="text-center mb-5"> <%= APP_NAME %> </h2>
-    <h2 class="text-center mb-5">Enter Email</h2>
-
-    <%= form_with url: user_companies_find_path, local: true  do |f| %>
-      <div class="field text-center mb-4 row-cols-1 pr-5 m-4">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control float-right w-50' %>
-      </div>
-      
-      <div class="actions text-center m-2">
-        <%= f.submit "Next", class: 'btn btn-dark' %>
-      </div>
-
-    <% end %>
-
+<div class="container-fluid w-50 mt-5 pl-4 pr-4 pb-4">
+  <div class="card">
+    <h2 class="card-header font-weight-bold">Enter Email</h2>
+    <div class="card-body container-fluid p-5">
+      <%= form_with url: user_companies_find_path, local: true  do |f| %>
+        <div class="form-group col-lg-12 pl-5 pr-5">
+          <%= f.label :email, class: 'h5 card-title' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control border-info', required: true %>
+        </div>
+        <%= f.submit "Next", class: 'btn btn-dark mr-5 float-right' %>
+      <% end %>
+    </div>
   </div>
 </div>
+
+
 

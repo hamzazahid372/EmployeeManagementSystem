@@ -1,31 +1,33 @@
-
-<div class="container-fluid">
-  <h1>Time Logs</h1>
-  <div class="table-responsive">
-      <table id="time_log-datatable" class="table table-hover">
-        <thead>
-        <tr>
-          <th>User</th>
-          <th>Hours</th>
-          <th>Activity</th>
-          <th>Comment</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @time_logs.each do |log| %>
+<div class="container-fluid w-100 mt-4 pl-4 pr-4 pb-4">
+  <div class="card">
+    <h2 class="card-header font-weight-bold float-left">Time Logs</h2>
+    <div class="card-body container-fluid p-5">
+      <div class="table-responsive">
+        <table id="time_log-datatable" class="table table-hover">
+          <thead>
           <tr>
-            <td> <%= log.user.full_name %> </td>
-            <td> <%= log.hours %> </td>
-            <td> <%= TimeLog::ACTIVITIES_REVERSE[log.activity_id] %> </td>
-            <td> <%= log.comment %> </td>
+            <th>User</th>
+            <th>Hours</th>
+            <th>Activity</th>
+            <th>Comment</th>
           </tr>
-        <% end %>
+          </thead>
+          <tbody>
+          <% @time_logs.each do |log| %>
+            <tr>
+              <td> <%= log.user.full_name %> </td>
+              <td> <%= log.hours %> </td>
+              <td> <%= TimeLog::ACTIVITIES_REVERSE[log.activity_id] %> </td>
+              <td> <%= log.comment %> </td>
+            </tr>
+          <% end %>
 
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
+      <div class="digg_pagination" style="margin-left: 40%;">
+        <%= js_will_paginate @time_logs %>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="digg_pagination" style="margin-left: 40%;">
-  <%= js_will_paginate @time_logs %>
 </div>
