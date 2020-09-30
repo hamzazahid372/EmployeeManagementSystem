@@ -1,0 +1,29 @@
+<div class="container" id="document-modal">
+</div>
+<%= link_to '+Attach File', send("new_#{@attachable.class.name.downcase}_attachment_path"), class: 'btn btn-dark btn-md mt-3 float-right mr-5', remote:true %>
+<div class="container-fluid">
+  <div class="table-responsive">
+      <table id="attachments-datatable" class="table table-hover">
+        <thead>
+        <tr>
+          <th><%= t(:file_name) %></th>
+          <th><%= t(:file_size) %></th>
+          <th><%= t(:file_uploaded_on) %></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% attachments.each do |attachment| %>
+          <tr>
+            <td><%= link_to attachment.attachment_file_name, attachment.attachment.url %> </td>
+            <td> <%= attachment.attachment_file_size %> </td>
+            <td><%= attachment.attachment_updated_at.to_s(:long) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>
+<div class="digg_pagination">
+  <%= js_will_paginate attachments %>
+</div>

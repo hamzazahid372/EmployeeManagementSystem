@@ -101,3 +101,6 @@ en:
   time_log:
     created: 'Time log created successfully'
     not_created: 'Time log creation failed'
+  attachment:
+    created: 'Document uploaded successfully'
+    not_created: 'Sorry this format is not supported'

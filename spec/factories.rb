@@ -32,4 +32,8 @@ FactoryBot.define do
     name { '7vals' }
     subdomain { '7vals' }
   end
+  factory :attachment do
+    attachment { File.new(Rails.root.join('app', 'assets', 'images', 'rails.png')) }
+  end
 end
+

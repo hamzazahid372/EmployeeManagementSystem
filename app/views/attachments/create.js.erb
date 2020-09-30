@@ -1,1 +1,7 @@
-$('#document-modal').modal('hide');
+<% if @success %>
+  $('#attachmentModal').modal('hide');
+  location.reload();
+<% else %>
+  location.reload();
+<% end %>
+

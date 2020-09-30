@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :time_logs
     resources :comments, shallow: true
+    resources :attachments, shallow: true
   end
 end

@@ -39,6 +39,7 @@ group :development, :test do
   # Rspec for test cases
   gem 'rspec-rails', '~> 4.0.1'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+  gem 'database_cleaner-active_record'
 end
 
 group :development do

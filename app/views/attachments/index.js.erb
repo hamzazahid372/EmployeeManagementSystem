@@ -1,6 +1,6 @@
-$("#documents-tab-content").html("<%= j render(partial: 'shared/attachments') %>");
-$('#file-form').html("<%= j render( partial: 'attachment' ) %>");
-
-$(document).ready( function () {
-  $('#attachments-datatable').DataTable();
-} );
+$("#documents-tab-content").html("<%= j render(partial: 'table', locals: { attachments: @attachments }) %>");
+$('#attachments-datatable').DataTable({
+    info: false,
+    paging: false,
+    searching: false
+});
