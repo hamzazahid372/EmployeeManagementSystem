@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'team' %>
 <%= form_for team do |form| %>
   
   <div class="container-fluid">
@@ -9,14 +10,6 @@
           <%= form.text_field :name, class: 'form-control', required: true, minlength: 3 %>
         </div>
       </div>
-
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:team_lead_id) %>
-          <%= form.select :lead_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }), {}, {class: "form-control"} %>
-        </div>
-      </div>
-
     </div>
 
     <div class="row">
@@ -24,6 +17,15 @@
         <div class="form-group">
           <%= form.label t(:team_description) %>
           <%= form.text_area :description, class: 'form-control', rows: 5 %>
+        </div>
+      </div>
+    </div>
+
+     <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <%= form.label t(:team_lead_id) %>
+          <%= form.text_field :lead_id, 'data-pre' => { id: team.lead_id, name: team.lead&.full_name }.to_json, class: 'form-control', required: true %>
         </div>
       </div>
     </div>

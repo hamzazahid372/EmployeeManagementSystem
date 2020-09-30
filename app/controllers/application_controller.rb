@@ -30,11 +30,4 @@ class ApplicationController < ActionController::Base
   ensure
     Current.reset
   end
-
-  rescue_from CanCan::AccessDenied do |exception|
-    respond_to do |format|
-      format.json { head :forbidden }
-      format.html { redirect_to teams_path, alert: exception.message }
-    end
-  end
 end

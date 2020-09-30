@@ -1,5 +1,6 @@
 $("body").html("<%= j render partial: 'form', locals: {team: @team} %>");
 $("#team_lead_id").tokenInput('/users/search.json', {
   theme: "facebook",
-  tokenLimit: 1
+  tokenLimit: 1,
+  prePopulate: [ $("#team_lead_id").data("pre") ]
 });

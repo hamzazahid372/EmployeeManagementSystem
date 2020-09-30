@@ -33,11 +33,11 @@
       </tr>
       <tr>
         <th><%= t(:team_created_by) %></th>
-        <td><%= User.find(@team&.created_by_id).first_name + " " + User.find(@team&.created_by_id).last_name %></td>
+        <td><%= @team.created_by.full_name %></td>
       </tr>
       <tr>
         <th><%= t(:team_lead) %></th>
-        <td><%= User.find(@team&.lead_id).first_name + " " + User.find(@team&.lead_id).last_name %></td>
+        <td><%= @team.lead.full_name %></td>
       </tr>
       
     </tbody>

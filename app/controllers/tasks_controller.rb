@@ -89,7 +89,7 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :description, :start_date, :end_date,
                                  :due_date, :expected_start_date, :expected_end_date,
-                                 :priority, :status, :assignable_id,
-                                 :assignable_type, :progress, :sequence_num, :project_id, :page)
+                                 :priority, :status, :assignee_id,
+                                 :progress, :sequence_num, :project_id, :page)
   end
 end

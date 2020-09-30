@@ -90,8 +90,8 @@
       
       <div class="col-lg-6">
         <div class="form-group">
-          <%= form.label t(:task_assignable_id) %>
-          <%= form.select :assignable_id, options_for_select( @users.collect{ |u| [u.first_name,u.id] }), {}, {class: "form-control"} %>
+          <%= form.label t(:task_assignee_id) %>
+          <%= form.select :assignee_id, options_for_select( @users.collect{ |u| [u.full_name,u.id] }), {}, {class: "form-control"} %>
         </div>
       </div>
 

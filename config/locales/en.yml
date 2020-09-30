@@ -64,7 +64,7 @@ en:
   task_due_date: 'Due Date'
   task_progress: 'Progress'
   task_priority: 'Priority'
-  task_assignable_id: 'Assignee'
+  task_assignee_id: 'Assignee'
   task_heading: 'Tasks'
   task_assignable_type: 'Assignable Type'
   task_project_title: 'Project Title'

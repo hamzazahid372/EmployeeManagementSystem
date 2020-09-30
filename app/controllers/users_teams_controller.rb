@@ -39,7 +39,7 @@ class UsersTeamsController < ApplicationController
     else
       flash[:notice] = t 'users_team.not_destroyed'
     end
-    redirect_to Team.find @users_team.team_id
+    redirect_to team_path(@users_team.team)
     respond_to do |format|
       format.html
     end

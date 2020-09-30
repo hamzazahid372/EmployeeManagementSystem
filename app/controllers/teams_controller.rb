@@ -5,8 +5,7 @@ class TeamsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
 
   def index
-    @teams = @teams.page(params[:page]).per_page(PER_PAGE)
-    @users = User.all
+    @teams = @teams.includes(:created_by, :lead).page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
       format.html
       format.js
@@ -20,15 +19,15 @@ class TeamsController < ApplicationController
   end
 
   def new
-    @users = User.all
     respond_to do |format|
+      format.js
       format.html
     end
   end
 
   def edit
-    @users = User.all
     respond_to do |format|
+      format.js
       format.html
     end
   end
@@ -41,7 +40,6 @@ class TeamsController < ApplicationController
     else
       errors = @team.errors.full_messages.join(', ')
       flash[:error] = errors
-      @users = User.all
       render :new
     end
     respond_to do |format|
@@ -56,7 +54,6 @@ class TeamsController < ApplicationController
     else
       errors = @team.errors.full_messages.join(', ')
       flash[:error] = errors
-      @users = User.all
       render :edit
     end
     respond_to do |format|
@@ -79,7 +76,6 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name, :description, :lead_id,
-                                 :sequence_num, :page)
+    params.require(:team).permit(:name, :description, :lead_id)
   end
 end

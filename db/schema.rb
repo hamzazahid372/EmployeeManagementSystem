@@ -138,8 +138,7 @@ ActiveRecord::Schema.define(version: 2020_09_18_135217) do
     t.integer "company_id", null: false
     t.string "title", null: false
     t.text "description"
-    t.integer "assignable_id"
-    t.string "assignable_type"
+    t.integer "assignee_id"
     t.integer "created_by_id"
     t.string "status", null: false
     t.datetime "due_date"
@@ -155,7 +154,7 @@ ActiveRecord::Schema.define(version: 2020_09_18_135217) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "sequence_num", null: false
-    t.index ["assignable_id", "assignable_type"], name: "index_tasks_on_assignable_id_and_assignable_type"
+    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
     t.index ["created_by_id"], name: "index_tasks_on_created_by_id"
     t.index ["parent_id"], name: "index_tasks_on_parent_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"

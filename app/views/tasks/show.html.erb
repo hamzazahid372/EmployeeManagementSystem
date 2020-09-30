@@ -48,15 +48,15 @@
       </tr>
       <tr>
         <th><%= t(:task_created_by) %></th>
-        <td><%= User.find(@task&.created_by_id).first_name + " " + User.find(@task&.created_by_id).last_name %></td>
+        <td><%= @task.created_by.full_name %></td>
       </tr>
       <tr>
         <th><%= t(:task_assignee) %></th>
-        <td><%= User.find(@task&.assignable_id).first_name + " " + User.find(@task&.assignable_id).last_name %></td>
+        <td><%= @task.assignee.full_name %></td>
       </tr>
       <tr>
         <th><%= t(:task_project_id) %></th>
-        <td><%= Project.find(@task&.project_id).name %></td>
+        <td><%= @task.project.name %></td>
       </tr>
       <tr>
         <th><%= t(:task_due_date) %></th>

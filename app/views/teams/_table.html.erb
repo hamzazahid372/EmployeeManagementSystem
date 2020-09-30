@@ -1,4 +1,4 @@
-<table id="teams_table" data-turbolinks="false" class="table table-hover">
+<table id="teams-table" class="table table-hover">
   <thead>
   <tr>
     <th><%= t(:team_name) %></th>
@@ -14,8 +14,8 @@
     <tr>
       <td><%= link_to team.name, team_path(team) %> </td>
       <td> <%= team.description %> </td>
-      <td> <%= link_to User.find(team.created_by_id).first_name + " " + User.find(team.created_by_id).last_name, user_path(User.find team.created_by_id) %> </td>
-      <td> <%= link_to User.find(team.lead_id).first_name + " " + User.find(team.lead_id).last_name, user_path(User.find team.lead_id) %> </td>
+      <td> <%= link_to team.created_by.full_name, user_path(team.created_by) %> </td>
+      <td> <%= link_to team.lead.full_name, user_path(team.lead) %> </td>
       <td> <%= team.created_at&.to_s(:long) %> </td>
       
     </tr>        

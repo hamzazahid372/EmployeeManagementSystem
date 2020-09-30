@@ -4,6 +4,7 @@
 class Team < ApplicationRecord
   sequenceid :company, :teams
   belongs_to :lead, class_name: 'User'
+  belongs_to :created_by, class_name: 'User'
   belongs_to :company
   has_many :users_teams, dependent: :destroy
   has_many :users, through: :users_teams
