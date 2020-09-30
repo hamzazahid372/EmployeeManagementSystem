@@ -2,7 +2,7 @@
 
 # Abilities
 module Abilities
-  # Abilities on team
+  # Abilities on users teams
   module UserTeamAbility
     def define_user_team_abilities_for_admin(user)
       can :manage, UsersTeam, company_id: user.company_id

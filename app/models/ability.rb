@@ -10,7 +10,8 @@ class Ability
   include Abilities::TaskAbility
   include Abilities::UserTeamAbility
   include Abilities::TimeLogAbility
-
+  include Abilities::ProjectUserAbility
+  
   def initialize(user)
     return unless user.present?
 
@@ -22,6 +23,7 @@ class Ability
       define_task_abilities_for_admin(user)
       define_user_team_abilities_for_admin(user)
       define_time_log_abilities_for_admin(user)
+      define_project_user_abilities_for_admin(user)
     else
       define_team_abilities_for_employee(user)
       define_user_abilities_for_employee(user)
@@ -30,6 +32,7 @@ class Ability
       define_task_abilities_for_employee(user)
       define_user_team_abilities_for_employee(user)
       define_time_log_abilities_for_employee(user)
+      define_project_user_abilities_for_employee(user)
     end
   end
 end

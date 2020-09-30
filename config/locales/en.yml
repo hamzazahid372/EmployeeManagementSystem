@@ -39,6 +39,7 @@ en:
   project_end_date: 'End Date'
   project_expected_start_date: 'Expected Start Date'
   project_expected_end_date: 'Expected End Date'
+  project_user_name: 'User Name'
 
   team_heading: 'Team'
   team_name: 'Name'
@@ -114,6 +115,10 @@ en:
     created: 'User added in team successfully'
     destroyed: 'User removed from this team successfully'
     not_destroyed: 'User not removed from this team'
+  projects_user:
+    created: 'User added in project successfully'
+    destroyed: 'User removed from this project successfully'
+    not_destroyed: 'User not removed from this project'
   team:
     created: 'Team created successfully'
     destroyed: 'Team removed successfully'
