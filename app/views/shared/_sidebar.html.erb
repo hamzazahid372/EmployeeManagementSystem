@@ -1,21 +1,67 @@
-<div class="col-sm-3 col-md-2 sidebar">
-  <ul class="nav nav-sidebar">
-      <li class="sidebar_overview"><%= link_to "Overview", "#" %></li>
-      <li class="sidebar_personal_purchases"><%= link_to "Personal Purchase History", "#" %></li>
-      <!-- Only the COO, the operations chief, will be able to link his company to a bank account. -->
-      <li class="sidebar_stripe_settings"><%= link_to "Payment Settings", "#" %></li>
-    </ul>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
 
-    <ul class="nav nav-sidebar">
-      <!-- company_id is from the sessions_helper.id -->
-        <li class="sidebar_company_info"><%= link_to "Company Information", "#" %></li>
-        <li class="sidebar_company_people"><%= link_to "People", "#" %></li>
-        <li class="sidebar_purchases"><%= link_to "Company Purchase History", "#" %></li>
-  
-        <li class="sidebar_post_items_for_sale"><%= link_to "Post Items For Sale", "#" %></li>
-        <li class="sidebar_posted_items"><%= link_to "Posted Items", "#" %></li> 
-        <li class="sidebar_orders"><%= link_to "Order Requests", "#" %></li>
-        <li class="sidebar_completed_orders"><%= link_to "Completed Orders", "#" %></li>
-    </ul>
+.sidenav {
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 1s;
+}
 
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+<div id="mySidenav" class="sidenav h-100 pt-5 bg-dark border-right border-secondary">
+  <div class="card bg-dark" style="width: 16rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item bg-dark"><%= link_to "Dashboard", root_url %></li>
+      <li class="list-group-item bg-dark"><%= link_to "Projects", projects_path, method: 'get' %></li>
+      <li class="list-group-item bg-dark"><%= link_to "Tasks", tasks_path, method: 'get' %></li>
+    </ul>
+    
+    
+    
+  </div>
 </div>
+
+<script>
+function toggleSidebar() {
+  if(document.getElementById("mySidenav").style.width == "250px"){
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("content").style.paddingLeft = "0"
+  }
+  else{
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("content").style.paddingLeft = "250px"
+  }
+}
+</script>
