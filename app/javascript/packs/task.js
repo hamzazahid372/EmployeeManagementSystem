@@ -9,7 +9,7 @@ $(document).ready(function () {
       searching: false
     });
   }
-  if($('.data-filter').length == 4){
+  if($('.data-filter').length >= 0){
     $("body").on('change',".data-filter",function(e) {
       e.preventDefault();
       $.ajax({ type:'GET', url: '/tasks.js', data: { project_id: $('#project').val(),
