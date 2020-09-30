@@ -9,6 +9,6 @@
 </ul>
 <div class="tab-content" id="tabs-content">
   <% tabs.each_with_index do |tab, i| %>
-  <div class="tab-pane fade show <%= 'active' if i.zero? %>" id="<%=tab%>-tab-content" role="tabpanel" aria-labelledby="<%=tab%>-tab"><%= tab.humanize %></div>
+  <div class="tab-pane fade show <%= 'active' if i.zero? %>" id="<%= tab %>-tab-content" role="tabpanel" aria-labelledby="<%= tab %>-tab"><%= tab.humanize %></div>
   <% end %>
 </div>

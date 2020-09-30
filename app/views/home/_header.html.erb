@@ -1,9 +1,9 @@
 <nav class="navbar navbar-dark bg-dark">
   <div  class="w-100">
     <div class="float-left">
-      <button class="navbar-toggler float-left mr-4">
-        <span id="sidebar-toggle" class="navbar-toggler-icon" onclick="toggleSidebar()"></span>
-      </button>
+      <% if current_user.present? %>
+        <button class="navbar-toggler float-left mr-2 navbar-toggler-icon p-3 m-1" onclick="toggleSidebar()"></button>
+      <% end %>
       <%= link_to APP_NAME, root_url, class: 'navbar-brand'%>
     </div>
     

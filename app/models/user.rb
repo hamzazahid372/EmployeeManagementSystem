@@ -39,7 +39,7 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { scope: :company_id }
 
   def admin?
-    role_id == User::ROLES['Administrator']
+    role_id == User::ROLES.fetch('Administrator')
   end
 
   def account_owner?
