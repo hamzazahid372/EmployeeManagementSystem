@@ -40,6 +40,18 @@ en:
   project_expected_start_date: 'Expected Start Date'
   project_expected_end_date: 'Expected End Date'
 
+  team_heading: 'Team'
+  team_name: 'Name'
+  team_description: 'Description'
+  team_lead_id: 'Lead'
+  team_created_id: 'Created By'
+  team_create: 'Create'
+  team_update: 'Update'
+  team_created_at: 'Date of Creation'
+  team_created_by: 'Created By'
+  team_lead_name: 'Lead Name'
+  team_user_name: 'User Name'
+
   task_create: 'Create Task'
   task_update: 'Update Task'
   task_title: 'Title'
@@ -52,7 +64,7 @@ en:
   task_due_date: 'Due Date'
   task_progress: 'Progress'
   task_priority: 'Priority'
-  task_assignable_id: 'Assignee'
+  task_assignee_id: 'Assignee'
   task_heading: 'Tasks'
   task_assignable_type: 'Assignable Type'
   task_project_title: 'Project Title'
@@ -98,3 +110,13 @@ en:
   time_log:
     created: 'Time log created successfully'
     not_created: 'Time log creation failed'
+  users_team:
+    created: 'User added in team successfully'
+    destroyed: 'User removed from this team successfully'
+    not_destroyed: 'User not removed from this team'
+  team:
+    created: 'Team created successfully'
+    destroyed: 'Team removed successfully'
+    updated: 'Team updated successfully'
+    not_destroyed: 'Team not removed'
+     

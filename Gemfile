@@ -28,7 +28,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 # To generate fake data
-gem 'faker', '~> 1.6', '>= 1.6.6'
+gem 'faker', '2.14.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -36,7 +36,8 @@ group :development, :test do
   gem 'pry-rails'
   # Rspec for test cases
   gem 'rspec-rails', '~> 4.0.1'
-  gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+  gem 'factory_bot_rails', '6.1.0'
+  gem 'database_cleaner-active_record'
 end
 
 group :development do

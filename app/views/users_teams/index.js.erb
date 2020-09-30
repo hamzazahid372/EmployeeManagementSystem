@@ -1,0 +1,6 @@
+$("#users_teams-tab-content").addClass('m-4').html("<%= j render partial: 'users_teams/table' %>")
+$('#users_teams-datatable').DataTable({
+    info: false,
+    paging: false,
+    searching: false
+});
