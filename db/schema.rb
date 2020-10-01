@@ -76,7 +76,9 @@ ActiveRecord::Schema.define(version: 2020_09_29_130639) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sequence_num", null: false
     t.index ["company_id"], name: "index_departments_on_company_id"
+    t.index ["sequence_num", "company_id"], name: "index_departments_on_sequence_num_and_company_id", unique: true
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

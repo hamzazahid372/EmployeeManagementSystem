@@ -1,9 +1,25 @@
  <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
  <%= javascript_pack_tag 'attachment', 'data-turbolinks-track': 'reload' %>
 <br><br>
+<%= javascript_pack_tag 'projects_users', 'data-turbolinks-track': 'reload' %>
+<div class="modal" id="projects-users-modal"></div>
 <%= form_for @project  do |form| %>
   <div class="container-fluid">
-    <%= form.label @project.name, class: 'h1 font-weight-bold text-dark' %>
+    <h1>
+      <%= @project.name %>
+    </h1>
+    <div class="btn-group" role="group" style="float: right;">
+      <% if can? :update, Project %>
+        <%= link_to 'Update', edit_project_path(@project.sequence_num),class: ' ml-3 btn btn-dark' %>
+      <% end %>
+      <% if can? :delete, Project %>
+        <%= link_to 'Delete', project_path(@project),
+          method: :delete,class: 'ml-3 btn btn-dark',
+          data: { confirm: 'Are you sure you want to delete?' } %>
+      <% end %>
+      <%= link_to 'Add Users', new_project_projects_user_path(@project), class: 'ml-3 btn btn-dark', remote: true %>
+    </div>
+
     <table class="table">
       <tbody>
         <tr>
@@ -36,17 +52,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="btn-group" role="group">
-      <% if can? :update, @project %>
-        <%= link_to 'Update', edit_project_path(@project.sequence_num),class: ' ml-3 btn btn-dark' %>
-      <% end %>
-      <% if can? :delete, @project %>
-        <%= link_to 'Delete', project_path(@project),
-          method: :delete,class: 'ml-3 btn btn-dark',
-          data: { confirm: 'Are you sure you want to delete?' } %>
-      <% end %>
-    </div>
-  </div>
+
 <% end %>
 
 <%= render partial: 'shared/tabs', locals: { resource: :project } %>

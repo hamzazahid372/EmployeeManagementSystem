@@ -7,14 +7,7 @@ class AttachmentsController < ApplicationController
 
   def new
     respond_to do |format|
-      format.js # new.js.erb
-    end
-  end
-
-  def show
-    @attachment = Attachment.find(params[:id])
-    respond_to do |format|
-      format.html # index.js.erb
+      format.js
     end
   end
 
@@ -37,7 +30,7 @@ class AttachmentsController < ApplicationController
     @attachments = @attachments.page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
       format.html
-      format.js # index.js.erb
+      format.js
     end
   end
 end
