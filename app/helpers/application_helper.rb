@@ -12,7 +12,8 @@ module ApplicationHelper
     resource_tabs = {
       user: %w[comments],
       project: %w[comments],
-      task: %w[comments]
+      team: %w[comments users_teams],
+      task: %w[comments time_logs]
     }
     resource_tabs[resource] || []
   end

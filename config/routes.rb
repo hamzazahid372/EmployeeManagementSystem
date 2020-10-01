@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :projects
   resources :users do
     resources :comments, shallow: true
+    collection do
+      get 'search'
+    end
   end
   resources :projects do
     resources :comments, shallow: true
@@ -13,4 +16,13 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :departments
   resources :tasks
+  resources :teams do
+    resources :users_teams, shallow: true
+    resources :comments, shallow: true
+  end
+  resources :tasks do
+    resources :time_logs
+    resources :comments, shallow: true
+  end
+>>>>>>> 2fe541bbc8918861c1901d3cc2afabb5ac76f1b9
 end
