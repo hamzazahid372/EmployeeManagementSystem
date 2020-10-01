@@ -19,7 +19,7 @@
             <td> <%= User::ROLES.key team_user.user.role_id %> </td>
             <td> <%= team_user.user.email %> </td>
             <td> 
-              <% if can? :destroy, team_user %>
+              <% if can? :destroy, UsersTeam %>
                 <%= button_to 'Delete', users_team_path(team_user), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete?' } 
                 %>
               <% end %>

@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   def index
     add_breadcrumb 'Projects', projects_path
     @projects = Project.all
+    @projects = @projects.page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
       format.html
     end
@@ -85,7 +86,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :status, :start_date, :end_date, :expected_start_date, :expected_end_date, :sequence_num)
+    params.require(:project).permit(:name, :description, :status, :start_date, :end_date, :expected_start_date, :expected_end_date)
   end
 end
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Task Controller
+# Users Teams Controller
 class UsersTeamsController < ApplicationController
   load_and_authorize_resource :team, find_by: :sequence_num, only: %i[index create new]
   load_and_authorize_resource through: :team, only: %i[index create new]
