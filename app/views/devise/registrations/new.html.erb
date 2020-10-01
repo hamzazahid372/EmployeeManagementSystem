@@ -1,61 +1,61 @@
-<div class="container-fluid w-75 mt-5 pl-4 pr-4 pb-4">
-  <div class="card shadow-lg">
-    <h2 class="card-header font-weight-bold">Sign Up</h2>
-    <div class="card-body container-fluid p-5">
-      <div class="col-sm-6 border-right float-left">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
-
-          <div class="form-group col-lg-12">
-            <%= f.label :first_name, class: 'h5 card-title' %>
-            <%= f.text_field :first_name, autofocus: true, class: 'form-control border-info', required: true %>
-          </div>
-
-          <div class="form-group col-lg-12">
-            <%= f.label :last_name, class: 'h5 card-title' %>
-            <%= f.text_field :last_name, autofocus: true, class: 'form-control border-info', required: true %>
-          </div>
-
-          <%=f.fields_for :company do |ff| %>
-            <div class="form-group col-lg-12">
-              <%= ff.label :company_name, class: 'h5 card-title' %>
-              <%= ff.text_field :name, id: 'company_name', autofocus: true, class: 'form-control border-info', required: true, onkeyup: "setDomain()" %>
-            </div>
-            <div class="form-group col-lg-12">
-              <%= ff.label :company_domain, class: 'h5 card-title' %>
-              <%= ff.text_field :subdomain, autofocus: true, id: 'subdomain', class: 'form-control border-info', readonly: true, required: true %>
-            </div>
-          <% end %>
-
-          <div class="form-group col-lg-12">
-            <%= f.label :email, class: 'h5 card-title' %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control border-info', required: true %>
-          </div>
-
-          <div class="form-group col-lg-12">
-            <%= f.label :password, class: 'h5 card-title' %>
-            <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %>
-            <%= f.password_field :password, autocomplete: "new-password", class: 'form-control border-info', required: true %>
-          </div>
-
-          <div class="form-group col-lg-12">
-            <%= f.label :password_confirmation, class: 'h5 card-title' %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control border-info', required: true %>
-          </div>
-          
-          <%= f.submit "Sign up", class: 'btn btn-dark float-right mr-3 mt-3' %>
-          <div class="text-left ml-3 mt-3">
-            <%= render "devise/shared/links" %>
-          </div>
-        <% end %>
-      </div>
-      <div class="col-sm-6 float-right">
-        <img src="https://cdn.pixabay.com/photo/2020/06/17/00/24/person-5307653_960_720.png" class="img-fluid " alt="Responsive image">
-      </div>
-    </div>
+<% content_for :card_header do %>
+  <div class="card-header">
+    <h2 class="font-weight-bold float-left">Sign Up</h2>
   </div>
+<% end %>
+
+
+<div class="col-sm-6 border-right float-left">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="form-group col-lg-12">
+      <%= f.label :first_name, class: 'h5 card-title' %>
+      <%= f.text_field :first_name, autofocus: true, class: 'form-control border-info', required: true %>
+    </div>
+
+    <div class="form-group col-lg-12">
+      <%= f.label :last_name, class: 'h5 card-title' %>
+      <%= f.text_field :last_name, autofocus: true, class: 'form-control border-info', required: true %>
+    </div>
+
+    <%=f.fields_for :company do |ff| %>
+      <div class="form-group col-lg-12">
+        <%= ff.label :company_name, class: 'h5 card-title' %>
+        <%= ff.text_field :name, id: 'company_name', autofocus: true, class: 'form-control border-info', required: true, onkeyup: "setDomain()" %>
+      </div>
+      <div class="form-group col-lg-12">
+        <%= ff.label :company_domain, class: 'h5 card-title' %>
+        <%= ff.text_field :subdomain, autofocus: true, id: 'subdomain', class: 'form-control border-info', readonly: true, required: true %>
+      </div>
+    <% end %>
+
+    <div class="form-group col-lg-12">
+      <%= f.label :email, class: 'h5 card-title' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control border-info', required: true %>
+    </div>
+
+    <div class="form-group col-lg-12">
+      <%= f.label :password, class: 'h5 card-title' %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control border-info', required: true %>
+    </div>
+
+    <div class="form-group col-lg-12">
+      <%= f.label :password_confirmation, class: 'h5 card-title' %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control border-info', required: true %>
+    </div>
+    
+    <%= f.submit "Sign up", class: 'btn btn-dark float-right mr-3 mt-3' %>
+    <div class="text-left ml-3 mt-3">
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</div>
+<div class="col-sm-6 float-right">
+  <img src="https://cdn.pixabay.com/photo/2020/06/17/00/24/person-5307653_960_720.png" class="img-fluid " alt="Responsive image">
 </div>
 
 <script>

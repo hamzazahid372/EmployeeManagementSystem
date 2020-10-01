@@ -1,45 +1,40 @@
 <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
-<%= render_breadcrumbs %>
-<div class="container-fluid w-75 mt-4 pl-4 pr-4">
-  <div class="card shadow-lg">
-    <div class="card-header">
-      <h2 class="font-weight-bold float-left">
-      <%= @user.full_name %>        
-      </h2>
-      <div class="btn-group float-right pt-1" role="group">
-        <% if can? :manage, @user %>
-          <%= button_to 'Delete', users_path(@user), method: :delete, class: 'btn btn-dark ml-3', 
-              data: { confirm: 'Are you sure you want to delete?' } %>
-          <%= button_to 'Update', edit_user_path(@user), method: 'get', class: 'btn btn-dark ml-3' %>
-        <% end %>
-      </div>
-    </div>
-    <div class="card-body container-fluid p-5">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>First Name</th>
-            <td><%= @user.first_name %></td>
-          </tr>
-          <tr>
-            <th>Last Name</th>
-            <td><%= @user.last_name%></td>
-          </tr>
-          <tr>
-            <th>Email</th>
-            <td><%= @user.email%></td>
-          </tr>
-          <tr>
-            <th>Department Id</th>
-            <td><%= @user.department_id %></td>
-          </tr>
-          <tr>
-            <th>Role</th>
-            <td><%= @user.role_id %></td>
-          </tr>
-        </tbody>
-      </table>
-      <%= render partial: 'shared/tabs', locals: {resource: :user} %>
+
+<% content_for :card_header do %>
+  <div class="card-header">
+    <h2 class="font-weight-bold float-left">
+    <%= @user.full_name %>        
+    </h2>
+    <div class="btn-group float-right pt-1" role="group">
+      <%= button_to 'Delete', users_path(@user), method: :delete, class: 'btn btn-dark ml-3', 
+          data: { confirm: 'Are you sure you want to delete?' } %>
+      <%= button_to 'Update', edit_user_path(@user), method: 'get', class: 'btn btn-dark ml-3' %>
     </div>
   </div>
-</div>
+<% end %>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>First Name</th>
+      <td><%= @user.first_name %></td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td><%= @user.last_name%></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= @user.email%></td>
+    </tr>
+    <tr>
+      <th>Department Id</th>
+      <td><%= @user.department_id %></td>
+    </tr>
+    <tr>
+      <th>Role</th>
+      <td><%= @user.role_id %></td>
+    </tr>
+  </tbody>
+</table>
+<%= render partial: 'shared/tabs', locals: {resource: :user} %>

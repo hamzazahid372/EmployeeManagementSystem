@@ -1,23 +1,16 @@
 <%= javascript_pack_tag 'team' %>
 
-<div class="container-fluid w-100 mt-4 pl-4 pr-4 pb-4">
-  <div class="card">
+<% content_for :card_header do %>
     <div class="card-header">
-      <h2 class="font-weight-bold float-left">
-      <%= t(:team_heading) %>        
-      </h2>
-      <% if can? :create, Team %>
-        <%= button_to 'Create Team', new_team_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
-      <% end %>
+      <h2 class="font-weight-bold float-left">Teams</h2>
+      <%= button_to "Create Team", new_team_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
     </div>
-    <div class="card-body container-fluid p-5">
-      <div class="table-responsive" id="table-parent-div">
-        <%= render partial: "table" %>
-      </div>  
+<% end %>
 
-      <div class="digg_pagination">
-        <%= will_paginate @teams %>
-      </div>
-    </div>
-  </div>
+<div class="table-responsive" id="table-parent-div">
+  <%= render partial: "table" %>
+</div>  
+
+<div class="digg_pagination">
+  <%= will_paginate @teams %>
 </div>

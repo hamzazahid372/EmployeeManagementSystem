@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
   def index
+    add_breadcrumb 'Projects', projects_path
     @projects = Project.all
     respond_to do |format|
       format.html
@@ -8,18 +9,28 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    add_breadcrumb 'Projects', projects_path
+    add_breadcrumb @project.name, project_path(@project)
+
     respond_to do |format|
       format.html
     end
   end
 
   def new
+    add_breadcrumb 'Projects', projects_path
+    add_breadcrumb 'Create Project', new_project_path
+
     respond_to do |format|
       format.html
     end
   end
 
   def edit
+    add_breadcrumb 'Projects', projects_path
+    add_breadcrumb @project.name, project_path(@project)
+    add_breadcrumb 'Update', edit_project_path(@project)
+
     respond_to do |format|
       format.html
     end

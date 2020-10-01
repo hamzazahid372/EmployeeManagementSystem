@@ -2,46 +2,43 @@
 <%= javascript_pack_tag 'users_teams', 'data-turbolinks-track': 'reload' %>
 <div class="modal" id="team-users-modal"></div>
 
-<div class="container-fluid w-75 mt-4 pl-4 pr-4">
-  <div class="card shadow-lg">
-    <div class="card-header">
-      <h2 class="font-weight-bold float-left">
+<% content_for :card_header do %>
+  <div class="card-header">
+    <h2 class="font-weight-bold float-left">
       <%= @team.name %>        
-      </h2>
-      <div class="btn-group float-right pt-1" role="group">
-        <% if can? :destroy, @team %>
-          <%= button_to 'Delete', team_path(@team), class: 'ml-3 btn btn-dark',
-              method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
-        <% end %>
-        <% if can? :update, @team %>
-          <%= button_to 'Update', edit_team_path(@team.sequence_num), { class: 'ml-3 btn btn-dark', method: 'get' } %>
-        <% end %>        
-        <%= link_to 'Add Users', new_team_users_team_path(@team), class: 'ml-3 btn btn-dark', remote: true %>
-      </div>
-    </div>
-    <div class="card-body container-fluid p-5">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th><%= t(:team_name) %></th>
-            <td><%= @team.name %></td>
-          </tr>
-          <tr>
-            <th><%= t(:team_description) %></th>
-            <td><%= @team.description %></td>
-          </tr>
-          <tr>
-            <th><%= t(:team_created_by) %></th>
-            <td><%= @team.created_by.full_name %></td>
-          </tr>
-          <tr>
-            <th><%= t(:team_lead) %></th>
-            <td><%= @team.lead.full_name %></td>
-          </tr>
-          
-        </tbody>
-      </table>
-      <%= render partial: 'shared/tabs', locals: { resource: :team } %>
+    </h2>
+    <div class="btn-group float-right pt-1" role="group">
+      <% if can? :destroy, @team %>
+      <%= button_to 'Delete', team_path(@team), class: 'ml-3 btn btn-dark',
+      method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
+      <% end %>
+      <% if can? :update, @team %>
+      <%= button_to 'Update', edit_team_path(@team.sequence_num), { class: 'ml-3 btn btn-dark', method: 'get' } %>
+      <% end %>        
+      <%= link_to 'Add Users', new_team_users_team_path(@team), class: 'ml-3 btn btn-dark', remote: true %>
     </div>
   </div>
-</div>
+<% end %>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th><%= t(:team_name) %></th>
+      <td><%= @team.name %></td>
+    </tr>
+    <tr>
+      <th><%= t(:team_description) %></th>
+      <td><%= @team.description %></td>
+    </tr>
+    <tr>
+      <th><%= t(:team_created_by) %></th>
+      <td><%= @team.created_by.full_name %></td>
+    </tr>
+    <tr>
+      <th><%= t(:team_lead) %></th>
+      <td><%= @team.lead.full_name %></td>
+    </tr>
+    
+  </tbody>
+</table>
+<%= render partial: 'shared/tabs', locals: { resource: :team } %>

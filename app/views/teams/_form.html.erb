@@ -1,34 +1,31 @@
 <%= javascript_pack_tag 'team' %>
 
-<div class="container-fluid w-75 mt-5 pl-4 pr-4 pb-4">
-  <div class="card">
-    <% if team.new_record? %>
-      <h2 class="card-header font-weight-bold"><%= t(:team_create) %></h2>
-    <% else %>
-      <h2 class="card-header font-weight-bold"><%= t(:team_update) %></h2>
-    <% end %>
-    <div class="card-body container-fluid p-5">
-      <%= form_for team do |form| %>  
-        
-        <div class="col-lg-12 form-group">
-          <%= form.label t(:team_name) %>
-          <%= form.text_field :name, class: 'form-control border-info', required: true, minlength: 3 %>
-        </div>
+<% content_for :card_header do %>
+  <% if team.new_record? %>
+    <h2 class="card-header font-weight-bold"><%= t(:team_create) %></h2>
+  <% else %>
+    <h2 class="card-header font-weight-bold"><%= t(:team_update) %></h2>
+  <% end %>
+<% end %>
 
-        <div class="col-lg-12 form-group">
-          <%= form.label t(:team_description) %>
-          <%= form.text_area :description, class: 'form-control border-info', rows: 5 %>
-        </div>
-
-        <div class="col-lg-12 form-group">
-          <%= form.label t(:team_lead_id) %>
-          <%= form.text_field :lead_id, 'data-pre' => { id: team.lead_id, name: team.lead&.full_name }.to_json, class: 'form-control border-info', required: true %>
-        </div>
-        
-        <%= form.submit class: 'btn btn-dark float-right mr-3' %>
-        <%= link_to 'Back', :back, class: 'btn btn-dark float-right mr-3' %>
-        
-      <% end %>
-    </div>
+<%= form_for team do |form| %>  
+  
+  <div class="col-lg-12 form-group">
+    <%= form.label t(:team_name) %>
+    <%= form.text_field :name, class: 'form-control border-info', required: true, minlength: 3 %>
   </div>
-</div>
+
+  <div class="col-lg-12 form-group">
+    <%= form.label t(:team_description) %>
+    <%= form.text_area :description, class: 'form-control border-info', rows: 5 %>
+  </div>
+
+  <div class="col-lg-12 form-group">
+    <%= form.label t(:team_lead_id) %>
+    <%= form.text_field :lead_id, 'data-pre' => { id: team.lead_id, name: team.lead&.full_name }.to_json, class: 'form-control border-info', required: true %>
+  </div>
+  
+  <%= form.submit class: 'btn btn-dark float-right mr-3' %>
+  <%= link_to 'Back', :back, class: 'btn btn-dark float-right mr-3' %>
+  
+<% end %>

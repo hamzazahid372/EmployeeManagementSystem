@@ -1,7 +1,9 @@
-<div class="container-fluid w-50 mt-5 pl-4 pr-4 pb-4">
-  <div class="card shadow-lg">
-    <h2 class="card-header font-weight-bold">Enter Email</h2>
-    <div class="card-body container-fluid p-5">
+<% content_for :card_header do %>
+  <div class="card-header">
+    <h2 class="font-weight-bold float-left">Enter Email</h2>
+  </div>
+<% end %>
+
       <%= form_with url: user_companies_find_path, local: true  do |f| %>
         <div class="form-group col-lg-12 pl-5 pr-5">
           <%= f.label :email, class: 'h5 card-title' %>
@@ -9,9 +11,6 @@
         </div>
         <%= f.submit "Next", class: 'btn btn-dark mr-5 float-right' %>
       <% end %>
-    </div>
-  </div>
-</div>
 
 
 

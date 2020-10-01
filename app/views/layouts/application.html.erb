@@ -9,15 +9,25 @@
     <%= javascript_pack_tag 'application' %>
 
   </head>
-  <body style=" background-image: url(https://images.wallpaperscraft.com/image/cubes_light_texture_background_50406_1920x1080.jpg); background-repeat: repeat;">
+  <body class="set-background">
     <div id="wrapper" class="d-flex w-100">
       <%= render partial: "shared/sidebar" %>
-      <div id="content" class="w-100 pb-5" style="transition: 1s;">
+      <div id="content" class="w-100 pb-5 set-content-transition">
         <%= render partial: "home/header" %>
         <div id="flash_messages">
           <%= render partial: "shared/flash" %>
         </div>
-        <%= yield %>
+        <div class="<%= get_classes %>">
+          <div id="breadcrumbs" class="pb-3">
+            <%= render_breadcrumbs :tag => :div, :separator => "" %>
+          </div>
+          <div class="card shadow-lg">
+            <%= yield :card_header %>
+            <div class="card-body container-fluid p-5">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
