@@ -9,12 +9,26 @@
     <%= javascript_pack_tag 'application' %>
 
   </head>
-
-  <body>
-    <%= render partial: "home/header" %>
-    <div id="flash_messages">
-      <%= render partial: "shared/flash" %>
+  <body class="set-background">
+    <div id="wrapper" class="d-flex w-100">
+      <%= render partial: "shared/sidebar" %>
+      <div id="content" class="w-100 pb-5 set-content-transition">
+        <%= render partial: "home/header" %>
+        <div id="flash_messages">
+          <%= render partial: "shared/flash" %>
+        </div>
+        <div class="<%= get_card_classes %>">
+          <div id="breadcrumbs" class="pb-3">
+            <%= render_breadcrumbs :tag => :div, :separator => "" %>
+          </div>
+          <div class="card shadow-lg">
+            <%= yield :card_header %>
+            <div class="card-body container-fluid p-5">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <%= yield %>
   </body>
 </html>

@@ -11,11 +11,8 @@ class Ability
   include Abilities::TaskAbility
   include Abilities::UserTeamAbility
   include Abilities::TimeLogAbility
-<<<<<<< HEAD
-=======
   include Abilities::ProjectUserAbility
   
->>>>>>> 64996e4404508d34e8de16f15e9af5d278759ad3
   def initialize(user)
     return unless user.present?
 

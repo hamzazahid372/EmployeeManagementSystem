@@ -5,6 +5,8 @@ class TeamsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
 
   def index
+    add_breadcrumb 'Teams', teams_path
+
     @teams = @teams.includes(:created_by, :lead).page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
       format.html
@@ -13,12 +15,18 @@ class TeamsController < ApplicationController
   end
 
   def show
+    add_breadcrumb 'Teams', teams_path
+    add_breadcrumb @team.name, team_path(@team)
+
     respond_to do |format|
       format.html
     end
   end
 
   def new
+    add_breadcrumb 'Teams', teams_path
+    add_breadcrumb 'Create Team', new_team_path
+
     respond_to do |format|
       format.js
       format.html
@@ -26,6 +34,10 @@ class TeamsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb 'Teams', teams_path
+    add_breadcrumb @team.name, team_path(@team)
+    add_breadcrumb 'Update', edit_team_path(@team)
+
     respond_to do |format|
       format.js
       format.html

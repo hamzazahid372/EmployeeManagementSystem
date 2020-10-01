@@ -1,0 +1,26 @@
+<div id="mySidenav" class="sidenav h-100 pt-5 bg-dark border-right border-secondary">
+  <div class="card bg-dark" style="width: 16rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item bg-dark"><%= link_to "Dashboard", root_url %></li>
+      <li class="list-group-item bg-dark"><%= link_to "Projects", projects_path, method: 'get' %></li>
+      <li class="list-group-item bg-dark"><%= link_to "Tasks", tasks_path, method: 'get' %></li>
+      <li class="list-group-item bg-dark"><%= link_to "Teams", teams_path, method: 'get' %></li>
+      <% if current_user&.role_id == 1 %>
+        <li class="list-group-item bg-dark"><%= link_to "Users", users_path, method: 'get' %></li>
+      <% end %>
+    </ul>    
+  </div>
+</div>
+
+<script>
+function toggleSidebar() {
+  if(document.getElementById("mySidenav").style.width == "250px"){
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("content").style.paddingLeft = "0"
+  }
+  else{
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("content").style.paddingLeft = "250px"
+  }
+}
+</script>

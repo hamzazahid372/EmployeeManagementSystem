@@ -1,38 +1,31 @@
 <%= javascript_pack_tag 'team' %>
-<%= form_for team do |form| %>
+
+<% content_for :card_header do %>
+  <% if team.new_record? %>
+    <h2 class="card-header font-weight-bold"><%= t(:team_create) %></h2>
+  <% else %>
+    <h2 class="card-header font-weight-bold"><%= t(:team_update) %></h2>
+  <% end %>
+<% end %>
+
+<%= form_for team do |form| %>  
   
-  <div class="container-fluid">
-
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:team_name) %>
-          <%= form.text_field :name, class: 'form-control', required: true, minlength: 3 %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-6">  
-        <div class="form-group">
-          <%= form.label t(:team_description) %>
-          <%= form.text_area :description, class: 'form-control', rows: 5 %>
-        </div>
-      </div>
-    </div>
-
-     <div class="row">
-      <div class="col-lg-6">
-        <div class="form-group">
-          <%= form.label t(:team_lead_id) %>
-          <%= form.text_field :lead_id, 'data-pre' => { id: team.lead_id, name: team.lead&.full_name }.to_json, class: 'form-control', required: true %>
-        </div>
-      </div>
-    </div>
-    
-    <%= link_to 'Back', teams_path, class: 'btn btn-dark' %>
-    <%= form.submit class: 'btn btn-dark' %>
-
+  <div class="col-lg-12 form-group">
+    <%= form.label t(:team_name) %>
+    <%= form.text_field :name, class: 'form-control border-info', required: true, minlength: 3 %>
   </div>
 
+  <div class="col-lg-12 form-group">
+    <%= form.label t(:team_description) %>
+    <%= form.text_area :description, class: 'form-control border-info', rows: 5 %>
+  </div>
+
+  <div class="col-lg-12 form-group">
+    <%= form.label t(:team_lead_id) %>
+    <%= form.text_field :lead_id, 'data-pre' => { id: team.lead_id, name: team.lead&.full_name }.to_json, class: 'form-control border-info', required: true %>
+  </div>
+  
+  <%= form.submit class: 'btn btn-dark float-right mr-3' %>
+  <%= link_to 'Back', :back, class: 'btn btn-dark float-right mr-3' %>
+  
 <% end %>
