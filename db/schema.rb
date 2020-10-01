@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_25_120448) do
+ActiveRecord::Schema.define(version: 2020_09_23_135753) do
 
   create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "company_id", null: false
@@ -69,7 +69,9 @@ ActiveRecord::Schema.define(version: 2020_09_25_120448) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sequence_num", null: false
     t.index ["company_id"], name: "index_departments_on_company_id"
+    t.index ["sequence_num", "company_id"], name: "index_departments_on_sequence_num_and_company_id", unique: true
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -141,8 +143,7 @@ ActiveRecord::Schema.define(version: 2020_09_25_120448) do
     t.integer "company_id", null: false
     t.string "title", null: false
     t.text "description"
-    t.integer "assignable_id"
-    t.string "assignable_type"
+    t.integer "assignee_id"
     t.integer "created_by_id"
     t.string "status", null: false
     t.datetime "due_date"
@@ -157,11 +158,13 @@ ActiveRecord::Schema.define(version: 2020_09_25_120448) do
     t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["assignable_id", "assignable_type"], name: "index_tasks_on_assignable_id_and_assignable_type"
+    t.integer "sequence_num", null: false
+    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
     t.index ["created_by_id"], name: "index_tasks_on_created_by_id"
     t.index ["parent_id"], name: "index_tasks_on_parent_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
     t.index ["reviewer_id"], name: "index_tasks_on_reviewer_id"
+    t.index ["sequence_num", "company_id"], name: "index_tasks_on_sequence_num_and_company_id", unique: true
   end
 
   create_table "tasks_watchers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -195,6 +198,8 @@ ActiveRecord::Schema.define(version: 2020_09_25_120448) do
     t.integer "company_id", null: false
     t.integer "user_id", null: false
     t.decimal "hours", precision: 5, scale: 2
+    t.integer "activity_id"
+    t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_time_logs_on_company_id"
@@ -237,6 +242,7 @@ ActiveRecord::Schema.define(version: 2020_09_25_120448) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_users_teams_on_company_id"
+    t.index ["team_id", "user_id"], name: "index_users_teams_on_team_id_and_user_id", unique: true
     t.index ["team_id"], name: "index_users_teams_on_team_id"
     t.index ["user_id"], name: "index_users_teams_on_user_id"
   end

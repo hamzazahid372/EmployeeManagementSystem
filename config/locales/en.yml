@@ -30,6 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  hello: "Hello world"
+  department_new: 'New Department'
+  department_update: 'Update Department'
+  department_title: 'Title'
+  department_description: 'Description'
   project_new: 'New Project'
   project_update: 'Update Project'
   event_new: 'New Event'
@@ -44,6 +49,41 @@ en:
   event_title: 'Title'
   event_description: 'Description'
   event_date: 'Date'
+  project_user_name: 'User Name'
+
+  team_heading: 'Team'
+  team_name: 'Name'
+  team_description: 'Description'
+  team_lead_id: 'Lead'
+  team_created_id: 'Created By'
+  team_create: 'Create'
+  team_update: 'Update'
+  team_created_at: 'Date of Creation'
+  team_created_by: 'Created By'
+  team_lead_name: 'Lead Name'
+  team_user_name: 'User Name'
+
+  task_create: 'Create Task'
+  task_update: 'Update Task'
+  task_title: 'Title'
+  task_description: 'Description'
+  task_status: 'Status'
+  task_start_date: 'Start Date'
+  task_end_date: 'End Date'
+  task_expected_start_date: 'Expected Start Date'
+  task_expected_end_date: 'Expected End Date'
+  task_due_date: 'Due Date'
+  task_progress: 'Progress'
+  task_priority: 'Priority'
+  task_assignee_id: 'Assignee'
+  task_heading: 'Tasks'
+  task_assignable_type: 'Assignable Type'
+  task_project_title: 'Project Title'
+  task_assignee: 'Assignee'
+  task_created: 'Date of Creation'
+  task_created_by: 'Created By'
+  task_project_id: 'Project'
+  task_project_filter: 'project'
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:
@@ -70,4 +110,44 @@ en:
     failure:
       name_short: 'Name too short'
       date_presence: 'Date cannot be empty'
-
+  department:
+    created: 'Department created successfully'
+    updated: "Department updated successfully"
+    destroyed: "Department deleted successfully"
+    failure:
+      name_short: 'Name is too short(should be of at least three characters)'
+      cannot_destroyed: 'This project cannot be destroyed'
+  cancan:
+    access_denied: 'You are not authorized to access this page'
+  comments:
+    created: 'Comment created successfully'
+    not_created: 'Comment creation failed'
+    destroyed: 'Comment deleted successfully'
+    not_destroyed: 'Comment deletion failed'
+    updated: 'Comment updated successfully'
+    not_updated: 'Comment updation failed'
+  task:
+     created: 'Task created successfully'
+     updated: 'Task updated successfully'
+     destroyed: 'Task removed successfully'
+     not_destroyed: 'Task not removed'
+     not_exist: 'No Task exist yet'
+     invalid_end_date: 'cannot be less than start date'
+     invalid_expected_end_date: 'cannot be less than expected start date'
+     invalid_due_date: 'cannot be less than start date'
+  time_log:
+    created: 'Time log created successfully'
+    not_created: 'Time log creation failed'
+  users_team:
+    created: 'User added in team successfully'
+    destroyed: 'User removed from this team successfully'
+    not_destroyed: 'User not removed from this team'
+  projects_user:
+    created: 'User added in project successfully'
+    destroyed: 'User removed from this project successfully'
+    not_destroyed: 'User not removed from this project'
+  team:
+    created: 'Team created successfully'
+    destroyed: 'Team removed successfully'
+    updated: 'Team updated successfully'
+    not_destroyed: 'Team not removed'

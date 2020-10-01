@@ -1,0 +1,30 @@
+<table id="tasks_table" data-turbolinks="false" class="table table-hover">
+  <thead>
+  <tr>
+    <th><%= t(:task_title) %></th>
+    <th><%= t(:task_project_title) %></th>
+    <th><%= t(:task_assignee) %></th>
+    <th><%= t(:task_created_by) %></th>
+    <th><%= t(:task_status) %></th>
+    <th><%= t(:task_priority) %></th>
+    <th><%= t(:task_created) %></th>
+    <th><%= t(:task_due_date) %></th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <% @tasks.collect do |task| %>
+    <tr>
+      <td><%= link_to task.title, task_path(task) %> </td>
+      <td> <%= link_to task.project.name, project_path(task.project) %> </td>
+      <td> <%= link_to task.assignee.full_name, user_path(task.assignee_id) %> </td>
+      <td> <%= link_to task.created_by.full_name, user_path(task.created_by) %> </td>
+      <td> <%= task.status %> </td>
+      <td> <%= Task::PRIORITY.key task.priority %> </td>
+      <td> <%= task.created_at&.to_s(:long) %> </td>
+      <td> <%= task.due_date&.to_s(:long) %> </td>
+    </tr>        
+  <% end %>
+   
+  </tbody>
+</table>
