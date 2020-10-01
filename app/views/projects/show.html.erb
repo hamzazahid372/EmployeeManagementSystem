@@ -1,7 +1,7 @@
 <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
+<br><br>
 <%= javascript_pack_tag 'projects_users', 'data-turbolinks-track': 'reload' %>
 <div class="modal" id="projects-users-modal"></div>
-
 <%= form_for @project  do |form| %>
   <div class="container-fluid">
     <h1>
@@ -18,7 +18,7 @@
       <% end %>
       <%= link_to 'Add Users', new_project_projects_user_path(@project), class: 'ml-3 btn btn-dark', remote: true %>
     </div>
-    
+
     <table class="table">
       <tbody>
         <tr>
@@ -51,7 +51,7 @@
         </tr>
       </tbody>
     </table>
-    
+
 <% end %>
 
 <%= render partial: 'shared/tabs', locals: { resource: :project } %>
