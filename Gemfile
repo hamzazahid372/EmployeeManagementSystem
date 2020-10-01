@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'paperclip', '~> 6.0.0'
 # To generate fake data
 gem 'faker', '2.14.0'
+# To add breadcrumbs
+gem 'breadcrumbs_on_rails', '~> 3.0', '>= 3.0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
