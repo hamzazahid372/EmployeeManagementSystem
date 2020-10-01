@@ -18,7 +18,7 @@ module ApplicationHelper
     resource_tabs[resource] || []
   end
 
-  def get_classes
+  def get_card_classes
     if params[:action] == 'index'
       'container-fluid w-100 mt-4 pl-4 pr-4 pb-4'
     elsif params[:action] == 'find'
