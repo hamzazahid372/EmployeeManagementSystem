@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def index
     redirect_to new_user_session_path and return if Current.company_id.nil?
 
+    add_breadcrumb 'Users', users_path
     @users = Current.company.users
     respond_to do |format|
       format.html
@@ -11,6 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    add_breadcrumb @user.full_name, user_path(@user)
+
     respond_to do |format|
       format.html
     end

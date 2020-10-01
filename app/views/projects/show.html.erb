@@ -1,8 +1,8 @@
 <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
 <% require 'date' %>
 
-<div class="container-fluid w-100 mt-4 pl-4 pr-4">
-  <div class="card">
+<div class="container-fluid w-75 mt-4 pl-4 pr-4">
+  <div class="card shadow-lg">
     <div class="card-header">
       <h2 class="font-weight-bold float-left">
       <%= @project.name %>        
@@ -51,8 +51,7 @@
           </tr>
         </tbody>
       </table>
+      <%= render partial: 'shared/tabs', locals: { resource: :project } %>
      </div>
   </div>
 </div>
-
-<%= render partial: 'shared/tabs', locals: { resource: :project } %>
