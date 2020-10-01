@@ -1,4 +1,4 @@
-<%= javascript_pack_tag 'project', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'project' %>
 <div class="container-fluid">
   <h1>Projects</h1>
   <div class="table-responsive">
@@ -27,4 +27,8 @@
         </tbody>
       </table>
   </div>
+   <div class="digg_pagination">
+    <%= will_paginate @projects %>
+  </div>
+
 </div>

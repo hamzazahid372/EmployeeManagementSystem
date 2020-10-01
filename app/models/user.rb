@@ -16,7 +16,8 @@ class User < ApplicationRecord
   belongs_to :department, optional: true
   has_many :teams, through: :users_teams
   has_many :users_teams, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :created_comments, class_name: 'Comment', dependent: :destroy
   has_many :created_projects, class_name: 'Project', dependent: :destroy, foreign_key: 'created_by_id'
   has_many :attendances, dependent: :destroy
   has_many :time_logs, dependent: :destroy
@@ -38,11 +39,15 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { scope: :company_id }
 
   def admin?
-    role_id == User::ROLES['Administrator']
+    role_id == User::ROLES.fetch('Administrator')
   end
 
   def account_owner?
     company.owner_id == id
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   protected

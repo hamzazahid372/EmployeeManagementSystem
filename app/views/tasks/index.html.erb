@@ -1,0 +1,43 @@
+<%= javascript_pack_tag 'task' %>
+<div class="container-fluid">
+  <h1><%= t(:task_heading) %></h1>
+  
+  <div class="row">      
+    <div class="col-lg-3">
+      <div class="form-group">
+        <%= label_tag t(:task_project_id) %>
+        <%= select_tag t(:task_project_filter), options_for_select( @projects.collect{ |p| [p.name,p.id] }.unshift(['All',''])), { class: "form-control data-filter" }  %>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="form-group">
+        <%= label_tag t(:task_priority) %>
+        <%= select_tag :priority, options_for_select(Task::PRIORITY.merge('All'=>'').reverse_each()), class: "form-control data-filter"  %>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="form-group">
+        <%= label_tag t(:task_status) %>
+        <%= select_tag :status, options_for_select(Task::STATUS.merge('All'=>'').reverse_each()), {class: "form-control data-filter"} %>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="form-group">
+        <%= label_tag t(:task_assignee) %>
+        <%= select_tag :assignee, options_for_select( @users.collect{ |u| [u.first_name,u.id] }.unshift(['All',''])), {class: "form-control data-filter"} %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="table-responsive" id="table-parent-div">
+      <%= render partial: "table" %>
+  </div>  
+
+  <div class="digg_pagination">
+    <%= will_paginate @tasks %>
+  </div>
+
+</div>

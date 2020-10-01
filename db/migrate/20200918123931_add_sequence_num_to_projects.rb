@@ -1,6 +1,4 @@
 class AddSequenceNumToProjects < ActiveRecord::Migration[6.0]
-
-
   def self.up
     add_column :projects, :sequence_num, :integer,:null=>false
     update_sequence_num_values

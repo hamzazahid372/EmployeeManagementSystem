@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <h1>Users</h1>
+  <div class="table-responsive">
+    <table id="users_teams-datatable" class="table table-hover">
+      <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Role</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @users_teams.each do |team_user| %>
+          <tr>
+            <td> <%= team_user.user.first_name %> </td>
+            <td> <%= team_user.user.last_name %> </td>
+            <td> <%= User::ROLES.key team_user.user.role_id %> </td>
+            <td> <%= team_user.user.email %> </td>
+            <td> 
+              <% if can? :destroy, UsersTeam %>
+                <%= button_to 'Delete', users_team_path(team_user), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete?' } 
+                %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="digg_pagination">
+   <%= js_will_paginate @users_teams %>
+</div>
