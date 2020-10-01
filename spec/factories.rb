@@ -8,6 +8,11 @@ FactoryBot.define do
     status { 'Pending' }
     priority { 2 }
   end
+  factory :team do
+    name { Faker::Name.name }
+  end
+  factory :users_team do
+  end
   factory :project do
     name { 'Sample project' }
     status { 'Pending' }

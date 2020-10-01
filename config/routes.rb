@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
   resources :projects do
+    resources :projects_users, shallow: true
     resources :comments, shallow: true
   end
   get 'user_companies/find', controller: 'user_companies', action: 'find'
