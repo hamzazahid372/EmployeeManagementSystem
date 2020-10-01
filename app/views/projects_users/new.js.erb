@@ -1,0 +1,7 @@
+$("#projects-users-modal").html("<%= j render partial: 'form', locals: { project: @project, projects_user: @projects_user } %>");
+
+$("#projects-users-modal").modal('show');
+$("#projects_user_user_id").tokenInput('/users/search.json', {
+  theme: "facebook",
+  tokenLimit: 1
+});

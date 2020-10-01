@@ -1,0 +1,33 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+  
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h4 class="modal-title">Add Users</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    
+    <!-- Modal body -->
+    <div class="modal-body">
+      <%= form_for [project, projects_user], remote: true do |form| %>
+        
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <%= form.label t(:project_user_name) %>
+                <%= form.text_field :user_id, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+
+          <%= form.submit class: 'btn btn-dark' %>
+
+        </div>
+
+      <% end %>
+    </div>
+    
+  </div>
+</div>
