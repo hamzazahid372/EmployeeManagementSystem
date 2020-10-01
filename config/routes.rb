@@ -24,5 +24,4 @@ Rails.application.routes.draw do
     resources :time_logs
     resources :comments, shallow: true
   end
->>>>>>> 2fe541bbc8918861c1901d3cc2afabb5ac76f1b9
 end
