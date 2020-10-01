@@ -1,35 +1,34 @@
-<div class="mt-10">
-  <div class="container border rounded-lg w-50 shadow p-4 mb-4 bg-white mt-4">
-    <h2 class="text-center mb-5"> <%= APP_NAME %> </h2>
-    <h2 class="text-center mb-5">Log in</h2>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<% content_for :card_header do %>
+  <div class="card-header">
+    <h2 class="font-weight-bold float-left">Log in</h2>
+  </div>
+<% end %>
 
-      <div class="field text-center mb-4 row-cols-1 pr-5 m-4">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control float-right w-50' %>
-      </div>
+<div class="col-sm-6 border-right float-left pt-5 pl-5">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group col-lg-12">
+      <%= f.label :email, class: 'h5 card-title' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control border-info', required: true %>
+    </div>
 
-      <div class="field text-center mb-4 row-cols-1 pr-5 m-4">
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control float-right w-50' %>
-      </div>
+    <div class="form-group col-lg-12">
+      <%= f.label :password, class: 'h5 card-title' %>
+      <%= f.password_field :password, autocomplete: "current-password", class: 'form-control border-info', required: true %>
+    </div>
 
-      <% if devise_mapping.rememberable? %>
-        <div class="field text-center">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      <% end %>
-
-      <div class="actions text-center m-2">
-        <%= f.submit "Log in", class: 'btn btn-dark' %>
-      </div>
-      <div class="text-center">
-        <%= render "devise/shared/links" %>
+    <% if devise_mapping.rememberable? %>
+      <div class="form-group col-lg-12">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, class: 'card-text' %>
       </div>
     <% end %>
-
-    
-  </div>
+    <%= f.submit "Log in", class: 'btn btn-dark float-right mr-3' %>
+    <div class="text-left ml-3 mt-3">
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</div>
+<div class="col-sm-6 float-left">
+  <img src="https://cdn.dribbble.com/users/1048838/screenshots/4903831/altostack_dribbble_aga_jucha.png" class="img-fluid " alt="Responsive image">
 </div>
