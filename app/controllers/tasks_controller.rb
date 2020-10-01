@@ -7,6 +7,8 @@ class TasksController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
 
   def index
+    add_breadcrumb 'Tasks', tasks_path
+
     @tasks = apply_filters(@tasks, params)
     @tasks = @tasks.page(params[:page]).per_page(PER_PAGE)
     @users = User.all
@@ -18,12 +20,18 @@ class TasksController < ApplicationController
   end
 
   def show
+    add_breadcrumb 'Tasks', tasks_path
+    add_breadcrumb @task.title, task_path(@task)
+
     respond_to do |format|
       format.html
     end
   end
 
   def new
+    add_breadcrumb 'Tasks', tasks_path
+    add_breadcrumb 'Create Task', new_task_path
+
     @users = User.all
     @projects = Project.all
     respond_to do |format|
@@ -32,6 +40,10 @@ class TasksController < ApplicationController
   end
 
   def edit
+    add_breadcrumb 'Tasks', tasks_path
+    add_breadcrumb @task.title, task_path(@task)
+    add_breadcrumb 'Update', edit_task_path
+
     @users = User.all
     @projects = Project.all
     respond_to do |format|

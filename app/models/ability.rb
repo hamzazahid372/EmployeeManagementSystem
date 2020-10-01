@@ -12,6 +12,7 @@ class Ability
   include Abilities::UserTeamAbility
   include Abilities::TimeLogAbility
   include Abilities::ProjectUserAbility
+  include Abilities::EventAbility
   def initialize(user)
     return unless user.present?
 
