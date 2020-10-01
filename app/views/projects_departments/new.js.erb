@@ -1,0 +1,7 @@
+$("#projects-departments-modal").html("<%= j render partial: 'form', locals: { department: @department, projects_department: @projects_department } %>");
+
+$("#projects-departments-modal").modal('show');
+$("#projects_department_project_id").tokenInput('/projects/search.json', {
+  theme: "facebook",
+  tokenLimit: 1
+});

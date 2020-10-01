@@ -35,6 +35,7 @@ en:
   department_update: 'Update Department'
   department_title: 'Title'
   department_description: 'Description'
+
   project_new: 'New Project'
   project_update: 'Update Project'
   project_title: 'Title'
@@ -45,6 +46,8 @@ en:
   project_expected_start_date: 'Expected Start Date'
   project_expected_end_date: 'Expected End Date'
   project_user_name: 'User Name'
+  project_department_name: 'Name'
+  project_delete_action: 'Action'        
 
   team_heading: 'Team'
   team_name: 'Name'
@@ -129,6 +132,10 @@ en:
     created: 'User added in team successfully'
     destroyed: 'User removed from this team successfully'
     not_destroyed: 'User not removed from this team'
+  projects_department:
+    created: 'Project added in department successfully'
+    destroyed: 'Project removed from this department successfully'
+    not_destroyed: 'Project not removed from this department'
   projects_user:
     created: 'User added in project successfully'
     destroyed: 'User removed from this project successfully'

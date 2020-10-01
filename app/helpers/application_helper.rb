@@ -13,7 +13,8 @@ module ApplicationHelper
       user: %w[comments],
       project: %w[comments projects_users],
       team: %w[comments users_teams],
-      task: %w[comments time_logs]
+      task: %w[comments time_logs],
+      department: %w[department_projects]
     }
     resource_tabs[resource] || []
   end

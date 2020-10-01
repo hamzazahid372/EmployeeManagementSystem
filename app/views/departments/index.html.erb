@@ -4,10 +4,10 @@
   <div class="table-responsive">
       <table id="departments-datatable" class="table table-hover">
         <thead>
-        <tr>
-          <th><%= t(:department_title) %></th>
-          <th><%= t(:department_description) %></th>
-        </tr>
+          <tr>
+            <th><%= t(:department_title) %></th>
+            <th><%= t(:department_description) %></th>
+          </tr>
         </thead>
         <tbody>
         <% @departments.each do |department| %>
@@ -19,4 +19,7 @@
         </tbody>
       </table>
   </div>
+</div>
+<div class="digg_pagination">
+  <%= will_paginate @departments %>
 </div>
