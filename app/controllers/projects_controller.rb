@@ -2,7 +2,6 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
   def index
     add_breadcrumb 'Projects', projects_path
-    @projects = Project.all
     @projects = @projects.page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
       format.html
