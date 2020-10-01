@@ -1,0 +1,25 @@
+<table id="teams-table" class="table table-hover">
+  <thead>
+  <tr>
+    <th><%= t(:team_name) %></th>
+    <th><%= t(:team_description) %></th>
+    <th><%= t(:team_created_by) %></th>
+    <th><%= t(:team_lead_name) %></th>
+    <th><%= t(:team_created_at) %></th>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <% @teams.collect do |team| %>
+    <tr>
+      <td><%= link_to team.name, team_path(team) %> </td>
+      <td> <%= team.description %> </td>
+      <td> <%= link_to team.created_by.full_name, user_path(team.created_by) %> </td>
+      <td> <%= link_to team.lead.full_name, user_path(team.lead) %> </td>
+      <td> <%= team.created_at&.to_s(:long) %> </td>
+      
+    </tr>        
+  <% end %>
+   
+  </tbody>
+</table>

@@ -9,5 +9,6 @@ class CreateUsersTeams < ActiveRecord::Migration[6.0]
       t.integer :company_id, null: false, index: true
       t.timestamps
     end
+    add_index(:users_teams, %i[team_id user_id], unique: true)
   end
 end

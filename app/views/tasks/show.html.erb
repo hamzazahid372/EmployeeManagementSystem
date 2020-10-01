@@ -17,7 +17,8 @@
     <% end %>
 
     <%= button_to 'Watch', task_path(@task), class: 'ml-3 btn btn-dark' %>
-    <%= button_to 'Add Watcher', task_path(@task), class: 'ml-3 btn btn-dark' %>
+    <%= link_to 'Add Watcher', task_path(@task), class: 'ml-3 btn btn-dark', remote: true %>
+
     <%= button_to 'Remove Watcher', task_path(@task), class: 'ml-3 btn btn-dark',
     method: :delete, data: { confirm: 'Are you sure you want to delete watcher?' } %>
     <%= button_to 'Log Time', new_task_time_log_path(@task), method: 'get', action: 'new', class: 'ml-3 btn btn-dark', remote: true %>
@@ -47,15 +48,15 @@
       </tr>
       <tr>
         <th><%= t(:task_created_by) %></th>
-        <td><%= User.find(@task&.created_by_id).first_name + " " + User.find(@task&.created_by_id).last_name %></td>
+        <td><%= @task.created_by.full_name %></td>
       </tr>
       <tr>
         <th><%= t(:task_assignee) %></th>
-        <td><%= User.find(@task&.assignable_id).first_name + " " + User.find(@task&.assignable_id).last_name %></td>
+        <td><%= @task.assignee.full_name %></td>
       </tr>
       <tr>
         <th><%= t(:task_project_id) %></th>
-        <td><%= Project.find(@task&.project_id).name %></td>
+        <td><%= @task.project.name %></td>
       </tr>
       <tr>
         <th><%= t(:task_due_date) %></th>
