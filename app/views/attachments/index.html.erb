@@ -1,16 +1,15 @@
-<% binding.pry %>
 <%= javascript_pack_tag 'attachment' %>
 <div class="container-fluid">
   <div class="table-responsive">
-      <table id="attachments-datatable" class="table table-hover">
-        <thead>
+    <table id="attachments-datatable" class="table table-hover">
+      <thead>
         <tr>
           <th><%= t(:file_name) %></th>
           <th><%= t(:file_size) %></th>
           <th><%= t(:file_uploaded_on) %></th>
         </tr>
-        </thead>
-        <tbody>
+      </thead>
+      <tbody>
 
         <% @attachments.each do |attachment| %>
           <tr>
@@ -19,8 +18,7 @@
             <td><%= Date.parse((attachment.attachment_updated_at).to_s) unless attachment.attachment_updated_at.nil? %></td>
           </tr>
         <% end %>
-
-        </tbody>
-      </table>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -14,13 +14,12 @@ class AddSequenceNumToAttachments < ActiveRecord::Migration[6.0]
 
   def self.update_sequence_num_values
     Company.all.each do |parent|
-      cntr = 1
-      parent.attachments.reorder("id").all.each do |nested|
-        nested.sequence_num = cntr
-        cntr += 1
-        nested.save
+      count = 1
+      parent.attachments.reorder("id").all.each do |attachment|
+        attachment.sequence_num = count
+        count += 1
+        attachment.save
       end
     end
   end
 end
-

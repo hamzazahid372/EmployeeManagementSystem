@@ -130,6 +130,8 @@ en:
   attachment:
     created: 'Document uploaded successfully'
     not_created: 'Sorry this format is not supported'
+    destroyed: 'Attachment deleted successfully'
+    not_destroyed: 'Oops something getting wrong'
   users_team:
     created: 'User added in team successfully'
     destroyed: 'User removed from this team successfully'

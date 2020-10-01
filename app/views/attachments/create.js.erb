@@ -1,6 +1,6 @@
 <% if @success %>
-  $('#document-modal').modal('hide');
-  location.reload();
-<% else %>
-  location.reload();
+  $('#attachment-modal').modal('hide');
+  $.ajax({ type:'GET', url: '<%= polymorphic_path([@attachable, Attachment], format: :js) %>' });
 <% end %>
+
+
