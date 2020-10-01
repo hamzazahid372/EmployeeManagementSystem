@@ -5,11 +5,8 @@ class Ability
   include CanCan::Ability
   include Abilities::UserAbility
   include Abilities::ProjectAbility
-<<<<<<< HEAD
   include Abilities::DepartmentAbility
-=======
   include Abilities::CommentAbility
->>>>>>> 7b54f5c29d56bdd453404701774ec899d3410106
   include Abilities::TaskAbility
   def initialize(user)
     return unless user.present?

@@ -67,9 +67,9 @@ class DepartmentsController < ApplicationController
     end
     respond_to do |format|
       if success
-        format.html { redirect_to @department }
+        format.html { redirect_to departments_path }
       else
-        format.html {redirect_to 'show'}
+        format.html {redirect_to @department}
       end
     end
   end

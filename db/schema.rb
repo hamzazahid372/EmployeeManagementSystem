@@ -10,15 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_25_120448) do
+ActiveRecord::Schema.define(version: 2020_09_29_130639) do
+
   create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "company_id", null: false
     t.integer "attachable_id", null: false
     t.string "attachable_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "attachment_file_name"
+    t.string "attachment_content_type"
+    t.float "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer "sequence_num", null: false
+    t.integer "user_id"
     t.index ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type"
     t.index ["company_id"], name: "index_attachments_on_company_id"
+    t.index ["sequence_num", "company_id"], name: "index_attachments_on_sequence_num_and_company_id", unique: true
   end
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -75,17 +83,14 @@ ActiveRecord::Schema.define(version: 2020_09_25_120448) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "company_id", null: false
-    t.datetime "start", null: false
+    t.datetime "event_date", null: false
     t.string "title", null: false
     t.text "description"
     t.integer "created_by_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "sequence_num", null: false
-    t.datetime "end"
     t.index ["company_id"], name: "index_events_on_company_id"
     t.index ["created_by_id"], name: "index_events_on_created_by_id"
-    t.index ["sequence_num", "company_id"], name: "index_events_on_sequence_num_and_company_id", unique: true
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -198,6 +203,8 @@ ActiveRecord::Schema.define(version: 2020_09_25_120448) do
     t.integer "company_id", null: false
     t.integer "user_id", null: false
     t.decimal "hours", precision: 5, scale: 2
+    t.integer "activity_id"
+    t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_time_logs_on_company_id"
@@ -243,4 +250,5 @@ ActiveRecord::Schema.define(version: 2020_09_25_120448) do
     t.index ["team_id"], name: "index_users_teams_on_team_id"
     t.index ["user_id"], name: "index_users_teams_on_user_id"
   end
+
 end
