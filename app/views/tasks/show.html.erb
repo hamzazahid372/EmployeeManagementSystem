@@ -1,7 +1,7 @@
-<<<<<<< HEAD
- <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
- <%= javascript_pack_tag 'time_log', 'data-turbolinks-track': 'reload' %>
- <%= javascript_pack_tag 'attachment', 'data-turbolinks-track': 'reload' %>
+
+<%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'time_log', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'attachment', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'time_log', 'data-turbolinks-track': 'reload' %>
 <% content_for :card_header do %>
   <div class="card-header">
@@ -81,10 +81,6 @@
 
   </tbody>
 </table>
-
-<%= render partial: 'shared/tabs', locals: {resource: :task} %>
-
-
 <div class="modal" id="time-log-modal">
   <div class="modal-dialog">
     <div class="modal-content">
