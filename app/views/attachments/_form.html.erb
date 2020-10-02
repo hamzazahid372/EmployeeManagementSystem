@@ -6,8 +6,8 @@
     </div>
     <div class="modal-body text-center">
       <%= form_for([attachable, attachment], remote: true, html: { multipart: true }) do |form| %>
-      <%= file_field_tag "attachment" %>
-      <%= form.submit class: 'btn btn-dark btn-sm' %>
+        <%= file_field_tag "attachment" %>
+        <%= form.submit class: 'btn btn-dark btn-sm' %>
       <% end %>
       <div class="flash-messages"></div>
     </div>
