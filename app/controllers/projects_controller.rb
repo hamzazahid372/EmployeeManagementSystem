@@ -82,6 +82,14 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def search
+    @projects = Project.search params[:q]
+    @projects = @projects.map { |p| { id: p.id, name: p.name } }
+    respond_to do |format|
+      format.json { render json: @projects.to_json }
+    end
+  end
+
   private
 
   def project_params

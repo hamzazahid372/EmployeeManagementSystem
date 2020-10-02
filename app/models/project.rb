@@ -27,4 +27,8 @@ class Project < ApplicationRecord
       errors.add(:expected_end_date, 'cannot be less than  expected start date')
     end
   end
+
+  def self.search q
+    where('name like :q', q: "%#{q}%")
+  end
 end
