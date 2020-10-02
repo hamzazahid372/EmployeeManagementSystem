@@ -30,15 +30,15 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  name: 'Name'
   hello: "Hello world"
   department_new: 'New Department'
   department_update: 'Update Department'
-  department_title: 'Title'
   department_description: 'Description'
-
+  department_project_add: 'Add Project'
+  
   project_new: 'New Project'
   project_update: 'Update Project'
-  project_title: 'Title'
   project_description: 'Description'
   project_status: 'Status'
   project_start_date: 'Start Date'
@@ -50,7 +50,6 @@ en:
   project_delete_action: 'Action'        
 
   team_heading: 'Team'
-  team_name: 'Name'
   team_description: 'Description'
   team_lead_id: 'Lead'
   team_created_id: 'Created By'

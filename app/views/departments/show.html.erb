@@ -16,7 +16,7 @@
       <%= button_to 'Update', edit_department_path(@department.sequence_num), { class: 'ml-3 btn btn-dark', method: 'get' } %>
     <% end %>
     
-    <%= link_to 'Add Project', new_department_projects_department_path(@department), class: 'ml-3 btn btn-dark', remote: true %>
+    <%= link_to t('department_project_add'), new_department_projects_department_path(@department), class: 'ml-3 btn btn-dark', remote: true %>
   </div>
 
     <table class="table">
