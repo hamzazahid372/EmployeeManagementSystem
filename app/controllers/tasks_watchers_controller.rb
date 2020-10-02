@@ -11,6 +11,14 @@ class TasksWatchersController < ApplicationController
       format.js
     end
   end
+  
+  def index
+    @tasks_watchers = @tasks_watchers.includes(:watcher)
+    @tasks_watchers = @tasks_watchers.page(params[:page]).per_page(PER_PAGE)
+    respond_to do |format|
+      format.js
+    end
+  end
 
   def create
     if @tasks_watcher.save
@@ -18,6 +26,22 @@ class TasksWatchersController < ApplicationController
     else
       errors = @tasks_watcher.errors.full_messages.join(', ')
       flash.now[:error] = errors
+    end
+    respond_to do |format|
+      if errors
+        format.js { render js: "alert('#{errors}');" }
+      else
+        format.js
+      end
+    end
+  end
+
+  def destroy
+    @task = @tasks_watcher.task
+    if @tasks_watcher.destroy
+      flash.now[:notice] = t 'tasks_watcher.destroyed'
+    else
+      flash.now[:notice] = t 'tasks_watcher.not_destroyed'
     end
     respond_to do |format|
       format.js

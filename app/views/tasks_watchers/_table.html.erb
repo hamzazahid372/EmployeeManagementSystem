@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <h1>Watchers</h1>
+  <div class="table-responsive">
+      <table id="tasks-watchers-datatable" class="table table-hover">
+        <thead>
+        <tr>
+          <th><%= t(:watcher_name) %></th>
+          <th><%= t(:watcher_type) %></th>
+          <th><%= t(:project_delete_action) %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% tasks_watchers.each do |task_watcher| %>
+          <tr>
+            <td><%= link_to task_watcher.watcher.name, polymorphic_path(task_watcher.watcher) %></td>
+            <td> <%= task_watcher.watcher_type %> </td>
+            <td> 
+              <% if can? :destroy, task_watcher %>
+                <%= button_to 'Delete', tasks_watcher_path(task_watcher), class: 'btn btn-dark', method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete?' } 
+                %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+
+        </tbody>
+      </table>
+  </div>
+  <div class="digg_pagination">
+    <%= js_will_paginate tasks_watchers %>
+  </div>
+
+</div>

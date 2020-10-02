@@ -27,4 +27,12 @@ $(document).ready(function () {
       prePopulate: pre
     });
   }
+  if($('#tasks-watchers-datatable').length == 1){
+    $('#tasks-watchers-datatable').DataTable({
+      info: false,
+      paging: false,
+      searching: false
+    });  
+  }
+  
 });

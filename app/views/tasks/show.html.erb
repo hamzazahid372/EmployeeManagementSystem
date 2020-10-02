@@ -1,5 +1,6 @@
 <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'time_log', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'tasks_watchers' %>
 
 <div class="modal" id="tasks-watchers-modal"></div>
 
@@ -16,12 +17,11 @@
       <% if can? :update, @task %>
         <%= button_to 'Update', edit_task_path(@task.sequence_num), { class: 'ml-3 btn btn-dark', method: 'get' } %>
       <% end %>
-      <%= button_to 'Watch', task_path(@task), class: 'ml-3 btn btn-dark' %>
-      <%= link_to t('task_add_watcher'), new_task_tasks_watcher_path(@task), class: 'ml-3 btn btn-dark', remote: true %>
-      <%= button_to 'Remove Watcher', task_path(@task), class: 'ml-3 btn btn-dark',
-      method: :delete, data: { confirm: 'Are you sure you want to delete watcher?' } %>
-      <%= button_to 'Log Time', new_task_time_log_path(@task), method: 'get', action: 'new', class: 'ml-3 btn btn-dark', remote: true %>
 
+      <%= watch_button(@task) %>
+
+      <%= link_to t('task_add_watcher'), new_task_tasks_watcher_path(@task), class: 'ml-3 btn btn-dark', remote: true %>
+      <%= button_to 'Log Time', new_task_time_log_path(@task), method: 'get', action: 'new', class: 'ml-3 btn btn-dark', remote: true %>
     </div>
   </div>
 <% end %>
@@ -55,7 +55,7 @@
     </tr>
     <tr>
       <th><%= t(:task_assignee) %></th>
-      <td><%= @task.assignee.full_name %></td>
+      <td><%= @task.assignee&.full_name %></td>
     </tr>
     <tr>
       <th><%= t(:task_project_id) %></th>

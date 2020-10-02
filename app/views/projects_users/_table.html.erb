@@ -20,7 +20,7 @@
             <td> <%= project_user.user.email %> </td>
             <td> 
               <% if can? :destroy, ProjectsUser %>
-                <%= button_to 'Delete', projects_user_path(project_user), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete?' } 
+                <%= button_to 'Delete', projects_user_path(project_user), class: 'btn btn-dark', method: :delete, data: { confirm: 'Are you sure you want to delete?' } 
                 %>
               <% end %>
             </td>
