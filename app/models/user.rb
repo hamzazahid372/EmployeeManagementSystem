@@ -46,6 +46,10 @@ class User < ApplicationRecord
     role_id == User::ROLES.fetch('Administrator')
   end
 
+  def current_attendance
+    attendances.find_or_create_by(date: Date.today)
+  end
+
   def account_owner?
     company.owner_id == id
   end

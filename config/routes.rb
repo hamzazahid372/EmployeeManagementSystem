@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'attendance/log_in'
+  post 'attendance/log_out'
   resources :events
   resources :users do
     resources :comments, shallow: true

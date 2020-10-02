@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_09_25_120448) do
     t.integer "user_id", null: false
     t.datetime "login_time"
     t.datetime "logout_time"
-    t.boolean "present", default: true, null: false
+    t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_attendances_on_company_id"
