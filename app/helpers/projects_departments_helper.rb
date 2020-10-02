@@ -1,0 +1,2 @@
+module ProjectsDepartmentsHelper
+end

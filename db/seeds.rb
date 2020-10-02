@@ -29,7 +29,13 @@ info('Employees')
   User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                email: "user#{i}@7vals.com",
                password: '123456789', role_id: 2,
+               department_id: rand(1..9),
                company_id: company.id, confirmed_at: Date.today)
+end
+
+info('Departments')
+1.upto(9) do |i|
+  Department.create!(name: Faker::Company.buzzword.titleize, description: Faker::Lorem.sentence)
 end
 
 info('Projects and Tasks')
@@ -37,8 +43,10 @@ info('Projects and Tasks')
 1.upto(10) do |i|
   project = Project.create!(name: Faker::Company.buzzword.titleize, description: Faker::Lorem.sentence,
                             company_id: company.id, created_by_id: owner.id, status: Project::STATUS.sample)
+
   3.times do
-    user_id = rand(2..9)
+    department_id = user_id = rand(2..9)
+    Department.find(department_id).projects << project rescue nil
     project.users << User.find(user_id) if project.users.ids.exclude?(user_id)
   end
   1.upto(9) do |j|

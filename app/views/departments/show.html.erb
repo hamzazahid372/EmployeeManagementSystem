@@ -1,26 +1,36 @@
-<br><br>
+<%= javascript_pack_tag 'projects_departments', 'data-turbolinks-track': 'reload' %>
+
+<div class="modal" id="projects-departments-modal"></div>
 <div class="container-fluid">
-  <%= content_tag :h1, (@department.name), class: 'h1 font-weight-bold text-dark' %>
-  <table class="table">
-    <tbody>
-      <tr>
-        <th><%= t(:department_title) %></th>
-        <td><%= @department.name %></td>
-      </tr>
-      <tr>
-        <th><%= t(:department_description) %></th>
-        <td><%= @department.description %></td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="btn-group" role="group">
-    <% if can? :update, @department %>
-      <%= link_to 'Update', edit_department_path(@department),class: ' ml-3 btn btn-dark' %>
+  <h1>
+    <%= @department.name %>
+  </h1>
+
+  <div class="btn-group" role="group" style="float: right;">
+    <% if can? :destroy, Department %>
+      <%= button_to 'Delete', department_path(@department), class: 'ml-3 btn btn-dark',
+          method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
     <% end %>
-    <% if can? :delete, @department %>
-      <%= link_to 'Delete', department_path(@department.sequence_num),
-        method: :delete,class: 'ml-3 btn btn-dark',
-        data: { confirm: 'Are you sure you want to delete?' } %>
+
+    <% if can? :update, Department %>
+      <%= button_to 'Update', edit_department_path(@department.sequence_num), { class: 'ml-3 btn btn-dark', method: 'get' } %>
     <% end %>
+    
+    <%= link_to t('department_project_add'), new_department_projects_department_path(@department), class: 'ml-3 btn btn-dark', remote: true %>
   </div>
+
+    <table class="table">
+      <tbody>
+        <tr>
+          <th><%= t(:department_name) %></th>
+          <td><%= @department.name %></td>
+        </tr>
+        <tr>
+          <th><%= t(:department_description) %></th>
+          <td><%= @department.description %></td>
+        </tr>
+      </tbody>
+    </table>
 </div>
+
+<%= render partial: 'shared/tabs', locals: { resource: :department } %>

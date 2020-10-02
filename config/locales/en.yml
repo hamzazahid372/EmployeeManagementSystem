@@ -30,14 +30,15 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  name: 'Name'
   hello: "Hello world"
   department_new: 'New Department'
   department_update: 'Update Department'
-  department_title: 'Title'
   department_description: 'Description'
+  department_project_add: 'Add Project'
+
   project_new: 'New Project'
   project_update: 'Update Project'
-  project_title: 'Title'
   project_description: 'Description'
   project_status: 'Status'
   project_start_date: 'Start Date'
@@ -48,8 +49,9 @@ en:
   file_size: 'File Size'
   file_uploaded_on: 'File uploaded on'
   project_user_name: 'User Name'
+  project_department_name: 'Name'
+  project_delete_action: 'Action'
   team_heading: 'Team'
-  team_name: 'Name'
   team_description: 'Description'
   team_lead_id: 'Lead'
   team_created_id: 'Created By'
@@ -136,6 +138,10 @@ en:
     created: 'User added in team successfully'
     destroyed: 'User removed from this team successfully'
     not_destroyed: 'User not removed from this team'
+  projects_department:
+    created: 'Project added in department successfully'
+    destroyed: 'Project removed from this department successfully'
+    not_destroyed: 'Project not removed from this department'
   projects_user:
     created: 'User added in project successfully'
     destroyed: 'User removed from this project successfully'
