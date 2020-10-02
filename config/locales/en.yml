@@ -46,7 +46,7 @@ en:
   project_expected_start_date: 'Expected Start Date'
   project_expected_end_date: 'Expected End Date'
   project_user_name: 'User Name'
-  project_department_name: 'Name'
+  name: 'Name'
   project_delete_action: 'Action'        
 
   team_heading: 'Team'
