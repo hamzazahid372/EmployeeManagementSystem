@@ -39,7 +39,7 @@
 </div>
 
 <div class="table-responsive" id="table-parent-div">
-    <%= render partial: "table" %>
+    <%= render partial: "table", locals: { tasks: @tasks } %>
 </div>  
 
 <div class="digg_pagination">
