@@ -1,0 +1,7 @@
+$("#tasks-watchers-modal").html("<%= j render partial: 'form', locals: { task: @task, tasks_watcher: @tasks_watcher } %>");
+
+$("#tasks-watchers-modal").modal('show');
+$("#tasks_watcher_watcher_id").tokenInput('/users/search.json', {
+  theme: "facebook",
+  tokenLimit: 1
+});

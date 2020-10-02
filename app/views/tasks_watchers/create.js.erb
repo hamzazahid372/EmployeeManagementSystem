@@ -1,0 +1,10 @@
+<% if flash.now[:error].blank? %>
+  $("#tasks-watchers-modal").modal('hide');
+  $.get({ url: '<%= task_tasks_watchers_path(@task) %>' });
+  $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
+<% else %>
+  $("#modal-flash-messages").html("<%= j render partial: 'shared/flash' %>");
+<% end %>
+
+
+

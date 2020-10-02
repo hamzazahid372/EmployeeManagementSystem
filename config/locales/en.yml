@@ -81,6 +81,8 @@ en:
   task_created_by: 'Created By'
   task_project_id: 'Project'
   task_project_filter: 'project'
+  task_add_watcher: 'Add Watcher'
+  
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:
@@ -144,4 +146,8 @@ en:
     destroyed: 'Team removed successfully'
     updated: 'Team updated successfully'
     not_destroyed: 'Team not removed'
-     
+  tasks_watcher:
+    created: 'Watcher added in task successfully'
+    destroyed: 'Watcher removed from task successfully'
+    not_destroyed: 'Watcher not removed from task'
+ 

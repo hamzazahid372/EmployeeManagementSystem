@@ -9,5 +9,6 @@ class CreateProjectsDepartments < ActiveRecord::Migration[6.0]
       t.integer :department_id, null: false, index: true
       t.timestamps
     end
+    add_index(:projects_departments, %i[project_id department_id], unique: true)
   end
 end

@@ -5,4 +5,5 @@ class TasksWatcher < ApplicationRecord
   belongs_to :company
   belongs_to :task
   belongs_to :watcher, polymorphic: true
+  validates :task_id, uniqueness: { scope: [:watcher_id :watcher_type] }
 end
