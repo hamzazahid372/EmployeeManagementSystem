@@ -1,7 +1,6 @@
  <br><br>
-<%= form_for @event  do |form| %>
   <div class="container-fluid">
-    <%= form.label @event.title, class: 'h1 font-weight-bold text-dark' %>
+    <%= label @event.title, class: 'h1 font-weight-bold text-dark' %>
     <table class="table">
       <tbody>
         <tr>
@@ -33,4 +32,3 @@
       <% end %>
     </div>
   </div>
-<% end %>

@@ -38,6 +38,7 @@ group :development, :test do
   gem 'pry-rails'
   # Rspec for test cases
   gem 'rspec-rails', '~> 4.0.1'
+  # To create factories for testing
   gem 'factory_bot_rails', '6.1.0'
   gem 'database_cleaner-active_record'
 end

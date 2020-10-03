@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
+
   def index
     respond_to do |format|
       format.html
@@ -53,7 +54,7 @@ class EventsController < ApplicationController
 
   def edit
     respond_to do |format|
-      format.html
+      format.js
     end
   end
 

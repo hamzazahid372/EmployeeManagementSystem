@@ -14,8 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     right: 'dayGridMonth,dayGridWeek,dayGridDay' // buttons for switching between views
   },
   eventSources: [
-
-    // your event source
     {
       url: '/events.json', // use the `url` property
       color: 'yellow',    // an option!
