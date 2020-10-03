@@ -1,0 +1,2 @@
+//$.ajax({ type:'GET', url: '<%= polymorphic_path(@attachable) %>' });
+$.ajax({ type:'GET', url: '<%= polymorphic_path([@attachable, Attachment], format: :js) %>' });

@@ -30,11 +30,12 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  name: 'Name'
   hello: "Hello world"
   department_new: 'New Department'
   department_update: 'Update Department'
-  department_title: 'Title'
   department_description: 'Description'
+  department_project_add: 'Add Project'
   project_new: 'New Project'
   project_update: 'Update Project'
   event_new: 'New Event'
@@ -49,10 +50,13 @@ en:
   event_title: 'Title'
   event_description: 'Description'
   event_date: 'Date'
+  file_name: 'File Name'
+  file_size: 'File Size'
+  file_uploaded_on: 'File uploaded on'
   project_user_name: 'User Name'
-
+  project_department_name: 'Name'
+  project_delete_action: 'Action'
   team_heading: 'Team'
-  team_name: 'Name'
   team_description: 'Description'
   team_lead_id: 'Lead'
   team_created_id: 'Created By'
@@ -138,10 +142,19 @@ en:
   time_log:
     created: 'Time log created successfully'
     not_created: 'Time log creation failed'
+  attachment:
+    created: 'Document uploaded successfully'
+    not_created: 'Sorry this format is not supported'
+    destroyed: 'Attachment deleted successfully'
+    not_destroyed: 'Oops something getting wrong'
   users_team:
     created: 'User added in team successfully'
     destroyed: 'User removed from this team successfully'
     not_destroyed: 'User not removed from this team'
+  projects_department:
+    created: 'Project added in department successfully'
+    destroyed: 'Project removed from this department successfully'
+    not_destroyed: 'Project not removed from this department'
   projects_user:
     created: 'User added in project successfully'
     destroyed: 'User removed from this project successfully'
@@ -151,3 +164,7 @@ en:
     destroyed: 'Team removed successfully'
     updated: 'Team updated successfully'
     not_destroyed: 'Team not removed'
+<<<<<<< HEAD
+=======
+
+>>>>>>> d8b786509928f6cd7c657e0745d43360d7bd0883

@@ -1,29 +1,30 @@
 <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
-<% require 'date' %>
-
+<%= javascript_pack_tag 'attachment', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'projects_users', 'data-turbolinks-track': 'reload' %>
+<div class="modal" id="projects-users-modal"></div>
+<%= javascript_pack_tag 'projects_users', 'data-turbolinks-track': 'reload' %>
 <% content_for :card_header do %>
   <div class="card-header">
     <h2 class="font-weight-bold float-left">
-      <%= @project.name %>        
+      <%= @project.name %>
     </h2>
     <div class="btn-group float-right pt-1" role="group">
       <% if can? :update, @project %>
-      <%= link_to 'Update', edit_project_path(@project.sequence_num),class: ' ml-3 btn btn-dark' %>
+        <%= link_to 'Update', edit_project_path(@project.sequence_num),class: ' ml-3 btn btn-dark' %>
       <% end %>
       <% if can? :delete, @project %>
-      <%= link_to 'Delete', project_path(@project),
-      method: :delete,class: 'ml-3 btn btn-dark',
-      data: { confirm: 'Are you sure you want to delete?' } %>
+        <%= link_to 'Delete', project_path(@project),
+        method: :delete, class: 'ml-3 btn btn-dark',
+        data: { confirm: 'Are you sure you want to delete?' } %>
       <% end %>
+      <%= link_to 'Add Users', new_project_projects_user_path(@project), class: 'ml-3 btn btn-dark', remote: true %>
     </div>
   </div>
 <% end %>
-
-
 <table class="table">
   <tbody>
     <tr>
-      <th><%= t(:project_title) %></th>
+      <th><%= t(:name) %></th>
       <td><%= @project.name %></td>
     </tr>
     <tr>
@@ -52,4 +53,5 @@
     </tr>
   </tbody>
 </table>
+<div class="modal fade" id="attachment-modal" role="dialog"></div>
 <%= render partial: 'shared/tabs', locals: { resource: :project } %>

@@ -46,6 +46,7 @@ class DepartmentsController < ApplicationController
   end
 
   def index
+    @departments = @departments.page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
       format.html
     end

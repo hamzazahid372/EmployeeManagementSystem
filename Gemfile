@@ -27,6 +27,8 @@ gem 'sequenceid', '=0.0.7', git: "https://github.com/alisyed/sequenceid.git", br
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# To handle file uploading
+gem 'paperclip', '~> 6.0.0'
 # To generate fake data
 gem 'faker', '2.14.0'
 # To add breadcrumbs

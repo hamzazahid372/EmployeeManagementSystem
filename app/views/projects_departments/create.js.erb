@@ -1,0 +1,10 @@
+<% if flash.now[:error].blank? %>
+  $("#projects-departments-modal").modal('hide');
+  $.get({ url: '<%= department_projects_departments_path(@department) %>' });
+  $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
+<% else %>
+  $("#modal-flash-messages").html("<%= j render partial: 'shared/flash' %>");
+<% end %>
+
+
+
