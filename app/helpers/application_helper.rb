@@ -14,7 +14,6 @@ module ApplicationHelper
       project: %w[comments projects_users],
       team: %w[comments users_teams],
       task: %w[comments time_logs],
-      dashboard: %w[my_projects assigned_tasks watching_tasks]
     }
     resource_tabs[resource] || []
   end
@@ -26,6 +25,14 @@ module ApplicationHelper
       'container-fluid w-50 mt-5 pl-4 pr-4 pb-4'
     else
       'container-fluid w-75 mt-4 pl-4 pr-4'
+    end
+  end
+
+  def get_attendance_button
+    if Current.user.current_attendance.login_time.nil?
+      (link_to '', attendance_log_in_path, method: 'post', class: 'btn btn-light fas fa-arrow-right float-left m-1', id: 'attendance-btn')
+    elsif Current.user.current_attendance.logout_time.nil?
+      (link_to '', attendance_log_out_path, method: 'post', class: 'btn btn-light fas fa-arrow-left float-left m-1', id: 'attendance-btn')
     end
   end
 end

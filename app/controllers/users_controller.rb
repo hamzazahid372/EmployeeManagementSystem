@@ -42,7 +42,6 @@ class UsersController < ApplicationController
   def create
     success = true
     @user = Current.company.users.new(user_params)
-    binding.pry
     flash[:error] = @user.errors.full_messages.join('<br/>').html_safe unless @user.valid?
 
     render new_user_path and return unless @user.valid?
@@ -86,7 +85,6 @@ class UsersController < ApplicationController
 
   def destroy
     success = true
-    binding.pry
     begin
       User.transaction do
         @user.destroy!
