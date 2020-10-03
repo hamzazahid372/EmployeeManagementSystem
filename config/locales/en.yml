@@ -36,7 +36,7 @@ en:
   department_update: 'Update Department'
   department_description: 'Description'
   department_project_add: 'Add Project'
-  
+
   project_new: 'New Project'
   project_update: 'Update Project'
   project_description: 'Description'
@@ -47,7 +47,7 @@ en:
   project_expected_end_date: 'Expected End Date'
   project_user_name: 'User Name'
   project_department_name: 'Name'
-  project_delete_action: 'Action'        
+  project_delete_action: 'Action'
 
   team_heading: 'Team'
   team_description: 'Description'
@@ -65,6 +65,7 @@ en:
   task_title: 'Title'
   task_description: 'Description'
   task_status: 'Status'
+  task_reviewer: 'Reviewer'
   task_start_date: 'Start Date'
   task_end_date: 'End Date'
   task_expected_start_date: 'Expected Start Date'
@@ -81,6 +82,14 @@ en:
   task_created_by: 'Created By'
   task_project_id: 'Project'
   task_project_filter: 'project'
+
+  audit_user: 'User'
+  audit_action: 'Action'
+  audit_version: 'Task version#'
+  audit_time: 'Time'
+  audit_to: 'To'
+  audit_from: 'From'
+  audit_attribute: 'Attribute'
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:
@@ -144,4 +153,3 @@ en:
     destroyed: 'Team removed successfully'
     updated: 'Team updated successfully'
     not_destroyed: 'Team not removed'
-     

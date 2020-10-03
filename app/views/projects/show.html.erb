@@ -6,7 +6,7 @@
 <% content_for :card_header do %>
   <div class="card-header">
     <h2 class="font-weight-bold float-left">
-      <%= @project.name %>        
+      <%= @project.name %>
     </h2>
     <div class="btn-group float-right pt-1" role="group">
       <% if can? :update, @project %>
@@ -39,19 +39,19 @@
         <td><%= @project.status %></td>
       </tr>
       <th><%= t(:project_start_date) %></th>
-      <td><%= Date.parse((@project.start_date).to_s)unless @project.start_date.nil? %></td>
+      <td><%= @project.start_date)&.to_s(:long) %></td>
     </tr>
     <tr>
       <th><%= t(:project_end_date) %></th>
-      <td><%= Date.parse((@project.end_date).to_s)unless @project.end_date.nil? %></td>
+      <td><%= @project.end_date&.to_s(:long) %></td>
     </tr>
     <tr>
       <th><%= t(:project_expected_start_date) %></th>
-      <td><%= Date.parse((@project.expected_start_date).to_s)unless @project.expected_start_date.nil? %></td>
+      <td><%= @project.expected_start_date&.to_s(:long) %></td>
     </tr>
     <tr>
       <th><%= t(:project_expected_end_date) %></th>
-      <td><%= Date.parse((@project.expected_end_date).to_s)unless @project.expected_end_date.nil? %></td>
+      <td><%= @project.expected_end_date)&.to_s(:long) %></td>
     </tr>
   </tbody>
 </table>

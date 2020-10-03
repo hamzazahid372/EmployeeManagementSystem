@@ -2,6 +2,7 @@
 
 # Task model
 class Task < ApplicationRecord
+  audited
   STATUS = { 'Started' => 'started', 'Pending' => 'pending', 'Completed' => 'completed' }.freeze
   PRIORITY = { low: 1, medium: 2, high: 3 }.freeze
   sequenceid :company, :tasks
