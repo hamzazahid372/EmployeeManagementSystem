@@ -1,24 +1,22 @@
-<div class="table-responsive">
-  <table id="<%= local_assigns[:table_id] || 'projects-datatable' %>" class="table table-hover">
-    <thead>
+<table id="<%= local_assigns[:table_id] || 'projects-datatable' %>" class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= t(:project_title) %></th>
+      <th><%= t(:project_description) %></th>
+      <th><%= t(:project_status) %></th>
+      <th><%= t(:project_start_date) %></th>
+      <th><%= t(:project_end_date) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% projects.each do |project| %>
       <tr>
-        <th><%= t(:project_title) %></th>
-        <th><%= t(:project_description) %></th>
-        <th><%= t(:project_status) %></th>
-        <th><%= t(:project_start_date) %></th>
-        <th><%= t(:project_end_date) %></th>
+        <td><%= link_to project.name, project_path(project) %> </td>
+        <td> <%= project.description %> </td>
+        <td> <%= project.status %> </td>
+        <td><%= Date.parse((project.start_date).to_s) unless project.start_date.nil? %></td>
+        <td><%= Date.parse((project.end_date).to_s) unless project.end_date.nil? %></td>
       </tr>
-    </thead>
-    <tbody>
-      <% projects.each do |project| %>
-        <tr>
-          <td><%= link_to project.name, project_path(project) %> </td>
-          <td> <%= project.description %> </td>
-          <td> <%= project.status %> </td>
-          <td><%= Date.parse((project.start_date).to_s) unless project.start_date.nil? %></td>
-          <td><%= Date.parse((project.end_date).to_s) unless project.end_date.nil? %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+    <% end %>
+  </tbody>
+</table>

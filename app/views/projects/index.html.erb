@@ -1,10 +1,5 @@
 <%= javascript_pack_tag 'project' %>
-        </tbody>
-      </table>
-  </div>
-   <div class="digg_pagination">
-    <%= will_paginate @projects %>
-  </div>
+
 <% content_for :card_header do %>
     <div class="card-header">
       <h2 class="font-weight-bold float-left">Projects</h2>
@@ -12,8 +7,10 @@
     </div>
 <% end %>
 
-<%= render partial: 'table', locals: { projects: @projects } %>
+<div class="table-responsive" id="table-parent-div">
+  <%= render partial: 'table', locals: { projects: @projects } %>
+</div>
  
- <div class="digg_pagination">
+<div class="digg_pagination">
   <%= will_paginate @projects %>
 </div>
