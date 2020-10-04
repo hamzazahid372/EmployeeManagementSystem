@@ -1,2 +1,10 @@
-$("#projects-users-modal").modal('hide');
-location.reload();
+<% if flash.now[:error].blank? %>
+  $("#projects-users-modal").modal('hide');
+  $.get({ url: '<%= project_projects_users_path(@project) %>' });
+  $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
+<% else %>
+  $("#modal-flash-messages").html("<%= j render partial: 'shared/flash' %>");
+<% end %>
+
+
+

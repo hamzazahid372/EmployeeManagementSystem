@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_135753) do
+ActiveRecord::Schema.define(version: 2020_10_04_142731) do
 
   create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "company_id", null: false
@@ -58,9 +58,26 @@ ActiveRecord::Schema.define(version: 2020_09_23_135753) do
 
   create_table "company_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "company_id", null: false
+    t.string "time_zone"
+    t.integer "leaves"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_company_settings_on_company_id"
+  end
+
+  create_table "delayed_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at", precision: 6
+    t.datetime "updated_at", precision: 6
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -84,6 +101,15 @@ ActiveRecord::Schema.define(version: 2020_09_23_135753) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_events_on_company_id"
     t.index ["created_by_id"], name: "index_events_on_created_by_id"
+  end
+
+  create_table "holidays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.date "day"
+    t.boolean "every_year"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_holidays_on_company_id"
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -122,6 +148,7 @@ ActiveRecord::Schema.define(version: 2020_09_23_135753) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_projects_departments_on_company_id"
     t.index ["department_id"], name: "index_projects_departments_on_department_id"
+    t.index ["project_id", "department_id"], name: "index_projects_departments_on_project_id_and_department_id", unique: true
     t.index ["project_id"], name: "index_projects_departments_on_project_id"
   end
 
@@ -132,6 +159,7 @@ ActiveRecord::Schema.define(version: 2020_09_23_135753) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_projects_users_on_company_id"
+    t.index ["project_id", "user_id"], name: "index_projects_users_on_project_id_and_user_id", unique: true
     t.index ["project_id"], name: "index_projects_users_on_project_id"
     t.index ["user_id"], name: "index_projects_users_on_user_id"
   end
@@ -172,8 +200,8 @@ ActiveRecord::Schema.define(version: 2020_09_23_135753) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_tasks_watchers_on_company_id"
+    t.index ["task_id", "watcher_id", "watcher_type"], name: "index_tasks_watchers_on_task_id_and_watcher_id_and_watcher_type"
     t.index ["task_id"], name: "index_tasks_watchers_on_task_id"
-    t.index ["watcher_id", "watcher_type"], name: "index_tasks_watchers_on_watcher_id_and_watcher_type"
   end
 
   create_table "teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -242,6 +270,17 @@ ActiveRecord::Schema.define(version: 2020_09_23_135753) do
     t.index ["team_id", "user_id"], name: "index_users_teams_on_team_id_and_user_id", unique: true
     t.index ["team_id"], name: "index_users_teams_on_team_id"
     t.index ["user_id"], name: "index_users_teams_on_user_id"
+  end
+
+  create_table "working_days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.time "from"
+    t.time "to"
+    t.string "day"
+    t.boolean "off_day"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_working_days_on_company_id"
   end
 
 end

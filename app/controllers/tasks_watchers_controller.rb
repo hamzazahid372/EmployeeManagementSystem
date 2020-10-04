@@ -24,15 +24,11 @@ class TasksWatchersController < ApplicationController
     if @tasks_watcher.save
       flash.now[:notice] = t 'tasks_watcher.created'
     else
-      errors = @tasks_watcher.errors.full_messages.join(', ')
+      errors = @tasks_watcher.errors.full_messages
       flash.now[:error] = errors
     end
     respond_to do |format|
-      if errors
-        format.js { render js: "alert('#{errors}');" }
-      else
-        format.js
-      end
+      format.js
     end
   end
 

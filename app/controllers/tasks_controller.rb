@@ -57,7 +57,7 @@ class TasksController < ApplicationController
       flash[:notice] = t 'task.created'
       redirect_to @task
     else
-      errors = @task.errors.full_messages.join(', ')
+      errors = @task.errors.full_messages
       flash[:error] = errors
       @users = User.all
       @projects = Project.all
@@ -73,7 +73,7 @@ class TasksController < ApplicationController
       flash[:notice] = t 'task.updated'
       redirect_to @task
     else
-      errors = @task.errors.full_messages.join(', ')
+      errors = @task.errors.full_messages
       flash[:error] = errors
       @users = User.all
       @projects = Project.all

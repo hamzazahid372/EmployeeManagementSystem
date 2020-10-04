@@ -1,15 +1,13 @@
-<% if params[:reload] %>
-  location.reload();
+<% if flash.now[:error].blank? %>
+  $("#tasks-watchers-modal").modal('hide');
+  $.get({ url: '<%= task_tasks_watchers_path(@task) %>' });
+  $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
+  $("#watch-button").html("<%= j watch_button(@task) %>");
 <% else %>
-  <% if flash.now[:error].blank? %>
-    $("#tasks-watchers-modal").modal('hide');
-    $.get({ url: '<%= task_tasks_watchers_path(@task) %>' });
-    $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
-  <% else %>
+  if (($("#tasks-watchers-modal").data('bs.modal') || {})._isShown){
     $("#modal-flash-messages").html("<%= j render partial: 'shared/flash' %>");
-  <% end %>
+  }else{
+    $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
+  }
 
 <% end %>
-
-
-

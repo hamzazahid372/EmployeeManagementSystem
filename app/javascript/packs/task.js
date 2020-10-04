@@ -21,11 +21,7 @@ $(document).ready(function () {
     if($("#task_assignee_id").data("pre").id){
       pre[0] = $("#task_assignee_id").data("pre");
     }
-    $("#task_assignee_id").tokenInput('/users/search.json', {
-      theme: "facebook",
-      tokenLimit: 1,
-      prePopulate: pre
-    });
+    assigneeTokenInput(pre);
   }
   if($('#tasks-watchers-datatable').length == 1){
     $('#tasks-watchers-datatable').DataTable({
@@ -34,5 +30,18 @@ $(document).ready(function () {
       searching: false
     });  
   }
-  
+  $('#task_project_id').on('change',function(){
+    assigneeTokenInput([]);
+  });
+
+  function assigneeTokenInput(pre){
+    var url = '/users/search.json?project_id=' + $('#task_project_id').val(); 
+    
+    $("#task_assignee_id").siblings(".token-input-list-facebook").remove();
+    $("#task_assignee_id").tokenInput(url, {
+      theme: "facebook",
+      tokenLimit: 1,
+      prePopulate: pre
+    });
+  }
 });

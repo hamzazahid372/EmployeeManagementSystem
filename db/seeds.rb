@@ -42,7 +42,7 @@ info('Projects and Tasks')
 # Creating 10 Projects each having 9 tasks, total 90 tasks
 1.upto(10) do |i|
   project = Project.create!(name: Faker::Company.buzzword.titleize, description: Faker::Lorem.sentence,
-                            company_id: company.id, created_by_id: owner.id, status: Project::STATUS.sample)
+                            company_id: company.id, created_by_id: owner.id, status: Project::STATUS.values.sample)
 
   3.times do
     department_id = user_id = rand(2..9)

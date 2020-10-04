@@ -95,12 +95,16 @@ en:
     account_not_updated: 'Account updation failed'
     account_deleted: 'Account deleted successfully'
     account_not_deleted: 'Account deletion failed'
+    assigned_tasks_error: "Cannot destroy user, %{assigned_tasks_count} task(s) assigned to this user"
+    reviewing_tasks_error: "Cannot destroy user, this user is reviewing %{reviewing_tasks_count} task(s)"
+    leading_teams_error: "Cannot destroy user, this user is leading %{leading_teams_count} team(s)"
   cancan:
     access_denied: 'Access denied'
   project:
      created: 'Project created successfully'
      updated: "Project updated successfully"
      destroyed: "Project deleted successfully"
+     dependent_tasks: "Cannot destroy project, %{tasks_count} task(s) belongs to this project"
   department:
     created: 'Department created successfully'
     updated: "Department updated successfully"
@@ -150,4 +154,9 @@ en:
     created: 'Watcher added in task successfully'
     destroyed: 'Watcher removed from task successfully'
     not_destroyed: 'Watcher not removed from task'
- 
+  company_setting:
+    update: 'Update Setting'
+    leaves: 'Leaves Per Year'
+    updated: 'Setting updated successfully'
+  working_day:
+    updated: 'Working day updated successfully'

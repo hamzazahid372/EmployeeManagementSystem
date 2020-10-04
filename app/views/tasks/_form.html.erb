@@ -71,7 +71,7 @@
   <div class="row  pl-1 pr-1">
     <div class="col-lg-6 form-group">
       <%= form.label t(:task_assignee_id) %>
-      <%= form.text_field :assignee_id, 'data-pre' => { id: task.assignee_id, name: task.assignee&.full_name }.to_json, class: 'form-control border-info' %>
+      <%= form.text_field :assignee_id, data: { pre: { id: task.assignee_id, name: task.assignee&.full_name }.to_json }, class: 'form-control border-info' %>
     </div>
 
     <div class="col-lg-6 form-group">

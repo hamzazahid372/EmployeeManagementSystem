@@ -32,4 +32,7 @@ Rails.application.routes.draw do
     resources :comments, shallow: true
     resources :tasks_watchers, shallow:true
   end
+  resources :company_settings
+  resources :working_days
+  resources :holidays
 end

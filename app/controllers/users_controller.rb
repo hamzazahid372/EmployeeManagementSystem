@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def new
     add_breadcrumb 'Users', users_path
     add_breadcrumb 'Create User', new_user_path
-
+    @departments = Current.company.departments
     respond_to do |format|
       format.html
     end
@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     add_breadcrumb @user.full_name, user_path(@user)
     add_breadcrumb 'Update', edit_user_path(@user)
 
+    @departments = Current.company.departments
     respond_to do |format|
       format.html
     end
@@ -84,24 +85,29 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    success = true
-    begin
-      User.transaction do
-        @user.destroy!
+    if @user.can_destroy?
+      if @user.destroy
+        flash[:notice] = t('users.account_deleted')
+      else
+        flash[:error] = @user.errors.full_messages
       end
-    rescue ActiveRecord::RecordNotDestroyed
-      success = false
-    end
-    if success
-      flash[:success] = t 'users.account_deleted'
-      redirect_to :back
     else
-      flash[:error] = t 'users.account_not_deleted'
+      flash[:error] = @user.errors.full_messages
+    end
+
+    respond_to do |format|
+      format.html do
+        if flash[:error].blank?
+          redirect_to users_path
+        else
+          redirect_to @user
+        end
+      end
     end
   end
 
   def search
-    @users = User.where('first_name like :q or last_name like :q', q: "%#{params[:q]}%")
+    @users = User.search(params[:q], params.slice(:only_admins, :project_id))
     @users = @users.map { |u| { id: u.id, name: u.full_name } }
     respond_to do |format|
       format.json { render json: @users.to_json }

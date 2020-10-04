@@ -14,7 +14,9 @@ class Ability
   include Abilities::ProjectUserAbility
   include Abilities::ProjectDepartmentAbility
   include Abilities::TaskWatcherAbility
-  
+  include Abilities::CompanySettingAbility
+  include Abilities::WorkingDayAbility
+
   def initialize(user)
     return unless user.present?
 
@@ -30,6 +32,8 @@ class Ability
       define_project_user_abilities_for_admin(user)
       define_project_department_abilities_for_admin(user)
       define_task_watcher_abilities_for_admin(user)
+      define_company_setting_abilities_for_admin(user)
+      define_working_day_abilities_for_admin(user)
     else
       define_team_abilities_for_employee(user)
       define_user_abilities_for_employee(user)

@@ -54,7 +54,7 @@
     <div class='col-lg-6'>
       <div class='form-group'>
         <%= form.label :status, class: 'h5 card-title' %>
-        <%= form.select :status, Project::STATUS, {}, { class: 'form-control border-info text-dark' } %>
+        <%= form.select :status, options_for_select(Project::STATUS), {}, { class: 'form-control border-info text-dark' } %>
       </div>
     </div>
   </div>

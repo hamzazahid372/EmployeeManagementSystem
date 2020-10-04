@@ -1,4 +1,12 @@
 FactoryBot.define do
+  factory :holiday do
+    
+  end
+
+  factory :working_day do
+    
+  end
+
   factory :time_log do
     hours { 3.5 }
     activity_id { 2 }

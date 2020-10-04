@@ -1,4 +1,4 @@
-$("#table-parent-div").html("<%= j render(partial: 'table') %>");
+$("#table-parent-div").html("<%= j render(partial: 'table', locals: { paginate: true }) %>");
 $('#tasks_table').DataTable({
     info: false,
     paging: false,

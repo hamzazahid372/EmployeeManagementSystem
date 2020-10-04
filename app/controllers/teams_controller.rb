@@ -50,7 +50,7 @@ class TeamsController < ApplicationController
       flash[:notice] = t 'team.created'
       redirect_to @team
     else
-      errors = @team.errors.full_messages.join(', ')
+      errors = @team.errors.full_messages
       flash[:error] = errors
       render :new
     end
@@ -64,7 +64,7 @@ class TeamsController < ApplicationController
       flash[:notice] = t 'team.updated'
       redirect_to @team
     else
-      errors = @team.errors.full_messages.join(', ')
+      errors = @team.errors.full_messages
       flash[:error] = errors
       render :edit
     end

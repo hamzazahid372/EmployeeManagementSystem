@@ -6,8 +6,7 @@
     <%= @user.full_name %>        
     </h2>
     <div class="btn-group float-right pt-1" role="group">
-      <%= button_to 'Delete', users_path(@user), method: :delete, class: 'btn btn-dark ml-3', 
-          data: { confirm: 'Are you sure you want to delete?' } %>
+      <%= button_to 'Delete', user_path(@user), method: :delete, class: 'btn btn-dark ml-3', data: { confirm: 'Are you sure you want to delete?' } %>
       <%= button_to 'Update', edit_user_path(@user), method: 'get', class: 'btn btn-dark ml-3' %>
     </div>
   </div>

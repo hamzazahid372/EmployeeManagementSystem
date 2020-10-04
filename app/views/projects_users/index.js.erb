@@ -1,4 +1,4 @@
-$("#projects_users-tab-content").addClass('m-4').html("<%= j render partial: 'projects_users/table' %>")
+$("#projects_users-tab-content").addClass('m-4').html("<%= j render partial: 'projects_users/table', locals: { projects_users: @projects_users } %>")
 $('#projects_users-datatable').DataTable({
     info: false,
     paging: false,

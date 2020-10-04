@@ -1,7 +1,7 @@
 
 <div class="field text-center mb-4 row-cols-1 pr-5 m-4">
   <label class="pt-2">Task id</label>
-  <input type="text" value="<%= task.id %>" class="form-control float-right w-75" readonly>
+  <input type="text" value="<%= task.sequence_num %>" class="form-control float-right w-75" readonly>
 </div>
 <%= form_for([task, time_log], remote: true) do |f| %>
   <div class="field text-center mb-4 row-cols-1 pr-5 m-4">

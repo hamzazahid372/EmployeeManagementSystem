@@ -18,7 +18,9 @@
         <%= button_to 'Update', edit_task_path(@task.sequence_num), { class: 'ml-3 btn btn-dark', method: 'get' } %>
       <% end %>
 
-      <%= watch_button(@task) %>
+      <div id="watch-button">
+        <%= watch_button(@task) %>
+      </div>
 
       <%= link_to t('task_add_watcher'), new_task_tasks_watcher_path(@task), class: 'ml-3 btn btn-dark', remote: true %>
       <%= button_to 'Log Time', new_task_time_log_path(@task), method: 'get', action: 'new', class: 'ml-3 btn btn-dark', remote: true %>
@@ -26,7 +28,7 @@
   </div>
 <% end %>
 
-
+<% presenter = TaskPresenter.new(@task) %>
 <table class="table">
   <tbody>
     <tr>
@@ -43,11 +45,11 @@
     </tr>
     <tr>
       <th><%= t(:task_priority) %></th>
-      <td><%= Task::PRIORITY.key @task.priority %></td>
+      <td><%= presenter.priority %></td>
     </tr>
     <tr>
       <th><%= t(:task_progress) %></th>
-      <td><%= @task&.progress %></td>
+      <td><%= presenter.progress %></td>
     </tr>
     <tr>
       <th><%= t(:task_created_by) %></th>

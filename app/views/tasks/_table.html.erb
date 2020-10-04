@@ -13,7 +13,7 @@
   </thead>
   <tbody>
   
-  <% @tasks.collect do |task| %>
+  <% @tasks.each do |task| %>
     <tr>
       <td><%= link_to task.title, task_path(task) %> </td>
       <td> <%= link_to task.project.name, project_path(task.project) %> </td>
@@ -28,3 +28,13 @@
    
   </tbody>
 </table>
+
+<% if local_assigns[:paginate] %>
+  <div class="digg_pagination">
+    <% if request.format.html? %>
+      <%= will_paginate @tasks %>
+    <% else %>
+      <%= js_will_paginate @tasks %>
+    <% end %>
+  </div>
+<% end %>
