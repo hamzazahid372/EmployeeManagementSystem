@@ -3,9 +3,9 @@
     <div class="float-left">
       <% if Current.user.present? %>
         <button class="navbar-toggler float-left mr-2 navbar-toggler-icon p-3 m-1" onclick="toggleSidebar()"></button>
-        <%= link_to Current.company.name, root_url, class: 'navbar-brand' %>
+        <%= link_to Current.company.name, dashboard_path, class: 'navbar-brand' %>
       <% else %>
-        <%= link_to APP_NAME, root_url, class: 'navbar-brand' %>
+        <%= link_to APP_NAME, root_path, class: 'navbar-brand' %>
       <% end %>
     </div>    
       <% if current_user.nil? %>

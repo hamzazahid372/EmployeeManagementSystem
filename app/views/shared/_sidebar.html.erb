@@ -3,10 +3,10 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item bg-dark">
         <i class="fa fa-home text-light float-left pt-3" aria-hidden="true"></i>
-        <%= link_to "Home", root_url %>
+        <%= link_to "Dashboard", dashboard_path %>
       </li>
       <li class="list-group-item bg-dark">
-        <i class="fa fa-tasks text-light float-left pt-3" aria-hidden="true"></i>
+        <i class="fa fa-list-alt text-light float-left pt-3" aria-hidden="true"></i>
         <%= link_to "Projects", projects_path %>
       </li>
       <li class="list-group-item bg-dark">
@@ -27,16 +27,16 @@
           <%= link_to "Departments", departments_path %>
         </li>
         <li class="list-group-item bg-dark">
-          <i class="fa fa-user text-light float-left pt-3" aria-hidden="true"></i>
+          <i class="fa fa-cog text-light float-left pt-3" aria-hidden="true"></i>
           <%= link_to "Settings", company_setting_path(Current.company.company_setting) %>
         </li>
       <% end %>
       <li class="list-group-item bg-dark">
-        <i class="fa fa-user text-light float-left pt-3" aria-hidden="true"></i>
+        <i class="fa fa-calendar text-light float-left pt-3" aria-hidden="true"></i>
         <%= link_to "Events", events_path %>
       </li>
       <li class="list-group-item bg-dark">
-        <i class="fa fa-users text-light float-left pt-3" aria-hidden="true"></i>
+        <i class="fa fa-bar-chart text-light float-left pt-3" aria-hidden="true"></i>
         <a class="dropdown-toggle bg-dark" type="button" data-toggle="dropdown">Reports</a>
           <ul class="dropdown-menu border bg-secondary">
             <li><%= link_to "Tasks", reports_tasks_path, class: 'dropdown-item text-dark' %></li>

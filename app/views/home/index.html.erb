@@ -6,7 +6,7 @@
 
 <% if @tasks_timeline_data.present? %>
   <label class="h4">Tasks Timeline</label>
-  <%= timeline @tasks_timeline_data, height: '55vh' %>
+  <div class='overflow-hidden'><%= timeline @tasks_timeline_data, height: '55vh' %></div>
 <% end %>
 <%= render partial: "shared/calendar" %>
 
