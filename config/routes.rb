@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     end
   end
   resources :tasks do
-    resources :time_logs
+    resources :time_logs, shallow: true
     resources :comments, shallow: true
     resources :tasks_watchers, shallow:true
   end

@@ -31,6 +31,7 @@
 
 en:
   name: 'Name'
+  action: 'Action'
   hello: "Hello world"
   department_new: 'New Department'
   department_update: 'Update Department'
@@ -46,7 +47,6 @@ en:
   project_expected_start_date: 'Expected Start Date'
   project_expected_end_date: 'Expected End Date'
   project_user_name: 'User Name'
-  name: 'Name'
   project_delete_action: 'Action'        
 
   team_heading: 'Team'
@@ -133,6 +133,8 @@ en:
   time_log:
     created: 'Time log created successfully'
     not_created: 'Time log creation failed'
+    destroyed: 'Time log destroyed successfully'
+    not_destroyed: 'Time log not removed'
   users_team:
     created: 'User added in team successfully'
     destroyed: 'User removed from this team successfully'
