@@ -34,7 +34,7 @@
     <tr>
       <tr>
         <th><%= t(:project_status) %></th>
-        <td><%= @project.status %></td>
+        <td><%= @project.status.titleize %></td>
       </tr>
       <th><%= t(:project_start_date) %></th>
       <td><%= @project.start_date&.to_s(:long) %></td>

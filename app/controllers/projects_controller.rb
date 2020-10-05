@@ -50,11 +50,7 @@ class ProjectsController < ApplicationController
     if @project.save
       flash[:notice] = t 'project.created'
     else
-      errors = ''
-      @project.errors.full_messages.each do |msg|
-        errors = errors + msg + ', '
-      end
-      flash[:error] = errors
+      flash[:error] = @project.errors.full_messages
       success = false
     end
     respond_to do |format|
@@ -73,6 +69,7 @@ class ProjectsController < ApplicationController
       flash[:notice] = t 'project.updated'
     else
       success = false
+      flash[:error] = @project.errors.full_messages
     end
     respond_to do |format|
       if success
@@ -85,18 +82,30 @@ class ProjectsController < ApplicationController
 
   #  /projects/:id
   def destroy
-    if @project.destroy
-      flash[:notice] = t 'project.destroyed'
+    if @project.can_destroy?
+      if @project.destroy
+        flash[:notice] = t('project.destroyed')
+      else
+        flash[:error] = @project.errors.full_messages
+      end
+    else
+      flash[:error] = @project.errors.full_messages
     end
+
     respond_to do |format|
-      format.html { redirect_to @project }
+      format.html do
+        if flash[:error].blank?
+          redirect_to projects_path
+        else
+          redirect_to @project
+        end
+      end
     end
   end
 
   # /projects/search
   def search
     @projects = Project.search params[:q]
-    @projects = @projects.map { |p| { id: p.id, name: p.name } }
     respond_to do |format|
       format.json { render json: @projects.to_json }
     end

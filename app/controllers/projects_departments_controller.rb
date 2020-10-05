@@ -27,7 +27,7 @@ class ProjectsDepartmentsController < ApplicationController
     if @projects_department.save
       flash.now[:notice] = t 'projects_department.created'
     else
-      errors = @projects_department.errors.full_messages.join(', ')
+      errors = @projects_department.errors.full_messages
       flash.now[:error] = errors
     end
     respond_to do |format|
@@ -41,7 +41,7 @@ class ProjectsDepartmentsController < ApplicationController
     if @projects_department.destroy
       flash.now[:notice] = t 'projects_department.destroyed'
     else
-      flash.now[:notice] = t 'projects_department.not_destroyed'
+      flash.now[:error] = t 'projects_department.not_destroyed'
     end
     respond_to do |format|
       format.js

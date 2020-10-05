@@ -24,23 +24,27 @@ class ProjectsUsersController < ApplicationController
     if @projects_user.save
       flash[:notice] = t 'projects_user.created'
     else
-      errors = @projects_user.errors.full_messages.join(', ')
+      errors = @projects_user.errors.full_messages
       flash[:error] = errors
     end
     respond_to do |format|
       format.js
     end
   end
-  
+
   def destroy
-    if @projects_user.destroy
-      flash[:notice] = t 'projects_user.destroyed'
+    @project = @projects_user.project    
+    if @projects_user.can_destroy?
+      if @projects_user.destroy
+        flash[:notice] = t 'projects_user.destroyed'
+      else
+        flash[:error] = t 'projects_user.not_destroyed'
+      end
     else
-      flash[:notice] = t 'projects_user.not_destroyed'
+      flash[:error] = @projects_user.errors.full_messages
     end
-    redirect_to project_path(@projects_user.project)
     respond_to do |format|
-      format.html
+      format.js
     end
   end
 

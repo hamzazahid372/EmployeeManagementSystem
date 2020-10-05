@@ -34,10 +34,17 @@ Rails.application.routes.draw do
   resources :teams do
     resources :users_teams, shallow: true
     resources :comments, shallow: true
+    collection do
+      get 'search'
+    end
   end
   resources :tasks do
-    resources :time_logs
+    resources :time_logs, shallow: true
     resources :comments, shallow: true
+    resources :tasks_watchers, shallow:true
     resources :attachments, shallow: true
   end
+  resources :company_settings
+  resources :working_days
+  resources :holidays
 end

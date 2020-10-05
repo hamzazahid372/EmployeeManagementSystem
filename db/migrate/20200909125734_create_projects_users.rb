@@ -6,5 +6,6 @@ class CreateProjectsUsers < ActiveRecord::Migration[6.0]
       t.integer :project_id, null: false, index: true
       t.timestamps
     end
+    add_index(:projects_users, %i[project_id user_id], unique: true)
   end
 end

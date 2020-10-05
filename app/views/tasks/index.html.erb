@@ -39,9 +39,6 @@
 </div>
 
 <div class="table-responsive" id="table-parent-div">
-    <%= render partial: "table", locals: { tasks: @tasks } %>
+    <%= render partial: "table", locals: { paginate: true, tasks: @tasks } %>
 </div>  
 
-<div class="digg_pagination">
-  <%= will_paginate @tasks %>
-</div>

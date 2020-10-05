@@ -1,5 +1,4 @@
 <%= javascript_pack_tag 'user', 'data-turbolinks-track': 'reload' %>
-
 <% content_for :card_header do %>
     <div class="card-header">
       <h2 class="font-weight-bold float-left">Users</h2>
@@ -14,18 +13,19 @@
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
-      <th>Role Id</th>
-      <th>Dept. Id</th>
+      <th>Role</th>
+      <th>Department</th>
       <th>Email</th>
     </tr>
     </thead>
     <tbody>
     <% @users.each do |user| %>
+      <% presenter = UserPresenter.new(user, self) %>
       <tr>
         <td> <%= link_to user.first_name, user_path(user) %> </td>
         <td> <%= link_to user.last_name, user_path(user) %> </td>
-        <td> <%= link_to user.role_id, user_path(user) %> </td>
-        <td> <%=link_to user.department_id, user_path(user)%> </td>
+        <td> <%= link_to presenter.role, user_path(user) %> </td>
+        <td> <%= presenter.department %> </td>
         <td> <%= link_to user.email, user_path(user) %> </td>
       </tr>
     <% end %>

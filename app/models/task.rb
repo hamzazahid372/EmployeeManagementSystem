@@ -3,7 +3,8 @@
 # Task model
 class Task < ApplicationRecord
   audited
-  STATUS = { 'Started' => 'started', 'Pending' => 'pending', 'Completed' => 'completed' }.freeze
+
+  STATUS = { 'New' => 'new', 'Started' => 'started', 'Pending' => 'pending', 'Completed' => 'completed', 'Closed' => 'closed' }.freeze
   PRIORITY = { low: 1, medium: 2, high: 3 }.freeze
   sequenceid :company, :tasks
   belongs_to :company
@@ -25,6 +26,8 @@ class Task < ApplicationRecord
   validate :validate_expected_end_date
   validate :validate_due_date
 
+  after_update :notify_users
+
   def validate_end_date
     if end_date.present? && start_date.present? && end_date < start_date
       errors.add(:end_date, I18n.t('task.invalid_end_date'))
@@ -40,6 +43,19 @@ class Task < ApplicationRecord
   def validate_due_date
     if due_date.present? && start_date.present? && due_date < start_date
       errors.add(:due_date, I18n.t('task.invalid_due_date'))
+    end
+  end
+
+  def notify_users
+    user_ids = []
+    user_ids << created_by_id
+    user_ids << assignee_id
+    user_ids << reviewer_id
+    user_ids += watcher_users.ids
+    user_ids += watcher_teams.map { |team| team.users.ids }.flatten
+    user_ids.uniq!
+    user_ids.each do |user_id|
+      TaskMailer.delay.notify(user_id, id, company_id)
     end
   end
 

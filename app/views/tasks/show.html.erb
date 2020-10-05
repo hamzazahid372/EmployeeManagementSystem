@@ -1,8 +1,11 @@
-
 <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'time_log', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'report', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'attachment', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'tasks_watchers' %>
+
+<div class="modal" id="tasks-watchers-modal"></div>
+
 <% content_for :card_header do %>
   <div class="card-header">
     <h2 class="font-weight-bold float-left">
@@ -16,14 +19,19 @@
       <% if can? :update, @task %>
         <%= button_to 'Update', edit_task_path(@task.sequence_num), { class: 'ml-3 btn btn-dark', method: 'get' } %>
       <% end %>
-      <%= button_to 'Watch', task_path(@task), class: 'ml-3 btn btn-dark' %>
-      <%= button_to 'Add Watcher', task_path(@task), class: 'ml-3 btn btn-dark' %>
-      <%= button_to 'Remove Watcher', task_path(@task), class: 'ml-3 btn btn-dark',
-      method: :delete, data: { confirm: 'Are you sure you want to delete watcher?' } %>
+
+      <div id="watch-button">
+        <%= watch_button(@task) %>
+      </div>
+
+      <%= link_to t('task_add_watcher'), new_task_tasks_watcher_path(@task), class: 'ml-3 btn btn-dark', remote: true %>
       <%= button_to 'Log Time', new_task_time_log_path(@task), method: 'get', action: 'new', class: 'ml-3 btn btn-dark', remote: true %>
     </div>
   </div>
 <% end %>
+
+<% presenter = TaskPresenter.new(@task) %>
+
 <table class="table">
   <tbody>
     <tr>
@@ -40,11 +48,11 @@
     </tr>
     <tr>
       <th><%= t(:task_priority) %></th>
-      <td><%= Task::PRIORITY.key @task.priority %></td>
+      <td><%= presenter.priority %></td>
     </tr>
     <tr>
       <th><%= t(:task_progress) %></th>
-      <td><%= @task&.progress %></td>
+      <td><%= presenter.progress %></td>
     </tr>
     <tr>
       <th><%= t(:task_created_by) %></th>
@@ -53,6 +61,10 @@
     <tr>
       <th><%= t(:task_assignee) %></th>
       <td><%= @task.assignee&.full_name %></td>
+    </tr>
+    <tr>
+      <th><%= t(:task_reviewer_id) %></th>
+      <td><%= @task.reviewer&.full_name %></td>
     </tr>
     <tr>
       <th><%= t(:task_project_id) %></th>
@@ -89,6 +101,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body" id="time-log-modal-body">
+        <div id="modal-flash-messages"></div>
       </div>
     </div>
   </div>

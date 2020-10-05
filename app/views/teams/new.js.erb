@@ -1,5 +1,5 @@
 $("body").html("<%= j render partial: 'form', locals: {team: @team} %>");
-$("#team_lead_id").tokenInput('/users/search.json', {
+$("#team_lead_id").tokenInput('/users/search.json?only_admins=true', {
   theme: "facebook",
   tokenLimit: 1
   

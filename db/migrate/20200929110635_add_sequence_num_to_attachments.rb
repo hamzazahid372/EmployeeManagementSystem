@@ -1,6 +1,5 @@
 class AddSequenceNumToAttachments < ActiveRecord::Migration[6.0]
 
-
   def self.up
     add_column :attachments, :sequence_num, :integer, null: false
     update_sequence_num_values

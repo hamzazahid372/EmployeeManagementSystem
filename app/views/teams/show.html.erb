@@ -9,11 +9,11 @@
     </h2>
     <div class="btn-group float-right pt-1" role="group">
       <% if can? :destroy, @team %>
-      <%= button_to 'Delete', team_path(@team), class: 'ml-3 btn btn-dark',
-      method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
+        <%= button_to 'Delete', team_path(@team), class: 'ml-3 btn btn-dark',
+          method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
       <% end %>
       <% if can? :update, @team %>
-      <%= button_to 'Update', edit_team_path(@team.sequence_num), { class: 'ml-3 btn btn-dark', method: 'get' } %>
+        <%= button_to 'Update', edit_team_path(@team.sequence_num), { class: 'ml-3 btn btn-dark', method: 'get' } %>
       <% end %>        
       <%= link_to 'Add Users', new_team_users_team_path(@team), class: 'ml-3 btn btn-dark', remote: true %>
     </div>

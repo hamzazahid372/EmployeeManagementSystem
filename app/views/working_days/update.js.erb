@@ -1,0 +1,7 @@
+<% if flash.now[:error].blank? %>
+  $("#working-day-modal").modal('hide');
+  $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
+  $("#working-days").html("<%= j render(partial: 'working_days/working_days', locals: { working_days: @working_days }) %>");
+<% else %>
+  $("#modal-flash-messages").html("<%= j render partial: 'shared/flash' %>");
+<% end %>

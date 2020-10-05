@@ -50,7 +50,7 @@ class TeamsController < ApplicationController
       flash[:notice] = t 'team.created'
       redirect_to @team
     else
-      errors = @team.errors.full_messages.join(', ')
+      errors = @team.errors.full_messages
       flash[:error] = errors
       render :new
     end
@@ -64,7 +64,7 @@ class TeamsController < ApplicationController
       flash[:notice] = t 'team.updated'
       redirect_to @team
     else
-      errors = @team.errors.full_messages.join(', ')
+      errors = @team.errors.full_messages
       flash[:error] = errors
       render :edit
     end
@@ -82,6 +82,14 @@ class TeamsController < ApplicationController
     end
     respond_to do |format|
       format.html
+    end
+  end
+
+  def search
+    @teams = Team.where('name like :q', q: "%#{params[:q]}%")
+    @teams = @teams.map { |t| { id: t.id, name: t.name } }
+    respond_to do |format|
+      format.json { render json: @teams.to_json }
     end
   end
 

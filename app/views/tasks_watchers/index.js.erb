@@ -1,0 +1,6 @@
+$("#watchers-tab-content").addClass('m-4').html("<%= j render partial: 'tasks_watchers/table', locals: { task: @task, tasks_watchers: @tasks_watchers } %>")
+$('#tasks-watchers-datatable').DataTable({
+    info: false,
+    paging: false,
+    searching: false
+});

@@ -1,2 +1,7 @@
-$("#team-users-modal").modal('hide');
-location.reload();
+<% if flash.now[:error].blank? %>
+  $("#team-users-modal").modal('hide');
+  $.get({ url: '<%= team_users_teams_path(@team) %>' });
+  $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
+<% else %>
+  $("#modal-flash-messages").html("<%= j render partial: 'shared/flash' %>");
+<% end %>

@@ -24,7 +24,7 @@ class UsersTeamsController < ApplicationController
     if @users_team.save
       flash[:notice] = t 'users_team.created'
     else
-      errors = @users_team.errors.full_messages.join(', ')
+      errors = @users_team.errors.full_messages
       flash[:error] = errors
     end
     respond_to do |format|
@@ -33,14 +33,14 @@ class UsersTeamsController < ApplicationController
   end
 
   def destroy
+    @team = @users_team.team
     if @users_team.destroy
       flash[:notice] = t 'users_team.destroyed'
     else
-      flash[:notice] = t 'users_team.not_destroyed'
+      flash[:error] = t 'users_team.not_destroyed'
     end
-    redirect_to team_path(@users_team.team)
     respond_to do |format|
-      format.html
+      format.js
     end
   end
 

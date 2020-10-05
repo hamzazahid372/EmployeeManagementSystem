@@ -10,6 +10,6 @@ class CreateTasksWatchers < ActiveRecord::Migration[6.0]
       t.string :watcher_type, null: false
       t.timestamps
     end
-    add_index(:tasks_watchers, %i[watcher_id watcher_type])
+    add_index(:tasks_watchers, %i[task_id watcher_id watcher_type])
   end
 end

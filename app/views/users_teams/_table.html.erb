@@ -12,15 +12,15 @@
       </tr>
       </thead>
       <tbody>
-        <% @users_teams.each do |team_user| %>
+        <% users_teams.each do |team_user| %>
           <tr>
             <td> <%= team_user.user.first_name %> </td>
             <td> <%= team_user.user.last_name %> </td>
             <td> <%= User::ROLES.key team_user.user.role_id %> </td>
             <td> <%= team_user.user.email %> </td>
             <td> 
-              <% if can? :destroy, UsersTeam %>
-                <%= button_to 'Delete', users_team_path(team_user), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure you want to delete?' } 
+              <% if can? :destroy, team_user %>
+                <%= button_to 'Delete', users_team_path(team_user), class: 'btn btn-dark', method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete?' } 
                 %>
               <% end %>
             </td>
@@ -33,5 +33,5 @@
 </div>
 
 <div class="digg_pagination">
-   <%= js_will_paginate @users_teams %>
+   <%= js_will_paginate users_teams %>
 </div>

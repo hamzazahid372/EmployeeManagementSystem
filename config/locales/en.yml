@@ -31,7 +31,8 @@
 
 en:
   name: 'Name'
-  hello: "Hello world"
+  action: 'Action'
+  hello: 'Hello world'
   department_new: 'New Department'
   department_update: 'Update Department'
   department_description: 'Description'
@@ -82,6 +83,7 @@ en:
   task_progress: 'Progress'
   task_priority: 'Priority'
   task_assignee_id: 'Assignee'
+  task_reviewer_id: 'Reviewer'
   task_heading: 'Tasks'
   task_assignable_type: 'Assignable Type'
   task_project_title: 'Project Title'
@@ -90,6 +92,7 @@ en:
   task_created_by: 'Created By'
   task_project_id: 'Project'
   task_project_filter: 'project'
+  task_add_watcher: 'Add Watcher'
 
   audit_user: 'User'
   audit_action: 'Action'
@@ -109,6 +112,7 @@ en:
   attendance_login_time: 'Login Time'
   attendance_logout_time: 'Logout Time'
   attendance_date: 'Date'
+
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:
@@ -121,12 +125,18 @@ en:
     account_not_updated: 'Account updation failed'
     account_deleted: 'Account deleted successfully'
     account_not_deleted: 'Account deletion failed'
+    assigned_tasks_error: "Cannot destroy user, %{assigned_tasks_count} task(s) assigned to this user"
+    reviewing_tasks_error: "Cannot destroy user, this user is reviewing %{reviewing_tasks_count} task(s)"
+    leading_teams_error: "Cannot destroy user, this user is leading %{leading_teams_count} team(s)"
+    cannot_destroy_due_to_dependent_tasks: 'This user cannot be deleted, either he is a reviewer, creator or assgnee of some tasks'
+    account_owner_cannot_destroy: "Account owner cannot be deleted"
   cancan:
     access_denied: 'Access denied'
   project:
      created: 'Project created successfully'
      updated: "Project updated successfully"
      destroyed: "Project deleted successfully"
+     dependent_tasks: "Cannot destroy project, %{tasks_count} task(s) belongs to this project"
   event:
     success:
      created: 'Event created successfully'
@@ -163,6 +173,8 @@ en:
   time_log:
     created: 'Time log created successfully'
     not_created: 'Time log creation failed'
+    destroyed: 'Time log destroyed successfully'
+    not_destroyed: 'Time log not removed'
   attachment:
     created: 'Document uploaded successfully'
     not_created: 'Sorry this format is not supported'
@@ -185,6 +197,16 @@ en:
     destroyed: 'Team removed successfully'
     updated: 'Team updated successfully'
     not_destroyed: 'Team not removed'
+  tasks_watcher:
+    created: 'Watcher added in task successfully'
+    destroyed: 'Watcher removed from task successfully'
+    not_destroyed: 'Watcher not removed from task'
+  company_setting:
+    update: 'Update Setting'
+    leaves: 'Leaves Per Year'
+    updated: 'Setting updated successfully'
+  working_day:
+    updated: 'Working day updated successfully'
   attendance:
     login_marked: 'Log-in time marked successfully'
     login_not_marked: 'Log-in time marking failed'

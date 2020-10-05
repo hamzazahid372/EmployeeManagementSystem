@@ -8,12 +8,13 @@
     <%= @user.full_name %>
     </h2>
     <div class="btn-group float-right pt-1" role="group">
-      <%= button_to 'Delete', users_path(@user), method: :delete, class: 'btn btn-dark ml-3',
-          data: { confirm: 'Are you sure you want to delete?' } %>
+      <%= button_to 'Delete', user_path(@user), method: :delete, class: 'btn btn-dark ml-3', data: { confirm: 'Are you sure you want to delete?' } %>
       <%= button_to 'Update', edit_user_path(@user), method: 'get', class: 'btn btn-dark ml-3' %>
     </div>
   </div>
 <% end %>
+
+<% presenter = UserPresenter.new(@user, self) %>
 <table class="table">
   <tbody>
     <tr>
@@ -29,21 +30,12 @@
       <td><%= @user.email%></td>
     </tr>
     <tr>
-      <th>Department Id</th>
-      <td><%= @user.department_id %></td>
+      <th>Department</th>
+      <td><%= presenter.department %></td>
     </tr>
     <tr>
       <th>Role</th>
-      <td><%= @user.role_id %></td>
-    </tr>
-    <tr>
-      <% if can? :manage, @user %>
-        <td><%= button_to 'Delete', users_path(@user), method: :delete, class: 'btn btn-dark ml-3',
-        data: { confirm: 'Are you sure you want to delete?' } %>
-        </td>
-        <td><%= button_to 'Update', edit_user_path(@user), method: 'get', class: 'btn btn-dark ml-3' %></td>
-        <td></td>
-      <% end %>
+      <td><%= presenter.role %></td>
     </tr>
   </tbody>
 </table>

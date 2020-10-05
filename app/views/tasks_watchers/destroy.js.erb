@@ -1,0 +1,7 @@
+<% if flash.now[:error].blank? %>
+  $.get({ url: '<%= task_tasks_watchers_path(@task) %>' });
+  $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
+  $("#watch-button").html("<%= j watch_button(@task) %>");
+<% else %>
+  $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
+<% end %>

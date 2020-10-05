@@ -1,6 +1,11 @@
-<% if @success %>
+<% if flash.now[:error].blank? %>
   $('#attachment-modal').modal('hide');
   $.ajax({ type:'GET', url: '<%= polymorphic_path([@attachable, Attachment], format: :js) %>' });
+
+  $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
+<% else %>
+  $("#modal-flash-messages").html("<%= j render partial: 'shared/flash' %>");
 <% end %>
+
 
 

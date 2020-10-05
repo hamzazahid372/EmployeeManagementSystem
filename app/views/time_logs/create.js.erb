@@ -1,1 +1,10 @@
-$("#time-log-modal").modal("hide")
+<% if flash.now[:error].blank? %>
+  $("#time-log-modal").modal('hide');
+  $.get({ url: '<%= task_time_logs_path(@task) %>' });
+  $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
+<% else %>
+  $("#modal-flash-messages").html("<%= j render partial: 'shared/flash' %>");
+<% end %>
+
+
+

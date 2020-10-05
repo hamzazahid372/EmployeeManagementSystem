@@ -1,0 +1,30 @@
+<div class="clearfix"></div>
+<h2 class="mt-4">Working Days</h2>
+<table id="working_days_table" class="table table-hover">
+  <thead>
+  <tr>
+    <th>Day</th>
+    <th>Off Day</th>
+    <th>From</th>
+    <th>To</th>
+    <% if can? :update, working_days.first %>
+      <th>Action</th>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+  
+  <% working_days.each do |working_day| %>
+    <% working_day_presenter = WorkingDayPresenter.new(working_day) %>
+    <tr>
+      <td><%= working_day.day %> </td>
+      <td><%= working_day_presenter.off_day %> </td>
+      <td><%= working_day_presenter.from %> </td>
+      <td><%= working_day_presenter.to %> </td>
+      <% if can? :update, working_day %>
+        <td><%= link_to 'Edit', edit_working_day_path(working_day), remote: true, class: 'btn btn-dark btn-sm' %> </td>
+      <% end %>
+    </tr>        
+  <% end %>   
+  </tbody>
+</table>
