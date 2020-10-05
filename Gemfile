@@ -35,12 +35,15 @@ gem 'faker', '2.14.0'
 gem 'breadcrumbs_on_rails', '3.0.1'
 # for background jobs
 gem 'delayed_job_active_record', '4.1.4'
+# To maintain models history
+gem 'audited', '~> 4.9'
 
 group :development, :test do
   gem 'pry', '0.13.1'
   gem 'pry-rails', '0.3.9'
   # Rspec for test cases
   gem 'rspec-rails', '4.0.1'
+  # To create factories for testing
   gem 'factory_bot_rails', '6.1.0'
   gem 'database_cleaner-active_record', '1.8.0'
 end
@@ -48,10 +51,10 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'listen'
 end
 
 group :test do

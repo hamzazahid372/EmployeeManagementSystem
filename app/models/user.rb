@@ -65,8 +65,16 @@ class User < ApplicationRecord
     users
   end
   
+  def self.find_for_authentication(warden_conditions)
+    where(email: warden_conditions[:email]).first
+  end
+
   def admin?
     role_id == User::ROLES.fetch('Administrator')
+  end
+
+  def current_attendance
+    @current_attendance ||= attendances.find_or_create_by(date: Date.today)
   end
 
   def account_owner?
@@ -83,7 +91,15 @@ class User < ApplicationRecord
 
   protected
 
-  def confirmation_required?
-    created_at < 7.days.ago
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
+  end
+
+  def will_save_change_to_email?
+    false
   end
 end

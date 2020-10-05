@@ -3,6 +3,7 @@
 # Current attributes
 class Current < ActiveSupport::CurrentAttributes
   attribute :company, :company_id
+  attribute :user
 
   resets { Time.zone = nil }
 

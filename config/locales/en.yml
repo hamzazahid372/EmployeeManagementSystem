@@ -37,20 +37,26 @@ en:
   department_update: 'Update Department'
   department_description: 'Description'
   department_project_add: 'Add Project'
-
   project_new: 'New Project'
   project_update: 'Update Project'
+  event_new: 'New Event'
+  event_update: 'Update Event'
+  project_title: 'Title'
   project_description: 'Description'
   project_status: 'Status'
   project_start_date: 'Start Date'
   project_end_date: 'End Date'
   project_expected_start_date: 'Expected Start Date'
   project_expected_end_date: 'Expected End Date'
+  event_title: 'Title'
+  event_description: 'Description'
+  event_date: 'Date'
   file_name: 'File Name'
   file_size: 'File Size'
   file_uploaded_on: 'File uploaded on'
   project_user_name: 'User Name'
-  project_delete_action: 'Action'        
+  project_department_name: 'Name'
+  project_delete_action: 'Action'
 
   team_heading: 'Team'
   team_description: 'Description'
@@ -68,6 +74,7 @@ en:
   task_title: 'Title'
   task_description: 'Description'
   task_status: 'Status'
+  task_reviewer: 'Reviewer'
   task_start_date: 'Start Date'
   task_end_date: 'End Date'
   task_expected_start_date: 'Expected Start Date'
@@ -86,7 +93,26 @@ en:
   task_project_id: 'Project'
   task_project_filter: 'project'
   task_add_watcher: 'Add Watcher'
-  
+
+  audit_user: 'User'
+  audit_action: 'Action'
+  audit_version: 'Task version#'
+  audit_time: 'Time'
+  audit_to: 'To'
+  audit_from: 'From'
+  audit_attribute: 'Attribute'
+
+  time_logs_user: 'User'
+  time_logs_hours: 'Hours'
+  time_logs_activity: 'Activity'
+  time_logs_comment: 'Comment'
+  time_logs_task: 'Task'
+
+  attendance_user: 'User'
+  attendance_login_time: 'Login Time'
+  attendance_logout_time: 'Logout Time'
+  attendance_date: 'Date'
+
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:
@@ -111,6 +137,14 @@ en:
      updated: "Project updated successfully"
      destroyed: "Project deleted successfully"
      dependent_tasks: "Cannot destroy project, %{tasks_count} task(s) belongs to this project"
+  event:
+    success:
+     created: 'Event created successfully'
+     updated: "Event updated successfully"
+     destroyed: "Event deleted successfully"
+    failure:
+      name_short: 'Name too short'
+      date_presence: 'Date cannot be empty'
   department:
     created: 'Department created successfully'
     updated: "Department updated successfully"
@@ -173,3 +207,10 @@ en:
     updated: 'Setting updated successfully'
   working_day:
     updated: 'Working day updated successfully'
+  attendance:
+    login_marked: 'Log-in time marked successfully'
+    login_not_marked: 'Log-in time marking failed'
+    logout_marked: 'Log-out time marked successfully'
+    logout_not_marked: 'Log-out time marking failed'
+    login_marked_already: 'Log-in time marked already'
+    logout_marked_already: 'Log-out time marked already'

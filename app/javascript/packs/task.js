@@ -2,13 +2,11 @@ require("datatables.net-bs4");
 require("jquery-tokeninput");
 
 $(document).ready(function () {
-  if($('#tasks_table').length == 1){
-    $('#tasks_table').DataTable({
-      info: false,
-      paging: false,
-      searching: false
-    });
-  }
+  $('#tasks-datatable').DataTable({
+    info: false,
+    paging: false,
+    searching: false
+  });
   if($('.data-filter').length > 0){
     $("body").on('change',".data-filter",function(e) {
       e.preventDefault();

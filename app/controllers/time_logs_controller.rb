@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
+# Time Log Controller
 class TimeLogsController < ApplicationController
   load_and_authorize_resource :task, find_by: :sequence_num, only: %i[index new create]
   load_and_authorize_resource :time_log, through: :task, only: %i[index new create]
   load_and_authorize_resource :time_log, only: %i[destroy]
 
   def index
+    # /tasks/:task_id/time_logs
     @time_logs = @time_logs.includes(:user)
     @time_logs = @time_logs.page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
@@ -12,12 +16,14 @@ class TimeLogsController < ApplicationController
   end
 
   def new
+    # /tasks/:task_id/time_logs/new
     respond_to do |format|
       format.js
     end
   end
 
   def create
+    # /tasks/:task_id/time_logs
     @time_log.user_id = current_user.id
     if @time_log.save
       flash[:notice] = t 'time_log.created'

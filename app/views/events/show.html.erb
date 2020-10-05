@@ -1,0 +1,40 @@
+ <br><br>
+ <% content_for :card_header do %>
+  <div class="card-header">
+    <h2 class="font-weight-bold float-left ml-5">
+      <%= @event.title %>
+    </h2>
+    <div class="btn-group float-right" role="group">
+      <% if can? :update, @event %>
+        <%= link_to 'Update', edit_event_path(@event.sequence_num), class: 'ml-3 btn btn-dark' %>
+      <% end %>
+      <% if can? :delete, @event %>
+        <%= link_to 'Delete', event_path(@event),
+          method: :delete, class: 'ml-3 btn btn-dark',
+          data: { confirm: 'Are you sure you want to delete?' } %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<div class="container-fluid">
+  <table class="table">
+    <tbody>
+      <tr>
+        <th><%= t(:event_title) %></th>
+        <td><%= @event.title %></td>
+      </tr>
+      <tr>
+        <th><%= t(:event_description) %></th>
+        <td><%= @event.description %></td>
+      </tr>
+      <tr>
+        <th><%= t(:start) %></th>
+        <td><%= Date.parse((@event.start).to_s)unless @event.start.nil? %></td>
+      </tr>
+      <tr>
+        <th><%= t(:end) %></th>
+        <td><%= Date.parse((@event.end).to_s)unless @event.end.nil? %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

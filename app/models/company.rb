@@ -44,4 +44,6 @@ class Company < ApplicationRecord
     ])
   end
 
+  validates :name, uniqueness: true
+  validates :subdomain, uniqueness: true
 end

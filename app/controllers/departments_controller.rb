@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Department Controller
 class DepartmentsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
   def new

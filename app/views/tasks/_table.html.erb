@@ -1,4 +1,4 @@
-<table id="tasks_table" data-turbolinks="false" class="table table-hover">
+<table id="<%= local_assigns[:table_id] || 'tasks-datatable' %>" data-turbolinks="false" class="table table-hover">
   <thead>
   <tr>
     <th><%= t(:task_title) %></th>

@@ -1,0 +1,38 @@
+<%= form_for object do |form| %>
+  <div class="container-fluid">
+    <div class='row'>
+      <div class='col-lg-9'>
+        <div class='form-group'>
+        <%= form.label :title , class: 'h4 font-weight-bold text-dark' %>
+        <%= form.text_field :title, class: 'form-control border-dark  w-100', required: true, minlength: 3 %>
+      </div>
+    </div>
+  </div>
+    <div class='row'>
+      <div class='col-lg-12'>
+        <div class='form-group'>
+        <%= form.label :description, class: 'h4 font-weight-bold text-dark' %>
+        <%= form.text_area :description, class: 'form-control border-dark w-75', rows: 5 %>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <div class='form-group'>
+        <%= form.label :start, class: 'h5 font-weight-bold text-dark' %><br />
+        <%= form.datetime_field :start, class: 'form-control border-dark w-75' %>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <div class='form-group'>
+        <%= form.label :end, class: 'h5 font-weight-bold text-dark' %>
+        <%= form.datetime_field :end, class: 'form-control border-dark w-75' %>
+      </div>
+    </div>
+  </div>
+    <%= form.submit class: 'btn btn-dark' %>
+  </div>
+<% end %>
+</html>

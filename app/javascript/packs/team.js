@@ -1,8 +1,9 @@
 require("datatables.net-bs4");
 require("jquery-tokeninput");
+
 $(document).ready( function () {
-  if($('#teams-table').length == 1){
-    $('#teams-table').DataTable({
+  if($('#teams-datatable').length == 1){
+    $('#teams-datatable').DataTable({
       info: false,
       paging: false,
       searching: false

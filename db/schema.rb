@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_04_142731) do
+ActiveRecord::Schema.define(version: 2020_10_02_102510) do
 
   create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "company_id", null: false
@@ -34,11 +34,33 @@ ActiveRecord::Schema.define(version: 2020_10_04_142731) do
     t.integer "user_id", null: false
     t.datetime "login_time"
     t.datetime "logout_time"
-    t.boolean "present", default: true, null: false
+    t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_attendances_on_company_id"
     t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "audits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "auditable_id"
+    t.string "auditable_type"
+    t.integer "associated_id"
+    t.string "associated_type"
+    t.integer "user_id"
+    t.string "user_type"
+    t.string "username"
+    t.string "action"
+    t.text "audited_changes"
+    t.integer "version", default: 0
+    t.string "comment"
+    t.string "remote_address"
+    t.string "request_uuid"
+    t.datetime "created_at"
+    t.index ["associated_type", "associated_id"], name: "associated_index"
+    t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
+    t.index ["created_at"], name: "index_audits_on_created_at"
+    t.index ["request_uuid"], name: "index_audits_on_request_uuid"
+    t.index ["user_id", "user_type"], name: "user_index"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -100,14 +122,17 @@ ActiveRecord::Schema.define(version: 2020_10_04_142731) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "company_id", null: false
-    t.datetime "event_date", null: false
+    t.datetime "start", null: false
     t.string "title", null: false
     t.text "description"
     t.integer "created_by_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sequence_num", null: false
+    t.datetime "end"
     t.index ["company_id"], name: "index_events_on_company_id"
     t.index ["created_by_id"], name: "index_events_on_created_by_id"
+    t.index ["sequence_num", "company_id"], name: "index_events_on_sequence_num_and_company_id", unique: true
   end
 
   create_table "holidays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

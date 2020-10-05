@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
+# Registration Controller
 class RegistrationsController < Devise::RegistrationsController
   def new
+    redirect_to new_user_registration_url(subdomain: '') and return if Current.company.present?
+
     @user = User.new
     @user.build_company
     respond_to do |format|
@@ -18,7 +23,7 @@ class RegistrationsController < Devise::RegistrationsController
         company.owner_id = @user.id
         company.save!
       end
-    rescue ActiveRecord::RecordNotSaved
+    rescue ActiveRecord::RecordNotSaved, ActiveRecord::RecordInvalid
       success = false
     end
     if success

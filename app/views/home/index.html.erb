@@ -1,0 +1,55 @@
+<%= javascript_pack_tag 'home' %>
+
+<% content_for :card_header do %>
+  <div class="card-header h2 font-weight-bold float-left">Dashboard</div>
+<% end %>
+
+<%= render partial: "shared/calendar" %>
+
+<ul class="nav nav-tabs bg-light rounded-bottom" id="tabs" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link rounded-bottom p-3 active" id="projects-tab" data-toggle="tab" href="#projects-tab-content" role="tab" aria-controls="projects-tab-content" aria-selected="true">My Projects</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link rounded-bottom p-3" id="assigned-tasks-tab" data-toggle="tab" href="#assigned-tasks-tab-content" role="tab" aria-controls="assigned-tasks-tab-content" aria-selected="true">Assigned Tasks</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link rounded-bottom p-3" id="watching-tasks-tab" data-toggle="tab" href="#watching-tasks-tab-content" role="tab" aria-controls="watching-tasks-tab-content" aria-selected="true">Watching Tasks</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link rounded-bottom p-3" id="reviewing-tasks-tab" data-toggle="tab" href="#reviewing-tasks-tab-content" role="tab" aria-controls="reviewing-tasks-tab-content" aria-selected="true">Reviewing Tasks</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link rounded-bottom p-3" id="created-tasks-tab" data-toggle="tab" href="#created-tasks-tab-content" role="tab" aria-controls="created-tasks-tab-content" aria-selected="true">Created Tasks</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link rounded-bottom p-3" id="created-teams-tab" data-toggle="tab" href="#created-teams-tab-content" role="tab" aria-controls="created-teams-tab-content" aria-selected="true">Created Teams</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link rounded-bottom p-3" id="leading-teams-tab" data-toggle="tab" href="#leading-teams-tab-content" role="tab" aria-controls="leading-teams-tab-content" aria-selected="true">Leading Teams</a>
+  </li>
+</ul>
+
+<div class="tab-content pt-4" id="tabs-content">
+  <div class="tab-pane fade show active" id="projects-tab-content" role="tabpanel" aria-labelledby="projects-tab">
+    <%= render partial: 'projects/table', locals: { projects: @projects } %>
+    </div>
+  <div class="tab-pane fade show" id="assigned-tasks-tab-content" role="tabpanel" aria-labelledby="assigned-tasks-tab">
+    <%= render partial: 'tasks/table', locals: { tasks: @assigned_tasks, table_id: 'assigned-tasks-datatable' } %>
+  </div>
+  <div class="tab-pane fade show" id="watching-tasks-tab-content" role="tabpanel" aria-labelledby="watching-tasks-tab">
+    <%= render partial: 'tasks/table', locals: { tasks: @watching_tasks, table_id: 'watching-tasks-datatable' } %>
+  </div>
+  <div class="tab-pane fade show" id="reviewing-tasks-tab-content" role="tabpanel" aria-labelledby="reviewing-tasks-tab">
+    <%= render partial: 'tasks/table', locals: { tasks: @reviewing_tasks, table_id: 'reviewing-tasks-datatable' } %>
+  </div>
+  <div class="tab-pane fade show" id="created-tasks-tab-content" role="tabpanel" aria-labelledby="created-tasks-tab">
+    <%= render partial: 'tasks/table', locals: { tasks: @created_tasks, table_id: 'created-tasks-datatable' } %>
+  </div>
+  <div class="tab-pane fade show" id="created-teams-tab-content" role="tabpanel" aria-labelledby="created-teams-tab">
+    <%= render partial: 'teams/table', locals: { teams: @created_teams, table_id: 'created-teams-datatable' } %>
+  </div>
+  <div class="tab-pane fade show" id="leading-teams-tab-content" role="tabpanel" aria-labelledby="leading-teams-tab">
+    <%= render partial: 'teams/table', locals: { teams: @leading_teams, table_id: 'leading-teams-datatable' } %>
+  </div>
+</div>

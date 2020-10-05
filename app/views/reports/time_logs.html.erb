@@ -1,0 +1,56 @@
+<%= javascript_pack_tag 'report', 'data-turbolinks-track': 'reload' %>
+<div class="container-fluid w-100 mt-4 pl-4 pr-4 pb-4">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="font-weight-bold float-left">Time Logs</h2>
+      <%= link_to "Export", reports_time_logs_path(format: 'csv'), class: "btn btn-dark float-right mt-1" %>
+    </div>
+    <div class="card-body container-fluid p-5">
+      <%= form_tag(reports_time_logs_path, method: :get) do %>
+      <div class='text-bold'>
+          <%= label_tag :user_id , 'User', class: 'h5 text-bold' %>
+      </div>
+      <div class='row'>
+        <div class='col-lg-6'>
+          <div class='form-group'>
+            <%= text_field_tag :user_id, nil, class: 'form-control border-info  w-100', data: { pre_populate: { id: @user&.id, name: @user&.name }.to_json } %>
+          </div>
+        </div>
+        <div class='col-lg-6'>
+          <div class='form-group'>
+            <%= submit_tag 'Apply Filter', class: 'btn btn-dark float-right' %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <div class="table-responsive">
+        <table id="time_log-datatable" class="table table-hover">
+          <thead>
+          <tr>
+            <th><%= t(:time_logs_user) %></th>
+            <th><%= t(:time_logs_task) %></th>
+            <th><%= t(:time_logs_hours) %></th>
+            <th><%= t(:time_logs_activity) %></th>
+            <th><%= t(:time_logs_comment) %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @time_logs.each do |log| %>
+            <tr>
+              <td> <%= log.user.full_name %> </td>
+              <td> <%= log.task.title %> </td>
+              <td> <%= log.hours %> </td>
+              <td> <%= TimeLog::ACTIVITIES_REVERSE[log.activity_id] %> </td>
+              <td> <%= log.comment %> </td>
+            </tr>
+          <% end %>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="digg_pagination" style="margin-left: 40%;">
+        <%= js_will_paginate @time_logs %>
+      </div>
+    </div>
+  </div>
+</div>

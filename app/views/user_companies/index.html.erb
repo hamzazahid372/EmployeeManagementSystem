@@ -1,0 +1,14 @@
+<% content_for :card_header do %>
+  <div class="card-header">
+    <h2 class="font-weight-bold float-left">Select Email</h2>
+  </div>
+<% end %>
+
+<h5 class="h5 card-title">Select a company for log in</h5>
+<ul class="list-group text-center">
+  <% @user.each do |user| %>
+    <li class="list-group-item">
+      <%= link_to user.company.name, new_user_session_url(subdomain: user.company.subdomain), class: 'text-center' %>
+    </li>
+  <% end %>
+</ul>
