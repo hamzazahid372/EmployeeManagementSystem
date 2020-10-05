@@ -35,8 +35,10 @@ gem 'faker', '2.14.0'
 gem 'breadcrumbs_on_rails', '3.0.1'
 # for background jobs
 gem 'delayed_job_active_record', '4.1.4'
+# To add charts
+gem 'chartkick', '3.4.0'
 # To maintain models history
-gem 'audited', '~> 4.9'
+gem 'audited', '4.9.0'
 
 group :development, :test do
   gem 'pry', '0.13.1'
