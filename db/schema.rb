@@ -18,8 +18,15 @@ ActiveRecord::Schema.define(version: 2020_10_04_142731) do
     t.string "attachable_type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "attachment_file_name"
+    t.string "attachment_content_type"
+    t.float "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer "sequence_num", null: false
+    t.integer "user_id"
     t.index ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type"
     t.index ["company_id"], name: "index_attachments_on_company_id"
+    t.index ["sequence_num", "company_id"], name: "index_attachments_on_sequence_num_and_company_id", unique: true
   end
 
   create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -59,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_142731) do
   create_table "company_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "company_id", null: false
     t.string "time_zone"
-    t.integer "leaves"
+    t.integer "leaves", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_company_settings_on_company_id"

@@ -1,5 +1,10 @@
 <%= javascript_pack_tag 'project' %>
-
+        </tbody>
+      </table>
+  </div>
+   <div class="digg_pagination">
+    <%= will_paginate @projects %>
+  </div>
 <% content_for :card_header do %>
     <div class="card-header">
       <h2 class="font-weight-bold float-left">Projects</h2>
@@ -31,7 +36,6 @@
     </tbody>
   </table>
 </div>
- 
- <div class="digg_pagination">
-  <%= will_paginate @projects %>
+<div class="digg_pagination">
+<%= will_paginate @projects %>
 </div>

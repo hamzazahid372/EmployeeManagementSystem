@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users do
     resources :comments, shallow: true
+    resources :attachments, shallow: true
     collection do
       get 'search'
     end
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :projects_users, shallow: true
     resources :comments, shallow: true
+    resources :attachments, shallow: true
     collection do
       get 'search'
     end
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
     resources :time_logs, shallow: true
     resources :comments, shallow: true
     resources :tasks_watchers, shallow:true
+    resources :attachments, shallow: true
   end
   resources :company_settings
   resources :working_days

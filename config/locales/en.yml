@@ -32,12 +32,12 @@
 en:
   name: 'Name'
   action: 'Action'
-  hello: "Hello world"
+  hello: 'Hello world'
   department_new: 'New Department'
   department_update: 'Update Department'
   department_description: 'Description'
   department_project_add: 'Add Project'
-  
+
   project_new: 'New Project'
   project_update: 'Update Project'
   project_description: 'Description'
@@ -46,6 +46,9 @@ en:
   project_end_date: 'End Date'
   project_expected_start_date: 'Expected Start Date'
   project_expected_end_date: 'Expected End Date'
+  file_name: 'File Name'
+  file_size: 'File Size'
+  file_uploaded_on: 'File uploaded on'
   project_user_name: 'User Name'
   project_delete_action: 'Action'        
 
@@ -135,6 +138,11 @@ en:
     not_created: 'Time log creation failed'
     destroyed: 'Time log destroyed successfully'
     not_destroyed: 'Time log not removed'
+  attachment:
+    created: 'Document uploaded successfully'
+    not_created: 'Sorry this format is not supported'
+    destroyed: 'Attachment deleted successfully'
+    not_destroyed: 'Oops something getting wrong'
   users_team:
     created: 'User added in team successfully'
     destroyed: 'User removed from this team successfully'
