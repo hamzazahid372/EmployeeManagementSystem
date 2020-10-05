@@ -4,11 +4,7 @@
 module Abilities
   # Abilities on projects users
   module HomeAbility
-    def define_home_user_abilities_for_admin(user)
-      can :index, :home
-    end
-
-    def define_home_user_abilities_for_employee(user)
+    def define_home_user_abilities(user)
       can :index, :home
     end
   end

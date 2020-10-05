@@ -53,7 +53,7 @@ class User < ApplicationRecord
     errors.add(:base, I18n.t('users.leading_teams_error', leading_teams_count: leading_teams_count)) if leading_teams_count > 0
     errors.add(:base, I18n.t('users.account_owner_cannot_destroy')) if account_owner?
     errors.blank?
-  end  
+  end
 
   def self.search(q, options = {})
     users = where('first_name like :q or last_name like :q', q: "%#{q}%")

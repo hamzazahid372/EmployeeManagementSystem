@@ -3,7 +3,7 @@
 # Report controller
 class ReportsController < ApplicationController
   def tasks
-    @tasks = Task.all
+    @tasks = Task.accessible_by(current_ability)
     @tasks = @tasks.page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
       format.html
@@ -16,7 +16,7 @@ class ReportsController < ApplicationController
   end
 
   def time_logs
-    @time_logs = TimeLog.all
+    @time_logs = TimeLog.accessible_by(current_ability)
     @time_logs = @time_logs.where(user_id: params[:user_id]) if params[:user_id].present?
     load_resources
     respond_to do |format|
@@ -39,7 +39,7 @@ class ReportsController < ApplicationController
   end
 
   def attendance_report
-    @attendances = Attendance.all
+    @attendances = Attendance.accessible_by(current_ability)
     @attendances = @attendances.where(user_id: params[:user_id]) if params[:user_id].present?
     load_resources
     respond_to do |format|

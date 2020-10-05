@@ -22,7 +22,7 @@ module ApplicationHelper
   def get_card_classes
     if params[:action] == 'index' && params[:controller] != 'user_companies'
       'container-fluid w-100 mt-4 pl-4 pr-4 pb-4'
-    elsif params[:controller] == 'user_companies'
+    elsif params[:controller] == 'user_companies' || params[:action] == 'change_password'
       'container-fluid w-50 mt-5 pl-4 pr-4 pb-4'
     elsif params[:controller] == 'reports' && params[:action] == 'tasks'
       'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'

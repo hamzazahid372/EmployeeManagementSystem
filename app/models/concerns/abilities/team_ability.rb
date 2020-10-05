@@ -9,7 +9,9 @@ module Abilities
     end
 
     def define_team_abilities_for_employee(user)
-      can %i[read], Team, company_id: user.company_id
+      can %i[read search], Team, Team.joins(:users_teams).where(users_teams: { user_id: user.id }, company_id: user.company_id) do |team|
+        team.users.where(id: user.id).any?
+      end
     end
   end
 end
