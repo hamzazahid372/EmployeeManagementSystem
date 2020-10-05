@@ -5,7 +5,8 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        render json: @events.to_json(:only => [:id, :title, :start, :end])
+        @events = @events.map { |e| { id: e.id, title: e.title, start: e.start, end: e.end, url: event_url(e) } }
+        render json: @events
       end
     end
   end
@@ -15,11 +16,10 @@ class EventsController < ApplicationController
     if @event.save
       flash.now[:notice] = t 'event.success.created'
     else
-      errors = @event.errors.full_messages.join(', ')
-      flash.now[:error] = errors
+      flash.now[:error] = @event.errors.full_messages
     end
     respond_to do |format|
-      format.js
+      format.html { redirect_to request.referer }
     end
   end
 
@@ -48,12 +48,6 @@ class EventsController < ApplicationController
   def new
     respond_to do |format|
       format.html
-      format.js
-    end
-  end
-
-  def edit
-    respond_to do |format|
       format.js
     end
   end
