@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     if @comment.save
       flash.now[:notice] = t 'comments.created'
     else
-      flash.now[:error] = t 'comments.not_created'
+      flash.now[:error] = @comment.errors.full_messages
     end
     respond_to do |format|
       format.js
@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       flash.now[:notice] = t 'comments.updated'
     else
-      flash[:error] = t 'comments.not_updated'
+      flash.now[:error] = t 'comments.not_updated'
     end
 
     respond_to do |format|
@@ -51,9 +51,9 @@ class CommentsController < ApplicationController
 
   def destroy
     if @comment.destroy
-      flash[:notice] = t 'comments.destroyed'
+      flash.now[:notice] = t 'comments.destroyed'
     else
-      flash[:error] = t 'comments.not_destroyed'
+      flash.now[:error] = t 'comments.not_destroyed'
     end
     respond_to do |format|
       format.js

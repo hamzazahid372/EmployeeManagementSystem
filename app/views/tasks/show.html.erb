@@ -62,6 +62,10 @@
       <td><%= @task.assignee&.full_name %></td>
     </tr>
     <tr>
+      <th><%= t(:task_reviewer_id) %></th>
+      <td><%= @task.reviewer&.full_name %></td>
+    </tr>
+    <tr>
       <th><%= t(:task_project_id) %></th>
       <td><%= @task.project.name %></td>
     </tr>

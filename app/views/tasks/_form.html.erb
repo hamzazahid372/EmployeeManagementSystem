@@ -68,7 +68,7 @@
     </div>
   </div>
   
-  <div class="row  pl-1 pr-1">
+  <div class="row pl-1 pr-1">
     <div class="col-lg-6 form-group">
       <%= form.label t(:task_assignee_id) %>
       <%= form.text_field :assignee_id, data: { pre: { id: task.assignee_id, name: task.assignee&.full_name }.to_json }, class: 'form-control border-info' %>
@@ -79,7 +79,14 @@
       <%= form.select :project_id, options_for_select( @projects.collect{ |p| [p.name,p.id] }), {}, {class: "form-control border-info"} %>
     </div>
   </div>
+
+  <div class="row pl-1 pr-1">
+    <div class="col-lg-6 form-group">
+      <%= form.label t(:task_reviewer_id) %>
+      <%= form.text_field :reviewer_id, data: { pre: { id: task.reviewer_id, name: task.reviewer&.full_name }.to_json }, class: 'form-control border-info' %>
+    </div>
+  </div>
+  
   <%= form.submit class: 'btn btn-dark float-right mt-3' %>
   <%= link_to 'Back', :back, class: 'btn btn-dark float-right mr-3 mt-3' %>
 <% end %>
-

@@ -51,6 +51,7 @@ class User < ApplicationRecord
     errors.add(:base, I18n.t('users.assigned_tasks_error', assigned_tasks_count: assigned_tasks_count)) if assigned_tasks_count > 0
     errors.add(:base, I18n.t('users.reviewing_tasks_error', reviewing_tasks_count: reviewing_tasks_count)) if reviewing_tasks_count > 0
     errors.add(:base, I18n.t('users.leading_teams_error', leading_teams_count: leading_teams_count)) if leading_teams_count > 0
+    errors.add(:base, I18n.t('users.account_owner_cannot_destroy')) if account_owner?
     errors.blank?
   end  
 

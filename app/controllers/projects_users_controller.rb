@@ -34,10 +34,14 @@ class ProjectsUsersController < ApplicationController
 
   def destroy
     @project = @projects_user.project    
-    if @projects_user.destroy
-      flash[:notice] = t 'projects_user.destroyed'
+    if @projects_user.can_destroy?
+      if @projects_user.destroy
+        flash[:notice] = t 'projects_user.destroyed'
+      else
+        flash[:error] = t 'projects_user.not_destroyed'
+      end
     else
-      flash[:error] = t 'projects_user.not_destroyed'
+      flash[:error] = @projects_user.errors.full_messages
     end
     respond_to do |format|
       format.js

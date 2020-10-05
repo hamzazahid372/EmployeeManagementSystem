@@ -1,3 +1,6 @@
-$("#comment_content").val(" ")
-$("#new_comment").after("<%= j render @comment %>")
-$("#comment-<%= @comment.id %>").hide().fadeIn()
+<% if flash.now[:error].blank? %>
+  $("#comment_content").val(" ");
+  $("#new_comment").after("<%= j render @comment %>");
+  $("#comment-<%= @comment.id %>").hide().fadeIn();
+<% end %>
+$("#flash_messages").html("<%= j render partial: 'shared/flash' %>");

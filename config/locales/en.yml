@@ -76,6 +76,7 @@ en:
   task_progress: 'Progress'
   task_priority: 'Priority'
   task_assignee_id: 'Assignee'
+  task_reviewer_id: 'Reviewer'
   task_heading: 'Tasks'
   task_assignable_type: 'Assignable Type'
   task_project_title: 'Project Title'
@@ -101,6 +102,8 @@ en:
     assigned_tasks_error: "Cannot destroy user, %{assigned_tasks_count} task(s) assigned to this user"
     reviewing_tasks_error: "Cannot destroy user, this user is reviewing %{reviewing_tasks_count} task(s)"
     leading_teams_error: "Cannot destroy user, this user is leading %{leading_teams_count} team(s)"
+    cannot_destroy_due_to_dependent_tasks: 'This user cannot be deleted, either he is a reviewer, creator or assgnee of some tasks'
+    account_owner_cannot_destroy: "Account owner cannot be deleted"
   cancan:
     access_denied: 'Access denied'
   project:

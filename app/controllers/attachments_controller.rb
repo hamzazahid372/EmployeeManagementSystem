@@ -18,9 +18,9 @@ class AttachmentsController < ApplicationController
     @attachment.user_id = current_user.id
     @attachment.attachment = params[:attachment]
     if @attachment.save
-      flash.now[:notice] = t 'attachment.created'
+      flash[:notice] = t 'attachment.created'
     else
-      flash.now[:error] = t 'attachment.not_created'
+      flash[:error] = t 'attachment.not_created'
       @success = false
     end
     respond_to do |format|
@@ -41,9 +41,9 @@ class AttachmentsController < ApplicationController
   def destroy
     @attachable = @attachment.attachable
     if @attachment.destroy
-      flash[:notice] = t 'attachment.destroyed'
+      flash.now[:notice] = t 'attachment.destroyed'
     else
-      flash[:notice] = t 'attachment.not_destroyed'
+      flash.now[:error] = t 'attachment.not_destroyed'
     end
     respond_to do |format|
       format.js

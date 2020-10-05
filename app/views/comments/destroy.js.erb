@@ -1,1 +1,4 @@
-$("#comment-" + <%= @comment.id %> ).fadeOut(300, function() { $(this).remove(); } );
+<% if flash.now[:error].blank? %>
+  $("#comment-" + <%= @comment.id %> ).fadeOut(300, function() { $(this).remove(); } );
+<% end %>
+$("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
