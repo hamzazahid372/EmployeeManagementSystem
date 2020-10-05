@@ -11,6 +11,8 @@ require("datatables.net-bs4");
 require("bootstrap-datepicker");
 require("jquery-tokeninput");
 require("scripts/breadcrumbs");
+require("chartkick")
+require("chart.js")
 
 global.$ = jQuery;
 

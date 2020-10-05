@@ -15,7 +15,7 @@
           <tr>
             <td><%= link_to attachment.attachment_file_name, project_path(project) %> </td>
             <td> <%= attachment.attachment_file_size %> </td>
-            <td><%= Date.parse((attachment.attachment_updated_at).to_s) unless attachment.attachment_updated_at.nil? %></td>
+            <td><%= attachment.updated_at&.to_s(:long) %></td>
           </tr>
         <% end %>
       </tbody>

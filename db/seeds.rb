@@ -49,6 +49,7 @@ info('Projects and Tasks')
     Department.find(department_id).projects << project rescue nil
     project.users << User.find(user_id) if project.users.ids.exclude?(user_id)
   end
+  project.users << owner
   1.upto(9) do |j|
     Task.create!(title: Faker::Company.buzzword.titleize, description: Faker::Lorem.sentence,
                  company_id: company.id,
@@ -58,7 +59,7 @@ info('Projects and Tasks')
                  created_by_id: owner.id,
                  priority: Task::PRIORITY.values.sample,
                  status: Task::STATUS.values.sample,
-                 due_date: Date.new(2020, 10, rand(16..30)), start_date: Date.new(2020, 10, rand(1..15)))
+                 end_date: Date.new(2020, 10, rand(16..30)), start_date: Date.new(2020, 10, rand(1..15)))
   end
 end
 
