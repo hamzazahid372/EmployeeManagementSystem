@@ -9,7 +9,7 @@ module Abilities
     end
 
     def define_project_user_abilities_for_employee(user)
-      can %i[read], ProjectsUser, company_id: user.company_id
+      can :read, ProjectsUser, company_id: user.company_id
     end
   end
 end

@@ -11,8 +11,8 @@ class TasksController < ApplicationController
 
     @tasks = apply_filters(@tasks, params)
     @tasks = @tasks.page(params[:page]).per_page(PER_PAGE)
-    @users = User.all
-    @projects = Project.all
+    @users = User.accessible_by(current_ability)
+    @projects = Project.accessible_by(current_ability)
     respond_to do |format|
       format.html
       format.js
@@ -32,8 +32,8 @@ class TasksController < ApplicationController
     add_breadcrumb 'Tasks', tasks_path
     add_breadcrumb 'Create Task', new_task_path
 
-    @users = User.all
-    @projects = Project.all
+    @users = User.accessible_by(current_ability)
+    @projects = Project.accessible_by(current_ability)
     respond_to do |format|
       format.html
     end
@@ -44,8 +44,8 @@ class TasksController < ApplicationController
     add_breadcrumb @task.title, task_path(@task)
     add_breadcrumb 'Update', edit_task_path
 
-    @users = User.all
-    @projects = Project.all
+    @users = User.accessible_by(current_ability)
+    @projects = Project.accessible_by(current_ability)
     respond_to do |format|
       format.html
     end
@@ -59,8 +59,8 @@ class TasksController < ApplicationController
     else
       errors = @task.errors.full_messages
       flash[:error] = errors
-      @users = User.all
-      @projects = Project.all
+      @users = User.accessible_by(current_ability)
+      @projects = Project.accessible_by(current_ability)
       render :new
     end
     respond_to do |format|
@@ -75,8 +75,8 @@ class TasksController < ApplicationController
     else
       errors = @task.errors.full_messages
       flash[:error] = errors
-      @users = User.all
-      @projects = Project.all
+      @users = User.accessible_by(current_ability)
+      @projects = Project.accessible_by(current_ability)
       render :edit
     end
     respond_to do |format|

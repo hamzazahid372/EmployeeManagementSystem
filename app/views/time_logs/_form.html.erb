@@ -16,7 +16,7 @@
 
   <div class="field text-center mb-4 row-cols-1 pr-5 m-4 mt-5">
     <%= f.label :activity_id, class: "pt-2" %>
-    <%= f.select :activity_id, TimeLog::ACTIVITIES, {}, {class: "form-control float-right w-75"} %>
+    <%= f.select :activity_id, TimeLog::ACTIVITIES, {}, {class: "form-control float-right w-75", required: true} %>
   </div>
   
   <div class="actions text-center m-2">
