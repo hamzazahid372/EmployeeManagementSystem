@@ -47,7 +47,7 @@ class User < ApplicationRecord
   end
 
   def current_attendance
-    attendances.find_or_create_by(date: Date.today)
+    @current_attendance ||= attendances.find_or_create_by(date: Date.today)
   end
 
   def account_owner?

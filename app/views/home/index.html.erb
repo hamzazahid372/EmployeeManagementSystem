@@ -33,7 +33,7 @@
     <%= render partial: 'projects/table', locals: { projects: @projects } %>
     </div>
   <div class="tab-pane fade show" id="assigned-tasks-tab-content" role="tabpanel" aria-labelledby="assigned-tasks-tab">
-    <%= render partial: 'tasks/table', locals: { tasks: @assigned_tasks, table_id: 'assigned-tasks-datatable' } %>    
+    <%= render partial: 'tasks/table', locals: { tasks: @assigned_tasks, table_id: 'assigned-tasks-datatable' } %>
   </div>
   <div class="tab-pane fade show" id="watching-tasks-tab-content" role="tabpanel" aria-labelledby="watching-tasks-tab">
     <%= render partial: 'tasks/table', locals: { tasks: @watching_tasks, table_id: 'watching-tasks-datatable' } %>

@@ -22,11 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    # if current_user.has_changed_sys_generated_password
-      root_url
-    # else
-    #   change_password_form_member_path(current_user)
-    # end
+    root_url
   end
 
   def current_company

@@ -10,8 +10,6 @@ require("bootstrap")
 require("datatables.net-bs4");
 require("bootstrap-datepicker");
 require("jquery-tokeninput");
-require("chartkick")
-require("chart.js")
 require("scripts/breadcrumbs");
 
 global.$ = jQuery;

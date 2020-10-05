@@ -164,3 +164,10 @@ en:
     destroyed: 'Team removed successfully'
     updated: 'Team updated successfully'
     not_destroyed: 'Team not removed'
+  attendance:
+    login_marked: 'Log-in time marked successfully'
+    login_not_marked: 'Log-in time marking failed'
+    logout_marked: 'Log-out time marked successfully'
+    logout_not_marked: 'Log-out time marking failed'
+    login_marked_already: 'Log-in time marked already'
+    logout_marked_already: 'Log-out time marked already'
