@@ -9,7 +9,7 @@ module Abilities
     end
 
     def define_task_watcher_abilities_for_employee(user)
-      can %i[read], TasksWatcher, company_id: user.company_id
+      can :read, TasksWatcher, company_id: user.company_id
     end
   end
 end
