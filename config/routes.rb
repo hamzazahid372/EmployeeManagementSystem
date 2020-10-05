@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'reports/attendance_report'
   resources :users do
     resources :comments, shallow: true
+    resources :attachments, shallow: true
     collection do
       get 'search'
     end
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :projects_users, shallow: true
     resources :comments, shallow: true
+    resources :attachments, shallow: true
     collection do
       get 'search'
     end
@@ -31,5 +33,6 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :time_logs
     resources :comments, shallow: true
+    resources :attachments, shallow: true
   end
 end

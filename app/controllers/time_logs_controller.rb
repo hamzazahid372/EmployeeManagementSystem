@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Team Controller
+# Time Log Controller
 class TimeLogsController < ApplicationController
   load_and_authorize_resource :task, find_by: :sequence_num
   load_and_authorize_resource :time_log, through: :task

@@ -45,6 +45,9 @@ en:
   project_end_date: 'End Date'
   project_expected_start_date: 'Expected Start Date'
   project_expected_end_date: 'Expected End Date'
+  file_name: 'File Name'
+  file_size: 'File Size'
+  file_uploaded_on: 'File uploaded on'
   project_user_name: 'User Name'
   project_department_name: 'Name'
   project_delete_action: 'Action'
@@ -147,6 +150,11 @@ en:
   time_log:
     created: 'Time log created successfully'
     not_created: 'Time log creation failed'
+  attachment:
+    created: 'Document uploaded successfully'
+    not_created: 'Sorry this format is not supported'
+    destroyed: 'Attachment deleted successfully'
+    not_destroyed: 'Oops something getting wrong'
   users_team:
     created: 'User added in team successfully'
     destroyed: 'User removed from this team successfully'
@@ -164,3 +172,4 @@ en:
     destroyed: 'Team removed successfully'
     updated: 'Team updated successfully'
     not_destroyed: 'Team not removed'
+

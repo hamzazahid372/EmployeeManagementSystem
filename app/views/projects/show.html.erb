@@ -1,8 +1,8 @@
 <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'attachment', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'projects_users', 'data-turbolinks-track': 'reload' %>
-
 <div class="modal" id="projects-users-modal"></div>
-
+<%= javascript_pack_tag 'projects_users', 'data-turbolinks-track': 'reload' %>
 <% content_for :card_header do %>
   <div class="card-header">
     <h2 class="font-weight-bold float-left">
@@ -21,8 +21,6 @@
     </div>
   </div>
 <% end %>
-
-
 <table class="table">
   <tbody>
     <tr>
@@ -55,4 +53,5 @@
     </tr>
   </tbody>
 </table>
+<div class="modal fade" id="attachment-modal" role="dialog"></div>
 <%= render partial: 'shared/tabs', locals: { resource: :project } %>

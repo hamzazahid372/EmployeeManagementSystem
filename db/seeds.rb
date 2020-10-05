@@ -79,3 +79,4 @@ info('Task Watchers')
   task.watcher_users << user unless task.watcher_users.ids.include?(user.id)
   task.watcher_teams << team unless task.watcher_teams.ids.include?(team.id)
 end
+
