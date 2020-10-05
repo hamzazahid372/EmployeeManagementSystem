@@ -11,7 +11,7 @@ module ApplicationHelper
   def get_resource_tabs(resource)
     resource_tabs = {
       user: %w[comments documents],
-      project: %w[comments documents projects_users],
+      project: %w[comments documents projects_users tasks],
       team: %w[comments users],
       task: %w[comments time_logs documents watchers history],
       department: %w[department_projects]
