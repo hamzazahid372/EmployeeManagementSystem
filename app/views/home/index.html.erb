@@ -4,9 +4,14 @@
   <div class="card-header h2 font-weight-bold float-left">Dashboard</div>
 <% end %>
 
-<ul class="nav nav-tabs bg-light rounded-bottom" id="tabs" role="tablist">
+<%= timeline @tasks_timeline_data, height: '55vh' %>
+
+<ul class="nav nav-tabs bg-light rounded-bottom mt-4" id="tabs" role="tablist">
   <li class="nav-item" role="presentation">
-    <a class="nav-link rounded-bottom p-3 active" id="projects-tab" data-toggle="tab" href="#projects-tab-content" role="tab" aria-controls="projects-tab-content" aria-selected="true">My Projects</a>
+    <a class="nav-link rounded-bottom p-3 active" id="statistics-tab" data-toggle="tab" href="#statistics-tab-content" role="tab" aria-controls="statistics-tab-content" aria-selected="true">Statistics</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link rounded-bottom p-3" id="projects-tab" data-toggle="tab" href="#projects-tab-content" role="tab" aria-controls="projects-tab-content" aria-selected="true">My Projects</a>
   </li>
   <li class="nav-item" role="presentation">
     <a class="nav-link rounded-bottom p-3" id="assigned-tasks-tab" data-toggle="tab" href="#assigned-tasks-tab-content" role="tab" aria-controls="assigned-tasks-tab-content" aria-selected="true">Assigned Tasks</a>
@@ -29,7 +34,27 @@
 </ul>
 
 <div class="tab-content pt-4" id="tabs-content">
-  <div class="tab-pane fade show active" id="projects-tab-content" role="tabpanel" aria-labelledby="projects-tab">
+  <div class="tab-pane fade show active" id="statistics-tab-content" role="tabpanel" aria-labelledby="statistics-tab">
+    <div class="row text-center">
+      <div class="col-lg-3">
+        <label>Assigned Tasks</label>
+        <%= pie_chart @assigned_tasks_piechart_data, name: 'Assigned Tasks' %>  
+      </div>
+      <div class="col-lg-3">
+        <label>Watching Tasks</label>
+        <%= pie_chart @watching_tasks_piechart_data, label: 'Watching Tasks' %>  
+      </div>
+      <div class="col-lg-3">
+        <label>Reviewing Tasks</label>
+        <%= pie_chart @reviewing_tasks_piechart_data, label: 'Reviewing Tasks' %> 
+      </div>
+      <div class="col-lg-3">
+        <label>Created Tasks</label>
+        <%= pie_chart @created_tasks_piechart_data, label: 'Created Tasks' %>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade show" id="projects-tab-content" role="tabpanel" aria-labelledby="projects-tab">
     <%= render partial: 'projects/table', locals: { projects: @projects } %>
     </div>
   <div class="tab-pane fade show" id="assigned-tasks-tab-content" role="tabpanel" aria-labelledby="assigned-tasks-tab">

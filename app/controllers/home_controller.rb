@@ -8,7 +8,11 @@ class HomeController < ApplicationController
     @created_teams = Current.user.created_teams.includes(:created_by, :lead)
     @leading_teams = Current.user.leading_teams.includes(:created_by, :lead)
 
-    @assigned_tasks_chartdata = @assigned_tasks.group(:status).count
+    @assigned_tasks_piechart_data = @assigned_tasks.group(:status).count
+    @watching_tasks_piechart_data = @watching_tasks.group(:status).count
+    @created_tasks_piechart_data = @created_tasks.group(:status).count
+    @reviewing_tasks_piechart_data = @reviewing_tasks.group(:status).count
+    @tasks_timeline_data = Task.accessible_by(current_ability).pluck(:title, :start_date, :end_date)
     respond_to do |format|
       format.html
     end
