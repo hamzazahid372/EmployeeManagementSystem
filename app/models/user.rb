@@ -50,6 +50,10 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def name
+    full_name
+  end
+
   protected
 
   def confirmation_required?

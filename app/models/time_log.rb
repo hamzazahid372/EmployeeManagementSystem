@@ -22,6 +22,10 @@ class TimeLog < ApplicationRecord
     user&.full_name
   end
 
+  def task_name
+    task&.title
+  end
+
   def activity_text
     ACTIVITIES_REVERSE[activity_id]
   end

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# User Company Controller
 class UserCompaniesController < ApplicationController
   def find
     if request.subdomain.present?

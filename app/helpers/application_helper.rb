@@ -28,6 +28,10 @@ module ApplicationHelper
       'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'
     elsif params[:controller] == 'reports' && params[:action] == 'task_audits'
       'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'
+      elsif params[:controller] == 'reports' && params[:action] == 'attendance_report'
+      'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'
+      elsif params[:controller] == 'reports' && params[:action] == 'time_logs'
+      'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'
     else
       'container-fluid w-75 mt-4 pl-4 pr-4'
     end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# This class will generate report of different models
+# Report controller
 class ReportsController < ApplicationController
   def tasks
     @tasks = Task.all
@@ -18,9 +18,11 @@ class ReportsController < ApplicationController
   def time_logs
     @time_logs = TimeLog.all
     @time_logs = @time_logs.where(user_id: params[:user_id]) if params[:user_id].present?
-    @time_logs = @time_logs.page(params[:page]).per_page(PER_PAGE)
+    load_resources
     respond_to do |format|
-      format.html
+      format.html do
+        @time_logs = @time_logs.page(params[:page]).per_page(PER_PAGE)
+      end
       format.csv do
         filename = TimeLogsExportService.new(@time_logs).to_csv
         set_csv_headers(filename)
@@ -39,9 +41,11 @@ class ReportsController < ApplicationController
   def attendance_report
     @attendances = Attendance.all
     @attendances = @attendances.where(user_id: params[:user_id]) if params[:user_id].present?
-    @attendances = @attendances.page(params[:page]).per_page(PER_PAGE)
+    load_resources
     respond_to do |format|
-      format.html
+      format.html do
+        @attendances = @attendances.page(params[:page]).per_page(PER_PAGE)
+      end
       format.csv do
         filename = AttendancesExportService.new(@attendances).to_csv
         set_csv_headers(filename)
@@ -59,5 +63,9 @@ class ReportsController < ApplicationController
       'Content-Disposition'       => "attachment; filename=\"#{filename}\"",
       'Content-Transfer-Encoding' => 'binary'
     })
+  end
+
+  def load_resources
+    @user = User.find_by(id: params[:user_id]) if params[:user_id].present?
   end
 end

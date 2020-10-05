@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Registration Controller
 class RegistrationsController < Devise::RegistrationsController
   def new
     @user = User.new

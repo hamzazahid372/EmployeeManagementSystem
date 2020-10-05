@@ -13,7 +13,7 @@
       <div class='row'>
         <div class='col-lg-6'>
           <div class='form-group'>
-            <%= text_field_tag :user_id, nil, class: 'form-control border-info  w-100' %>
+            <%= text_field_tag :user_id, nil, class: 'form-control border-info  w-100', data: { pre_populate: { id: @user&.id, name: @user&.name }.to_json } %>
           </div>
         </div>
         <div class='col-lg-6'>
@@ -28,6 +28,7 @@
           <thead>
           <tr>
             <th><%= t(:time_logs_user) %></th>
+            <th><%= t(:time_logs_task) %></th>
             <th><%= t(:time_logs_hours) %></th>
             <th><%= t(:time_logs_activity) %></th>
             <th><%= t(:time_logs_comment) %></th>
@@ -37,6 +38,7 @@
           <% @time_logs.each do |log| %>
             <tr>
               <td> <%= log.user.full_name %> </td>
+              <td> <%= log.task.title %> </td>
               <td> <%= log.hours %> </td>
               <td> <%= TimeLog::ACTIVITIES_REVERSE[log.activity_id] %> </td>
               <td> <%= log.comment %> </td>

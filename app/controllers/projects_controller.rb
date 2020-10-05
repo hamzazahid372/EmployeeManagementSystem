@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
+# Project Controller
 class ProjectsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
+
+  #  /projects
   def index
     add_breadcrumb 'Projects', projects_path
     @projects = @projects.page(params[:page]).per_page(PER_PAGE)
@@ -8,6 +13,7 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # /projects/:id
   def show
     add_breadcrumb 'Projects', projects_path
     add_breadcrumb @project.name, project_path(@project)
@@ -17,6 +23,7 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # /projects/new
   def new
     add_breadcrumb 'Projects', projects_path
     add_breadcrumb 'Create Project', new_project_path
@@ -26,6 +33,7 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # /projects/:id/edit
   def edit
     add_breadcrumb 'Projects', projects_path
     add_breadcrumb @project.name, project_path(@project)
@@ -36,6 +44,7 @@ class ProjectsController < ApplicationController
     end
   end
 
+  #  POST /projects
   def create
     success = true
     if @project.save
@@ -57,6 +66,7 @@ class ProjectsController < ApplicationController
     end
   end
 
+  #  PATCH  /projects/:id
   def update
     success = true
     if @project.update(project_params)
@@ -73,6 +83,7 @@ class ProjectsController < ApplicationController
     end
   end
 
+  #  /projects/:id
   def destroy
     if @project.destroy
       flash[:notice] = t 'project.destroyed'
@@ -82,6 +93,7 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # /projects/search
   def search
     @projects = Project.search params[:q]
     @projects = @projects.map { |p| { id: p.id, name: p.name } }
@@ -96,4 +108,3 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:name, :description, :status, :start_date, :end_date, :expected_start_date, :expected_end_date)
   end
 end
-

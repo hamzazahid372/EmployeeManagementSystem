@@ -13,7 +13,7 @@
         <div class='row'>
           <div class='col-lg-6'>
             <div class='form-group'>
-              <%= text_field_tag :user_id, nil, class: 'form-control border-info  w-100' %>
+              <%= text_field_tag :user_id, nil, class: 'form-control border-info  w-100', data: { pre_populate: { id: @user&.id, name: @user&.name }.to_json } %>
             </div>
           </div>
           <div class='col-lg-6'>
@@ -24,7 +24,7 @@
         </div>
       <% end %>
       <div class="table-responsive">
-        <table id="time_log-datatable" class="table table-hover">
+        <table id="attendances-datatable" class="table table-hover">
           <thead>
           <tr>
             <th><%= t(:attendance_user) %></th>

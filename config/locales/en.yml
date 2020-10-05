@@ -95,6 +95,7 @@ en:
   time_logs_hours: 'Hours'
   time_logs_activity: 'Activity'
   time_logs_comment: 'Comment'
+  time_logs_task: 'Task'
 
   attendance_user: 'User'
   attendance_login_time: 'Login Time'

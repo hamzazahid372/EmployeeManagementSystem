@@ -4,12 +4,13 @@
 class TimeLogsExportService
   HEADERS = [
     I18n.t(:time_logs_user),
+    I18n.t(:time_logs_task),
     I18n.t(:time_logs_hours),
     I18n.t(:time_logs_activity),
     I18n.t(:time_logs_comment)
   ].freeze
 
-  ATTRIBUTES = %w{user_name hours activity_text comment}.freeze
+  ATTRIBUTES = %w{user_name task_name hours activity_text comment}.freeze
 
   attr_reader :time_logs
 
