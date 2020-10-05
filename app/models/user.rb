@@ -23,7 +23,7 @@ class User < ApplicationRecord
   has_many :time_logs, dependent: :destroy
   has_many :created_events, class_name: 'Event', dependent: :destroy, foreign_key: 'created_by_id'
   has_many :attachments, as: :attachable, dependent: :destroy
-  has_many :assigned_tasks, class_name: 'Task', as: :assignable, dependent: :nullify
+  has_many :assigned_tasks, class_name: 'Task', foreign_key: 'assignee_id', dependent: :nullify
   has_many :created_tasks, class_name: 'Task', dependent: :nullify, foreign_key: 'created_by_id'
   has_many :created_teams, class_name: 'Team', dependent: :nullify, foreign_key: 'created_by_id'
   has_many :leading_teams, class_name: 'Team', dependent: :nullify, foreign_key: 'lead_id'
@@ -38,8 +38,16 @@ class User < ApplicationRecord
   validates :role_id, presence: true, format: { with: /\A\d+\z/ }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { scope: :company_id }
 
+  def self.find_for_authentication(warden_conditions)
+    where(email: warden_conditions[:email]).first
+  end
+
   def admin?
     role_id == User::ROLES.fetch('Administrator')
+  end
+
+  def current_attendance
+    @current_attendance ||= attendances.find_or_create_by(date: Date.today)
   end
 
   def account_owner?
@@ -50,9 +58,15 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  protected
+  def email_required?
+    false
+  end
 
-  def confirmation_required?
-    created_at < 7.days.ago
+  def email_changed?
+    false
+  end
+
+  def will_save_change_to_email?
+    false
   end
 end

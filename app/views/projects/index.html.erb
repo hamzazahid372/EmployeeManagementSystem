@@ -1,10 +1,5 @@
 <%= javascript_pack_tag 'project' %>
-        </tbody>
-      </table>
-  </div>
-   <div class="digg_pagination">
-    <%= will_paginate @projects %>
-  </div>
+
 <% content_for :card_header do %>
     <div class="card-header">
       <h2 class="font-weight-bold float-left">Projects</h2>
@@ -12,30 +7,10 @@
     </div>
 <% end %>
 
-<div class="table-responsive">
-  <table id="projects-datatable" class="table table-hover">
-    <thead>
-      <tr>
-        <th><%= t(:name) %></th>
-        <th><%= t(:project_description) %></th>
-        <th><%= t(:project_status) %></th>
-        <th><%= t(:project_start_date) %></th>
-        <th><%= t(:project_end_date) %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @projects.each do |project| %>
-        <tr>
-          <td><%= link_to project.name, project_path(project) %> </td>
-          <td> <%= project.description %> </td>
-          <td> <%= project.status %> </td>
-          <td><%= Date.parse((project.start_date).to_s) unless project.start_date.nil? %></td>
-          <td><%= Date.parse((project.end_date).to_s) unless project.end_date.nil? %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="table-responsive" id="table-parent-div">
+  <%= render partial: 'table', locals: { projects: @projects } %>
 </div>
+ 
 <div class="digg_pagination">
-<%= will_paginate @projects %>
+  <%= will_paginate @projects %>
 </div>

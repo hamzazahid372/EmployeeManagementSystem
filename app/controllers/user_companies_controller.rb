@@ -1,4 +1,6 @@
 class UserCompaniesController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def find
     if request.subdomain.present?
       redirect_to new_user_session_url and return
@@ -10,21 +12,25 @@ class UserCompaniesController < ApplicationController
 
   def search_by_email
     success = true
-    begin
-      user = User.unscope(where: :company_id).find_by! email: params[:email]
-      company = Company.find_by! id: user.company_id
-    rescue ActiveRecord::RecordNotFound
-      success = false
-    end
-    if success
-      redirect_to new_user_session_url(subdomain: company.subdomain) and return
-    else
-      if params[:email].blank?
-        flash.now[:error] = t 'failure.email_empty'
+    @user = User.unscope(where: :company_id).where! email: params[:email]
+    if @user.present?
+      if @user.length == 1
+        redirect_to new_user_session_url(subdomain: @user.first.company.subdomain) and return
       else
-        flash.now[:error] = t 'failure.email_not_recognized'
+        redirect_to user_companies_index_path(email: params[:email])
+
       end
+    else
+      flash.now[:error] = t 'failure.email_not_recognized'
       render action: 'find'
+    end
+  end
+
+  def index
+    if params[:email].present?
+      @user = User.unscope(where: :company_id).where! email: params[:email]
+    else
+      redirect_to user_companies_find_path
     end
   end
 end

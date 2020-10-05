@@ -96,4 +96,3 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:name, :description, :status, :start_date, :end_date, :expected_start_date, :expected_end_date)
   end
 end
-

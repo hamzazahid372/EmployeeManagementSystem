@@ -36,15 +36,20 @@ en:
   department_update: 'Update Department'
   department_description: 'Description'
   department_project_add: 'Add Project'
-
   project_new: 'New Project'
   project_update: 'Update Project'
+  event_new: 'New Event'
+  event_update: 'Update Event'
+  project_title: 'Title'
   project_description: 'Description'
   project_status: 'Status'
   project_start_date: 'Start Date'
   project_end_date: 'End Date'
   project_expected_start_date: 'Expected Start Date'
   project_expected_end_date: 'Expected End Date'
+  event_title: 'Title'
+  event_description: 'Description'
+  event_date: 'Date'
   file_name: 'File Name'
   file_size: 'File Size'
   file_uploaded_on: 'File uploaded on'
@@ -101,6 +106,14 @@ en:
      created: 'Project created successfully'
      updated: "Project updated successfully"
      destroyed: "Project deleted successfully"
+  event:
+    success:
+     created: 'Event created successfully'
+     updated: "Event updated successfully"
+     destroyed: "Event deleted successfully"
+    failure:
+      name_short: 'Name too short'
+      date_presence: 'Date cannot be empty'
   department:
     created: 'Department created successfully'
     updated: "Department updated successfully"
@@ -151,4 +164,10 @@ en:
     destroyed: 'Team removed successfully'
     updated: 'Team updated successfully'
     not_destroyed: 'Team not removed'
-
+  attendance:
+    login_marked: 'Log-in time marked successfully'
+    login_not_marked: 'Log-in time marking failed'
+    logout_marked: 'Log-out time marked successfully'
+    logout_not_marked: 'Log-out time marking failed'
+    login_marked_already: 'Log-in time marked already'
+    logout_marked_already: 'Log-out time marked already'

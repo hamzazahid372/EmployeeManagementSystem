@@ -1,5 +1,14 @@
 @import "bootstrap/scss/bootstrap";
 @import "datatables.net-bs4/css/dataTables.bootstrap4";
+@import "bootstrap-datepicker/dist/css/bootstrap-datepicker";
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/v4-shims';
+@import 'fullcalendar/main.css';
+@import './event.css';
 @import "jquery-tokeninput/dist/css/token-input.min";
 @import "jquery-tokeninput/dist/css/token-input-facebook.min";
 @import "./style";

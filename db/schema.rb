@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_09_29_130639) do
     t.integer "user_id", null: false
     t.datetime "login_time"
     t.datetime "logout_time"
-    t.boolean "present", default: true, null: false
+    t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_attendances_on_company_id"
@@ -83,14 +83,17 @@ ActiveRecord::Schema.define(version: 2020_09_29_130639) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "company_id", null: false
-    t.datetime "event_date", null: false
+    t.datetime "start", null: false
     t.string "title", null: false
     t.text "description"
     t.integer "created_by_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sequence_num", null: false
+    t.datetime "end"
     t.index ["company_id"], name: "index_events_on_company_id"
     t.index ["created_by_id"], name: "index_events_on_created_by_id"
+    t.index ["sequence_num", "company_id"], name: "index_events_on_sequence_num_and_company_id", unique: true
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -230,10 +233,10 @@ ActiveRecord::Schema.define(version: 2020_09_29_130639) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.integer "sequence_num", null: false
+    t.index ["company_id", "email"], name: "index_users_on_company_id_and_email", unique: true
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["department_id"], name: "index_users_on_department_id"
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
     t.index ["sequence_num", "company_id"], name: "index_users_on_sequence_num_and_company_id", unique: true
