@@ -17,4 +17,16 @@ class TimeLog < ApplicationRecord
     2 => 'Development',
     3 => 'Testing'
   }.freeze
+
+  def user_name
+    user&.full_name
+  end
+
+  def task_name
+    task&.title
+  end
+
+  def activity_text
+    ACTIVITIES_REVERSE[activity_id]
+  end
 end

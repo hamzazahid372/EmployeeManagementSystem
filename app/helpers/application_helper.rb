@@ -13,7 +13,7 @@ module ApplicationHelper
       user: %w[comments documents],
       project: %w[comments documents projects_users],
       team: %w[comments users_teams],
-      task: %w[comments time_logs documents],
+      task: %w[comments time_logs history documents],
       department: %w[department_projects]
     }
     resource_tabs[resource] || []
@@ -24,6 +24,14 @@ module ApplicationHelper
       'container-fluid w-100 mt-4 pl-4 pr-4 pb-4'
     elsif params[:controller] == 'user_companies'
       'container-fluid w-50 mt-5 pl-4 pr-4 pb-4'
+    elsif params[:controller] == 'reports' && params[:action] == 'tasks'
+      'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'
+    elsif params[:controller] == 'reports' && params[:action] == 'task_audits'
+      'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'
+      elsif params[:controller] == 'reports' && params[:action] == 'attendance_report'
+      'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'
+      elsif params[:controller] == 'reports' && params[:action] == 'time_logs'
+      'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'
     else
       'container-fluid w-75 mt-4 pl-4 pr-4'
     end

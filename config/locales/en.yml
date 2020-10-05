@@ -56,6 +56,7 @@ en:
   project_user_name: 'User Name'
   project_department_name: 'Name'
   project_delete_action: 'Action'
+
   team_heading: 'Team'
   team_description: 'Description'
   team_lead_id: 'Lead'
@@ -72,6 +73,7 @@ en:
   task_title: 'Title'
   task_description: 'Description'
   task_status: 'Status'
+  task_reviewer: 'Reviewer'
   task_start_date: 'Start Date'
   task_end_date: 'End Date'
   task_expected_start_date: 'Expected Start Date'
@@ -88,6 +90,25 @@ en:
   task_created_by: 'Created By'
   task_project_id: 'Project'
   task_project_filter: 'project'
+
+  audit_user: 'User'
+  audit_action: 'Action'
+  audit_version: 'Task version#'
+  audit_time: 'Time'
+  audit_to: 'To'
+  audit_from: 'From'
+  audit_attribute: 'Attribute'
+
+  time_logs_user: 'User'
+  time_logs_hours: 'Hours'
+  time_logs_activity: 'Activity'
+  time_logs_comment: 'Comment'
+  time_logs_task: 'Task'
+
+  attendance_user: 'User'
+  attendance_login_time: 'Login Time'
+  attendance_logout_time: 'Logout Time'
+  attendance_date: 'Date'
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:

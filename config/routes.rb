@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'reports/tasks'
+  get 'reports/time_logs'
+  get 'reports/task_audits'
+  get 'reports/attendance_report'
   post 'attendance/log_in'
   post 'attendance/log_out'
   resources :events

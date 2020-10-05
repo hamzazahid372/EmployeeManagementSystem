@@ -7,23 +7,40 @@
       </li>
       <li class="list-group-item bg-dark">
         <i class="fa fa-tasks text-light float-left pt-3" aria-hidden="true"></i>
-        <%= link_to "Projects", projects_path, method: 'get' %>
+        <%= link_to "Projects", projects_path %>
       </li>
       <li class="list-group-item bg-dark">
         <i class="fa fa-tasks text-light float-left pt-3" aria-hidden="true"></i>
-        <%= link_to "Tasks", tasks_path, method: 'get' %>
+        <%= link_to "Tasks", tasks_path %>
       </li>
       <li class="list-group-item bg-dark">
         <i class="fa fa-users text-light float-left pt-3" aria-hidden="true"></i>
-        <%= link_to "Teams", teams_path, method: 'get' %>
+        <%= link_to "Teams", teams_path %>
       </li>
       <% if current_user&.role_id == 1 %>
         <li class="list-group-item bg-dark">
           <i class="fa fa-user text-light float-left pt-3" aria-hidden="true"></i>
-          <%= link_to "Users", users_path, method: 'get' %>
+          <%= link_to "Users", users_path %>
+        </li>
+        <li class="list-group-item bg-dark">
+          <i class="fa fa-user text-light float-left pt-3" aria-hidden="true"></i>
+          <%= link_to "Departments", departments_path %>
         </li>
       <% end %>
-    </ul>    
+      <li class="list-group-item bg-dark">
+        <i class="fa fa-user text-light float-left pt-3" aria-hidden="true"></i>
+        <%= link_to "Events", events_path %>
+      </li>
+      <li class="list-group-item bg-dark">
+        <i class="fa fa-users text-light float-left pt-3" aria-hidden="true"></i>
+        <a class="dropdown-toggle bg-dark" type="button" data-toggle="dropdown">Reports</a>
+          <ul class="dropdown-menu border bg-secondary">
+            <li><%= link_to "Tasks", reports_tasks_path, class: 'dropdown-item text-dark' %></li>
+            <li><%= link_to "Attendance", reports_attendance_report_path, class: 'dropdown-item text-dark' %></li>
+            <li><%= link_to "Time Logs", reports_time_logs_path, class: 'dropdown-item text-dark' %></li>
+          </ul>
+      </li>
+    </ul>
   </div>
 </div>
 

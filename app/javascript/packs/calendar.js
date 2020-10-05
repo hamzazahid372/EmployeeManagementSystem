@@ -4,7 +4,6 @@ import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/daygrid';
 require("fullcalendar");
 require("moment");
-import "@fortawesome/fontawesome-free/js/all";
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
