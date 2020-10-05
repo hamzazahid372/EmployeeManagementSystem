@@ -2,6 +2,7 @@
 
 # Report controller
 class ReportsController < ApplicationController
+  # GET /reports/tasks
   def tasks
     @tasks = Task.all
     @tasks = @tasks.page(params[:page]).per_page(PER_PAGE)
@@ -15,6 +16,7 @@ class ReportsController < ApplicationController
     end
   end
 
+  # GET /reports/time_logs
   def time_logs
     @time_logs = TimeLog.all
     @time_logs = @time_logs.where(user_id: params[:user_id]) if params[:user_id].present?
@@ -31,6 +33,7 @@ class ReportsController < ApplicationController
     end
   end
 
+  # /reports/task_audits
   def task_audits
     @task = Task.find_by(id: params[:task_id])
     respond_to do |format|
@@ -38,6 +41,7 @@ class ReportsController < ApplicationController
     end
   end
 
+  # GET /reports/attendance_report
   def attendance_report
     @attendances = Attendance.all
     @attendances = @attendances.where(user_id: params[:user_id]) if params[:user_id].present?

@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
+# Event Controller
 class EventsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
 
+  # GET /events
   def index
     respond_to do |format|
       format.html
@@ -11,6 +15,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # POST /events
   def create
     @event.created_by_id = current_user.id
     if @event.save
@@ -23,6 +28,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # PATCH /events/:id
   def update
     success = true
     if @event.update(event_params)
@@ -39,12 +45,14 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET /events/:id
   def show
     respond_to do |format|
       format.html
     end
   end
 
+  # GET /events/new
   def new
     respond_to do |format|
       format.html
@@ -52,6 +60,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # DELETE /events/:id
   def destroy
     if @event.destroy
       flash[:notice] = t 'event.success.destroyed'

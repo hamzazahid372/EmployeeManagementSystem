@@ -2,6 +2,7 @@
 
 # Registration Controller
 class RegistrationsController < Devise::RegistrationsController
+  # GET /user/sign_up
   def new
     redirect_to new_user_registration_url(subdomain: '') and return if Current.company.present?
 
@@ -12,6 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  # POST /user
   def create
     success = true
     @user = User.new(sign_up_params)

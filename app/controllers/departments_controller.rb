@@ -3,12 +3,14 @@
 # Department Controller
 class DepartmentsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
+  # GET /departments/new
   def new
     respond_to do |format|
       format.html
     end
   end
 
+  # POST   /departments
   def create
     success = true
     if @department.save
@@ -26,12 +28,14 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  # GET /departments/:id/edit
   def edit
     respond_to do |format|
       format.html
     end
   end
 
+  # PATCH /departments/:id
   def update
     success = true
     if @department.update(department_params)
@@ -48,6 +52,7 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  # GET /departments
   def index
     @departments = @departments.page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
@@ -55,12 +60,14 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  # GET /departments/:id
   def show
     respond_to do |format|
       format.html
     end
   end
 
+  # DELETE /departments/:id
   def destroy
     success = true
     if @department.destroy

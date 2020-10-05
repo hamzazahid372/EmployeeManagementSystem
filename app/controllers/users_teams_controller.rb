@@ -6,6 +6,7 @@ class UsersTeamsController < ApplicationController
   load_and_authorize_resource through: :team, only: %i[index create new]
   load_and_authorize_resource only: %i[destroy]
 
+  # GET /teams/:team_id/users_teams
   def index
     @users_teams = @users_teams.includes(:user)
     @users_teams = @users_teams.page(params[:page]).per_page(PER_PAGE)
@@ -14,12 +15,14 @@ class UsersTeamsController < ApplicationController
     end
   end
 
+  # GET /teams/:team_id/users_teams/new
   def new
     respond_to do |format|
       format.js
     end
   end
 
+  # POST /teams/:team_id/users_teams
   def create
     if @users_team.save
       flash[:notice] = t 'users_team.created'
@@ -32,6 +35,7 @@ class UsersTeamsController < ApplicationController
     end
   end
 
+  # DELETE /users_teams/:id
   def destroy
     @team = @users_team.team
     if @users_team.destroy

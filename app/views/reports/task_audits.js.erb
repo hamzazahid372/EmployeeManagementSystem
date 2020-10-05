@@ -1,4 +1,4 @@
-$("#history-tab-content").addClass('m-4').html("<%= j render partial: 'reports/history' %>")
+$("#history-tab-content").addClass('m-4').html("<%= j render partial: 'reports/history', locals { task: @task} %>")
 $('#history-datatable').DataTable({
     info: false,
     paging: false,
