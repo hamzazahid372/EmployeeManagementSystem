@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Comment Controller
 class CommentsController < ApplicationController
   load_and_authorize_resource :project, find_by: :sequence_num, instance_name: :commentable, only: %i[index create], if: -> { params[:project_id].present? }
   load_and_authorize_resource :team, find_by: :sequence_num, instance_name: :commentable, only: %i[index create], if: -> { params[:team_id].present? }

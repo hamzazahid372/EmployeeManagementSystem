@@ -2,6 +2,7 @@
 
 # Task model
 class Task < ApplicationRecord
+  audited
   STATUS = { 'Started' => 'started', 'Pending' => 'pending', 'Completed' => 'completed' }.freeze
   PRIORITY = { low: 1, medium: 2, high: 3 }.freeze
   sequenceid :company, :tasks
@@ -40,5 +41,21 @@ class Task < ApplicationRecord
     if due_date.present? && start_date.present? && due_date < start_date
       errors.add(:due_date, I18n.t('task.invalid_due_date'))
     end
+  end
+
+  def project_name
+    project.name
+  end
+
+  def assignee_name
+    assignee&.full_name
+  end
+
+  def reviewer_name
+    reviewer&.full_name
+  end
+
+  def priority_text
+    PRIORITY.key priority
   end
 end

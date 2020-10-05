@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# User Company Controller
 class UserCompaniesController < ApplicationController
   skip_before_action :authenticate_user!
 

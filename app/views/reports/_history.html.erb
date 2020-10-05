@@ -1,0 +1,61 @@
+<% content_for :card_header do %>
+    <div class="card-header">
+      <h2 class="font-weight-bold float-left"><%= @task.title %></h2>
+      <%= button_to "Export", new_task_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
+    </div>
+<% end %>
+
+<div class="table-responsive">
+  <table id="history_datatable" class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th><%= t(:audit_version) %></th>
+        <th><%= t(:audit_user) %></th>
+        <th><%= t(:audit_action) %></th>
+        <th><%= t(:audit_time) %></th>
+        <th><%= t(:audit_attribute) %></th>
+        <th><%= t(:audit_from) %></th>
+        <th><%= t(:audit_to) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @task.audits.each do |audit| %>
+        <tr>
+          <td>
+            <%= audit.version %>
+          </td>
+          <td><%= audit.user.full_name %></td>
+          <td><%= audit.action %></td>
+          <td><%= audit.created_at.to_s(:long) %></td>
+          <td>
+            <% audit.audited_changes.each do |attribute, changes| %>
+              <table>
+                <tr>
+                  <td><%= get_task_attribute_name(attribute) %></td>
+                </tr>
+              </table>
+            <% end %>
+          </td>
+          <td>
+            <% audit.audited_changes.each do |attribute, changes| %>
+              <table>
+                <tr>
+                  <td><%= get_task_attribute_value(attribute, changes[0]) %></td>
+                </tr>
+              </table>
+            <% end %>
+          </td>
+          <td>
+            <% audit.audited_changes.each do |attribute, changes| %>
+              <table>
+                <tr>
+                  <td><%= get_task_attribute_value(attribute, changes[1]) %></td>
+                </tr>
+              </table>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

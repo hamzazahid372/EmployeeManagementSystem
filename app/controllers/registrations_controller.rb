@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Registration Controller
 class RegistrationsController < Devise::RegistrationsController
   def new
     redirect_to new_user_registration_url(subdomain: '') and return if Current.company.present?

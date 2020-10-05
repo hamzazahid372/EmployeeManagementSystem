@@ -33,6 +33,8 @@ gem 'paperclip', '~> 6.0.0'
 gem 'faker', '2.14.0'
 # To add breadcrumbs
 gem 'breadcrumbs_on_rails', '~> 3.0', '>= 3.0.1'
+# To maintain models history
+gem 'audited', '~> 4.9'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

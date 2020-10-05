@@ -1,8 +1,8 @@
 
 <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'time_log', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'report', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'attachment', 'data-turbolinks-track': 'reload' %>
-<%= javascript_pack_tag 'time_log', 'data-turbolinks-track': 'reload' %>
 <% content_for :card_header do %>
   <div class="card-header">
     <h2 class="font-weight-bold float-left">
@@ -52,7 +52,7 @@
     </tr>
     <tr>
       <th><%= t(:task_assignee) %></th>
-      <td><%= @task.assignee.full_name %></td>
+      <td><%= @task.assignee&.full_name %></td>
     </tr>
     <tr>
       <th><%= t(:task_project_id) %></th>
