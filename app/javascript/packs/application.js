@@ -6,11 +6,10 @@
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
-
 require("bootstrap")
 require("datatables.net-bs4");
+require("bootstrap-datepicker");
 require("jquery-tokeninput");
-
 require("scripts/breadcrumbs");
 
 global.$ = jQuery;

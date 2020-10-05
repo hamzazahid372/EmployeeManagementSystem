@@ -1,4 +1,4 @@
-<table id="teams-table" class="table table-hover">
+<table id="<%= local_assigns[:table_id] || 'teams-datatable' %>" class="table table-hover">
   <thead>
   <tr>
     <th><%= t(:team_name) %></th>
@@ -10,7 +10,7 @@
   </thead>
   <tbody>
   
-  <% @teams.collect do |team| %>
+  <% teams.collect do |team| %>
     <tr>
       <td><%= link_to team.name, team_path(team) %> </td>
       <td> <%= team.description %> </td>

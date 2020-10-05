@@ -1,0 +1,7 @@
+<% if @event.errors.any? %>
+  $('#event-modal .flash-messages').html("<%= j render( partial: 'shared/flash' ) %>");
+<% else %>
+  $('#flash-messages').html("<%= j render( partial: 'shared/flash' ) %>");
+  $('#event-modal').modal('hide');
+<% end %>
+

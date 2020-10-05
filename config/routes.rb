@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'reports/time_logs'
   get 'reports/task_audits'
   get 'reports/attendance_report'
+  post 'attendance/log_in'
+  post 'attendance/log_out'
+  resources :events
   resources :users do
     resources :comments, shallow: true
     resources :attachments, shallow: true
@@ -20,6 +23,8 @@ Rails.application.routes.draw do
   end
   get 'user_companies/find', controller: 'user_companies', action: 'find'
   post 'user_companies/find', controller: 'user_companies', action: 'search_by_email'
+  get 'user_companies/index', controller: 'user_companies', action: 'index'
+
   devise_for :user, controllers: { registrations: 'registrations', sessions: 'sessions' }
   root to: 'home#index'
   resources :departments do
