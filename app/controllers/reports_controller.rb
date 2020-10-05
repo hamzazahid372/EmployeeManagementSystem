@@ -5,11 +5,28 @@ class ReportsController < ApplicationController
   def tasks
     @tasks = Task.all
     @tasks = @tasks.page(params[:page]).per_page(PER_PAGE)
+    respond_to do |format|
+      format.html
+      format.csv do
+        filename = TasksExportService.new(@tasks).to_csv
+        set_csv_headers(filename)
+        send_file(filename)
+      end
+    end
   end
 
   def time_logs
     @time_logs = TimeLog.all
+    @time_logs = @time_logs.where(user_id: params[:user_id]) if params[:user_id].present?
     @time_logs = @time_logs.page(params[:page]).per_page(PER_PAGE)
+    respond_to do |format|
+      format.html
+      format.csv do
+        filename = TimeLogsExportService.new(@time_logs).to_csv
+        set_csv_headers(filename)
+        send_file(filename)
+      end
+    end
   end
 
   def task_audits
@@ -17,5 +34,30 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def attendance_report
+    @attendances = Attendance.all
+    @attendances = @attendances.where(user_id: params[:user_id]) if params[:user_id].present?
+    @attendances = @attendances.page(params[:page]).per_page(PER_PAGE)
+    respond_to do |format|
+      format.html
+      format.csv do
+        filename = AttendancesExportService.new(@attendances).to_csv
+        set_csv_headers(filename)
+        send_file(filename)
+      end
+    end
+  end
+
+  private
+
+  def set_csv_headers(filename)
+    headers.merge!({
+      'Cache-Control'             => 'must-revalidate, post-check=0, pre-check=0',
+      'Content-Type'              => 'text/csv',
+      'Content-Disposition'       => "attachment; filename=\"#{filename}\"",
+      'Content-Transfer-Encoding' => 'binary'
+    })
   end
 end

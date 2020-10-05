@@ -31,7 +31,7 @@
             <% audit.audited_changes.each do |attribute, changes| %>
               <table>
                 <tr>
-                  <td><%= attribute %></td>
+                  <td><%= get_task_attribute_name(attribute) %></td>
                 </tr>
               </table>
             <% end %>
@@ -40,7 +40,7 @@
             <% audit.audited_changes.each do |attribute, changes| %>
               <table>
                 <tr>
-                  <td><%= changes[0] %></td>
+                  <td><%= get_task_attribute_value(attribute, changes[0]) %></td>
                 </tr>
               </table>
             <% end %>
@@ -49,7 +49,7 @@
             <% audit.audited_changes.each do |attribute, changes| %>
               <table>
                 <tr>
-                  <td><%= changes[1] %></td>
+                  <td><%= get_task_attribute_value(attribute, changes[1]) %></td>
                 </tr>
               </table>
             <% end %>
@@ -59,4 +59,3 @@
     </tbody>
   </table>
 </div>
-

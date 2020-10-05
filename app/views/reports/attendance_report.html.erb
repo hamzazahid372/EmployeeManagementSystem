@@ -1,0 +1,54 @@
+<%= javascript_pack_tag 'report', 'data-turbolinks-track': 'reload' %>
+<div class="container-fluid w-100 mt-4 pl-4 pr-4 pb-4">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="font-weight-bold float-left">Attendance</h2>
+      <%= link_to "Export", reports_attendance_report_path(format: 'csv'), class: "btn btn-dark float-right mt-1" %>
+    </div>
+    <div class="card-body container-fluid p-5">
+      <%= form_tag(reports_attendance_report_path, method: :get) do %>
+        <div class='text-bold'>
+          <%= label_tag :user_id , 'User', class: 'h5 text-bold' %>
+        </div>
+        <div class='row'>
+          <div class='col-lg-6'>
+            <div class='form-group'>
+              <%= text_field_tag :user_id, nil, class: 'form-control border-info  w-100' %>
+            </div>
+          </div>
+          <div class='col-lg-6'>
+            <div class='form-group'>
+              <%= submit_tag 'Apply Filter', class: 'btn btn-dark float-right' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="table-responsive">
+        <table id="time_log-datatable" class="table table-hover">
+          <thead>
+          <tr>
+            <th><%= t(:attendance_user) %></th>
+            <th><%= t(:attendance_login_time) %></th>
+            <th><%= t(:attendance_logout_time) %></th>
+            <th><%= t(:attendance_date) %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @attendances.each do |attendance| %>
+            <tr>
+              <td> <%= attendance.user.full_name %> </td>
+              <td> <%= attendance.login_time&.to_s(:long) %> </td>
+              <td> <%= attendance.logout_time&.to_s(:long) %> </td>
+              <td> <%= attendance.date&.to_s(:long) %> </td>
+            </tr>
+          <% end %>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="digg_pagination">
+        <%= js_will_paginate @attendances %>
+      </div>
+    </div>
+  </div>
+</div>

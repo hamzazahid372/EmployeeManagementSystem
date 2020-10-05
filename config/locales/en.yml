@@ -90,6 +90,16 @@ en:
   audit_to: 'To'
   audit_from: 'From'
   audit_attribute: 'Attribute'
+
+  time_logs_user: 'User'
+  time_logs_hours: 'Hours'
+  time_logs_activity: 'Activity'
+  time_logs_comment: 'Comment'
+
+  attendance_user: 'User'
+  attendance_login_time: 'Login Time'
+  attendance_logout_time: 'Logout Time'
+  attendance_date: 'Date'
   mailer:
     email_change: "We're contacting you to notify you that your email is being changed to %{email}."
   failure:

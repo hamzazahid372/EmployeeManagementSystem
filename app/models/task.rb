@@ -42,4 +42,20 @@ class Task < ApplicationRecord
       errors.add(:due_date, I18n.t('task.invalid_due_date'))
     end
   end
+
+  def project_name
+    project.name
+  end
+
+  def assignee_name
+    assignee&.full_name
+  end
+
+  def reviewer_name
+    reviewer&.full_name
+  end
+
+  def priority_text
+    PRIORITY.key priority
+  end
 end

@@ -2,8 +2,8 @@
 
 <% content_for :card_header do %>
     <div class="card-header">
-      <h2 class="font-weight-bold float-left">Task</h2>
-      <%= button_to "Export", new_task_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
+      <h2 class="font-weight-bold float-left">Tasks</h2>
+      <%= link_to "Export", reports_tasks_path(format: 'csv'), class: "btn btn-dark float-right mt-1" %>
     </div>
 <% end %>
 

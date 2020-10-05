@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'reports/tasks'
   get 'reports/time_logs'
   get 'reports/task_audits'
+  get 'reports/attendance_report'
   resources :users do
     resources :comments, shallow: true
     collection do
