@@ -7,6 +7,8 @@ $(document).ready(function() {
     children[i].setAttribute("text-decoration", "none")
     children[i].firstChild.classList.add("text-white");
   }
-  children[children.length - 1].classList.add("btn");
-  children[children.length - 1].classList.add("btn-light");
+  if(children[children.length - 1]){
+    children[children.length - 1].classList.add("btn");
+    children[children.length - 1].classList.add("btn-light");
+  }
 });

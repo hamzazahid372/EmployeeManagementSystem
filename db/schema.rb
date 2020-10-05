@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_142731) do
     t.datetime "end_date"
     t.datetime "expected_start_date"
     t.datetime "expected_end_date"
-    t.datetime "created_by_id"
+    t.integer "created_by_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "sequence_num", null: false
@@ -271,6 +271,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_142731) do
     t.integer "company_id", null: false
     t.integer "department_id"
     t.boolean "active", default: true, null: false
+    t.string "sys_generated_password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email", default: "", null: false

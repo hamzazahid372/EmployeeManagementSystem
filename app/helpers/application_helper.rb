@@ -39,9 +39,9 @@ module ApplicationHelper
 
   def get_attendance_button
     if Current.user.current_attendance.login_time.nil?
-      (link_to '', attendance_log_in_path, method: 'post', class: 'btn btn-light fas fa-arrow-right float-left m-1', id: 'attendance-btn')
+      (link_to '', attendance_log_in_path, method: 'post', class: 'btn btn-light fas fa-arrow-right float-left m-1', id: 'attendance-btn', title: 'Attendance Log-in', data: { confirm: 'Are you sure to mark your attendance log-in time?' })
     elsif Current.user.current_attendance.logout_time.nil?
-      (link_to '', attendance_log_out_path, method: 'post', class: 'btn btn-light fas fa-arrow-left float-left m-1', id: 'attendance-btn')
+      (link_to '', attendance_log_out_path, method: 'post', class: 'btn btn-light fas fa-arrow-left float-left m-1', id: 'attendance-btn', title: 'Attendance Log-out', data: { confirm: 'Are you sure to mark your attendance log-out time?' })
     end
   end
 end

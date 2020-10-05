@@ -177,7 +177,7 @@ en:
     not_destroyed: 'Time log not removed'
   attachment:
     created: 'Document uploaded successfully'
-    not_created: 'Sorry this format is not supported'
+    not_created: 'Invalid file'
     destroyed: 'Attachment deleted successfully'
     not_destroyed: 'Oops something getting wrong'
   users_team:

@@ -1,4 +1,12 @@
 <%= javascript_pack_tag 'department', 'data-turbolinks-track': 'reload' %>
+
+<% content_for :card_header do %>
+  <div class="card-header">
+    <h2 class="font-weight-bold float-left">Departments</h2>
+    <%= button_to "Create Department", new_department_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
+  </div>
+<% end %>
+
 <div class="container-fluid">
   <h1>Departments</h1>
   <div class="table-responsive">

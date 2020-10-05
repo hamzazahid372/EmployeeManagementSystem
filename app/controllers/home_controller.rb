@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     @watching_tasks_piechart_data = @watching_tasks.group(:status).count
     @created_tasks_piechart_data = @created_tasks.group(:status).count
     @reviewing_tasks_piechart_data = @reviewing_tasks.group(:status).count
-    @tasks_timeline_data = Task.accessible_by(current_ability).pluck(:title, :start_date, :end_date)
+    @tasks_timeline_data = Task.accessible_by(current_ability).order(start_date: :asc).pluck(:title, :start_date, :end_date)
     respond_to do |format|
       format.html
     end

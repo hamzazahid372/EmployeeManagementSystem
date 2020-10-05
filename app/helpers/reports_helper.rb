@@ -4,8 +4,9 @@ module ReportsHelper
     when :priority
       Task::PRIORITY.key value.to_i
     when :project_id
-      project = Project.find_by(id: value)
-      project&.name
+      Project.find_by(id: value)&.name
+    when :assignee_id, :reviewer_id
+      User.find_by(id: value)&.name
     else
       value
     end

@@ -30,11 +30,11 @@
       </tr>
       <tr>
         <th><%= t(:start) %></th>
-        <td><%= Date.parse((@event.start).to_s)unless @event.start.nil? %></td>
+        <td><%= @event.start&.to_s(:long) %></td>
       </tr>
       <tr>
         <th><%= t(:end) %></th>
-        <td><%= Date.parse((@event.end).to_s)unless @event.end.nil? %></td>
+        <td><%= @event.end&.to_s(:long) %></td>
       </tr>
     </tbody>
   </table>

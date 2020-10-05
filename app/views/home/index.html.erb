@@ -4,7 +4,10 @@
   <div class="card-header h2 font-weight-bold float-left">Dashboard</div>
 <% end %>
 
-<%= timeline @tasks_timeline_data, height: '55vh' %>
+<% if @tasks_timeline_data.present? %>
+  <label class="h4">Tasks Timeline</label>
+  <%= timeline @tasks_timeline_data, height: '55vh' %>
+<% end %>
 <%= render partial: "shared/calendar" %>
 
 <ul class="nav nav-tabs bg-light rounded-bottom" id="tabs" role="tablist">

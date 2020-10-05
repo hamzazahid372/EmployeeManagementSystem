@@ -10,6 +10,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.integer :company_id, null: false, index: true
       t.integer :department_id, index: true
       t.boolean :active, null: false, default: true
+      t.string :sys_generated_password
       t.timestamps
     end
   end
