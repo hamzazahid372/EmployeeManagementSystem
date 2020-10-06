@@ -8,12 +8,6 @@
       <%= form.time_zone_select :time_zone, nil, {}, class: 'form-control border-info  w-100', default: 'Islamabad' %>
     </div>
   </div>
-  <div class='col-lg-12'>
-    <div class='form-group'>
-      <%= form.label t('company_setting.leaves'), class: 'h5 card-title' %>
-      <%= form.number_field :leaves, class: 'form-control border-info', rows: 5 %>
-    </div>
-  </div>
   <% if can? :update, object %>
     <%= form.submit class: 'btn btn-dark float-right mr-3' %>
   <% else %>

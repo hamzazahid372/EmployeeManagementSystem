@@ -6,8 +6,6 @@
 <%= form_for([task, time_log], remote: true) do |f| %>
   <div class="field text-center mb-4 row-cols-1 pr-5 m-4">
     <%= f.label :hours, class: "pt-2" %>
-    <%= f.number_field :hours, autofocus: true, class: 'form-control float-right w-75', step: 0.5, required: true, min: 0, max: 999 %>
-
     <%= f.number_field :hours, autofocus: true, class: 'form-control float-right w-75', step: 0.01, required: true, min: 0, max: 999.99 %>
   </div>
 

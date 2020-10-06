@@ -17,8 +17,8 @@ class TimeLog < ApplicationRecord
     2 => 'Development',
     3 => 'Testing'
   }.freeze
-  validates_length_of :hours, minimum: 0, maximum: 999
-  validates :hours, numericality: { only_integer: true }
+
+  validates :hours, presence: true, numericality: { greater_than: 0, less_than: 1000 }
   validates :activity_id, presence: true
   validates :task_id, presence: true
   def user_name

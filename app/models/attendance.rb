@@ -24,7 +24,7 @@ class Attendance < ApplicationRecord
   def off_day?
     status == STATUS['Off day']
   end
- 
+
   private
 
   def set_status

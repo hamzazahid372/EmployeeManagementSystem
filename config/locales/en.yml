@@ -149,6 +149,8 @@ en:
     created: 'Department created successfully'
     updated: "Department updated successfully"
     destroyed: "Department deleted successfully"
+    dependent_users: 'Cannot destroy department, %{users_count} user(s) belongs to this department.'
+    dependent_projects: 'Cannot destroy department, %{projects_count} project(s) belongs to this department.'
     failure:
       name_short: 'Name is too short(should be of at least three characters)'
       cannot_destroyed: 'This project cannot be destroyed'

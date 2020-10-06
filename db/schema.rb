@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_142731) do
     t.integer "user_id", null: false
     t.datetime "login_time"
     t.datetime "logout_time"
-    t.datetime "date", null: false
+    t.date "date", null: false
     t.integer "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

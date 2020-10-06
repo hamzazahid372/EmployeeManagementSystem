@@ -2,9 +2,9 @@
 
 # Report controller
 class ReportsController < ApplicationController
-  load_and_authorize_resource :task, :only %i[task_audits]
+  load_and_authorize_resource :task, only: %i[task_audits], find_by: :sequence_num
 
-# GET /reports/tasks
+  # GET /reports/tasks
   def tasks
     add_breadcrumb 'Tasks Report', reports_tasks_path
     @tasks = Task.accessible_by(current_ability)

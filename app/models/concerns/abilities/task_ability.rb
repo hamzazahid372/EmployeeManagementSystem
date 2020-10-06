@@ -9,10 +9,11 @@ module Abilities
     end
 
     def define_task_abilities_for_employee(user)
-      can %i[read create], Task, Task.joins(project: :projects_users).where(projects_users: { user_id: user.id }, company_id: user.company_id) do |task|
+      can %i[read], Task, Task.joins(project: :projects_users).where(projects_users: { user_id: user.id }, company_id: user.company_id) do |task|
         task.project.users.where(id: user.id).any?
       end
       can %i[update destroy], Task, created_by_id: user.id, company_id: user.company_id
+      can %i[create], Task, company_id: user.company_id
     end
   end
 end

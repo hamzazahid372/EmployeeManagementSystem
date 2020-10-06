@@ -41,7 +41,7 @@ class DepartmentsController < ApplicationController
     end
   end
 
-  # PATCH /departments/:id
+  # PUT /departments/:id
   def update
     success = true
     if @department.update(department_params)
@@ -78,18 +78,23 @@ class DepartmentsController < ApplicationController
 
   # DELETE /departments/:id
   def destroy
-    success = true
-    if @department.destroy
-      flash[:notice] = t 'department.destroyed'
-    else
-      flash[:notice] = t 'department.failure.cannot_destroyed'
-      success = false
-    end
-    respond_to do |format|
-      if success
-        format.html { redirect_to departments_path }
+    if @department.can_destroy?
+      if @department.destroy
+        flash[:notice] = t('department.destroyed')
       else
-        format.html {redirect_to @department}
+        flash[:error] = @department.errors.full_messages
+      end
+    else
+      flash[:error] = @department.errors.full_messages
+    end
+
+    respond_to do |format|
+      format.html do
+        if flash[:error].blank?
+          redirect_to departments_path
+        else
+          redirect_to @department
+        end
       end
     end
   end

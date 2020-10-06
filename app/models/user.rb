@@ -37,7 +37,7 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :company
 
-  validates :first_name, presence: true, format: { with: /[a-zA-Z0-9]/ }
+  validates :first_name, presence: true
   validates :last_name, presence: true
   validates :role_id, presence: true, format: { with: /\A\d+\z/ }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { scope: :company_id }
