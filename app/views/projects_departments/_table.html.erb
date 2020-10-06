@@ -9,7 +9,9 @@
           <th><%= t(:project_status) %></th>
           <th><%= t(:project_start_date) %></th>
           <th><%= t(:project_end_date) %></th>
-          <th><%= t(:project_delete_action) %></th>
+          <% if can? :create, projects_departments.first %>
+            <th><%= t(:project_delete_action) %></th>
+          <% end %>
         </tr>
         </thead>
         <tbody>

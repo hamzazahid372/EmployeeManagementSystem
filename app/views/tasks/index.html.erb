@@ -3,7 +3,9 @@
 <% content_for :card_header do %>
     <div class="card-header">
       <h2 class="font-weight-bold float-left">Tasks</h2>
-      <%= button_to "Create Task", new_task_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
+      <% if can? :create, Task %>
+        <%= button_to "Create Task", new_task_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
+      <% end %>
     </div>
 <% end %>
 
@@ -38,7 +40,7 @@
   </div>
 </div>
 
-<div class="table-responsive" id="table-parent-div">
-    <%= render partial: "table", locals: { paginate: true, tasks: @tasks } %>
+<div class="table-responsive my-4" id="tasks-table-div">
+  <%= render partial: "table", locals: { paginate: true, tasks: @tasks } %>
 </div>  
 

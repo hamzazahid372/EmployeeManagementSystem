@@ -25,7 +25,7 @@
   <div class="form-group">
     <div class="col-lg-12">
       <%= form.label :department_id, class: 'h5 card-title' %>
-      <%= form.select :department_id, options_from_collection_for_select(@departments, 'id', 'name'), {}, class: 'form-control border-info', required: true %>
+      <%= form.select :department_id, options_from_collection_for_select(@departments, 'id', 'name', user.department_id), {}, class: 'form-control border-info', required: true %>
     </div>
   </div>
 

@@ -17,7 +17,7 @@
   <% working_days.each do |working_day| %>
     <% working_day_presenter = WorkingDayPresenter.new(working_day) %>
     <tr>
-      <td><%= working_day.day %> </td>
+      <td><%= working_day_presenter.day %> </td>
       <td><%= working_day_presenter.off_day %> </td>
       <td><%= working_day_presenter.from %> </td>
       <td><%= working_day_presenter.to %> </td>

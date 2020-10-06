@@ -207,6 +207,10 @@ en:
     updated: 'Setting updated successfully'
   working_day:
     updated: 'Working day updated successfully'
+  holiday:
+    created: 'Holiday created successfully'
+    updated: 'Holiday updated successfully'
+    destroyed: 'Holiday deleted successfully'
   attendance:
     login_marked: 'Log-in time marked successfully'
     login_not_marked: 'Log-in time marking failed'
