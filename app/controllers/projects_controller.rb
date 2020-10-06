@@ -105,7 +105,7 @@ class ProjectsController < ApplicationController
 
   # /projects/search
   def search
-    @projects = @projects.search params[:q]
+    @projects = @projects.search(params[:q]).map { |p| { id: p.id, name: p.name } }
     respond_to do |format|
       format.json { render json: @projects.to_json }
     end

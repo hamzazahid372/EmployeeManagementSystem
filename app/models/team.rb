@@ -15,6 +15,6 @@ class Team < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3 }
 
   def self.search(q)
-    where('name like :q', q: "%#{q}%").map { |t| { id: t.id, name: t.name } }
+    where('name like :q', q: "%#{q}%")
   end
 end

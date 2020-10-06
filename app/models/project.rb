@@ -39,6 +39,6 @@ class Project < ApplicationRecord
   end
 
   def self.search(q)
-    where('name like :q', q: "%#{q}%").map { |p| { id: p.id, name: p.name } }
+    where('name like :q', q: "%#{q}%")
   end
 end

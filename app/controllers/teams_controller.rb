@@ -86,7 +86,7 @@ class TeamsController < ApplicationController
   end
 
   def search
-    @teams = @teams.search params[:q]
+    @teams = @teams.search(params[:q]).map { |t| { id: t.id, name: t.name } }
     respond_to do |format|
       format.json { render json: @teams.to_json }
     end
