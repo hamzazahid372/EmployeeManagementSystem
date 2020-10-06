@@ -1,3 +1,11 @@
+<% content_for :card_header do %>
+  <% if object.new_record? %>
+    <h2 class="card-header font-weight-bold">Create Event</h2>
+  <% else %>
+    <h2 class="card-header font-weight-bold">Update Event</h2>
+  <% end %>
+<% end %>
+
 <%= form_for object do |form| %>
   <div class="container-fluid">
     <div class='row'>

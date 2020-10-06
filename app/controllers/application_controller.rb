@@ -11,8 +11,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
-    
-      format.html { redirect_to root_url, notice: t('cancan.access_denied') }
+      format.html { redirect_to dashboard_path, notice: t('cancan.access_denied') }
       format.js { head :forbidden, content_type: 'text/html' }
       format.json { head :forbidden, content_type: 'text/html' }
     end
@@ -30,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    root_url
+    dashboard_path
   end
 
   def current_company

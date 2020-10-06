@@ -5,7 +5,7 @@
   </div>
 <% end %>
 
-<div class="col-sm-6 border-right float-left pt-5 pl-5">
+<div class="col-sm-6 border-right float-left pt-4 pl-5">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group col-lg-12">
       <%= f.label :email, class: 'h5 card-title' %>
@@ -26,6 +26,7 @@
     <%= f.submit "Log in", class: 'btn btn-dark float-right mr-3' %>
     <div class="text-left ml-3 mt-3">
       <%= render "devise/shared/links" %>
+      <%= link_to "Change domain?", user_companies_find_path(subdomain: '') %><br />
     </div>
   <% end %>
 </div>

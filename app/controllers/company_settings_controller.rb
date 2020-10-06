@@ -2,6 +2,7 @@ class CompanySettingsController < ApplicationController
   load_and_authorize_resource
 
   def show
+    add_breadcrumb 'Company Settings', company_setting_path(@company_setting)
     @working_days = Current.company.working_days
     @holidays = Current.company.holidays
   end

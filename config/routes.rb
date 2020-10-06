@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :events
   resources :users do
     resources :comments, shallow: true
@@ -50,5 +51,6 @@ Rails.application.routes.draw do
   get 'user_companies/find', controller: 'user_companies', action: 'find'
   post 'user_companies/find', controller: 'user_companies', action: 'search_by_email'
   get 'user_companies/index', controller: 'user_companies', action: 'index'
-  root to: 'home#index'
+  get 'dashboard', controller: 'home', action: 'index'
+  root to: 'guest#index'
 end

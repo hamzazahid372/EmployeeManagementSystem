@@ -74,7 +74,7 @@ class User < ApplicationRecord
   end
 
   def current_attendance
-    @current_attendance ||= attendances.find_or_create_by(date: Date.today)
+    @current_attendance ||= attendances.find_or_create_by(date: Time.zone.now.to_date)
   end
 
   def account_owner?
@@ -91,6 +91,10 @@ class User < ApplicationRecord
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def current_month_attendances
+    attendances.where("date >= #{Date.today.beginning_of_month}")
   end
 
   protected
