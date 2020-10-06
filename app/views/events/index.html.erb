@@ -1,2 +1,32 @@
-<br /><br /><br />
-<%= render partial: "shared/calendar" %>
+<%= javascript_pack_tag 'event', 'data-turbolinks-track': 'reload' %>
+<% content_for :card_header do %>
+    <div class="card-header">
+      <h2 class="font-weight-bold float-left">Events</h2>
+      <%= button_to "Create Event", new_event_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
+    </div>
+<% end %>
+
+<div class="container-fluid">
+  <div class="table-responsive">
+      <table id="events-datatable" class="table table-hover">
+        <thead>
+        <tr>
+          <th><%= t(:event_title) %></th>
+          <th><%= t(:event_description) %></th>
+          <th><%= t(:event_date) %></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% @events.each do |event| %>
+          <tr>
+            <td><%= link_to event.title, event_path(event) %> </td>
+            <td> <%= event.description %> </td>
+            <td><%= event.start&.to_s(:long) %></td>
+          </tr>
+        <% end %>
+
+        </tbody>
+      </table>
+  </div>
+</div>

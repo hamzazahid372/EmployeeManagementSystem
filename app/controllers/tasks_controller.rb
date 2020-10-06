@@ -6,6 +6,7 @@ class TasksController < ApplicationController
 
   load_and_authorize_resource find_by: :sequence_num
 
+  # GET /tasks
   def index
     add_breadcrumb 'Tasks', tasks_path
 
@@ -19,6 +20,7 @@ class TasksController < ApplicationController
     end
   end
 
+  # GET /tasks/:id
   def show
     add_breadcrumb 'Tasks', tasks_path
     add_breadcrumb @task.title, task_path(@task)
@@ -28,6 +30,7 @@ class TasksController < ApplicationController
     end
   end
 
+  # GET /tasks/new
   def new
     add_breadcrumb 'Tasks', tasks_path
     add_breadcrumb 'Create Task', new_task_path
@@ -40,6 +43,7 @@ class TasksController < ApplicationController
     end
   end
 
+  # GET /tasks/:id/edit
   def edit
     add_breadcrumb 'Tasks', tasks_path
     add_breadcrumb @task.title, task_path(@task)
@@ -52,6 +56,7 @@ class TasksController < ApplicationController
     end
   end
 
+  # POST /tasks
   def create
     @task.created_by_id = current_user.id
     if @task.save
@@ -69,6 +74,7 @@ class TasksController < ApplicationController
     end
   end
 
+  # PUT /tasks/:id
   def update
     if @task.update(task_params)
       flash[:notice] = t 'task.updated'
@@ -85,6 +91,7 @@ class TasksController < ApplicationController
     end
   end
 
+  # DELETE /tasks/:id
   def destroy
     if @task.destroy
       flash[:notice] = t 'task.destroyed'

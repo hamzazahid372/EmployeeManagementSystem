@@ -20,9 +20,9 @@
               <td> <%= log.hours %> </td>
               <td> <%= TimeLog::ACTIVITIES_REVERSE[log.activity_id] %> </td>
               <td> <%= log.comment %> </td>
-              <td> 
+              <td>
                 <% if can? :destroy, log %>
-                  <%= button_to 'Delete', time_log_path(log), class: 'btn btn-dark', method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete?' } 
+                  <%= button_to 'Delete', time_log_path(log), class: 'btn btn-dark', method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete?' }
                   %>
                 <% end %>
               </td>

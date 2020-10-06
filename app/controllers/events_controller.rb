@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
+# Event Controller
 class EventsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
 
+  # GET /events
   def index
     add_breadcrumb 'Events', events_path
     respond_to do |format|
@@ -12,18 +16,29 @@ class EventsController < ApplicationController
     end
   end
 
+  # POST /events
   def create
+    success = true
     @event.created_by_id = current_user.id
     if @event.save
       flash.now[:notice] = t 'event.success.created'
     else
       flash.now[:error] = @event.errors.full_messages
+      success = false
     end
     respond_to do |format|
-      format.html { redirect_to request.referer }
+      format.html do
+        redirect_to request.referer
+        if success
+          flash[:notice] = t 'event.success.created'
+        else
+          flash[:error] = @event.errors.full_messages
+        end
+      end
     end
   end
 
+  # PATCH /events/:id
   def update
     success = true
     if @event.update(event_params)
@@ -40,6 +55,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET /events/:id
   def show
     add_breadcrumb 'Events', events_path
     add_breadcrumb @event.title, event_path(@event)
@@ -48,6 +64,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET /events/new
   def new
     add_breadcrumb 'Events', events_path
     add_breadcrumb 'Create Event', new_event_path
@@ -64,6 +81,7 @@ class EventsController < ApplicationController
     add_breadcrumb 'Update', edit_event_path(@event)
   end
 
+# DELETE /events/:id
   def destroy
     if @event.destroy
       flash[:notice] = t 'event.success.destroyed'

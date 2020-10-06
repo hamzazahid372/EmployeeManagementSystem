@@ -1,5 +1,5 @@
 
-<% content_for :card_header do %>  
+<% content_for :card_header do %>
   <% if object.new_record? %>
     <h2 class="card-header font-weight-bold"><%= t(:project_new) %></h2>
   <% else %>
@@ -24,7 +24,7 @@
     <div class='col-lg-6'>
       <div class='form-group'>
         <%= form.label :start_date, class: 'h5 card-title' %>
-        <%= form.date_field :start_date, class: 'form-control border-info' %>
+        <%= form.date_field :start_date, class: 'form-control border-info', required: true %>
       </div>
     </div>
 
@@ -34,7 +34,7 @@
         <%= form.date_field :end_date, class: 'form-control border-info ' %>
       </div>
     </div>
-  </div>    
+  </div>
   <div class='row pl-3'>
     <div class='col-lg-6'>
       <div class='form-group'>

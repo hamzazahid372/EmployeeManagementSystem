@@ -4,12 +4,16 @@
 class ReportsController < ApplicationController
   load_and_authorize_resource :task, :only %i[task_audits]
 
+# GET /reports/tasks
   def tasks
     add_breadcrumb 'Tasks Report', reports_tasks_path
     @tasks = Task.accessible_by(current_ability)
-    @tasks = @tasks.page(params[:page]).per_page(PER_PAGE)
+    @tasks = @tasks.where(project_id: params[:project_id]) if params[:project_id].present?
+    load_resources
     respond_to do |format|
-      format.html
+      format.html do
+         @tasks = @tasks.page(params[:page]).per_page(PER_PAGE)
+       end
       format.csv do
         filename = TasksExportService.new(@tasks).to_csv
         set_csv_headers(filename)
@@ -18,6 +22,7 @@ class ReportsController < ApplicationController
     end
   end
 
+  # GET /reports/time_logs
   def time_logs
     add_breadcrumb 'Time Logs', reports_time_logs_path
     @time_logs = TimeLog.accessible_by(current_ability)
@@ -35,12 +40,14 @@ class ReportsController < ApplicationController
     end
   end
 
+  # /reports/task_audits
   def task_audits
     respond_to do |format|
       format.js
     end
   end
 
+  # GET /reports/attendance_report
   def attendance_report
     add_breadcrumb 'Attendance Report', reports_attendance_report_path
     @attendances = Attendance.all
@@ -71,5 +78,6 @@ class ReportsController < ApplicationController
 
   def load_resources
     @user = User.find_by(id: params[:user_id]) if params[:user_id].present?
+    @project = Project.find_by(id: params[:project_id]) if params[:project_id].present?
   end
 end

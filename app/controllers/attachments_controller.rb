@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Attachment Controller
 class AttachmentsController < ApplicationController
   load_and_authorize_resource :project, find_by: :sequence_num, instance_name: :attachable, only: %i[index create new], if: -> { params[:project_id].present? }
   load_and_authorize_resource :task, find_by: :sequence_num, instance_name: :attachable, only: %i[index create new], if: -> { params[:task_id].present? }

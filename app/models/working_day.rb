@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Working model
 class WorkingDay < ApplicationRecord
   DAY_NAMES = {
     0 => 'Sun',
