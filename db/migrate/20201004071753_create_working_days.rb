@@ -4,7 +4,7 @@ class CreateWorkingDays < ActiveRecord::Migration[6.0]
       t.integer :company_id, null: false, index: true
       t.time :from
       t.time :to
-      t.string :day
+      t.integer :day
       t.boolean :off_day
       t.timestamps
     end

@@ -1,0 +1,4 @@
+<% if flash.now[:error].blank? %>
+  $("#holidays").html("<%= j render(partial: 'holidays/holidays', locals: { holidays: @holidays }) %>");
+<% end %>
+$("#flash_messages").html("<%= j render partial: 'shared/flash' %>");

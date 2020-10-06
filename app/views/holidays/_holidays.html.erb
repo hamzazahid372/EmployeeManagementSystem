@@ -1,9 +1,9 @@
 <div class="clearfix"></div>
-<h2 class="mt-4">Holidays</h2>
-<table id="working_days_table" class="table table-hover">
+<span class="h2 mt-4">Holidays</span>
+<%= link_to 'Add Holiday', new_holiday_path, remote: true, class: 'btn btn-dark float-right' %>
+<table id="working_days_table" class="mt-2 mb-5 table table-hover">
   <thead>
   <tr>
-    <th>Day</th>
     <th>Date</th>
     <th>Every Year</th>
     <% if can? :update, holidays.first %>
@@ -15,12 +15,16 @@
   
   <% holidays.each do |holiday| %>
     <tr>
-      <td><%= holiday.day %> </td>
-      <td><%= holiday.every_year %> </td>
-      <td><%= working_day_presenter.to %> </td>
-      <% if can? :update, holiday %>
-        <td><%= link_to 'Edit', edit_holiday_path(holiday), remote: true, class: 'btn btn-dark btn-sm' %> </td>
-      <% end %>
+      <td><%= holiday_day(holiday) %> </td>
+      <td><%= boolean_value(holiday.every_year?) %> </td>
+      <td>
+        <% if can? :update, holiday %>
+          <%= link_to 'Edit', edit_holiday_path(holiday), remote: true, class: 'btn btn-dark btn-sm' %>
+        <% end %>
+        <% if can? :destroy, holiday %>
+          <%= link_to 'Delete', holiday_path(holiday), remote: true, method: :delete, data: { confirm: 'Are you sure you want to delete?'}, class: 'btn btn-dark btn-sm' %> 
+        <% end %>
+      </td>
     </tr>        
   <% end %>   
   </tbody>

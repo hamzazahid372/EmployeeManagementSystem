@@ -1,6 +1,6 @@
 class WorkingDayPresenter
   attr_reader :working_day
- 
+
   def initialize(working_day)
     @working_day = working_day
   end
@@ -17,4 +17,7 @@ class WorkingDayPresenter
     working_day.off_day? ? 'Yes' : 'No'
   end
 
+  def day
+    WorkingDay::DAY_NAMES[working_day.day]
+  end
 end

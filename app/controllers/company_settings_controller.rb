@@ -1,9 +1,9 @@
-
 class CompanySettingsController < ApplicationController
   load_and_authorize_resource
 
   def show
     @working_days = Current.company.working_days
+    @holidays = Current.company.holidays
   end
 
   def update
@@ -16,9 +16,8 @@ class CompanySettingsController < ApplicationController
   end
 
   private
-  
+
   def company_setting_params
     params.require(:company_setting).permit(:time_zone, :leaves)
   end
-
 end

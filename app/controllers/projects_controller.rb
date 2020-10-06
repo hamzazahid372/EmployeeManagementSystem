@@ -105,7 +105,7 @@ class ProjectsController < ApplicationController
 
   # /projects/search
   def search
-    @projects = Project.search params[:q]
+    @projects = @projects.search params[:q]
     respond_to do |format|
       format.json { render json: @projects.to_json }
     end

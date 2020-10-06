@@ -309,7 +309,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_142731) do
     t.integer "company_id", null: false
     t.time "from"
     t.time "to"
-    t.string "day"
+    t.integer "day"
     t.boolean "off_day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

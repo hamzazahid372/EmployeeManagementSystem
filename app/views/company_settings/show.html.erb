@@ -1,4 +1,6 @@
 <div class="modal" id="working-day-modal"></div>
+<div class="modal" id="holiday-modal"></div>
+
 <%= render partial: 'form', locals: { object: @company_setting } %>
 <div id="working-days">
   <%= render partial: 'working_days/working_days', locals: { working_days: @working_days } %>

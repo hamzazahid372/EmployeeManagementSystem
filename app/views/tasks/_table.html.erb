@@ -17,7 +17,7 @@
     <tr>
       <td><%= link_to task.title, task_path(task) %> </td>
       <td> <%= link_to task.project.name, project_path(task.project) %> </td>
-      <td> <%= link_to task.assignee.full_name, user_path(task.assignee_id) %> </td>
+      <td> <%= link_to task.assignee.full_name, user_path(task.assignee) if task.assignee %> </td>
       <td> <%= link_to task.created_by.full_name, user_path(task.created_by) %> </td>
       <td> <%= task.status %> </td>
       <td> <%= Task::PRIORITY.key task.priority %> </td>

@@ -44,4 +44,20 @@ module ApplicationHelper
       (link_to '', attendance_log_out_path, method: 'post', class: 'btn btn-light fas fa-arrow-left float-left m-1', id: 'attendance-btn', title: 'Attendance Log-out', data: { confirm: 'Are you sure to mark your attendance log-out time?' })
     end
   end
+
+  def boolean_value(value)
+    value ? 'Yes' : 'No'
+  end
+
+  def get_business_hours
+    Current.company.working_days.filter_map do |working_day|
+      next if working_day.off_day?
+
+      {
+        daysOfWeek: [working_day.day],
+        startTime: working_day.from.strftime("%H:%M"),
+        endTime: working_day.to.strftime("%H:%M")
+      }
+    end
+  end
 end

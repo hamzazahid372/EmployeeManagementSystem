@@ -8,7 +8,9 @@
         <th>Last Name</th>
         <th>Role</th>
         <th>Email</th>
-        <th>Action</th>
+        <% if can? :destroy, users_teams.first %>
+          <th>Action</th>
+        <% end %>
       </tr>
       </thead>
       <tbody>

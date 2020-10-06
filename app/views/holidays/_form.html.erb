@@ -3,7 +3,12 @@
   
     <!-- Modal Header -->
     <div class="modal-header">
-      <h4 class="modal-title">Edit Holiday</h4>
+      <% if holiday.persisted? %>
+        <h4 class="modal-title">Edit Holiday</h4>
+      <% else %>
+        <h4 class="modal-title">Add Holiday</h4>
+      <% end %>
+      
       <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
     
@@ -16,7 +21,7 @@
           <div class="row">
             <div class="col-lg-6">
               <div class="form-group form-check">
-                <%= form.check_box :off_day, class: 'form-check-input' %>
+                <%= form.check_box :every_year, class: 'form-check-input' %>
                 <%= form.label :every_year, class: 'form-check-label' %>
               </div>
             </div>
@@ -25,8 +30,8 @@
           <div class="row">
             <div class="col-lg-6">
               <div class="form-group">
-                <%= form.label :date %>
-                <%= form.date_field :date, class: 'form-control' %>
+                <%= form.label :day %>
+                <%= form.date_field :day, required: true, class: 'form-control' %>
               </div>
             </div>
           </div>
