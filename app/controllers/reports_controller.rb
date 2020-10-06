@@ -2,6 +2,8 @@
 
 # Report controller
 class ReportsController < ApplicationController
+  load_and_authorize_resource :task, :only %i[task_audits]
+
   def tasks
     add_breadcrumb 'Tasks Report', reports_tasks_path
     @tasks = Task.accessible_by(current_ability)
@@ -34,7 +36,6 @@ class ReportsController < ApplicationController
   end
 
   def task_audits
-    @task = Task.find_by(id: params[:task_id])
     respond_to do |format|
       format.js
     end
