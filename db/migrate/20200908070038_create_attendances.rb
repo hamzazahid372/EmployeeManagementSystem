@@ -8,7 +8,8 @@ class CreateAttendances < ActiveRecord::Migration[6.0]
       t.integer :user_id, null: false, index: true
       t.datetime :login_time
       t.datetime :logout_time
-      t.date :date
+      t.date :date, null: false
+      t.integer :status, null: false
       t.timestamps
     end
   end

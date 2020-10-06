@@ -25,6 +25,9 @@ class Company < ApplicationRecord
   has_many :working_days, dependent: :destroy
   has_many :holidays, dependent: :destroy
 
+  validates :name, uniqueness: true
+  validates :subdomain, uniqueness: true
+
   after_create :create_dependents
 
   def create_dependents
@@ -44,6 +47,18 @@ class Company < ApplicationRecord
     ])
   end
 
-  validates :name, uniqueness: true
-  validates :subdomain, uniqueness: true
+  def holiday?(date)
+    holidays.any? do |holiday|
+      if holiday.every_year?
+        holiday.day.month == date.month && holiday.day.day == date.day
+      else
+        holiday.day == date
+      end
+    end
+  end
+
+  def off_day?(date)
+    working_days.find_by(day: date.wday).off_day?
+  end
+  
 end

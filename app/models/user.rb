@@ -93,6 +93,10 @@ class User < ApplicationRecord
     devise_mailer.send(notification, self, *args).deliver_later
   end
 
+  def current_month_attendances
+    attendances.where("date >= #{Date.today.beginning_of_month}")
+  end
+
   protected
 
   def email_required?

@@ -20,6 +20,6 @@
 </div>
 <div class="container w-75 my-4">
   <%= link_to "Add Event", new_event_path, remote: true, class: "btn btn-dark float-right ml-2" %>
-  <div id="calendar" data-business-hours="<%= get_business_hours.to_json %>"></div>
+  <div id="calendar" data-business-hours="<%= get_business_hours.to_json %>" data-attendances="<%= get_attendances.to_json %>"></div>
   <br />
 </div>
