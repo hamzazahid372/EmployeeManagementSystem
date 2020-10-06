@@ -8,7 +8,6 @@
     <th><%= t(:task_status) %></th>
     <th><%= t(:task_priority) %></th>
     <th><%= t(:task_created) %></th>
-    <th><%= t(:task_due_date) %></th>
   </tr>
   </thead>
   <tbody>
@@ -22,7 +21,6 @@
       <td> <%= task.status %> </td>
       <td> <%= Task::PRIORITY.key task.priority %> </td>
       <td> <%= task.created_at&.to_s(:long) %> </td>
-      <td> <%= task.due_date&.to_s(:long) %> </td>
     </tr>        
   <% end %>
    

@@ -20,7 +20,6 @@
         <th><%= t(:task_reviewer) %></th>
         <th><%= t(:task_start_date) %></th>
         <th><%= t(:task_end_date) %></th>
-        <th><%= t(:task_due_date) %></th>
       </tr>
     </thead>
     <tbody>
@@ -35,7 +34,6 @@
           <td> <%= task.reviewer.full_name %> </td>
           <td><%= task.start_date&.to_s(:long) %></td>
           <td><%= task.end_date&.to_s(:long) %></td>
-          <td><%= task.due_date&.to_s(:long) %></td>
         </tr>
       <% end %>
     </tbody>

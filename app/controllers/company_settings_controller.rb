@@ -1,8 +1,8 @@
-
 class CompanySettingsController < ApplicationController
   load_and_authorize_resource
 
   def show
+    add_breadcrumb 'Company Settings', company_setting_path(@company_setting)
     @working_days = Current.company.working_days
   end
 
@@ -16,9 +16,8 @@ class CompanySettingsController < ApplicationController
   end
 
   private
-  
+
   def company_setting_params
     params.require(:company_setting).permit(:time_zone, :leaves)
   end
-
 end

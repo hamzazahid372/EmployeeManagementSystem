@@ -2,7 +2,7 @@
   <div class="modal-content">
   
     <!-- Modal Header -->
-    <div class="modal-header">
+    <div class="modal-header card-header">
       <h4 class="modal-title">Edit Working Day</h4>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
@@ -13,34 +13,28 @@
       <%= form_for working_day, remote: true do |form| %>
         
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="form-group form-check">
-                <%= form.check_box :off_day, class: 'form-check-input' %>
-                <%= form.label :off_day, class: 'form-check-label' %>
-              </div>
+          <div class="col-lg-12">
+            <div class="form-group form-check">
+              <%= form.check_box :off_day, class: 'form-check-input' %>
+              <%= form.label :off_day, class: 'form-check-label' %>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="form-group">
-                <%= form.label :from %>
-                <%= form.time_field :from, class: 'form-control' %>
-              </div>
+          <div class="col-lg-12">
+            <div class="form-group">
+              <%= form.label :from %>
+              <%= form.time_field :from, class: 'form-control' %>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="form-group">
-                <%= form.label :to %>
-                <%= form.time_field :to, class: 'form-control' %>
-              </div>
+          <div class="col-lg-12">
+            <div class="form-group">
+              <%= form.label :to %>
+              <%= form.time_field :to, class: 'form-control' %>
             </div>
           </div>
 
-          <%= form.submit class: 'btn btn-dark' %>
+          <%= form.submit class: 'btn btn-dark float-right mb-2' %>
 
         </div>
 
