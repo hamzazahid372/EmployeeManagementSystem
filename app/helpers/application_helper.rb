@@ -44,6 +44,8 @@ module ApplicationHelper
       pie_chart tasks_piechart_data, label: 'Hello'
     else
       content_tag(:p, 'No Content')
+    end
+  end
 
   def boolean_value(value)
     value ? 'Yes' : 'No'
