@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
   load_and_authorize_resource :comment, only: %i[edit update show destroy]
 
   # GET /comments/:id
+
   def show
     respond_to do |format|
       format.js

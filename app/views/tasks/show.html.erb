@@ -24,8 +24,13 @@
         <%= watch_button(@task) %>
       </div>
 
-      <%= link_to t('task_add_watcher'), new_task_tasks_watcher_path(@task), class: 'ml-3 btn btn-dark', remote: true %>
-      <%= button_to 'Log Time', new_task_time_log_path(@task), method: 'get', action: 'new', class: 'ml-3 btn btn-dark', remote: true %>
+      <% if can? :create, TasksWatcher %>
+        <%= link_to t('task_add_watcher'), new_task_tasks_watcher_path(@task), class: 'ml-3 btn btn-dark', remote: true %>
+      <% end %>
+      <% if can? :create, TimeLog %>
+      
+        <%= button_to 'Log Time', new_task_time_log_path(@task), method: 'get', action: 'new', class: 'ml-3 btn btn-dark', remote: true %>
+      <% end %>
     </div>
   </div>
 <% end %>
@@ -69,10 +74,6 @@
     <tr>
       <th><%= t(:task_project_id) %></th>
       <td><%= @task.project.name %></td>
-    </tr>
-    <tr>
-      <th><%= t(:task_due_date) %></th>
-      <td><%= @task.due_date&.to_s(:long) %></td>
     </tr>
     <tr>
       <th><%= t(:task_start_date) %></th>

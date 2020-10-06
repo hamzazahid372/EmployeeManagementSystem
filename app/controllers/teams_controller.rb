@@ -94,8 +94,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/search
   def search
-    @teams = Team.where('name like :q', q: "%#{params[:q]}%")
-    @teams = @teams.map { |t| { id: t.id, name: t.name } }
+    @teams = @teams.search(params[:q]).map { |t| { id: t.id, name: t.name } }
     respond_to do |format|
       format.json { render json: @teams.to_json }
     end

@@ -2,8 +2,10 @@
 
 <% content_for :card_header do %>
     <div class="card-header">
-      <h2 class="font-weight-bold float-left">Teams</h2>
-      <%= button_to "Create Team", new_team_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
+      <h2 class="font-weight-bold float-left">Teams</h2>        
+      <% if can? :create, Team %>
+        <%= button_to "Create Team", new_team_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
+        <% end %>
     </div>
 <% end %>
 

@@ -1,6 +1,8 @@
 <%= javascript_pack_tag 'comment', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'attachment', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'projects_users', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'project', 'data-turbolinks-track': 'reload' %>
+
 <div class="modal" id="projects-users-modal"></div>
 <%= javascript_pack_tag 'projects_users', 'data-turbolinks-track': 'reload' %>
 <% content_for :card_header do %>
@@ -17,7 +19,12 @@
         method: :delete, class: 'ml-3 btn btn-dark',
         data: { confirm: 'Are you sure you want to delete?' } %>
       <% end %>
-      <%= link_to 'Add Users', new_project_projects_user_path(@project), class: 'ml-3 btn btn-dark', remote: true %>
+      <% if can? :create, Task %>
+        <%= link_to 'New Task', new_task_path(project_id: @project.id),class: ' ml-3 btn btn-dark' %>
+      <% end %>
+      <% if can? :create, ProjectsUser %>
+        <%= link_to 'Add Users', new_project_projects_user_path(@project), class: 'ml-3 btn btn-dark', remote: true %>
+      <% end %>
     </div>
   </div>
 <% end %>
@@ -45,5 +52,6 @@
     </tr>
   </tbody>
 </table>
+<input type="hidden" id="project_id" value="<%= @project.id %>">
 <div class="modal fade" id="attachment-modal" role="dialog"></div>
 <%= render partial: 'shared/tabs', locals: { resource: :project } %>

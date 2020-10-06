@@ -1,0 +1,7 @@
+<% if flash.now[:error].blank? %>
+  $("#holiday-modal").modal('hide');
+  $("#flash_messages").html("<%= j render partial: 'shared/flash' %>");
+  $("#holidays").html("<%= j render(partial: 'holidays/holidays', locals: { holidays: @holidays }) %>");
+<% else %>
+  $("#modal-flash-messages").html("<%= j render partial: 'shared/flash' %>");
+<% end %>

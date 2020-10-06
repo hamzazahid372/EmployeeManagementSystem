@@ -18,7 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
       {
         url: '/events.json'
       }
-    ]
+    ],
+    businessHours: $('#calendar').data("business-hours"),
+    events: $('#calendar').data("attendances")
+
 });
   calendar.render();
 });

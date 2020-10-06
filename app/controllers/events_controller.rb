@@ -6,6 +6,7 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
+    add_breadcrumb 'Events', events_path
     respond_to do |format|
       format.html
       format.json do
@@ -56,6 +57,8 @@ class EventsController < ApplicationController
 
   # GET /events/:id
   def show
+    add_breadcrumb 'Events', events_path
+    add_breadcrumb @event.title, event_path(@event)
     respond_to do |format|
       format.html
     end
@@ -63,13 +66,22 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    add_breadcrumb 'Events', events_path
+    add_breadcrumb 'Create Event', new_event_path
     respond_to do |format|
       format.html
       format.js
     end
   end
 
-  # DELETE /events/:id
+  # GET /events/:id/edit
+  def edit
+    add_breadcrumb 'Events', events_path
+    add_breadcrumb @event.title, event_path(@event)
+    add_breadcrumb 'Update', edit_event_path(@event)
+  end
+
+# DELETE /events/:id
   def destroy
     if @event.destroy
       flash[:notice] = t 'event.success.destroyed'

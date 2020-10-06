@@ -2,9 +2,12 @@
 
 # Report controller
 class ReportsController < ApplicationController
-  # GET /reports/tasks
+  load_and_authorize_resource :task, :only %i[task_audits]
+
+# GET /reports/tasks
   def tasks
-    @tasks = Task.all
+    add_breadcrumb 'Tasks Report', reports_tasks_path
+    @tasks = Task.accessible_by(current_ability)
     @tasks = @tasks.page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
       format.html
@@ -18,7 +21,8 @@ class ReportsController < ApplicationController
 
   # GET /reports/time_logs
   def time_logs
-    @time_logs = TimeLog.all
+    add_breadcrumb 'Time Logs', reports_time_logs_path
+    @time_logs = TimeLog.accessible_by(current_ability)
     @time_logs = @time_logs.where(user_id: params[:user_id]) if params[:user_id].present?
     load_resources
     respond_to do |format|
@@ -35,7 +39,6 @@ class ReportsController < ApplicationController
 
   # /reports/task_audits
   def task_audits
-    @task = Task.find_by(id: params[:task_id])
     respond_to do |format|
       format.js
     end
@@ -43,6 +46,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/attendance_report
   def attendance_report
+    add_breadcrumb 'Attendance Report', reports_attendance_report_path
     @attendances = Attendance.all
     @attendances = @attendances.where(user_id: params[:user_id]) if params[:user_id].present?
     load_resources

@@ -53,7 +53,7 @@ class User < ApplicationRecord
     errors.add(:base, I18n.t('users.leading_teams_error', leading_teams_count: leading_teams_count)) if leading_teams_count > 0
     errors.add(:base, I18n.t('users.account_owner_cannot_destroy')) if account_owner?
     errors.blank?
-  end  
+  end
 
   def self.search(q, options = {})
     users = where('first_name like :q or last_name like :q', q: "%#{q}%")
@@ -64,7 +64,7 @@ class User < ApplicationRecord
     end
     users
   end
-  
+
   def self.find_for_authentication(warden_conditions)
     where(email: warden_conditions[:email]).first
   end
@@ -74,7 +74,7 @@ class User < ApplicationRecord
   end
 
   def current_attendance
-    @current_attendance ||= attendances.find_or_create_by(date: Date.today)
+    @current_attendance ||= attendances.find_or_create_by(date: Time.zone.now.to_date)
   end
 
   def account_owner?
@@ -87,6 +87,14 @@ class User < ApplicationRecord
 
   def name
     full_name
+  end
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def current_month_attendances
+    attendances.where("date >= #{Date.today.beginning_of_month}")
   end
 
   protected

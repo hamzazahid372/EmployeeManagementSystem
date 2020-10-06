@@ -14,8 +14,11 @@
       <% end %>
       <% if can? :update, @team %>
         <%= button_to 'Update', edit_team_path(@team.sequence_num), { class: 'ml-3 btn btn-dark', method: 'get' } %>
-      <% end %>        
-      <%= link_to 'Add Users', new_team_users_team_path(@team), class: 'ml-3 btn btn-dark', remote: true %>
+      <% end %>  
+            
+      <% if can? :create, UsersTeam %>      
+        <%= link_to 'Add Users', new_team_users_team_path(@team), class: 'ml-3 btn btn-dark', remote: true %>
+      <% end %>
     </div>
   </div>
 <% end %>

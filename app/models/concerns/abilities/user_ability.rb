@@ -5,7 +5,7 @@ module Abilities
     end
 
     def define_user_abilities_for_employee(user)
-      can :read, User, company_id: user.company_id
+      can %i[read search change_password], User, company_id: user.company_id
     end
   end
 end

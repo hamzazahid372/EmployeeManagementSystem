@@ -22,7 +22,7 @@ class UsersTeamsController < ApplicationController
     end
   end
 
-  # POST /teams/:team_id/users_teams
+# POST /teams/:team_id/users_teams
   def create
     if @users_team.save
       flash[:notice] = t 'users_team.created'
