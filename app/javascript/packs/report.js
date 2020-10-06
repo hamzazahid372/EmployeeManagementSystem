@@ -20,4 +20,15 @@ $(document).ready( function () {
       prePopulate: prePopulate
     });
   }
+  if($('#project_id').length == 1){
+    var prePopulate = [];
+    if($("#project_id").data("pre-populate").id){
+      prePopulate[0] = $("#project_id").data("pre-populate");
+    }
+    $("#project_id").tokenInput('/projects/search.json', {
+      theme: "facebook",
+      tokenLimit: 1,
+      prePopulate: prePopulate
+    });
+  }
 });

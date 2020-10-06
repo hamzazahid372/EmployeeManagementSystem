@@ -8,7 +8,7 @@ class User < ApplicationRecord
   }.freeze
 
   sequenceid :company, :users
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
@@ -37,7 +37,7 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :company
 
-  validates :first_name, presence: true
+  validates :first_name, presence: true, format: { with: /[a-zA-Z0-9]/ }
   validates :last_name, presence: true
   validates :role_id, presence: true, format: { with: /\A\d+\z/ }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: { scope: :company_id }
@@ -60,11 +60,11 @@ class User < ApplicationRecord
     if options[:only_admins]
       users = users.admins
     elsif options[:project_id].present?
-      users = users.joins(:projects_users).where(projects_users: { project_id: options[:project_id] })      
+      users = users.joins(:projects_users).where(projects_users: { project_id: options[:project_id] })
     end
     users
   end
-  
+
   def self.find_for_authentication(warden_conditions)
     where(email: warden_conditions[:email]).first
   end

@@ -28,7 +28,7 @@ class TimeLogsController < ApplicationController
     if @time_log.save
       flash[:notice] = t 'time_log.created'
     else
-      flash[:error] = t 'time_log.not_created'
+      flash[:error] = @time_log.errors.full_messages
     end
 
     respond_to do |format|

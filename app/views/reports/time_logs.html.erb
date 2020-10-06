@@ -3,7 +3,7 @@
   <div class="card">
     <div class="card-header">
       <h2 class="font-weight-bold float-left">Time Logs</h2>
-      <%= link_to "Export", reports_time_logs_path(format: 'csv'), class: "btn btn-dark float-right mt-1" %>
+      <%= link_to "Export", reports_time_logs_path(format: 'csv', user_id: params[:user_id]), class: "btn btn-dark float-right mt-1" %>
     </div>
     <div class="card-body container-fluid p-5">
       <%= form_tag(reports_time_logs_path, method: :get) do %>

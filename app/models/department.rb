@@ -7,5 +7,5 @@ class Department < ApplicationRecord
   has_many :projects_departments, dependent: :destroy
   has_many :projects, through: :projects_departments
   belongs_to :company
-  validates :name, presence: true, length: { minimum: 3 }
+  validates :name, presence: true, length: { minimum: 3 }, format: { with: /\A[a-zA-Z]+\d/ }
 end

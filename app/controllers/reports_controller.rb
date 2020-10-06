@@ -4,9 +4,12 @@
 class ReportsController < ApplicationController
   def tasks
     @tasks = Task.accessible_by(current_ability)
-    @tasks = @tasks.page(params[:page]).per_page(PER_PAGE)
+    @tasks = @tasks.where(project_id: params[:project_id]) if params[:project_id].present?
+    load_resources
     respond_to do |format|
-      format.html
+      format.html do
+         @tasks = @tasks.page(params[:page]).per_page(PER_PAGE)
+       end
       format.csv do
         filename = TasksExportService.new(@tasks).to_csv
         set_csv_headers(filename)
@@ -67,5 +70,6 @@ class ReportsController < ApplicationController
 
   def load_resources
     @user = User.find_by(id: params[:user_id]) if params[:user_id].present?
+    @project = Project.find_by(id: params[:project_id]) if params[:project_id].present?
   end
 end

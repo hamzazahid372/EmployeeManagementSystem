@@ -1,12 +1,31 @@
+<%= javascript_pack_tag 'report', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'task' %>
 
 <% content_for :card_header do %>
-    <div class="card-header">
-      <h2 class="font-weight-bold float-left">Tasks</h2>
-      <%= link_to "Export", reports_tasks_path(format: 'csv'), class: "btn btn-dark float-right mt-1" %>
-    </div>
+  <div class="card-header">
+    <h2 class="font-weight-bold float-left">Tasks</h2>
+    <%= link_to "Export", reports_tasks_path(format: 'csv', project_id: params[:project_id]), class: "btn btn-dark float-right mt-1" %>
+  </div>
 <% end %>
-
+<div class="card-body container-fluid p-5">
+  <%= form_tag(reports_tasks_path, method: :get) do %>
+    <div class='text-bold'>
+      <%= label_tag :project_id , 'Project', class: 'h5 text-bold' %>
+    </div>
+    <div class='row'>
+      <div class='col-lg-6'>
+        <div class='form-group'>
+          <%= text_field_tag :project_id, nil, class: 'form-control border-info  w-100', data: { pre_populate: { id: @project&.id, name: @project&.name }.to_json } %>
+        </div>
+      </div>
+      <div class='col-lg-6'>
+        <div class='form-group'>
+          <%= submit_tag 'Apply Filter', class: 'btn btn-dark float-right' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 <div class="table-responsive">
   <table id="tasks_table" class="table table-hover table-sm">
     <thead>
