@@ -1,12 +1,12 @@
 <% content_for :card_header do %>
     <div class="card-header">
-      <h2 class="font-weight-bold float-left"><%= @task.title %></h2>
+      <h2 class="font-weight-bold float-left"><%= task.title %></h2>
       <%= button_to "Export", new_task_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
     </div>
 <% end %>
 
 <div class="table-responsive">
-  <table id="history_datatable" class="table table-hover table-sm">
+  <table id="history-datatable" class="table table-hover table-sm">
     <thead>
       <tr>
         <th><%= t(:audit_version) %></th>
@@ -19,7 +19,8 @@
       </tr>
     </thead>
     <tbody>
-      <% @task.audits.each do |audit| %>
+      <% task.audits.each do |audit| %>
+        <% next if audit.action == 'create' %>
         <tr>
           <td>
             <%= audit.version %>
@@ -59,3 +60,4 @@
     </tbody>
   </table>
 </div>
+

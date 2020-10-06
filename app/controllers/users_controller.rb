@@ -44,22 +44,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    success = true
-    @user = Current.company.users.new(user_params)
-    flash[:error] = @user.errors.full_messages.join('<br/>').html_safe unless @user.valid?
-
-    render new_user_path and return unless @user.valid?
-
-    begin
-      User.transaction do
-        @user.save!
-      end
-    rescue ActiveRecord::RecordInvalid
-      success = false
-    end
-    if success
+    rand_password = Devise.friendly_token.first(8)
+    @user.password = rand_password
+    @user.password_confirmation = rand_password
+    @user.sys_generated_password = rand_password
+    if @user.save
       flash[:success] = t 'users.created_successfully'
       redirect_to user_path(@user) and return
+    else
+      flash[:error] = @user.errors.full_messages
     end
     render new_user_path
   end

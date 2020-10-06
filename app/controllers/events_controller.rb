@@ -17,14 +17,23 @@ class EventsController < ApplicationController
 
   # POST /events
   def create
+    success = true
     @event.created_by_id = current_user.id
     if @event.save
       flash.now[:notice] = t 'event.success.created'
     else
       flash.now[:error] = @event.errors.full_messages
+      success = false
     end
     respond_to do |format|
-      format.html { redirect_to request.referer }
+      format.html do
+        redirect_to request.referer
+        if success
+          flash[:notice] = t 'event.success.created'
+        else
+          flash[:error] = @event.errors.full_messages
+        end
+      end
     end
   end
 

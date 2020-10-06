@@ -8,17 +8,17 @@ document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
   var calendar = new Calendar(calendarEl, {
-     plugins: [ dayGridPlugin, interactionPlugin, timeGridPlugin ],
-      headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,dayGridWeek,dayGridDay'
-        },
-      eventSources: [
-        {
-          url: '/events.json'
-        }
-      ]
+   plugins: [ dayGridPlugin, interactionPlugin, timeGridPlugin ],
+    headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,dayGridWeek,dayGridDay'
+      },
+    eventSources: [
+      {
+        url: '/events.json'
+      }
+    ]
 });
   calendar.render();
 });

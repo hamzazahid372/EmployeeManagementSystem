@@ -26,6 +26,10 @@
           <i class="fa fa-user text-light float-left pt-3" aria-hidden="true"></i>
           <%= link_to "Departments", departments_path %>
         </li>
+        <li class="list-group-item bg-dark">
+          <i class="fa fa-user text-light float-left pt-3" aria-hidden="true"></i>
+          <%= link_to "Settings", company_setting_path(Current.company.company_setting) %>
+        </li>
       <% end %>
       <li class="list-group-item bg-dark">
         <i class="fa fa-user text-light float-left pt-3" aria-hidden="true"></i>

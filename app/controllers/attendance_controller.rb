@@ -5,7 +5,7 @@ class AttendanceController < ApplicationController
   # /attendance/log_in
   def log_in
     if Current.user.current_attendance.login_time.nil?
-      success = Current.user.current_attendance.update(login_time: DateTime.now)
+      success = Current.user.current_attendance.update(login_time: Time.zone.now)
       if success
         flash[:success] = t 'attendance.login_marked'
       else
@@ -20,7 +20,7 @@ class AttendanceController < ApplicationController
   # /attendance/log_out
   def log_out
     if Current.user.current_attendance.logout_time.nil?
-      success = Current.user.current_attendance.update(logout_time: DateTime.now)
+      success = Current.user.current_attendance.update(logout_time: Time.zone.now)
       if success
         flash[:success] = t 'attendance.logout_marked'
       else

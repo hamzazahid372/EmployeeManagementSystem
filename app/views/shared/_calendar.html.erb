@@ -1,7 +1,5 @@
 <%= javascript_pack_tag 'calendar', 'data-turbolinks-track': 'reload' %>
-<div class='container'>
-  <%= link_to "Add Event", new_event_path, remote: true, class: "btn btn-dark float-right ml-2" %>
-</div>
+
 <div id="event-modal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
 
@@ -14,14 +12,11 @@
         <div class="flash-messages"></div>
         <div id="event-form"></div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
     </div>
-
   </div>
 </div>
-<div class="container w-75">
+<div class="container w-75 my-4">
+  <%= link_to "Add Event", new_event_path, remote: true, class: "btn btn-dark float-right ml-2" %>
   <div id="calendar"></div>
   <br />
 </div>

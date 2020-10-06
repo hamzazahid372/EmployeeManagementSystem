@@ -96,7 +96,7 @@ en:
 
   audit_user: 'User'
   audit_action: 'Action'
-  audit_version: 'Task version#'
+  audit_version: 'Version#'
   audit_time: 'Time'
   audit_to: 'To'
   audit_from: 'From'
@@ -177,7 +177,7 @@ en:
     not_destroyed: 'Time log not removed'
   attachment:
     created: 'Document uploaded successfully'
-    not_created: 'Sorry this format is not supported'
+    not_created: 'Invalid file'
     destroyed: 'Attachment deleted successfully'
     not_destroyed: 'Oops something getting wrong'
   users_team:
