@@ -20,6 +20,7 @@ class Ability
   include Abilities::CompanySettingAbility
   include Abilities::WorkingDayAbility
   include Abilities::HolidayAbility
+  include Abilities::ReportAbility
 
   def initialize(user)
     return unless user.present?
@@ -43,6 +44,7 @@ class Ability
       define_company_setting_abilities_for_admin(user)
       define_working_day_abilities_for_admin(user)
       define_holiday_abilities_for_admin(user)
+      define_report_abilities_for_admin(user)
     else
       define_team_abilities_for_employee(user)
       define_user_abilities_for_employee(user)
@@ -57,6 +59,7 @@ class Ability
       define_project_user_abilities_for_employee(user)
       define_project_department_abilities_for_employee(user)
       define_task_watcher_abilities_for_employee(user)
+      define_report_abilities_for_employee(user)
     end
   end
 end

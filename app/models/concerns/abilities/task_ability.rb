@@ -12,7 +12,7 @@ module Abilities
       can %i[read create], Task, Task.joins(project: :projects_users).where(projects_users: { user_id: user.id }, company_id: user.company_id) do |task|
         task.project.users.where(id: user.id).any?
       end
-      can :manage, Task, created_by_id: user.id, company_id: user.company_id
+      can %i[update destroy], Task, created_by_id: user.id, company_id: user.company_id
     end
   end
 end

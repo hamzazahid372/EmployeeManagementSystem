@@ -20,17 +20,11 @@ module ApplicationHelper
   end
 
   def get_card_classes
-    if params[:action] == 'index' && params[:controller] != 'user_companies'
+    if params[:action] == 'index' && params[:controller] != 'user_companies' && params[:controller] != 'guest'
       'container-fluid w-100 mt-4 pl-4 pr-4 pb-4'
     elsif params[:controller] == 'user_companies' || params[:action] == 'change_password'
       'container-fluid w-50 mt-5 pl-4 pr-4 pb-4'
-    elsif params[:controller] == 'reports' && params[:action] == 'tasks'
-      'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'
-    elsif params[:controller] == 'reports' && params[:action] == 'task_audits'
-      'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'
-      elsif params[:controller] == 'reports' && params[:action] == 'attendance_report'
-      'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'
-      elsif params[:controller] == 'reports' && params[:action] == 'time_logs'
+    elsif params[:controller] == 'reports'
       'container-fluid w-100 mt-5 pl-4 pr-4 pb-4'
     else
       'container-fluid w-75 mt-4 pl-4 pr-4'
@@ -42,6 +36,14 @@ module ApplicationHelper
       (link_to '', attendance_log_in_path, method: 'post', class: 'btn btn-light fas fa-arrow-right float-left m-1', id: 'attendance-btn', title: 'Attendance Log-in', data: { confirm: 'Are you sure to mark your attendance log-in time?' })
     elsif Current.user.current_attendance.logout_time.nil?
       (link_to '', attendance_log_out_path, method: 'post', class: 'btn btn-light fas fa-arrow-left float-left m-1', id: 'attendance-btn', title: 'Attendance Log-out', data: { confirm: 'Are you sure to mark your attendance log-out time?' })
+    end
+  end
+
+  def get_piechart(tasks, tasks_piechart_data)
+    if tasks.any?
+      pie_chart tasks_piechart_data, label: 'Hello'
+    else
+      content_tag(:p, 'No Content')
     end
   end
 

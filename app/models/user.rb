@@ -64,7 +64,7 @@ class User < ApplicationRecord
     end
     users
   end
-  
+
   def self.find_for_authentication(warden_conditions)
     where(email: warden_conditions[:email]).first
   end
@@ -74,7 +74,7 @@ class User < ApplicationRecord
   end
 
   def current_attendance
-    @current_attendance ||= attendances.find_or_create_by(date: Date.today)
+    @current_attendance ||= attendances.find_or_create_by(date: Time.zone.now.to_date)
   end
 
   def account_owner?

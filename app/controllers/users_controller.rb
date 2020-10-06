@@ -19,7 +19,6 @@ class UsersController < ApplicationController
   def show
     add_breadcrumb 'Users', users_path
     add_breadcrumb @user.full_name, user_path(@user)
-
     respond_to do |format|
       format.html
     end
@@ -40,7 +39,6 @@ class UsersController < ApplicationController
     add_breadcrumb 'Users', users_path
     add_breadcrumb @user.full_name, user_path(@user)
     add_breadcrumb 'Update', edit_user_path(@user)
-
     @departments = Current.company.departments
     respond_to do |format|
       format.html

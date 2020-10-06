@@ -6,7 +6,7 @@
 
 <% if @tasks_timeline_data.present? %>
   <label class="h4">Tasks Timeline</label>
-  <%= timeline @tasks_timeline_data, height: '55vh' %>
+  <div class='overflow-hidden'><%= timeline @tasks_timeline_data, height: '55vh' %></div>
 <% end %>
 <%= render partial: "shared/calendar" %>
 
@@ -40,21 +40,22 @@
 <div class="tab-content pt-4" id="tabs-content">
   <div class="tab-pane fade show active" id="statistics-tab-content" role="tabpanel" aria-labelledby="statistics-tab">
     <div class="row text-center">
+
       <div class="col-lg-3">
-        <label>Assigned Tasks</label>
-        <%= pie_chart @assigned_tasks_piechart_data, name: 'Assigned Tasks' %>  
+        <label class="font-weight-bold">Assigned Tasks</label>
+        <%= get_piechart(@assigned_tasks, @assigned_tasks_piechart_data) %>
       </div>
       <div class="col-lg-3">
-        <label>Watching Tasks</label>
-        <%= pie_chart @watching_tasks_piechart_data, label: 'Watching Tasks' %>  
+        <label class="font-weight-bold ">Watching Tasks</label>
+        <%= get_piechart(@watching_tasks, @watching_tasks_piechart_data) %>
       </div>
       <div class="col-lg-3">
-        <label>Reviewing Tasks</label>
-        <%= pie_chart @reviewing_tasks_piechart_data, label: 'Reviewing Tasks' %> 
+        <label class="font-weight-bold ">Reviewing Tasks</label>
+        <%= get_piechart(@reviewing_tasks, @reviewing_tasks_piechart_data) %>
       </div>
       <div class="col-lg-3">
-        <label>Created Tasks</label>
-        <%= pie_chart @created_tasks_piechart_data, label: 'Created Tasks' %>
+        <label class="font-weight-bold ">Created Tasks</label>
+        <%= get_piechart(@created_tasks, @created_tasks_piechart_data) %>
       </div>
     </div>
   </div>

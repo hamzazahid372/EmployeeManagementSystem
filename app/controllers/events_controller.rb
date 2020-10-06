@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
 
   def index
+    add_breadcrumb 'Events', events_path
     respond_to do |format|
       format.html
       format.json do
@@ -40,16 +41,27 @@ class EventsController < ApplicationController
   end
 
   def show
+    add_breadcrumb 'Events', events_path
+    add_breadcrumb @event.title, event_path(@event)
     respond_to do |format|
       format.html
     end
   end
 
   def new
+    add_breadcrumb 'Events', events_path
+    add_breadcrumb 'Create Event', new_event_path
     respond_to do |format|
       format.html
       format.js
     end
+  end
+
+  # GET /events/:id/edit
+  def edit
+    add_breadcrumb 'Events', events_path
+    add_breadcrumb @event.title, event_path(@event)
+    add_breadcrumb 'Update', edit_event_path(@event)
   end
 
   def destroy

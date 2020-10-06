@@ -3,7 +3,10 @@
 # Department Controller
 class DepartmentsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
+
   def new
+    add_breadcrumb 'Departments', departments_path
+    add_breadcrumb 'Create Department', new_department_path(@department)
     respond_to do |format|
       format.html
     end
@@ -27,6 +30,9 @@ class DepartmentsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb 'Departments', departments_path
+    add_breadcrumb @department.name, department_path(@department)
+    add_breadcrumb 'Update', edit_department_path(@department)
     respond_to do |format|
       format.html
     end
@@ -49,6 +55,7 @@ class DepartmentsController < ApplicationController
   end
 
   def index
+    add_breadcrumb 'Departments', departments_path
     @departments = @departments.page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
       format.html
@@ -56,6 +63,8 @@ class DepartmentsController < ApplicationController
   end
 
   def show
+    add_breadcrumb 'Departments', departments_path
+    add_breadcrumb @department.name, department_path(@department)
     respond_to do |format|
       format.html
     end
