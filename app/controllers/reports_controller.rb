@@ -4,6 +4,7 @@
 class ReportsController < ApplicationController
   load_and_authorize_resource :task, :only %i[task_audits]
 
+# GET /reports/tasks
   def tasks
     add_breadcrumb 'Tasks Report', reports_tasks_path
     @tasks = Task.accessible_by(current_ability)
@@ -21,6 +22,7 @@ class ReportsController < ApplicationController
     end
   end
 
+  # GET /reports/time_logs
   def time_logs
     add_breadcrumb 'Time Logs', reports_time_logs_path
     @time_logs = TimeLog.accessible_by(current_ability)
@@ -38,12 +40,14 @@ class ReportsController < ApplicationController
     end
   end
 
+  # /reports/task_audits
   def task_audits
     respond_to do |format|
       format.js
     end
   end
 
+  # GET /reports/attendance_report
   def attendance_report
     add_breadcrumb 'Attendance Report', reports_attendance_report_path
     @attendances = Attendance.all

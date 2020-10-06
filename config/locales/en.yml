@@ -96,7 +96,7 @@ en:
 
   audit_user: 'User'
   audit_action: 'Action'
-  audit_version: 'Task version#'
+  audit_version: 'Version#'
   audit_time: 'Time'
   audit_to: 'To'
   audit_from: 'From'

@@ -4,6 +4,7 @@
 class TeamsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
 
+  # GET /teams
   def index
     add_breadcrumb 'Teams', teams_path
 
@@ -14,6 +15,7 @@ class TeamsController < ApplicationController
     end
   end
 
+  # GET /teams/:id
   def show
     add_breadcrumb 'Teams', teams_path
     add_breadcrumb @team.name, team_path(@team)
@@ -23,6 +25,7 @@ class TeamsController < ApplicationController
     end
   end
 
+  # GET /teams/new
   def new
     add_breadcrumb 'Teams', teams_path
     add_breadcrumb 'Create Team', new_team_path
@@ -33,6 +36,7 @@ class TeamsController < ApplicationController
     end
   end
 
+  # GET /teams/:id/edit
   def edit
     add_breadcrumb 'Teams', teams_path
     add_breadcrumb @team.name, team_path(@team)
@@ -44,6 +48,7 @@ class TeamsController < ApplicationController
     end
   end
 
+  # POST /teams
   def create
     @team.created_by_id = current_user.id
     if @team.save
@@ -59,6 +64,7 @@ class TeamsController < ApplicationController
     end
   end
 
+  # PATCH /teams/:id
   def update
     if @team.update(team_params)
       flash[:notice] = t 'team.updated'
@@ -73,6 +79,7 @@ class TeamsController < ApplicationController
     end
   end
 
+  # DELETE /teams/:id
   def destroy
     if @team.destroy
       flash[:notice] = t 'team.destroyed'
@@ -85,6 +92,7 @@ class TeamsController < ApplicationController
     end
   end
 
+  # GET /teams/search
   def search
     @teams = @teams.search(params[:q]).map { |t| { id: t.id, name: t.name } }
     respond_to do |format|

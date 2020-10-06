@@ -6,12 +6,14 @@ class TasksWatchersController < ApplicationController
   load_and_authorize_resource through: :task, only: %i[index create new]
   load_and_authorize_resource :tasks_watcher, only: %i[destroy]
 
+  # GET /tasks/:task_id/tasks_watchers/new
   def new
     respond_to do |format|
       format.js
     end
   end
-  
+
+  # GET /tasks/:task_id/tasks_watchers
   def index
     @tasks_watchers = @tasks_watchers.includes(:watcher)
     @tasks_watchers = @tasks_watchers.page(params[:page]).per_page(PER_PAGE)
@@ -20,6 +22,7 @@ class TasksWatchersController < ApplicationController
     end
   end
 
+  # POST /tasks/:task_id/tasks_watchers
   def create
     if @tasks_watcher.save
       flash.now[:notice] = t 'tasks_watcher.created'
@@ -32,6 +35,7 @@ class TasksWatchersController < ApplicationController
     end
   end
 
+  # DELETE /tasks_watchers/:id
   def destroy
     @task = @tasks_watcher.task
     if @tasks_watcher.destroy
@@ -44,7 +48,7 @@ class TasksWatchersController < ApplicationController
     end
   end
 
-  private 
+  private
 
   def tasks_watcher_params
     params.require(:tasks_watcher).permit(:task_id, :watcher_id, :watcher_type)

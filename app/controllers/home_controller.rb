@@ -2,6 +2,7 @@
 
 # Home Controller
 class HomeController < ApplicationController
+  #Get root
   def index
     @projects = Current.user.projects
     @assigned_tasks = Current.user.assigned_tasks.includes(:project, :assignee, :created_by, :reviewer)

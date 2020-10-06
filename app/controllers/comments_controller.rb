@@ -8,25 +8,31 @@ class CommentsController < ApplicationController
   load_and_authorize_resource :user, find_by: :sequence_num, instance_name: :commentable, only: %i[index create], if: -> { params[:user_id].present? }
   load_and_authorize_resource :comment, through: :commentable, only: %i[index create]
   load_and_authorize_resource :comment, only: %i[edit update show destroy]
+
+  # GET /comments/:id
+
   def show
     respond_to do |format|
-      format.js # index.js.erb
+      format.js
     end
   end
 
+  #  GET /teams/:team_id/comments
   def index
     @comment = @commentable.comments.build
     respond_to do |format|
-      format.js # index.js.erb
+      format.js
     end
   end
 
+  # GET /comments/:id/edit
   def edit
     respond_to do |format|
-      format.js # edit.js.erb
+      format.js
     end
   end
 
+  # POST /teams/:team_id/comments
   def create
     @comment.user_id = current_user.id
     if @comment.save
@@ -39,6 +45,7 @@ class CommentsController < ApplicationController
     end
   end
 
+  # PATCH /comments/:id
   def update
     if @comment.update(comment_params)
       flash.now[:notice] = t 'comments.updated'
@@ -51,6 +58,7 @@ class CommentsController < ApplicationController
     end
   end
 
+  # DELETE /comments/:id
   def destroy
     if @comment.destroy
       flash.now[:notice] = t 'comments.destroyed'

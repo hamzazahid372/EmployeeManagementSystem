@@ -1,12 +1,17 @@
+# frozen_string_literal: true
+
+# Company Settings Controller
+
 class CompanySettingsController < ApplicationController
   load_and_authorize_resource
-
+  # GET /company_settings/:id
   def show
     add_breadcrumb 'Company Settings', company_setting_path(@company_setting)
     @working_days = Current.company.working_days
     @holidays = Current.company.holidays
   end
 
+  #  PATCH /company_settings/:id
   def update
     if @company_setting.update(company_setting_params)
       flash[:notice] = t 'company_setting.updated'

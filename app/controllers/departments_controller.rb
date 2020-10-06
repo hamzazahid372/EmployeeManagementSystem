@@ -4,6 +4,7 @@
 class DepartmentsController < ApplicationController
   load_and_authorize_resource find_by: :sequence_num
 
+  # GET /departments/new
   def new
     add_breadcrumb 'Departments', departments_path
     add_breadcrumb 'Create Department', new_department_path(@department)
@@ -12,6 +13,7 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  # POST   /departments
   def create
     success = true
     if @department.save
@@ -29,6 +31,7 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  # GET /departments/:id/edit
   def edit
     add_breadcrumb 'Departments', departments_path
     add_breadcrumb @department.name, department_path(@department)
@@ -38,6 +41,7 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  # PATCH /departments/:id
   def update
     success = true
     if @department.update(department_params)
@@ -54,6 +58,7 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  # GET /departments
   def index
     add_breadcrumb 'Departments', departments_path
     @departments = @departments.page(params[:page]).per_page(PER_PAGE)
@@ -62,6 +67,7 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  # GET /departments/:id
   def show
     add_breadcrumb 'Departments', departments_path
     add_breadcrumb @department.name, department_path(@department)
@@ -70,6 +76,7 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  # DELETE /departments/:id
   def destroy
     success = true
     if @department.destroy

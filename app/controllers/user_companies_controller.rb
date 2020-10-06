@@ -4,6 +4,7 @@
 class UserCompaniesController < ApplicationController
   skip_before_action :authenticate_user!
 
+  # GET /user_companies/find
   def find
     if request.subdomain.present?
       redirect_to new_user_session_url and return
@@ -13,6 +14,7 @@ class UserCompaniesController < ApplicationController
     end
   end
 
+  # POST /user_companies/find
   def search_by_email
     success = true
     @user = User.unscope(where: :company_id).where! email: params[:email]
@@ -29,6 +31,7 @@ class UserCompaniesController < ApplicationController
     end
   end
 
+  # GET /user_companies/index
   def index
     if params[:email].present?
       @user = User.unscope(where: :company_id).where! email: params[:email]

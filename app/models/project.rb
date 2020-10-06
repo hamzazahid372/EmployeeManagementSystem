@@ -3,8 +3,6 @@
 # Project model
 class Project < ApplicationRecord
   STATUS = { 'New' => 'new', 'Pending' => 'pending', 'In Progress' => 'in_progress', 'Completed' => 'completed', 'Closed' => 'closed' }.freeze
-
-
   sequenceid :company, :projects
 
   belongs_to :company
