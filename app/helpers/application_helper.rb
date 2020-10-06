@@ -62,4 +62,30 @@ module ApplicationHelper
       }
     end
   end
+
+  def get_attendances
+    Current.user.current_month_attendances.filter_map do |attendance|
+      next if attendance.off_day?
+
+      {
+        start: attendance.date,
+        allDay: true,
+        display: 'background',
+        color: get_attendance_color(attendance)
+      }
+    end
+  end
+
+  def get_attendance_color(attendance)
+    case attendance.status
+    when Attendance::STATUS.fetch('Present')
+      'green'
+    when Attendance::STATUS.fetch('Absent')
+      'red'
+    when Attendance::STATUS.fetch('Holiday')
+      'blue'
+    when Attendance::STATUS.fetch('Leave')
+      'yellow'
+    end
+  end
 end

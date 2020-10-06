@@ -81,3 +81,10 @@ info('Task Watchers')
   task.watcher_teams << team unless task.watcher_teams.ids.include?(team.id)
 end
 
+info('Attendance')
+Attendance.create!(user: owner, date: '2020-10-01', login_time: Time.parse('2020-10-01 08:00:00'), logout_time: Time.parse('2020-10-01 16:00:00'))
+Attendance.create!(user: owner, date: '2020-10-02', login_time: Time.parse('2020-10-02 08:00:00'), logout_time: Time.parse('2020-10-02 16:00:00'))
+Attendance.create!(user: owner, date: '2020-10-03', login_time: nil, logout_time: nil)
+Attendance.create!(user: owner, date: '2020-10-04', login_time: nil, logout_time: nil)
+Attendance.create!(user: owner, date: '2020-10-05', login_time: Time.parse('2020-10-05 08:00:00'), logout_time: Time.parse('2020-10-05 16:00:00'))
+Attendance.create!(user: owner, date: '2020-10-06', login_time: nil, logout_time: nil)
