@@ -18,6 +18,6 @@ class WorkingDayPresenter
   end
 
   def day
-    WorkingDay::DAY_NAMES[working_day.day]
+    WorkingDay::DAY_NAMES[working_day.day.to_i]
   end
 end

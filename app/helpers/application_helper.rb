@@ -64,9 +64,7 @@ module ApplicationHelper
   end
 
   def get_attendances
-    Current.user.current_month_attendances.filter_map do |attendance|
-      next if attendance.off_day?
-
+    Current.user.current_month_attendances.map do |attendance|
       {
         start: attendance.date,
         allDay: true,
@@ -78,6 +76,8 @@ module ApplicationHelper
 
   def get_attendance_color(attendance)
     case attendance.status
+    when Attendance::STATUS.fetch('Off day')
+      'grey'
     when Attendance::STATUS.fetch('Present')
       'green'
     when Attendance::STATUS.fetch('Absent')

@@ -60,7 +60,7 @@ class User < ApplicationRecord
     if options[:only_admins]
       users = users.admins
     elsif options[:project_id].present?
-      users = users.joins(:projects_users).where(projects_users: { project_id: options[:project_id] })      
+      users = users.joins(:projects_users).where(projects_users: { project_id: options[:project_id] })
     end
     users
   end
@@ -74,7 +74,7 @@ class User < ApplicationRecord
   end
 
   def current_attendance
-    @current_attendance ||= attendances.find_or_create_by(date: Time.zone.now.to_date)
+    @current_attendance ||= attendances.find_or_create_by(date: Time.zone.now.beginning_of_day)
   end
 
   def account_owner?
@@ -94,7 +94,7 @@ class User < ApplicationRecord
   end
 
   def current_month_attendances
-    attendances.where("date >= #{Date.today.beginning_of_month}")
+    attendances.where("date >= '#{Time.zone.now.beginning_of_month.to_s(:db)}'")
   end
 
   protected
