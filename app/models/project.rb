@@ -14,8 +14,8 @@ class Project < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
-
-  validates :name, presence: true, length: { minimum: 3 }
+  validates :name, presence: true, length: { minimum: 3 }, format: { with: /\A[a-zA-Z]+\d/ }
+  validates :start_date, presence: true
   validate :date_validate
   validate :expected_date_validate
 
