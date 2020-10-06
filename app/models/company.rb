@@ -24,7 +24,7 @@ class Company < ApplicationRecord
   has_one :company_setting
   has_many :working_days, dependent: :destroy
   has_many :holidays, dependent: :destroy
-  
+
   after_create :create_dependents
 
   def create_dependents
@@ -34,13 +34,13 @@ class Company < ApplicationRecord
 
   def create_working_days
     WorkingDay.insert_all!([
-      { company_id: id, day: 'Mon', off_day: false, from: "08:00AM", to: "04:00PM", created_at: Time.now, updated_at: Time.now },
-      { company_id: id, day: 'Tue', off_day: false, from: "08:00AM", to: "04:00PM", created_at: Time.now, updated_at: Time.now }, 
-      { company_id: id, day: 'Wed', off_day: false, from: "08:00AM", to: "04:00PM", created_at: Time.now, updated_at: Time.now }, 
-      { company_id: id, day: 'Thu', off_day: false, from: "08:00AM", to: "04:00PM", created_at: Time.now, updated_at: Time.now }, 
-      { company_id: id, day: 'Fri', off_day: false, from: "08:00AM", to: "04:00PM", created_at: Time.now, updated_at: Time.now }, 
-      { company_id: id, day: 'Sat', off_day: true, from: "08:00AM", to: "04:00PM", created_at: Time.now, updated_at: Time.now },
-      { company_id: id, day: 'Sun', off_day: true, from: "08:00AM", to: "04:00PM", created_at: Time.now, updated_at: Time.now } 
+      { company_id: id, day: 0, off_day: true, from: '08:00AM', to: '04:00PM', created_at: Time.now, updated_at: Time.now },
+      { company_id: id, day: 1, off_day: false, from: '08:00AM', to: '04:00PM', created_at: Time.now, updated_at: Time.now },
+      { company_id: id, day: 2, off_day: false, from: '08:00AM', to: '04:00PM', created_at: Time.now, updated_at: Time.now },
+      { company_id: id, day: 3, off_day: false, from: '08:00AM', to: '04:00PM', created_at: Time.now, updated_at: Time.now },
+      { company_id: id, day: 4, off_day: false, from: '08:00AM', to: '04:00PM', created_at: Time.now, updated_at: Time.now },
+      { company_id: id, day: 5, off_day: false, from: '08:00AM', to: '04:00PM', created_at: Time.now, updated_at: Time.now },
+      { company_id: id, day: 6, off_day: true, from: '08:00AM', to: '04:00PM', created_at: Time.now, updated_at: Time.now }
     ])
   end
 

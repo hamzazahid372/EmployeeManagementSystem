@@ -34,6 +34,7 @@ class TasksController < ApplicationController
 
     @users = User.accessible_by(current_ability)
     @projects = Project.accessible_by(current_ability)
+    @task.project_id = params[:project_id] if params[:project_id].present?
     respond_to do |format|
       format.html
     end

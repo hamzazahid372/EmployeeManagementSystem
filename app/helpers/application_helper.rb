@@ -11,7 +11,7 @@ module ApplicationHelper
   def get_resource_tabs(resource)
     resource_tabs = {
       user: %w[comments documents],
-      project: %w[comments documents projects_users],
+      project: %w[comments documents projects_users tasks],
       team: %w[comments users],
       task: %w[comments time_logs documents watchers history],
       department: %w[department_projects]
@@ -39,11 +39,27 @@ module ApplicationHelper
     end
   end
 
+<<<<<<< HEAD
   def get_piechart(tasks, tasks_piechart_data)
     if tasks.any?
       pie_chart tasks_piechart_data, label: 'Hello'
     else
       content_tag(:p, 'No Content')
+=======
+  def boolean_value(value)
+    value ? 'Yes' : 'No'
+  end
+
+  def get_business_hours
+    Current.company.working_days.filter_map do |working_day|
+      next if working_day.off_day?
+
+      {
+        daysOfWeek: [working_day.day],
+        startTime: working_day.from.strftime("%H:%M"),
+        endTime: working_day.to.strftime("%H:%M")
+      }
+>>>>>>> b929009cd1ff79c1ca64bb5fbf11e6c33690b567
     end
   end
 end

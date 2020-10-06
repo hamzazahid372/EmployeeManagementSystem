@@ -59,12 +59,12 @@
   <div class="row  pl-1 pr-1">
     <div class="col-lg-6 form-group">
       <%= form.label t(:task_priority) %>
-      <%= form.select :priority, options_for_select(Task::PRIORITY), {}, class: 'form-control border-info' %>
+      <%= form.select :priority, options_for_select(Task::PRIORITY, task.priority), {}, class: 'form-control border-info' %>
     </div>
 
     <div class="col-lg-6 form-group">
       <%= form.label t(:task_status) %>
-      <%= form.select :status, options_for_select(Task::STATUS), {}, class: 'form-control border-info' %>
+      <%= form.select :status, options_for_select(Task::STATUS, task.status), {}, class: 'form-control border-info' %>
     </div>
   </div>
   
@@ -76,7 +76,7 @@
 
     <div class="col-lg-6 form-group">
       <%= form.label t(:task_project_id) %>
-      <%= form.select :project_id, options_for_select( @projects.collect{ |p| [p.name,p.id] }), {}, {class: "form-control border-info"} %>
+      <%= form.select :project_id, options_from_collection_for_select(@projects, 'id', 'name', task.project_id), {}, {class: "form-control border-info"} %>
     </div>
   </div>
 

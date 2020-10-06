@@ -4,6 +4,7 @@ class CompanySettingsController < ApplicationController
   def show
     add_breadcrumb 'Company Settings', company_setting_path(@company_setting)
     @working_days = Current.company.working_days
+    @holidays = Current.company.holidays
   end
 
   def update

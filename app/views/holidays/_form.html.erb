@@ -1,0 +1,47 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+  
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <% if holiday.persisted? %>
+        <h4 class="modal-title">Edit Holiday</h4>
+      <% else %>
+        <h4 class="modal-title">Add Holiday</h4>
+      <% end %>
+      
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    
+    <!-- Modal body -->
+    <div class="modal-body">
+      <div id="modal-flash-messages"></div>
+      <%= form_for holiday, remote: true do |form| %>
+        
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group form-check">
+                <%= form.check_box :every_year, class: 'form-check-input' %>
+                <%= form.label :every_year, class: 'form-check-label' %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <%= form.label :day %>
+                <%= form.date_field :day, required: true, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+
+          <%= form.submit class: 'btn btn-dark' %>
+
+        </div>
+
+      <% end %>
+    </div>
+    
+  </div>
+</div>
