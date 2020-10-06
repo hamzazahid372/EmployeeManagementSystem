@@ -2,7 +2,8 @@
 
 # Project model
 class Project < ApplicationRecord
-  STATUS = { 'New' => 'new', 'Started' => 'started', 'Pending' => 'pending', 'Completed' => 'completed', 'Closed' => 'closed' }.freeze
+  STATUS = { 'New' => 'new', 'Pending' => 'pending', 'In Progress' => 'in_progress', 'Completed' => 'completed', 'Closed' => 'closed' }.freeze
+
 
   sequenceid :company, :projects
 
@@ -15,7 +16,6 @@ class Project < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
-
   validates :name, presence: true, length: { minimum: 3 }, format: { with: /\A[a-zA-Z]+\d/ }
   validates :start_date, presence: true
   validate :date_validate
@@ -39,7 +39,7 @@ class Project < ApplicationRecord
     end
   end
 
-  def self.search q
-    where('name like :q', q: "%#{q}%").map { |p| { id: p.id, name: p.name } }
+  def self.search(q)
+    where('name like :q', q: "%#{q}%")
   end
 end

@@ -6,7 +6,9 @@
         <tr>
           <th><%= t(:watcher_name) %></th>
           <th><%= t(:watcher_type) %></th>
-          <th><%= t(:project_delete_action) %></th>
+          <% if can? :destroy, tasks_watchers.first %>
+            <th><%= t(:project_delete_action) %></th>
+          <% end %>
         </tr>
         </thead>
         <tbody>

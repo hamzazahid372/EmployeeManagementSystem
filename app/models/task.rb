@@ -4,7 +4,7 @@
 class Task < ApplicationRecord
   audited
 
-  STATUS = { 'New' => 'new', 'Started' => 'started', 'Pending' => 'pending', 'Completed' => 'completed', 'Closed' => 'closed' }.freeze
+  STATUS = { 'New' => 'new', 'Pending' => 'pending', 'In Progress' => 'in_progress', 'Completed' => 'completed', 'Closed' => 'closed' }.freeze
   PRIORITY = { low: 1, medium: 2, high: 3 }.freeze
   sequenceid :company, :tasks
   belongs_to :company
@@ -54,7 +54,10 @@ class Task < ApplicationRecord
     user_ids += watcher_users.ids
     user_ids += watcher_teams.map { |team| team.users.ids }.flatten
     user_ids.uniq!
+    user_ids.compact!
     user_ids.each do |user_id|
+      next unless ProjectsUser.where(project_id: project_id, user_id: user_id).any?
+
       TaskMailer.delay.notify(user_id, id, company_id)
     end
   end

@@ -19,7 +19,7 @@ class UsersTeamsController < ApplicationController
       format.js
     end
   end
-
+  
   def create
     if @users_team.save
       flash[:notice] = t 'users_team.created'

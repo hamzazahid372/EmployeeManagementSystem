@@ -3,7 +3,10 @@
 <% content_for :card_header do %>
   <div class="card-header">
     <h2 class="font-weight-bold float-left">Departments</h2>
-    <%= button_to "Create Department", new_department_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
+    <% if can? :create, Department %>
+      
+      <%= button_to "Create Department", new_department_path, method: 'get', class: "btn btn-dark float-right mt-1" %>
+    <% end %>
   </div>
 <% end %>
 
