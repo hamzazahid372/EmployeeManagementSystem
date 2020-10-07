@@ -15,7 +15,6 @@ class Project < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :attachments, as: :attachable, dependent: :destroy
   validates :name, presence: true, length: { minimum: 3 }
-  validates :start_date, presence: true
   validate :date_validate
   validate :expected_date_validate
 

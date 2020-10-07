@@ -24,7 +24,6 @@ class Task < ApplicationRecord
   validates :title, presence: true, length: { minimum: 3 }
   validate :validate_end_date
   validate :validate_expected_end_date
-  validate :validate_due_date
 
   after_update :notify_users
 
