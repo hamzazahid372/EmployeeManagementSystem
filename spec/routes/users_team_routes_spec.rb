@@ -6,7 +6,6 @@ RSpec.describe UsersTeamsController, type: :routing do
       @company = create(:company)
       @user = create(:employee, company: @company)
       @team = create(:team, company: @company, created_by: @user, lead: @user)
-      @users_team = create(:users_team, team: @team, company: @company, user: @user)
     end
     it 'should route to #index' do
       expect(get: "/teams/#{@team.id}/users_teams").to route_to(

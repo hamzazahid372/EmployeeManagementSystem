@@ -12,12 +12,12 @@ describe 'TimeLog' do
     end
     context 'when is a member' do
       let(:user) { create(:employee, company: @company) }
-      it { should_not be_able_to(:index, TimeLog) }
-      it { should_not be_able_to(:show, TimeLog) }
+      it { should be_able_to(:index, TimeLog) }
+      it { should be_able_to(:show, TimeLog) }
       it { should be_able_to(:create, TimeLog) }
-      it { should_not be_able_to(:edit, TimeLog) }
-      it { should_not be_able_to(:update, TimeLog) }
-      it { should_not be_able_to(:destroy, TimeLog) }
+      it { should be_able_to(:manage, TimeLog, user_id: user.id) }
+      it { should be_able_to(:read, TimeLog, company_id: user.company_id) }
+      it { should_not be_able_to(:update, TimeLog.where.not(user_id: user.id).first) }
     end
   end
 end
