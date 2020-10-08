@@ -47,9 +47,7 @@ FactoryBot.define do
   end
 
   factory :company do
-    # name { Faker::Company.buzzword }
     name { "#{Company.all.count + 7}vals" }
-    # subdomain { Faker::Internet.domain_name.split('.')[0] }
     subdomain { "#{Company.all.count + 7}vals" }
   end
 
