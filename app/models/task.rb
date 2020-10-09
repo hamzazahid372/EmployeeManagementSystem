@@ -3,6 +3,7 @@
 # Task model
 class Task < ApplicationRecord
   audited
+  searchkick word_start: [:title, :description]
 
   STATUS = { 'New' => 'new', 'Pending' => 'pending', 'In Progress' => 'in_progress', 'Completed' => 'completed', 'Closed' => 'closed' }.freeze
   PRIORITY = { low: 1, medium: 2, high: 3 }.freeze

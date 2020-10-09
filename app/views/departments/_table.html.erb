@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <h1>Departments</h1>
+  <div class="table-responsive">
+      <table id="departments-datatable" class="table table-hover">
+        <thead>
+          <tr>
+            <th><%= t(:name) %></th>
+            <th><%= t(:department_description) %></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @departments.each do |department| %>
+          <tr>
+            <td><%= link_to department.name, department_path(department.sequence_num) %> </td>
+            <td> <%= department.description %> </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<% if local_assigns[:paginate] %>
+  <div class="digg_pagination">
+    <% if request.format.html? %>
+      <%= will_paginate @departments %>
+    <% else %>
+      <%= js_will_paginate @departments %>
+    <% end %>
+  </div>
+<% end %>

@@ -9,10 +9,21 @@
     </div>
 <% end %>
 
-<div class="table-responsive" id="table-parent-div">
-  <%= render partial: "table", locals: { teams: @teams} %>
-</div>  
-
-<div class="digg_pagination">
-  <%= will_paginate @teams %>
+<div class="row">      
+  <div class="col-lg-6">
+    <div class="form-group">
+      <%= form_with url: teams_search_kick_path, remote: true do |f| %>
+          <%= f.text_field :search, autofocus: true, class: 'form-control border-info', required: true %>
+    </div>
+  </div>
+  <div class="col-lg-1">
+    <div class="form-group">
+      <%= f.submit 'Search', class: 'btn btn-dark mr-5 float-right' %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+<div class="table-responsive my-4" id="teams-table-div">
+  <%= render partial: "table", locals: { paginate: true, teams: @teams } %>
+</div>  

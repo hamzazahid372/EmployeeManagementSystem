@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     redirect_to new_user_session_path and return if Current.company_id.nil?
 
     add_breadcrumb 'Users', users_path
-    @users = Current.company.users
+    @users = Current.company.users.page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
       format.html
     end
@@ -107,10 +107,17 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = @users.search(params[:q], params.slice(:only_admins, :project_id))
+    @users = @users.search_users(params[:q], params.slice(:only_admins, :project_id))
     @users = @users.map { |u| { id: u.id, name: u.full_name } }
     respond_to do |format|
       format.json { render json: @users.to_json }
+    end
+  end
+
+  def search_kick
+    @users = User.search(params[:search], match: :word_start)
+    respond_to do |format|
+      format.js { render 'index' }
     end
   end
 

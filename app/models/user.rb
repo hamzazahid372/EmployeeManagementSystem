@@ -6,6 +6,7 @@ class User < ApplicationRecord
     'Administrator' => 1,
     'Employee' => 2
   }.freeze
+  searchkick word_start: [:first_name, :last_name, :email]
 
   sequenceid :company, :users
 
@@ -55,7 +56,7 @@ class User < ApplicationRecord
     errors.blank?
   end
 
-  def self.search(q, options = {})
+  def self.search_users(q, options = {})
     users = where('first_name like :q or last_name like :q', q: "%#{q}%")
     if options[:only_admins]
       users = users.admins

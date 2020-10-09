@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   # GET /events
   def index
     add_breadcrumb 'Events', events_path
+    @events = @events.page(params[:page]).per_page(PER_PAGE)
     respond_to do |format|
       format.html
       format.json do
@@ -88,6 +89,13 @@ class EventsController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to @event }
+    end
+  end
+
+  def search
+    @events = Event.search(params[:search], match: :word_start)
+    respond_to do |format|
+      format.js { render 'index' }
     end
   end
 

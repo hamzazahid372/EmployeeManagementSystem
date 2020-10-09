@@ -39,6 +39,8 @@ gem 'delayed_job_active_record', '4.1.4'
 gem 'chartkick', '3.4.0'
 # To maintain models history
 gem 'audited', '4.9.0'
+# To make search fast
+gem 'searchkick', '4.4.1'
 
 group :development, :test do
   gem 'pry', '0.13.1'

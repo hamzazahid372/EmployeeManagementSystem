@@ -105,9 +105,16 @@ class ProjectsController < ApplicationController
 
   # /projects/search
   def search
-    @projects = @projects.search(params[:q]).map { |p| { id: p.id, name: p.name } }
+    @projects = @projects.search_project(params[:q]).map { |p| { id: p.id, name: p.name } }
     respond_to do |format|
       format.json { render json: @projects.to_json }
+    end
+  end
+
+  def search_kick
+    @projects = Project.search(params[:search], match: :word_start)
+    respond_to do |format|
+      format.js { render 'index' }
     end
   end
 

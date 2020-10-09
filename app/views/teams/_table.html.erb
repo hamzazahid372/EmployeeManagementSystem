@@ -23,3 +23,14 @@
    
   </tbody>
 </table>
+
+
+<% if local_assigns[:paginate] %>
+  <div class="digg_pagination">
+    <% if request.format.html? %>
+      <%= will_paginate @teams %>
+    <% else %>
+      <%= js_will_paginate @teams %>
+    <% end %>
+  </div>
+<% end %>

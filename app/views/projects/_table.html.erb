@@ -20,3 +20,14 @@
     <% end %>
   </tbody>
 </table>
+
+
+<% if local_assigns[:paginate] %>
+  <div class="digg_pagination">
+    <% if request.format.html? %>
+      <%= will_paginate @projects %>
+    <% else %>
+      <%= js_will_paginate @projects %>
+    <% end %>
+  </div>
+<% end %>

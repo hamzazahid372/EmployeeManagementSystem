@@ -94,9 +94,16 @@ class TeamsController < ApplicationController
 
   # GET /teams/search
   def search
-    @teams = @teams.search(params[:q]).map { |t| { id: t.id, name: t.name } }
+    @teams = @teams.search_teams(params[:q]).map { |t| { id: t.id, name: t.name } }
     respond_to do |format|
       format.json { render json: @teams.to_json }
+    end
+  end
+
+  def search_kick
+    @teams = Team.search(params[:search], match: :word_start)
+    respond_to do |format|
+      format.js { render 'index' }
     end
   end
 

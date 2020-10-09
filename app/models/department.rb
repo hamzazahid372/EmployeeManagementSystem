@@ -3,6 +3,8 @@
 # Department model
 class Department < ApplicationRecord
   sequenceid :company, :departments
+  searchkick word_start: [:name, :description]
+
   has_many :users, dependent: :nullify
   has_many :projects_departments, dependent: :destroy
   has_many :projects, through: :projects_departments

@@ -4,6 +4,7 @@
 class Project < ApplicationRecord
   STATUS = { 'New' => 'new', 'Pending' => 'pending', 'In Progress' => 'in_progress', 'Completed' => 'completed', 'Closed' => 'closed' }.freeze
   sequenceid :company, :projects
+  searchkick word_start: [:name, :description]
 
   belongs_to :company
   belongs_to :created_by, class_name: 'User', optional: true
@@ -37,7 +38,7 @@ class Project < ApplicationRecord
     end
   end
 
-  def self.search(q)
+  def self.search_project(q)
     where('name like :q', q: "%#{q}%")
   end
 end

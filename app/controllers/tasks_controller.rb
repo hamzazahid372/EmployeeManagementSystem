@@ -104,6 +104,13 @@ class TasksController < ApplicationController
     end
   end
 
+  def search
+    @tasks = Task.search(params[:search], match: :word_start)
+    respond_to do |format|
+      format.js { render 'index' }
+    end
+  end
+
   private
 
   def task_params

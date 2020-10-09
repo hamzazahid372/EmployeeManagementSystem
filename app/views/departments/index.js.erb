@@ -1,0 +1,6 @@
+$("#departments-table-div").html("<%= j render(partial: 'table', locals: { paginate: true, departments: @departments }) %>");
+$('#departments-datatable').DataTable({
+    info: false,
+    paging: false,
+    searching: false
+  });

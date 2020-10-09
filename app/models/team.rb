@@ -3,6 +3,8 @@
 # Team model
 class Team < ApplicationRecord
   sequenceid :company, :teams
+  searchkick word_start: [:name, :description]
+
   belongs_to :lead, class_name: 'User'
   belongs_to :created_by, class_name: 'User'
   belongs_to :company
@@ -14,7 +16,7 @@ class Team < ApplicationRecord
   has_many :watching_tasks, through: :tasks_watchers, source: :task
   validates :name, presence: true, length: { minimum: 3 }
 
-  def self.search(q)
+  def self.search_teams(q)
     where('name like :q', q: "%#{q}%")
   end
 end

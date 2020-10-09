@@ -48,6 +48,13 @@ Rails.application.routes.draw do
   get 'reports/attendance_report'
   post 'attendance/log_in'
   post 'attendance/log_out'
+  post 'tasks/search'
+  post 'projects/search_kick'
+  post 'users/search_kick'
+  post 'teams/search_kick'
+  post 'departments/search'
+  post 'events/search'
+
   get 'user_companies/find', controller: 'user_companies', action: 'find'
   post 'user_companies/find', controller: 'user_companies', action: 'search_by_email'
   get 'user_companies/index', controller: 'user_companies', action: 'index'

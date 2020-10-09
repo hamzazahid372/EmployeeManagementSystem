@@ -9,6 +9,20 @@
     </div>
 <% end %>
 
+<div class="row">      
+  <div class="col-lg-6">
+    <div class="form-group">
+      <%= form_with url: tasks_search_path, remote: true do |f| %>
+          <%= f.text_field :search, autofocus: true, class: 'form-control border-info', required: true %>
+    </div>
+  </div>
+  <div class="col-lg-1">
+    <div class="form-group">
+      <%= f.submit 'Search', class: 'btn btn-dark mr-5 float-right' %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <div class="row">      
   <div class="col-lg-3">

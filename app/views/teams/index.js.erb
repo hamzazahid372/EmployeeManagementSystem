@@ -1,0 +1,6 @@
+$("#teams-table-div").html("<%= j render(partial: 'table', locals: { paginate: true, teams: @teams }) %>");
+$('#teams-datatable').DataTable({
+    info: false,
+    paging: false,
+    searching: false
+  });

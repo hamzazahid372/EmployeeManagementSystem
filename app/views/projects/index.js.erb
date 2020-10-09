@@ -1,0 +1,6 @@
+$("#table-parent-div").html("<%= j render(partial: 'table', locals: { projects: @projects }) %>");
+$('#projects-datatable').DataTable({
+    info: false,
+    paging: false,
+    searching: false
+  });

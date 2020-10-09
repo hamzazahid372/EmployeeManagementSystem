@@ -99,6 +99,14 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  def search
+    Department.reindex
+    @departments = Department.search(params[:search], match: :word_start)
+    respond_to do |format|
+      format.js { render 'index' }
+    end
+  end
+
   private
 
   def department_params
